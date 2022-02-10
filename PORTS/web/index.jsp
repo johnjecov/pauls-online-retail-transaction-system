@@ -396,7 +396,7 @@
 
         <div class="box">
             <h3>opening hours</h3>
-            <p>tuesday:1:00 P.M. to 8:00 P.M.</p>
+            <p>tuesday: 1:00 P.M. to 8:00 P.M.</p>
             <p>wednesday : 1:00 P.M. to 8:00 P.M.</p>
             <p>friday : 1:00 P.M. to 8:00 P.M.</p>
             <p>Saturday: 1:00 P.M. to 8:00 P.M.</p>

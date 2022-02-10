@@ -46,8 +46,8 @@
 <section class="blogs" id="menu">
 
     <div class="heading">
-        <span>our blogs</span>
-        <h3>our daily stories</h3>
+        <span>Freshly Made Pizza</span>
+        <h3>Choose your Pizza</h3>
     </div>
 
     <div class="box-container">
@@ -58,12 +58,10 @@
             </div>
             <div class="content">
                 <div class="tags">
-                    <a href="#"> <i class="fas fa-tag"></i> food / </a>
-                    <a href="#"> <i class="fas fa-tag"></i> burger / </a>
-                    <a href="#"> <i class="fas fa-tag"></i> pizza  </a>
+                    <a href="#"> <i class="fas fa-tag"></i> Price </a>
                 </div>
-                <h3>blog title goes here...</h3>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem, earum.</p>
+                <h3> (Pizza Name) </h3>
+                <p>Toppings list....</p>
                 <a href="#" class="btn">view more</a>
             </div>
         </div>
@@ -76,8 +74,8 @@
                 <div class="tags">
                     <a href="#"> <i class="fas fa-tag"></i> Price </a>
                 </div>
-                <h3>blog title goes here...</h3>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem, earum.</p>
+                <h3> (Pizza Name) </h3>
+                <p>Toppings list....</p>
                 <a href="#" class="btn">view more</a>
             </div>
         </div>
@@ -88,12 +86,10 @@
             </div>
             <div class="content">
                 <div class="tags">
-                    <a href="#"> <i class="fas fa-tag"></i> food / </a>
-                    <a href="#"> <i class="fas fa-tag"></i> burger / </a>
-                    <a href="#"> <i class="fas fa-tag"></i> pizza  </a>
+                    <a href="#"> <i class="fas fa-tag"></i> Price </a>
                 </div>
-                <h3>blog title goes here...</h3>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem, earum.</p>
+                <h3> (Pizza Name) </h3>
+                <p>Toppings list....</p>
                 <a href="#" class="btn">view more</a>
             </div>
         </div>

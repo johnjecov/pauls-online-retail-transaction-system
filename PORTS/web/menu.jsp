@@ -93,6 +93,34 @@
                 <a href="#" class="btn">view more</a>
             </div>
         </div>
+        
+        <div class="box">
+            <div class="image">
+                <img src="image/blog-3.jpg" alt="">
+            </div>
+            <div class="content">
+                <div class="tags">
+                    <a href="#"> <i class="fas fa-tag"></i> Price </a>
+                </div>
+                <h3> (Pizza Name) </h3>
+                <p>Toppings list....</p>
+                <a href="#" class="btn">view more</a>
+            </div>
+        </div>
+        
+        <div class="box">
+            <div class="image">
+                <img src="image/blog-3.jpg" alt="">
+            </div>
+            <div class="content">
+                <div class="tags">
+                    <a href="#"> <i class="fas fa-tag"></i> Price </a>
+                </div>
+                <h3> (Pizza Name) </h3>
+                <p>Toppings list....</p>
+                <a href="#" class="btn">view more</a>
+            </div>
+        </div>
 
     </div>
 

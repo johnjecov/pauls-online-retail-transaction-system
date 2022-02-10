@@ -187,43 +187,6 @@
 
 <!-- home section ends  -->
 
-<!-- category section starts  -->
-
-<section class="category">
-
-    <a href="#" class="box">
-        <img src="image/cat-1.png" alt="">
-        <h3>combo</h3>
-    </a>
-
-    <a href="#" class="box">
-        <img src="image/cat-2.png" alt="">
-        <h3>pizza</h3>
-    </a>
-
-    <a href="#" class="box">
-        <img src="image/cat-3.png" alt="">
-        <h3>burger</h3>
-    </a>
-
-    <a href="#" class="box">
-        <img src="image/cat-4.png" alt="">
-        <h3>chicken</h3>
-    </a>
-
-    <a href="#" class="box">
-        <img src="image/cat-5.png" alt="">
-        <h3>dinner</h3>
-    </a>
-
-    <a href="#" class="box">
-        <img src="image/cat-6.png" alt="">
-        <h3>coffee</h3>
-    </a>
-
-</section>
-
-<!-- category section ends -->
 
 
 <!-- about section starts  -->
@@ -235,27 +198,17 @@
     </div>
 
     <div class="content">
-        <span>why choose us?</span>
-        <h3 class="title">what's make our food delicious!</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos ut explicabo, numquam iusto est a ipsum assumenda tempore esse corporis?</p>
-        <a href="#" class="btn">read more</a>
-        <div class="icons-container">
-            <div class="icons">
-                <img src="image/serv-1.png" alt="">
-                <h3>fast delivery</h3>
-            </div>  
-            <div class="icons">
-                <img src="image/serv-2.png" alt="">
-                <h3>fresh food</h3>
-            </div>   
-            <div class="icons">
-                <img src="image/serv-3.png" alt="">
-                <h3>best quality</h3>
-            </div>  
-            <div class="icons">
-                <img src="image/serv-4.png" alt="">
-                <h3>24/7 support</h3>
-            </div>           
+        <span>About Us</span>
+        <h3 class="title">The Story of Paul's Pizzeria</h3>
+        <p><b>Paul Castillo</b> started his business last June, 2020. He was inspired 
+            by a relative who was also a business owner. He chose to run a pizzeria 
+            simply because it reflects his love towards pizza, and he was inspired by 
+            Vito Iacopelli who has a YouTube channel designated for pizza making. 
+            He started as a beginner in pizza making, 
+            but now he creates pizza that can make customers go for seconds. </p>
+         <h3 class="title">The Vision of Paul's Pizzeria</h3>
+         <p>To be expand the business, franchise more branches, and be the best Pizzeria in the Philippines.</p>
+          
         </div>
     </div>
 
@@ -444,14 +397,7 @@
 
 <section class="banner">
 
-    <div class="row-banner">
-        <div class="content">
-            <span>double cheese</span>
-            <h3>burger</h3>
-            <p>with cococola and fries</p>
-            <a href="#" class="btn">order now</a>
-        </div>
-    </div>
+  
 
     <div class="grid-banner">
         <div class="grid">
@@ -459,7 +405,6 @@
             <div class="content">
                 <span>special offer</span>
                 <h3>upto 50% off</h3>
-                <a href="#" class="btn">order now</a>
             </div>
         </div>
         <div class="grid">
@@ -467,7 +412,6 @@
             <div class="content center">
                 <span>special offer</span>
                 <h3>upto 25% extra</h3>
-                <a href="#" class="btn">order now</a>
             </div>
         </div>
         <div class="grid">        
@@ -475,7 +419,6 @@
             <div class="content">
                 <span>limited offer</span>
                 <h3>100% cashback</h3>
-                <a href="#" class="btn">order now</a>
             </div>
         </div>
     </div>
@@ -483,71 +426,6 @@
 </section>
 
 <!-- banner section ends -->
-
-<!-- menu section starts  -->
-
-<section class="menu" id="menu">
-
-    <div class="heading">
-        <span>our menu</span>
-        <h3>our top dishes</h3>
-    </div>
-
-    <div class="box-container">
-
-        <a href="#" class="box">
-            <img src="image/menu-1.png" alt="">
-            <div class="content">
-                <h3>delicious food</h3>
-                <div class="price">$40.00</div>
-            </div>
-        </a>
-
-        <a href="#" class="box">
-            <img src="image/menu-2.png" alt="">
-            <div class="content">
-                <h3>delicious food</h3>
-                <div class="price">$40.00</div>
-            </div>
-        </a>
-
-        <a href="#" class="box">
-            <img src="image/menu-3.png" alt="">
-            <div class="content">
-                <h3>delicious food</h3>
-                <div class="price">$40.00</div>
-            </div>
-        </a>
-
-        <a href="#" class="box">
-            <img src="image/menu-4.png" alt="">
-            <div class="content">
-                <h3>delicious food</h3>
-                <div class="price">$40.00</div>
-            </div>
-        </a>
-
-        <a href="#" class="box">
-            <img src="image/menu-5.png" alt="">
-            <div class="content">
-                <h3>delicious food</h3>
-                <div class="price">$40.00</div>
-            </div>
-        </a>
-
-        <a href="#" class="box">
-            <img src="image/menu-6.png" alt="">
-            <div class="content">
-                <h3>delicious food</h3>
-                <div class="price">$40.00</div>
-            </div>
-        </a>
-
-    </div>
-
-</section>
-
-<!-- menu section ends -->
 
 <!-- order section starts  -->
 
@@ -577,137 +455,17 @@
 
     </div>
 
-    <form action="">
-
-        <div class="flex">
-            <div class="inputBox">
-                <span>your name</span>
-                <input type="text" placeholder="customer's name" name="" id="">
-            </div>
-            <div class="inputBox">
-                <span>your number</span>
-                <input type="number" placeholder="customer's number" name="" id="">
-            </div>
-        </div>
-
-        <div class="flex">
-            <div class="inputBox">
-                <span>your order</span>
-                <input type="text" placeholder="food you want" name="" id="">
-            </div>
-            <div class="inputBox">
-                <span>how much</span>
-                <input type="number" placeholder="number or orders" name="" id="">
-            </div>
-        </div>
-
-        <div class="flex">
-            <div class="inputBox">
-                <span>your details</span>
-                <input type="text" placeholder="your message" name="" id="">
-            </div>
-            <div class="inputBox">
-                <span>pick up time</span>
-                <input type="datetime-local">
-            </div>
-        </div>
-
-        <div class="flex">
-            <div class="inputBox">
-                <textarea placeholder="your address" id="" cols="30" rows="10"></textarea>
-            </div>
-            <div class="inputBox">
-                <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30153.788252261566!2d72.82321484621745!3d19.141690214227783!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b63aceef0c69%3A0x2aa80cf2287dfa3b!2sJogeshwari%20West%2C%20Mumbai%2C%20Maharashtra%20400047!5e0!3m2!1sen!2sin!4v1634657187694!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-        </div>
-
-        <input type="submit" value="proceed to order" class="btn">
-
-    </form>
+    
 
 </section>
 
 <!-- order section ends -->
 
-<!-- blogs section starts  -->
-
-<section class="blogs" id="blogs">
-
-    <div class="heading">
-        <span>our blogs</span>
-        <h3>our daily stories</h3>
-    </div>
-
-    <div class="box-container">
-
-        <div class="box">
-            <div class="image">
-                <h3> <i class="fas fa-calendar"></i> 21st may, 2021 </h3>
-                <img src="image/blog-1.jpg" alt="">
-            </div>
-            <div class="content">
-                <div class="tags">
-                    <a href="#"> <i class="fas fa-tag"></i> food / </a>
-                    <a href="#"> <i class="fas fa-tag"></i> burger / </a>
-                    <a href="#"> <i class="fas fa-tag"></i> pizza  </a>
-                </div>
-                <h3>blog title goes here...</h3>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem, earum.</p>
-                <a href="#" class="btn">read more</a>
-            </div>
-        </div>
-
-        <div class="box">
-            <div class="image">
-                <h3> <i class="fas fa-calendar"></i> 21st may, 2021 </h3>
-                <img src="image/blog-2.jpg" alt="">
-            </div>
-            <div class="content">
-                <div class="tags">
-                    <a href="#"> <i class="fas fa-tag"></i> food / </a>
-                    <a href="#"> <i class="fas fa-tag"></i> burger / </a>
-                    <a href="#"> <i class="fas fa-tag"></i> pizza  </a>
-                </div>
-                <h3>blog title goes here...</h3>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem, earum.</p>
-                <a href="#" class="btn">read more</a>
-            </div>
-        </div>
-
-        <div class="box">
-            <div class="image">
-                <h3> <i class="fas fa-calendar"></i> 21st may, 2021 </h3>
-                <img src="image/blog-3.jpg" alt="">
-            </div>
-            <div class="content">
-                <div class="tags">
-                    <a href="#"> <i class="fas fa-tag"></i> food / </a>
-                    <a href="#"> <i class="fas fa-tag"></i> burger / </a>
-                    <a href="#"> <i class="fas fa-tag"></i> pizza  </a>
-                </div>
-                <h3>blog title goes here...</h3>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem, earum.</p>
-                <a href="#" class="btn">read more</a>
-            </div>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- blogs section ends -->
-
 <!-- footer section starts  -->
 
 <section class="footer">
 
-    <div class="newsletter">
-        <h3>newsletter</h3>
-        <form action="">
-            <input type="email" name="" placeholder="enter your email" id="">
-            <input type="submit" value="subscribe">
-        </form>
-    </div>
+    
 
     <div class="box-container">
 
@@ -760,7 +518,7 @@
             <a href="#" class="fab fa-pinterest"></a>
         </div>
 
-        <div class="credit"> created <span>mr. web designer</span> | all rights reserved! </div>
+        <div class="credit"> created <span>TechPare</span> | all rights reserved </div>
         
     </div>
 

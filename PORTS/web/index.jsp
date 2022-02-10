@@ -19,13 +19,13 @@
 
 <header class="header">
 
-    <a href="#" class="logo"> <i class="fas fa-utensils"></i> Paul's Pizzeria </a>
+    <a href="#" class="logo"> <i class="fas fa-utensils"></i>Paul's Pizzeria  </a>
     
     <nav class="navbar">
         <a href="#home">home</a>
         <a href="#about">about</a>
         <a href="#popular">popular</a>
-        <a href="#menu">menu</a>
+        <a href="/PORTS/menu.jsp">menu</a>
         <a href="#order">order</a>
     </nav>
 

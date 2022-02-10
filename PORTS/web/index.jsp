@@ -11,6 +11,7 @@
 
     <!-- custom css file link  -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cssfile.css">
 
 </head>
 <body>
@@ -181,12 +182,19 @@
         <img src="image/home-img.png" alt="" class="home-img">
         <img src="image/home-parallax-img.png" alt="" class="home-parallax-img">
     </div>
+    
+    
 
 </section>
 
+
 <!-- home section ends  -->
 
-
+<div class="line">
+    <div class="colmine1">_</div>
+    <div class="colmine2">_</div>
+    <div class="colmine3">_</div>
+</div>
 
 <!-- about section starts  -->
 
@@ -326,6 +334,34 @@
 
 <!-- banner section ends -->
 
+
+<section class="about" id="about">
+
+    <div class="image">
+       <div class="mapouter">
+        <div class="gmap_canvas">
+            <iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=112%20Copenhagen%20St.
+            %20Green%20Park%20Village,%20Manggahan,%20Pasig%20City&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+            frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+        <style>.mapouter{position:relative;text-align:right;height:500px;width:100%;}</style>
+        <a href="https://www.embedgooglemap.net">google maps link html</a>
+        <style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:100%;}</style>
+        <style>.gmap_canvas iframe{position: relative; width: 100%; height: 100%;}</style>
+    </div>
+</div>
+    </div>
+
+    <div class="content">
+        <span>Where Are We Located?</span>
+        <p>Located in the heart of <b>Pasig</b>, Paul's Pizzeria is situated in the residential 
+            zone of <b>Manggahan</b>. Bridging together household communities with the 
+            welcoming satisfaction from home-made pizzas. Delivered fresh at your doorstep daily.</p>
+        </div>
+    </div>
+
+</section>
+
+
 <!-- order section starts  -->
 
 <section class="order" id="order">
@@ -360,6 +396,8 @@
 </section>
 
 <!-- order section ends -->
+
+
 
 <!-- footer section starts  -->
 

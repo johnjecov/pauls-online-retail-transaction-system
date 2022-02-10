@@ -14,6 +14,27 @@
   transition: .2s linear;
 }
 
+.line {
+    display: flex;
+    height: 4rem;
+    margin-top: 4rem;
+}
+
+
+.colmine1{
+    
+    width:  100%;
+    background-color: red;
+}
+.colmine2{
+        width:  100%;
+  background-color: #e9ebf0;   
+}
+
+.colmine3{
+        width:  100%;
+    background-color: green 
+}
 html {
   font-size: 62.5%;
   overflow-x: hidden;
@@ -863,7 +884,7 @@ section {
 .blogs .box-container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (minmax(40rem, 1fr))[auto-fit];
+  -ms-grid-columns: (minmax(30rem, 1fr))[auto-fit];
       grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
   gap: 1.5rem;
 }

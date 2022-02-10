@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Complete Responsive Food / Resturant Website Design Tutorial</title>
+    <title>Paul's Pizzeria</title>
 
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -19,7 +19,7 @@
 
 <header class="header">
 
-    <a href="#" class="logo"> <i class="fas fa-utensils"></i> food </a>
+    <a href="#" class="logo"> <i class="fas fa-utensils"></i> Paul's Pizzeria </a>
     
     <nav class="navbar">
         <a href="#home">home</a>
@@ -27,7 +27,6 @@
         <a href="#popular">popular</a>
         <a href="#menu">menu</a>
         <a href="#order">order</a>
-        <a href="#blogs">blogs</a>
     </nav>
 
     <div class="icons">
@@ -172,10 +171,10 @@
 <section class="home" id="home">
 
     <div class="content">
-        <span>welcome foodies</span>
-        <h3>different spices for the different tastes ?</h3>
+        <span>Welcome to Paul's Pizzeria</span>
+        <h3>Any time is a good time for Pizza!</h3>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis unde dolores temporibus hic quam debitis tenetur harum nemo.</p>
-        <a href="#" class="btn">order now</a>
+        <a href="#" class="btn">ORDER NOW</a>
     </div>
 
     <div class="image">
@@ -221,8 +220,8 @@
 <section class="popular" id="popular">
 
     <div class="heading">
-        <span>popular food</span>
-        <h3>our special dishes</h3>
+        <span>Popular Pizza</span>
+        <h3>MUST TRY PRODUCTS!</h3>
     </div>
 
     <div class="box-container">
@@ -287,105 +286,6 @@
             </div>
         </div>
 
-        <div class="box">
-            <a href="#" class="fas fa-heart"></a>
-            <div class="image">
-                <img src="image/food-4.png" alt="">
-            </div>
-            <div class="content">
-                <h3>delicious food</h3>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                    <span> (50) </span>
-                </div>
-                <div class="price">$40.00 <span>$50.00</span></div>
-                <a href="#" class="btn">add to cart</a>
-            </div>
-        </div>
-
-        <div class="box">
-            <a href="#" class="fas fa-heart"></a>
-            <div class="image">
-                <img src="image/food-5.png" alt="">
-            </div>
-            <div class="content">
-                <h3>delicious food</h3>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                    <span> (50) </span>
-                </div>
-                <div class="price">$40.00 <span>$50.00</span></div>
-                <a href="#" class="btn">add to cart</a>
-            </div>
-        </div>
-
-        <div class="box">
-            <a href="#" class="fas fa-heart"></a>
-            <div class="image">
-                <img src="image/food-6.png" alt="">
-            </div>
-            <div class="content">
-                <h3>delicious food</h3>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                    <span> (50) </span>
-                </div>
-                <div class="price">$40.00 <span>$50.00</span></div>
-                <a href="#" class="btn">add to cart</a>
-            </div>
-        </div>
-
-        <div class="box">
-            <a href="#" class="fas fa-heart"></a>
-            <div class="image">
-                <img src="image/food-7.png" alt="">
-            </div>
-            <div class="content">
-                <h3>delicious food</h3>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                    <span> (50) </span>
-                </div>
-                <div class="price">$40.00 <span>$50.00</span></div>
-                <a href="#" class="btn">add to cart</a>
-            </div>
-        </div>
-
-        <div class="box">
-            <a href="#" class="fas fa-heart"></a>
-            <div class="image">
-                <img src="image/food-8.png" alt="">
-            </div>
-            <div class="content">
-                <h3>delicious food</h3>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                    <span> (50) </span>
-                </div>
-                <div class="price">$40.00 <span>$50.00</span></div>
-                <a href="#" class="btn">add to cart</a>
-            </div>
-        </div>
 
     </div>
 
@@ -433,24 +333,25 @@
 
     <div class="heading">
         <span>order now</span>
-        <h3>fastest home delivery</h3>
+        <h3>Freshly Made Pizza Home Delivery</h3>
     </div>
 
     <div class="icons-container">
 
         <div class="icons">
             <img src="image/icon-1.png" alt="">
-            <h3>7:00am to 10:30pm</h3>
+            <h3> Tuesday to Sunday</h3>
+            <h3>1:00 P.M. to 8:00 P.M.</h3>
         </div>
 
         <div class="icons">
             <img src="image/icon-2.png" alt="">
-            <h3>+123-456-7890</h3>
+            <h3>+63 961 156 7818</h3>
         </div>
 
         <div class="icons">
             <img src="image/icon-3.png" alt="">
-            <h3>mumbai, india - 400104</h3>
+            <h3>112 Copenhagen St. Green Park Village, Manggahan, Pasig City</h3>
         </div>
 
     </div>
@@ -471,11 +372,11 @@
 
         <div class="box">
             <h3>our menu</h3>
-            <a href="#"><i class="fas fa-arrow-right"></i> pizza</a>
-            <a href="#"><i class="fas fa-arrow-right"></i> burger</a>
-            <a href="#"><i class="fas fa-arrow-right"></i> chicken</a>
-            <a href="#"><i class="fas fa-arrow-right"></i> pasta</a>
-            <a href="#"><i class="fas fa-arrow-right"></i> and more...</a>
+            <a href="#"><i class="fas fa-arrow-right"></i> (NAME OF the) pizza</a>
+             <a href="#"><i class="fas fa-arrow-right"></i> (NAME OF the) pizza</a>
+              <a href="#"><i class="fas fa-arrow-right"></i> (NAME OF the) pizza</a>
+               <a href="#"><i class="fas fa-arrow-right"></i> (NAME OF the) pizza</a>
+                <a href="#"><i class="fas fa-arrow-right"></i> (NAME OF the) pizza</a>
         </div>
 
         <div class="box">
@@ -485,7 +386,6 @@
             <a href="#popular"> <i class="fas fa-arrow-right"></i> popular</a>
             <a href="#menu"> <i class="fas fa-arrow-right"></i> menu</a>
             <a href="#order"> <i class="fas fa-arrow-right"></i> order</a>
-            <a href="#blogs"> <i class="fas fa-arrow-right"></i> blogs</a>
         </div>
 
         <div class="box">
@@ -493,17 +393,15 @@
             <a href="#"> <i class="fas fa-arrow-right"></i> my order</a>
             <a href="#"> <i class="fas fa-arrow-right"></i> my account</a>
             <a href="#"> <i class="fas fa-arrow-right"></i> my favorite</a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> terms of use</a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> privary policy</a>
         </div>
 
         <div class="box">
             <h3>opening hours</h3>
-            <p>monday : 7:00am to 10:00pm</p>
-            <p>tuesday : 7:00am to 10:00pm</p>
-            <p>wednesday : 7:00am to 10:00pm</p>
-            <p>friday : 7:00am to 10:00pm</p>
-            <p>saturday and sunday closed</p>
+            <p>tuesday:1:00 P.M. to 8:00 P.M.</p>
+            <p>wednesday : 1:00 P.M. to 8:00 P.M.</p>
+            <p>friday : 1:00 P.M. to 8:00 P.M.</p>
+            <p>Saturday: 1:00 P.M. to 8:00 P.M.</p>
+            <p> Sunday and Monday: CLOSED</p>
         </div>
 
     </div>
@@ -514,8 +412,6 @@
             <a href="#" class="fab fa-facebook-f"></a>
             <a href="#" class="fab fa-twitter"></a>
             <a href="#" class="fab fa-instagram"></a>
-            <a href="#" class="fab fa-linkedin"></a>
-            <a href="#" class="fab fa-pinterest"></a>
         </div>
 
         <div class="credit"> created <span>TechPare</span> | all rights reserved </div>

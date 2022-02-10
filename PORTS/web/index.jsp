@@ -207,7 +207,6 @@
             but now he creates pizza that can make customers go for seconds. </p>
          <h3 class="title">The Vision of Paul's Pizzeria</h3>
          <p>To be expand the business, franchise more branches, and be the best Pizzeria in the Philippines.</p>
-          
         </div>
     </div>
 
@@ -409,9 +408,9 @@
     <div class="bottom">
 
         <div class="share">
-            <a href="#" class="fab fa-facebook-f"></a>
-            <a href="#" class="fab fa-twitter"></a>
-            <a href="#" class="fab fa-instagram"></a>
+            <a href="https://www.facebook.com/Pauls-Pizzeria-100627485039888/" class="fab fa-facebook-f"></a>
+            <a href="" class="fab fa-twitter"></a>
+            <a href="" class="fab fa-instagram"></a>
         </div>
 
         <div class="credit"> created <span>TechPare</span> | all rights reserved </div>

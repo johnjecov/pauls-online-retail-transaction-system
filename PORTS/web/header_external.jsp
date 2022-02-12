@@ -3,10 +3,10 @@
     <a href="#" class="logo"> <i class="fas fa-utensils"></i>Paul's Pizzeria  </a>
     
     <nav class="navbar">
-        <a class = "navLink" id="homeL" href="#">home</a>
-        <a class = "navLink" id="aboutL" href="#about">about</a>
-        <a class = "navLink" id="popularL" href="#popular">popular</a>
-        <a class = "navLink" id="menuL" href="/PORTS/menu.jsp">menu</a>
+        <a class = "navLink" id="homeL" href="/PORTS/index.jsp">home</a>
+        <a class = "navLink" id="aboutL" href="/PORTS/index.jsp#about">about</a>
+        <a class = "navLink" id="popL" href="/PORTS/index.jsp#popular">popular</a>
+        <a class = "navLink active" id="menuL" href="/PORTS/menu.jsp">menu</a>
     </nav>
 
     <div class="icons">

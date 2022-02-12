@@ -193,7 +193,7 @@
             He started as a beginner in pizza making, 
             but now he creates pizza that can make customers go for seconds. </p>
          <h3 class="title">The Vision of Paul's Pizzeria</h3>
-         <p>To be expand the business, franchise more branches, and be the best Pizzeria in the Philippines.</p>
+         <p>To expand the business, franchise more branches, and be the best Pizzeria in the Philippines.</p>
         </div>
     </div>
 
@@ -435,24 +435,7 @@
     </div>
 
 </section>
-
 <!-- footer section ends -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <!-- custom js file link  -->
 <script src="js/script.js"></script>

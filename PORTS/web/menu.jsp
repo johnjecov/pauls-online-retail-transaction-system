@@ -22,7 +22,7 @@
 </head>
     <body>
     <!-- header section starts -->
-    <%@include file="header.jsp"%>
+    <%@include file="header_external.jsp"%>
      <!-- header section ends -->
      
         <!-- Menu section starts  -->
@@ -111,6 +111,7 @@
 </section>
 
 <!-- Menu section ends -->
-
+   <script src="js/script.js"></script>
     </body>
+ 
 </html>

@@ -1,3 +1,24 @@
+function start(){
+    var url = window.location.href.split('#');
+    if(url.length == 0)
+    {
+        document.querySelector('#homeL').classList.toggle('active');
+        document.querySelector('#aboutL').classList.remove('active');    
+        document.querySelector('#popularL').classList.remove('active');
+        document.querySelector('#menuL').classList.remove('active');
+    }
+    else
+    {
+        document.querySelector('#homeL').classList.remove('active');  
+        document.querySelector('#aboutL').classList.remove('active');    
+        document.querySelector('#popularL').classList.remove('active');
+        document.querySelector('#menuL').classList.remove('active');
+        document.querySelector('#'+url[1]+'L').classList.toggle('active');
+    }
+}
+
+window.onload = start;
+
 let searchForm = document.querySelector('.search-form-container');
 
 document.querySelector('#search-btn').onclick = () =>{
@@ -33,6 +54,36 @@ document.querySelector('#menu-btn').onclick = () =>{
     cart.classList.remove('active');    
     loginForm.classList.remove('active');
 }
+
+
+
+document.querySelector('#homeL').onclick = () =>{
+    document.querySelector('#homeL').classList.toggle('active');
+    document.querySelector('#aboutL').classList.remove('active');    
+    document.querySelector('#popularL').classList.remove('active');
+    document.querySelector('#menuL').classList.remove('active');
+}
+document.querySelector('#aboutL').onclick = () =>{
+    document.querySelector('#aboutL').classList.toggle('active');
+    document.querySelector('#homeL').classList.remove('active');    
+    document.querySelector('#popularL').classList.remove('active');
+    document.querySelector('#menuL').classList.remove('active');
+}
+
+document.querySelector('#popularL').onclick = () =>{
+    document.querySelector('#popularL').classList.toggle('active');
+    document.querySelector('#homeL').classList.remove('active');    
+    document.querySelector('#aboutL').classList.remove('active');
+    document.querySelector('#menuL').classList.remove('active');
+}
+
+document.querySelector('#menuL').onclick = () =>{
+    document.querySelector('#menuL').classList.toggle('active');
+    document.querySelector('#homeL').classList.remove('active');    
+    document.querySelector('#aboutL').classList.remove('active');
+    document.querySelector('#popularL').classList.remove('active');
+}
+
 
 window.onscroll = () =>{
     navbar.classList.remove('active');

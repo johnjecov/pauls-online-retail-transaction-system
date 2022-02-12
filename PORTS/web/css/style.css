@@ -64,6 +64,7 @@ section {
   padding-bottom: 2rem;
 }
 
+
 .heading span {
   font-family: 'Satisfy', cursive;
   font-size: 3rem;
@@ -88,6 +89,7 @@ section {
 
 .btn:hover {
   background: #130f40;
+  
 }
 
 .header {
@@ -131,6 +133,11 @@ section {
 
 .header .navbar a:hover {
   color: #27ae60;
+}
+
+.navLink.active {
+    color: #27ae60 !important;
+    border-bottom: 2px solid gray;
 }
 
 .header .icons div {
@@ -535,6 +542,7 @@ section {
           align-items: center;
   gap: 2rem;
   background: #f7f7f7;
+  text-align: justify;
 }
 
 .about .image {

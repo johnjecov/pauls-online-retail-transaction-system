@@ -170,9 +170,9 @@
 <!-- home section ends  -->
 
 <div class="line">
-    <div class="colmine1">_</div>
-    <div class="colmine2">_</div>
-    <div class="colmine3">_</div>
+    <div class="colmine1"></div>
+    <div class="colmine2"></div>
+    <div class="colmine3"></div>
 </div>
 
 <!-- about section starts  -->

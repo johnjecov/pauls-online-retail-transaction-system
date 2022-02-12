@@ -1,11 +1,29 @@
 function start(){
     var url = window.location.href.split('#');
-    if(url.length == 0)
+    if(url.length == 1)
     {
-        document.querySelector('#homeL').classList.toggle('active');
-        document.querySelector('#aboutL').classList.remove('active');    
-        document.querySelector('#popularL').classList.remove('active');
-        document.querySelector('#menuL').classList.remove('active');
+        if(url[0].includes("menu.jsp"))
+        {
+            document.querySelector('#menuL').classList.toggle('active');
+            document.querySelector('#aboutL').classList.remove('active');    
+            document.querySelector('#popularL').classList.remove('active');
+            document.querySelector('#homeL').classList.remove('active');
+        }
+        else if (url[0].includes("login.jsp"))
+        {
+            document.querySelector('#homeL').classList.remove('active');   
+            document.querySelector('#aboutL').classList.remove('active');    
+            document.querySelector('#popularL').classList.remove('active');
+            document.querySelector('#menuL').classList.remove('active');
+        }
+        else
+        {
+            document.querySelector('#homeL').classList.toggle('active');   
+            document.querySelector('#aboutL').classList.remove('active');    
+            document.querySelector('#popularL').classList.remove('active');
+            document.querySelector('#menuL').classList.remove('active');
+        }
+       
     }
     else
     {

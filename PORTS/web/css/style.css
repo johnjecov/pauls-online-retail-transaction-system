@@ -531,6 +531,112 @@ section {
   color: #130f40;
 }
 
+.LRForm {
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #f7f7f7;
+  text-align: justify;
+}
+
+.LRForm .image {
+   min-height: 70vh;
+   background-color: #f3eee8;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 40rem;
+          flex: 1 1 40rem;
+   background-image: url("../image/loginbg.JPG");
+   width: 100%;
+   height: auto;
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center;
+
+    
+}
+
+.LRForm .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover
+}
+
+.LRForm .content {
+    min-height: 70vh;
+    background-color: #f3eee8;;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 40rem;
+          flex: 1 1 40rem;
+          
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.LRForm .content form {
+    display: flex;
+    padding: 3rem;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+#loginForm {
+    gap: 3rem;
+}
+
+#regForm {
+    gap: 1rem;
+    padding: 1.5rem;
+}
+
+.LRForm .content .formTitle {
+  font-family: 'Satisfy', cursive;
+  font-size: 3rem;
+  color: #574b3e;
+}
+
+.inputs {
+    padding: 1.5rem;
+    background: none;
+    border-bottom: 2px solid gray;
+    font-size: 1.5rem;
+    min-width: 40rem;
+}
+
+.inputs:hover {
+    font-size: 1.6rem;
+}
+
+#recaptcha{
+    background: white;
+    border: 1px solid black;
+    color: black;
+    text-align: center;
+}
+
+.LRButton{
+  
+    background: #574b3e;
+    border: none;
+    color: white;
+}
+
+.LRButton:hover{
+    cursor: pointer;
+    background: #27ae60;
+    color: black;
+}
+
+
 .about {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1143,6 +1249,13 @@ section {
   .order form .flex .inputBox {
     width: 100%;
   }
+  
+  .LRForm .image {
+      min-height: 35vh !important;
+  }
+  .LRForm .content {
+      min-height: 65vh !important;
+  }
 }
 
 @media (max-width: 450px) {
@@ -1161,5 +1274,9 @@ section {
   .home .content p {
     font-size: 1.5rem;
   }
+  
+  
+  
+  
 }
 /*# sourceMappingURL=style.css.map */

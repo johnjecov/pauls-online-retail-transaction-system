@@ -9,7 +9,7 @@ function start(){
             document.querySelector('#popularL').classList.remove('active');
             document.querySelector('#homeL').classList.remove('active');
         }
-        else if (url[0].includes("login.jsp"))
+        else if (url[0].includes("login.jsp") || url[0].includes("register.jsp"))
         {
             document.querySelector('#homeL').classList.remove('active');   
             document.querySelector('#aboutL').classList.remove('active');    
@@ -37,6 +37,8 @@ function start(){
 
 window.onload = start;
 
+
+
 let searchForm = document.querySelector('.search-form-container');
 
 document.querySelector('#search-btn').onclick = () =>{
@@ -57,6 +59,7 @@ document.querySelector('#cart-btn').onclick = () =>{
 
 let loginForm = document.querySelector('.login-form-container');
 
+/*
 document.querySelector('#login-btn').onclick = () =>{
     loginForm.classList.toggle('active');
     searchForm.classList.remove('active');
@@ -64,6 +67,7 @@ document.querySelector('#login-btn').onclick = () =>{
     navbar.classList.remove('active');
 }
 
+*/
 let navbar = document.querySelector('.header .navbar');
 
 document.querySelector('#menu-btn').onclick = () =>{

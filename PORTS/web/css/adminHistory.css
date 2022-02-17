@@ -1,0 +1,221 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 02 14, 22, 1:50:52 AM
+    Author     : chuah_000
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
+
+*{
+    background-color: #1e1f20;
+    font-family: 'Satisfy', cursive;
+    color: #fff;
+}
+
+html,body { 
+    height:100%; 
+}
+
+.contentHolder {
+    height: 100%;
+}
+
+.sidebar {
+    background-color: #2e2e2e;
+    float: left;
+    height: 101%;
+    width: 15%;
+    border-top-right-radius:5%;
+    border-bottom-right-radius:5%;
+    margin-left: -2%;
+    margin-top: -1%;
+}
+
+.logo {
+    border-radius: 50%;
+    width: 40%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 12%;
+    margin-bottom: 27%;
+}
+
+.adminOptions {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #2e2e2e;
+    font-size: 1.5vw;
+}
+
+.options {
+    float: bottom;
+    background-color: #2e2e2e
+}
+
+.options a {
+    margin-bottom: 4%;
+    margin-left: 20%;
+    display: block;
+    color: white;
+    padding: 4%;
+    text-decoration: none;
+    background-color: #2e2e2e
+}
+
+.options a:hover {
+    background-color: #fff;
+    color: #000;
+    border-radius: 5%;
+    margin-right: 20%;
+}
+
+.logout {
+    overflow: hidden;
+    background-color: #2e2e2e;
+    font-size: 1.2vw;
+    margin-top: 80%;
+    margin-left: 7%;
+    bottom: 0%;
+    position: fixed;
+}
+
+.logout a {
+    margin-bottom: 4%;
+    margin-left: 20%;
+    display: block;
+    color: white;
+    padding: 4%;
+    text-decoration: none;
+    background-color: #2e2e2e
+}
+
+.logout:hover {
+    background-color: #cd212a;
+    color: #fff;
+    border-radius: 15%;
+}
+
+.adminContent {
+    background-color: #1e1f20;
+    float: left;
+}
+
+.adminGreetings {
+    float: left;
+    width: 30%;
+    margin-left: 5%;
+    margin-top: -2%;
+}
+
+.helloAdmin {
+    font-size: 2vw;
+    text-align: center;
+    background-color: #2e2e2e;
+    border-radius: 2.5%;
+}
+
+.arrangeOptions {
+    float: left;
+    width: 100%;
+    margin-left: 5%;
+    margin-top: -1%;
+    background-color: #2e2e2e;
+    border-radius: 2.5%;
+    padding: 0.5%;
+}
+
+label {
+    background-color: #2e2e2e;
+    font-size: 2vw;
+    margin-left: 2%;
+}
+
+.arrange {
+    background-color: #fff;
+    color: #000;
+    font-size: 1.5vw;
+}
+
+.orderList {
+    background-color: #1e1f20;
+    float: left;
+    width: 105%;
+    border-top-right-radius:5%;
+    border-bottom-right-radius:5%;
+    margin-left: 5%;
+    margin-top: 2%;
+}
+
+.orderProperties {
+    list-style-type: none;
+    margin: -1%;
+    padding: 1%;
+    background-color: #1e1f20;
+    font-size: 1.4vw;
+
+}
+
+.property {
+    float: left;
+    background-color: #1e1f20;
+    margin-right: 5%;
+}
+
+.orders {
+    background-color: #2e2e2e;
+    margin-top: 17%;
+    margin-left: 5%;
+    width: 99%;
+    font-size: 1.5vw;
+    border-radius: 2.5%;
+    padding: 1%;
+}
+
+.pageList {
+    list-style-type: none;
+    width: 100%;
+    overflow: hidden;
+    font-size: 1vw;
+    margin-left: 2.5%;
+    bottom: 13.5%;
+    position: fixed;
+}
+
+.pageNumber,.pageNumber2 {
+    float: left;
+    background-color: #737373;
+    margin-right: 1%;
+    padding-top: .5%;
+    padding-bottom: .5%;
+    padding-left: 1%;
+    padding-right: 1%;
+    border-radius: 15%;
+}
+
+.pageNumber2 {
+    background-color: #008c45;
+}
+
+.PDFGenerator {
+    margin-left: 5%;
+    bottom: 5%;
+    position: fixed;
+}
+
+.generatePDF {
+    border: 0;
+    line-height: 2.5;
+    padding: 0 20px;
+    font-size: 1vw;
+    text-align: center;
+    color: #fff;
+    border-radius: 10px;
+    background-color: #884e3d;
+}

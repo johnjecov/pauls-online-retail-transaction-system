@@ -11,7 +11,6 @@
 
     <div class="icons">
         <a id="menu-btn" class="fas fa-bars"></a>
-        <a id="search-btn" class="fas fa-search"></a>
         <a id="cart-btn" class="fas fa-shopping-cart"></a>
         <a id="login-btn" class="fas fa-user" href="/PORTS/index.jsp#home"></a>
     </div>

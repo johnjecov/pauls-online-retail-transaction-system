@@ -24,7 +24,6 @@
         <script src = "https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
         <link rel = "stylesheet" href = "https://unpkg.com/swiper/swiper-bundle.min.css"/>
         <script src = "https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-        <link rel = "stylesheet" href = "CSS/loginSignUp.css">
       
         <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">

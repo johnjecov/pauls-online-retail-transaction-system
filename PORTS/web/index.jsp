@@ -213,7 +213,6 @@
     <div class="box-container">
 
         <div class="box">
-            <a href="#" class="fas fa-heart"></a>
             <div class="image">
                 <img src="image/food-1.png" alt="">
             </div>
@@ -233,7 +232,6 @@
         </div>
 
         <div class="box">
-            <a href="#" class="fas fa-heart"></a>
             <div class="image">
                 <img src="image/food-2.png" alt="">
             </div>
@@ -253,7 +251,6 @@
         </div>
 
         <div class="box">
-            <a href="#" class="fas fa-heart"></a>
             <div class="image">
                 <img src="image/food-3.png" alt="">
             </div>

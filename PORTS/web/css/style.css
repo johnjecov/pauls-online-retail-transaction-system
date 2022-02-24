@@ -12,6 +12,7 @@
   text-transform: capitalize;
   -webkit-transition: .2s linear;
   transition: .2s linear;
+  
 }
 
 .line {
@@ -543,6 +544,65 @@ section {
           align-items: center;
   background: #f7f7f7;
   text-align: justify;
+  font-size: 1.5rem;
+   -webkit-transition: none !important;
+  transition: none !important;
+}
+
+.changePass {
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: white;
+  text-align: justify;
+  font-size: 1.5rem;
+   -webkit-transition: none !important;
+  transition: none !important;
+ justify-content: center;
+ background-image: url('../image/testBG.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+ 
+}
+
+.changePass .content {
+    text-align: center;
+}
+
+.changePass .content .formTitle {
+  font-family: 'Satisfy', cursive;
+  font-size: 3rem;
+  color: #574b3e;
+}
+
+
+#changePassForm {
+   display: flex;
+   flex-direction: column;
+   gap: 3rem;
+   background-color: #f7f7f7;
+   padding: 4rem;
+   border-radius: 50px 0px 50px 0px;
+}
+
+.inputsC{
+    padding: 1.2rem;
+    background: none;
+    border-bottom: 2px solid gray;
+    font-size: 1.5rem;
+    min-width: 40rem;
+}
+
+
+.inputsC:hover{
+    font-size: 1.6rem;
 }
 
 .LRForm .image {
@@ -553,7 +613,7 @@ section {
           flex: 1 1 40rem;
    background-image: url("../image/loginbg.JPG");
    width: 100%;
-   height: auto;
+   height: 100%;
    background-size: cover;
    background-repeat: no-repeat;
    background-position: center;
@@ -561,11 +621,6 @@ section {
     
 }
 
-.LRForm .image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover
-}
 
 .LRForm .content {
     min-height: 70vh;
@@ -581,12 +636,10 @@ section {
 
 .LRForm .content form {
     display: flex;
-    padding: 3rem;
     flex-direction: column;
     text-align: center;
     justify-content: center;
     align-items: center;
-    font-size: 1.5rem;
 }
 
 .status {
@@ -694,6 +747,7 @@ section {
 
 #loginForm {
     gap: 3rem;
+    
 }
 
 #regForm {
@@ -707,7 +761,11 @@ section {
   color: #574b3e;
 }
 
-.inputs {
+
+
+
+
+.inputs{
     padding: 1.5rem;
     background: none;
     border-bottom: 2px solid gray;
@@ -715,9 +773,24 @@ section {
     min-width: 40rem;
 }
 
-.inputs:hover {
+
+.inputs:hover{
     font-size: 1.6rem;
 }
+
+.inputsR{
+    padding: 1rem;
+    background: none;
+    border-bottom: 2px solid gray;
+    font-size: 1.5rem;
+    min-width: 40rem;
+}
+
+
+.inputsR:hover{
+    font-size: 1.6rem;
+}
+
 
 #recaptcha{
     background: white;
@@ -727,7 +800,6 @@ section {
 }
 
 .LRButton{
-  
     background: #574b3e;
     border: none;
     color: white;
@@ -1364,6 +1436,7 @@ section {
 @media (max-width: 450px) {
   html {
     font-size: 50%;
+    min-width: 350px;
   }
   .shopping-cart-container .cart-total .box {
     text-align: center;
@@ -1378,7 +1451,17 @@ section {
     font-size: 1.5rem;
   }
   
+  #changePassForm {
+      min-height: 100vh !important;
+      min-width: 100vw !important;
+      border-radius: 0px !important;
+      justify-content: center;
+  }
   
+  #changePass {
+      background-image: none;
+      background-color: #f7f7f7 !important;
+  }
   
   
 }

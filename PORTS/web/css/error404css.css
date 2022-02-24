@@ -1,0 +1,44 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 02 12, 22, 1:56:05 AM
+    Author     : chuah_000
+*/
+@import url("https://fonts.googleapis.com/css2?family=Cookie&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
+*{
+    background-color: #ecd534;
+    font-family: 'Cookie', cursive;
+}
+
+.error404{
+   top:50%;
+   left:50%;
+   margin-left: 50%;
+}
+
+.pizza404 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.headtext404 {
+    font-size: 50px;
+    color: #ff914d;
+    text-align: center;
+}
+
+.cheese404 {
+    max-width: 7%;
+    max-height: 7%;
+}
+
+.shrimp404 {
+    max-width: 7%;
+    max-height: 7%;
+}

@@ -36,14 +36,14 @@
         <div class="content">            
             <form id = "regForm" action="">
                 <h3 class = "formTitle">register</h3>
-                <input type="text" name="" placeholder="enter your username" id="" class="inputs">
-                <input type="password" name="" placeholder="enter your password" id="" class="inputs">
-                  <input type="password" name="" placeholder="confirm password" id="" class="inputs">
-                <input type="email" name="" placeholder="enter your email" id="" class="inputs">
-                  <input type="number" name="" placeholder="enter your contact number" id="" class="inputs">
-                <input type="text" name="" placeholder="enter your address" id="" class="inputs">
-                <input type="captcha" value="Recaptcha Placeholder" class="inputs" id = "recaptcha">
-                <input type="submit" value="register now" class="inputs LRButton" id = "regButton">
+                <input type="text" name="" placeholder="enter your username" id="" class="inputsR">
+                <input type="password" name="" placeholder="enter your password" id="" class="inputsR">
+                  <input type="password" name="" placeholder="confirm password" id="" class="inputsR">
+                <input type="email" name="" placeholder="enter your email" id="" class="inputsR">
+                  <input type="number" name="" placeholder="enter your contact number" id="" class="inputsR">
+                <input type="text" name="" placeholder="enter your address" id="" class="inputsR">
+                <input type="captcha" value="Recaptcha Placeholder" class="inputsR" id = "recaptcha">
+                <input type="submit" value="register now" class="inputsR LRButton" id = "regButton">
                 <p>Already have an account? <a href="login.jsp" id = "goLogin">Login</a></p>
             </form>
             

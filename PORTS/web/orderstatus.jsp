@@ -23,29 +23,34 @@
     <body>
             <!-- header section starts -->
             <%@include file="header_external.jsp"%>
-             <!-- header section ends -->
-             
+             <!-- header section ends --> 
         <section class="status">
             <div class="statusheader">
-                <p>Order Status</p>
+                <p class="headertext">Order Status</p>
             </div>
             
             <div class="statuscontent">
                 <div class="statusitem">
-                <p>Customer Name:<br><%%></p>
-                <p>Total:<br><%%></p>
-                <p>Address:<br><%%></p>
-                <p>Payment Type:<br><%%></p>
+                <div class="item">Customer Name:<br><%%></div>
+                <div class="item">Total:<br><%%></div>
+                <div class="item">Address:<br><%%></div>
+                <div class="item">Payment Type:<br><%%></div>
             </div>
-            <div class="statusitem">
-                <p>Pending<br>Your order is being processed.</p>
-                <p>Order Received<br>Your order is received and is now being prepared.</p>
-                <p>Order Delivered<br>Order delivered. Enjoy!</p>
+            <div class="statusitem2">
+                <div class="item2">
+                    <img src="image/checkmark.png" alt="mark1" class="statusimg">
+                    Pending<br>Your order is being processed.</div>
+                <div class="item2">
+                    <img src="image/xmark.png" alt="mark2" class="statusimg">
+                    Order Received<br>Your order is received and is now being prepared.</div>
+                <div class="item2">
+                    <img src="image/nomark.png" alt="mark3" class="statusimg">
+                    Order Delivered<br>Order delivered. Enjoy!</div>
             </div>
             </div>
             
             <div class="statuscontent2">
-            <div class="statusitem2">
+            <div class="statusitem3">
                 <p>Did you enjoy our services? Leave a feedback below!</p>
                 <a href="feedback.jsp" class="feedbackbutton">Feedback</a>
             </div>

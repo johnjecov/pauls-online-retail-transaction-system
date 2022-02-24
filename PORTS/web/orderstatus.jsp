@@ -19,16 +19,16 @@
         <!-- custom css file link  -->
         <link rel="stylesheet" href="css/style.css">
     </head>
-    
+
     <body>
-            <!-- header section starts -->
-            <%@include file="header_external.jsp"%>
-             <!-- header section ends --> 
+        <!-- header section starts -->
+        <%@include file="header_external.jsp"%>
+        <!-- header section ends --> 
         <section class="status">
             <div class="statusheader">
                 <p class="headertext">Order Status</p>
             </div>
-            
+
             <div class="statuscontent">
                 <div class="statusitem">
                     <div class="item">Customer Name:<br><%%></div>
@@ -36,7 +36,7 @@
                     <div class="item">Address:<br><%%></div>
                     <div class="item">Payment Type:<br><%%></div>
                 </div>
-                
+
                 <div class="statusitem2">
                     <div class="item2">
                         <img src="image/checkmark.png" alt="mark1" class="statusimg">
@@ -49,12 +49,12 @@
                         Order Delivered<br>Order delivered. Enjoy!</div>
                 </div>
             </div>
-            
+
             <div class="statuscontent2">
-            <div class="statusitem3">
-                <p>Did you enjoy our services? Leave a feedback below!</p>
-                <a href="feedback.jsp" class="feedbackbutton">Feedback</a>
-            </div>
+                <div class="statusitem3">
+                    <p>Did you enjoy our services? Leave a feedback below!</p>
+                    <a href="feedback.jsp" class="feedbackbutton">Feedback</a>
+                </div>
             </div>
         </section>
 </html>

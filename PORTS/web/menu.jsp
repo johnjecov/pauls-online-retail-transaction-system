@@ -42,11 +42,11 @@
             </div>
             <div class="content">
                 <div class="tags">
-                    <a href="#"> <i class="fas fa-tag"></i> Price </a>
+                    <a href="#"> <i class="fas fa-tag"></i>₱290.00</a>
                 </div>
-                <h3> (Pizza Name) </h3>
+                <h3>Creamy Spinach Pizza</h3>
                 <p>Toppings list....</p>
-                <a href="#" class="btn">view more</a>
+                <a href="testprod.jsp" class="btn">view more</a>
             </div>
         </div>
 
@@ -56,9 +56,9 @@
             </div>
             <div class="content">
                 <div class="tags">
-                    <a href="#"> <i class="fas fa-tag"></i> Price </a>
+                    <a href="#"> <i class="fas fa-tag"></i>₱198.00</a>
                 </div>
-                <h3> (Pizza Name) </h3>
+                <h3>Cheese with Basil Pizza</h3>
                 <p>Toppings list....</p>
                 <a href="#" class="btn">view more</a>
             </div>
@@ -70,9 +70,9 @@
             </div>
             <div class="content">
                 <div class="tags">
-                    <a href="#"> <i class="fas fa-tag"></i> Price </a>
+                    <a href="#"> <i class="fas fa-tag"></i>₱211.00</a>
                 </div>
-                <h3> (Pizza Name) </h3>
+                <h3>Hawaiian Pizza</h3>
                 <p>Toppings list....</p>
                 <a href="#" class="btn">view more</a>
             </div>
@@ -84,28 +84,13 @@
             </div>
             <div class="content">
                 <div class="tags">
-                    <a href="#"> <i class="fas fa-tag"></i> Price </a>
+                    <a href="#"> <i class="fas fa-tag"></i>₱208.00</a>
                 </div>
-                <h3> (Pizza Name) </h3>
+                <h3>Pepperoni Pizza</h3>
                 <p>Toppings list....</p>
                 <a href="#" class="btn">view more</a>
             </div>
         </div>
-        
-        <div class="box">
-            <div class="image">
-                <img src="image/blog-3.jpg" alt="">
-            </div>
-            <div class="content">
-                <div class="tags">
-                    <a href="#"> <i class="fas fa-tag"></i> Price </a>
-                </div>
-                <h3> (Pizza Name) </h3>
-                <p>Toppings list....</p>
-                <a href="#" class="btn">view more</a>
-            </div>
-        </div>
-
     </div>
 
 </section>

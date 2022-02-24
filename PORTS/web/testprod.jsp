@@ -139,7 +139,7 @@
             border: 1px solid #dddddd;
             cursor: pointer;
             border-radius: 5px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
         
         .Par
@@ -152,7 +152,7 @@
             border: 1px solid #dddddd;
             cursor: pointer;
             border-radius: 5px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
         
         .Ham
@@ -165,7 +165,7 @@
             border: 1px solid #dddddd;
             cursor: pointer;
             border-radius: 5px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
         
         .Pep
@@ -178,7 +178,7 @@
             border: 1px solid #dddddd;
             cursor: pointer;
             border-radius: 5px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
         
         .Cre
@@ -191,7 +191,7 @@
             border: 1px solid #dddddd;
             cursor: pointer;
             border-radius: 5px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
         
         .Spi
@@ -204,7 +204,7 @@
             border: 1px solid #dddddd;
             cursor: pointer;
             border-radius: 5px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
         
         html, body
@@ -238,7 +238,7 @@
         /* Left Column */
         .left-column img
         {
-            width: 100%;
+            width: 85%;
             position: absolute;
             left: 0;
             top: 0;

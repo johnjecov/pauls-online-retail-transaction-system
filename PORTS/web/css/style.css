@@ -584,11 +584,11 @@ section {
 
 
 #changePassForm {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-    background-color: #f7f7f7;
-    padding: 3rem;
+   display: flex;
+   flex-direction: column;
+   gap: 3rem;
+   background-color: #f7f7f7;
+   padding: 4rem;
    border-radius: 50px 0px 50px 0px;
 }
 
@@ -1353,6 +1353,11 @@ section {
       min-width: 100vw !important;
       border-radius: 0px !important;
       justify-content: center;
+  }
+  
+  #changePass {
+      background-image: none;
+      background-color: #f7f7f7 !important;
   }
   
   

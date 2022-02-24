@@ -1462,7 +1462,19 @@ section {
       background-image: none;
       background-color: #f7f7f7 !important;
   }
-  
-  
+ 
+}
+
+@media (max-width: 860px) {
+  .statuscontent {
+    display: flex;
+    flex-wrap: wrap;
+  }
+    
+   .statusitem {
+    border-right: none;
+  }
+
+ 
 }
 /*# sourceMappingURL=style.css.map */

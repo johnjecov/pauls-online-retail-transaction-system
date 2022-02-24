@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         <!-- custom css file link  -->
         <link rel="stylesheet" href="css/style.css">
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     </head>
     
     <!-- header section starts -->
@@ -41,75 +42,88 @@
         
         <!-- Product Configuration -->
         <div class="product-configuration">
-
             <!-- Cable Configuration -->
             <div class="cable-config">
                 <span>Add-Ons</span>
-                <h4>Mozzarella ₱50.00/50 g.</h4>
-                <select class= "Moz">
-                    <option disabled selected>Quantity</option>
-                    <option value = "0">0</option>
-                    <option value = "1">1</option>
-                    <option value = "2">2</option>
-                    <option value = "3">3</option>
-                    <option value = "4">4</option>
-                    <option value = "5">5</option>
-                </select>
-                
-                <h4>Parmesan ₱50.00/50 g.</h4>
-                <select class= "Par">
-                    <option disabled selected>Quantity</option>
-                    <option value = "0">0</option>
-                    <option value = "1">1</option>
-                    <option value = "2">2</option>
-                    <option value = "3">3</option>
-                    <option value = "4">4</option>
-                    <option value = "5">5</option>
-                </select>
-                
-                <h4>Ham ₱80.00/50 g.</h4>
-                <select class= "Ham">
-                    <option disabled selected>Quantity</option>
-                    <option value = "0">0</option>
-                    <option value = "1">1</option>
-                    <option value = "2">2</option>
-                    <option value = "3">3</option>
-                    <option value = "4">4</option>
-                    <option value = "5">5</option>
-                </select>
-                
-                <h4>Pepperoni ₱100.00/50 g.</h4>
-                <select class= "Pep">
-                    <option disabled selected>Quantity</option>
-                    <option value = "0">0</option>
-                    <option value = "1">1</option>
-                    <option value = "2">2</option>
-                    <option value = "3">3</option>
-                    <option value = "4">4</option>
-                    <option value = "5">5</option>
-                </select>
-                
-                <h4>Cream Cheese ₱100.00/75 g.</h4>
-                <select class= "Cre">
-                    <option disabled selected>Quantity</option>
-                    <option value = "0">0</option>
-                    <option value = "1">1</option>
-                    <option value = "2">2</option>
-                    <option value = "3">3</option>
-                    <option value = "4">4</option>
-                    <option value = "5">5</option>
-                </select>
-                
-                <h4>Spinach ₱30.00/10 pcs.</h4>
-                <select class= "Spi">
-                    <option disabled selected>Quantity</option>
-                    <option value = "0">0</option>
-                    <option value = "1">1</option>
-                    <option value = "2">2</option>
-                    <option value = "3">3</option>
-                    <option value = "4">4</option>
-                    <option value = "5">5</option>
-                </select>
+                <div class = "separation">
+                    <div class = "indiv-toppings">
+                        <h4>Mozzarella ₱50.00/50 g.</h4>
+                        <select class= "Moz">
+                            <option disabled selected>Quantity</option>
+                            <option value = "0">0</option>
+                            <option value = "1">1</option>
+                            <option value = "2">2</option>
+                            <option value = "3">3</option>
+                            <option value = "4">4</option>
+                            <option value = "5">5</option>
+                        </select>
+                    </div>
+                                        
+                    <div class = "indiv-toppings">
+                    <h4>Ham ₱80.00/50 g.</h4>
+                        <select class= "Ham">
+                            <option disabled selected>Quantity</option>
+                            <option value = "0">0</option>
+                            <option value = "1">1</option>
+                            <option value = "2">2</option>
+                            <option value = "3">3</option>
+                            <option value = "4">4</option>
+                            <option value = "5">5</option>
+                        </select>
+                    </div>
+                    
+                    <div class = "indiv-toppings">
+                        <h4>Parmesan ₱50.00/50 g.</h4>
+                        <select class= "Par">
+                            <option disabled selected>Quantity</option>
+                            <option value = "0">0</option>
+                            <option value = "1">1</option>
+                            <option value = "2">2</option>
+                            <option value = "3">3</option>
+                            <option value = "4">4</option>
+                            <option value = "5">5</option>
+                        </select>
+                    </div>
+                                        
+                    <div class = "indiv-toppings">
+                    <h4>Pepperoni ₱100.00/50 g.</h4>
+                        <select class= "Pep">
+                            <option disabled selected>Quantity</option>
+                            <option value = "0">0</option>
+                            <option value = "1">1</option>
+                            <option value = "2">2</option>
+                            <option value = "3">3</option>
+                            <option value = "4">4</option>
+                            <option value = "5">5</option>
+                        </select>
+                    </div>
+                    
+                    <div class = "indiv-toppings">
+                        <h4>Spinach ₱30.00/10 pc.</h4>
+                        <select class= "Spi">
+                            <option disabled selected>Quantity</option>
+                            <option value = "0">0</option>
+                            <option value = "1">1</option>
+                            <option value = "2">2</option>
+                            <option value = "3">3</option>
+                            <option value = "4">4</option>
+                            <option value = "5">5</option>
+                        </select>
+                    </div>
+                                                            
+                    <div class = "indiv-toppings">
+                        <h4>Cream Cheese ₱100.00/75 g.</h4>
+                        <select class= "Cre">
+                            <option disabled selected>Quantity</option>
+                            <option value = "0">0</option>
+                            <option value = "1">1</option>
+                            <option value = "2">2</option>
+                            <option value = "3">3</option>
+                            <option value = "4">4</option>
+                            <option value = "5">5</option>
+                        </select>
+                    </div>
+                </div>                
             </div>
         </div>
         
@@ -139,7 +153,7 @@
             border: 1px solid #dddddd;
             cursor: pointer;
             border-radius: 5px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         
         .Par
@@ -152,7 +166,7 @@
             border: 1px solid #dddddd;
             cursor: pointer;
             border-radius: 5px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         
         .Ham
@@ -165,7 +179,7 @@
             border: 1px solid #dddddd;
             cursor: pointer;
             border-radius: 5px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         
         .Pep
@@ -178,7 +192,7 @@
             border: 1px solid #dddddd;
             cursor: pointer;
             border-radius: 5px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         
         .Cre
@@ -191,7 +205,7 @@
             border: 1px solid #dddddd;
             cursor: pointer;
             border-radius: 5px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         
         .Spi
@@ -204,7 +218,7 @@
             border: 1px solid #dddddd;
             cursor: pointer;
             border-radius: 5px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         
         html, body
@@ -322,6 +336,17 @@
         .cart-btn:hover
         {
             background-color: #64af3d;
+        }
+        
+        .separation
+        {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 2fr));
+        }
+        
+        .indiv-toppings
+        {
+            width: auto;
         }
         
     </style>

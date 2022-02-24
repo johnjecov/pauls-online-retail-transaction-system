@@ -20,134 +20,11 @@
 <%@include file="header.jsp"%>
 <!-- header section ends  -->
 
-<!-- search-form  -->
-
-<section class="search-form-container">
-
-    <form action="">
-        <input type="search" name="" placeholder="search here..." id="search-box">
-        <label for="search-box" class="fas fa-search"></label>
-    </form>
-
-</section>
-
-<!-- shopping-cart section  -->
-
 <section class="shopping-cart-container">
-
-    <div class="products-container">
-
-        <h3 class="title">your products</h3>
-
-        <div class="box-container">
-
-            <div class="box">
-                <i class="fas fa-times"></i>
-                <img src="image/menu-1.png" alt="">
-                <div class="content">
-                    <h3>delicious food</h3>
-                    <span> quantity : </span>
-                    <input type="number" name="" value="1" id="">
-                    <br>
-                    <span> price : </span>
-                    <span class="price"> $40.00 </span>
-                </div>
-            </div>
-
-            <div class="box">
-                <i class="fas fa-times"></i>
-                <img src="image/menu-2.png" alt="">
-                <div class="content">
-                    <h3>delicious food</h3>
-                    <span> quantity : </span>
-                    <input type="number" name="" value="1" id="">
-                    <br>
-                    <span> price : </span>
-                    <span class="price"> $40.00 </span>
-                </div>
-            </div>
-
-            <div class="box">
-                <i class="fas fa-times"></i>
-                <img src="image/menu-3.png" alt="">
-                <div class="content">
-                    <h3>delicious food</h3>
-                    <span> quantity : </span>
-                    <input type="number" name="" value="1" id="">
-                    <br>
-                    <span> price : </span>
-                    <span class="price"> $40.00 </span>
-                </div>
-            </div>
-
-            <div class="box">
-                <i class="fas fa-times"></i>
-                <img src="image/menu-4.png" alt="">
-                <div class="content">
-                    <h3>delicious food</h3>
-                    <span> quantity : </span>
-                    <input type="number" name="" value="1" id="">
-                    <br>
-                    <span> price : </span>
-                    <span class="price"> $40.00 </span>
-                </div>
-            </div>
-
-            <div class="box">
-                <i class="fas fa-times"></i>
-                <img src="image/menu-5.png" alt="">
-                <div class="content">
-                    <h3>delicious food</h3>
-                    <span> quantity : </span>
-                    <input type="number" name="" value="1" id="">
-                    <br>
-                    <span> price : </span>
-                    <span class="price"> $40.00 </span>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="cart-total">
-
-        <h3 class="title"> cart total </h3>
-
-        <div class="box">
-
-            <h3 class="subtotal"> subtotal : <span>$200</span> </h3>
-            <h3 class="total"> total : <span>$200</span> </h3>
-
-            <a href="#" class="btn">proceed to checkout</a>
-
-        </div>
-
-    </div>
-
+    
 </section>
-
-<!-- login-form  -->
-
-<div class="login-form-container">
-
-    <form action="">
-        <h3>login form</h3>
-        <input type="email" name="" placeholder="enter your email" id="" class="box">
-        <input type="password" name="" placeholder="enter your password" id="" class="box">
-        <div class="remember">
-            <input type="checkbox" name="" id="remember-me">
-            <label for="remember-me">remember me</label>
-        </div>
-        <input type="submit" value="login now" class="btn">
-        <p>forget password? <a href="#">click here</a></p>
-        <p>don't have an account? <a href="#">create one</a></p>
-    </form>
-
-</div>
 
 <!-- home section starts  -->
-
 <section class="home" id="home">
 
     <div class="content">
@@ -162,11 +39,7 @@
         <img src="image/home-parallax-img.png" alt="" class="home-parallax-img">
     </div>
     
-    
-
 </section>
-
-
 <!-- home section ends  -->
 
 <div class="line">
@@ -176,7 +49,6 @@
 </div>
 
 <!-- about section starts  -->
-
 <section class="about" id="about">
 
     <div class="image">
@@ -198,13 +70,11 @@
     </div>
 
 </section>
-
 <!-- about section ends -->
 
 <!-- popular section starts  -->
 
 <section class="popular" id="popular">
-
     <div class="heading">
         <span>Popular Pizza</span>
         <h3>MUST TRY PRODUCTS!</h3>
@@ -218,70 +88,38 @@
             </div>
             <div class="content">
                 <h3>delicious food</h3>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                    <span> (50) </span>
-                </div>
-                <div class="price">$40.00 <span>$50.00</span></div>
-                <a href="#" class="btn">add to cart</a>
+                <div class="price">$40.00</div>
+                <a href="#" class="btn">View More</a>
             </div>
         </div>
 
         <div class="box">
             <div class="image">
-                <img src="image/food-2.png" alt="">
+                <img src="image/food-1.png" alt="">
             </div>
             <div class="content">
                 <h3>delicious food</h3>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                    <span> (50) </span>
-                </div>
-                <div class="price">$40.00 <span>$50.00</span></div>
-                <a href="#" class="btn">add to cart</a>
+                <div class="price">$40.00</div>
+                <a href="#" class="btn">View More</a>
             </div>
         </div>
-
+        
         <div class="box">
             <div class="image">
-                <img src="image/food-3.png" alt="">
+                <img src="image/food-1.png" alt="">
             </div>
             <div class="content">
                 <h3>delicious food</h3>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                    <span> (50) </span>
-                </div>
-                <div class="price">$40.00 <span>$50.00</span></div>
-                <a href="#" class="btn">add to cart</a>
+                <div class="price">$40.00</div>
+                <a href="#" class="btn">View More</a>
             </div>
         </div>
-
-
     </div>
-
 </section>
-
 <!-- popular section ends -->
 
 <!-- banner section starts  -->
-
 <section class="banner">
-
-  
-
     <div class="grid-banner">
         <div class="grid">
             <img src="image/banner-1.png" alt="">
@@ -290,6 +128,7 @@
                 <h3>upto 50% off</h3>
             </div>
         </div>
+        
         <div class="grid">
             <img src="image/banner-2.png" alt="">
             <div class="content center">
@@ -297,6 +136,7 @@
                 <h3>upto 25% extra</h3>
             </div>
         </div>
+        
         <div class="grid">        
             <img src="image/banner-3.png" alt="">
             <div class="content">
@@ -304,15 +144,12 @@
                 <h3>100% cashback</h3>
             </div>
         </div>
+        
     </div>
-
 </section>
-
 <!-- banner section ends -->
 
-
 <section class="about" id="about">
-
     <div class="image">
        <div class="mapouter">
         <div class="gmap_canvas">

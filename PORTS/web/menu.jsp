@@ -35,7 +35,6 @@
     </div>
 
     <div class="box-container">
-
         <div class="box">
             <div class="image">
                 <img src="image/blog-1.jpg" alt="">
@@ -92,7 +91,6 @@
             </div>
         </div>
     </div>
-
 </section>
 
 <!-- Menu section ends -->

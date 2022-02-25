@@ -37,7 +37,7 @@
 
             <form class=feedbackcontent id = "feedbackForm" action="">
                 <div class="feedbackcontent">
-                    <div class="feedbackitem0">
+                    <div class="feedbackitem">
                         <div class="labels"></div>
                         <div class="itemf">1</div>
                         <div class="itemf">2</div>

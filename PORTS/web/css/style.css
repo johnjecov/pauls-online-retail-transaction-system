@@ -794,7 +794,6 @@ section {
 .feedbackitem0 {
     display: flex;
     width: 100%;
-    text-align: center;
 }
 
 .feedbackitem {
@@ -811,6 +810,7 @@ section {
 .itemf{
     display: flex;
     flex: 1 1 0;
+    justify-content: center;
 }
 
 .feedback img {

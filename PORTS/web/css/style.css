@@ -746,6 +746,108 @@ section {
     background-color: #27ae60;
 }
 
+.feedback {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../image/loginbg.JPG");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.feedbackheader {
+    display: flex;
+    width: 100%;
+    padding: 3rem;
+    min-height: 2.5vh;
+    background-color: black;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerfeedback {
+    font-family: 'Satisfy', cursive;
+    font-size: 5rem;
+    color: white;
+}
+
+.feedbackcontent{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 3rem 3rem 0 3rem;
+    background-color: #f3eee8EE;
+    align-items: center;
+    text-align: center;
+    font-size: 2.5rem;
+    color: #574b3e;
+}
+
+#feedbackForm {
+    padding: 5rem;
+}
+
+.feedbackitem0 {
+    display: flex;
+    width: 100%;
+    text-align: center;
+}
+
+.feedbackitem {
+    display: flex;
+    width: 100%;
+    padding: 1vw;
+}
+
+.labels{
+    display: flex;
+    flex: 2 1 0;
+}
+
+.itemf{
+    display: flex;
+    flex: 1 1 0;
+}
+
+.feedback img {
+    width: 4vw;
+    height: 4vw;
+    margin: 1vw;
+}
+
+textarea#feedbacktext {
+    display: block;
+    width: 70vw;
+    height: 20vh;
+    border: 3px solid #574b3e;
+    padding: 1vw;
+    resize: none;
+    overflow: auto;
+    font-size: 2rem;
+}
+
+.feedbacksubmit {
+    padding: 1.5vw;
+    margin: 0 5rem 5rem 5rem;
+    background: none;
+    font-size: 2rem;
+    min-width: 18vw;
+    background: #574b3e;
+    border: none;
+    color: white;
+}
+
+.feedbacksubmit:hover {
+    font-size: 2.5rem;
+    cursor: pointer;
+    background: #27ae60;
+    color: black;
+}
+
 #loginForm {
     gap: 3rem;
 
@@ -762,10 +864,6 @@ section {
     color: #574b3e;
 }
 
-
-
-
-
 .inputs{
     padding: 1.5rem;
     background: none;
@@ -773,7 +871,6 @@ section {
     font-size: 1.5rem;
     min-width: 40rem;
 }
-
 
 .inputs:hover{
     font-size: 1.6rem;
@@ -787,11 +884,9 @@ section {
     min-width: 40rem;
 }
 
-
 .inputsR:hover{
     font-size: 1.6rem;
 }
-
 
 #recaptcha{
     background: white;

@@ -10,7 +10,7 @@ and open the template in the editor.
 @import url("https://fonts.googleapis.com/css2?family=Cookie&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
 *{
-    background-color: #ecd534;
+    background-color: #18181D;
     font-family: 'Cookie', cursive;
 }
 
@@ -29,7 +29,7 @@ and open the template in the editor.
 
 .headtext404 {
     font-size: 50px;
-    color: #ff914d;
+    color: #B3A47A;
     text-align: center;
 }
 

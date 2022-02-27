@@ -4,6 +4,7 @@
     Author     : chuah_000
 
 change li class pageNumber2 because it is a placeholder
+ scroll="no" style="overflow: hidden"
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -26,28 +27,48 @@ change li class pageNumber2 because it is a placeholder
                 </ul>
                 <p class='logout'>Logout</p>
             </div>
+            <div class="adminGreetings">
+                <p class='helloAdmin'>Hello, admin</p>
+            </div>
             <div class="adminContent">
-                <div class="adminGreetings">
-                    <p class='helloAdmin'>Hello, admin</p>
+                <div class="menuCategory">
+                    <ul class="pizzaOrToppings">
+                        <li class="pizzaOrToppingsCategory">Pizza</li>
+                        <li class="pizzaOrToppingsCategory">Toppings</li>
+                    </ul>
                 </div>
-                    <div class="menuCategory">
-                        <ul class="pizzaOrToppings">
-                            <li class="pizzaOrToppingsCategory"><a>Pizza<a/></li>
-                            <li class="pizzaOrToppingsCategory"><a>Toppings<a/></li>
-                            </ul>
+                <div class="pizzaChoices">
+                    <div class="pizzaDisplay1">
+                        <img class="pizzaImg" src="image/pizza-sample.png" alt="mama mia">
+                        <p class="pizzaName1">PEPPERONI PIZZA</p>
+                        <p class="pizzaDesc1">Mozarella, Pepperoni, and Tomato Sauce</p>
+                        <p class="price1">- ₱208.00 -</p>
                     </div>
-                    <div class="pageSelector">
-                        <ul class="pageList">
-                            <li class="pageNumber">1</li>
-                            <li class="pageNumber2">2</li>
-                            <li class="pageNumber">3</li>
-                        </ul>
+                    <div class="pizzaDisplay2">
+                        <img class="pizzaImg" src="image/pizza-sample.png" alt="mama mia">
+                        <p class="pizzaName2">CREAMY SPINACH PIZZA</p>
+                        <p class="pizzaDesc2">Cream cheese,  Mozarella, Spinach, and Tomato Sauce</p>
+                        <p class="price2">- ₱290.00 -</p>
                     </div>
+                    <div class="pizzaDisplay3">
+                        <img class="pizzaImg" src="image/pizza-sample.png" alt="mama mia">
+                        <p class="pizzaName3">CHEESE WITH BASIL</p>
+                        <p class="pizzaDesc3">Mozarella, Parmesan, Basil, and Tomato Sauce</p>
+                        <p class="price3">- ₱198.00 -</p>
+                    </div>
+                </div>
+                <div class="bottomButtons">
+                    <ul class="pageList">
+                        <li class="pageNumber">1</li>
+                        <li class="pageNumber">2</li>
+                        <li class="pageNumber">3</li>
+                    </ul>
                     <div class="editProducts">
                         <button class="editProductsButton" type="button">
                             Edit Products
                         </button>
                     </div>
+                </div>
             </div>
         </div>
     </body>

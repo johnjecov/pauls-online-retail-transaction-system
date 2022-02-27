@@ -29,10 +29,10 @@ change orders from "----------" to backend
                 </ul>
                 <p class='logout'>Logout</p>
             </div>
+            <div class="adminGreetings">
+                <p class='helloAdmin'>Hello, admin</p>
+            </div>
             <div class="adminContent">
-                <div class="adminGreetings">
-                    <p class='helloAdmin'>Hello, admin</p>
-                </div>
                 <div class="arrangeOptions">
                     <label for="arrange">Arrange by: </label>
 

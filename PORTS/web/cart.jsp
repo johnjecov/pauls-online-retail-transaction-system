@@ -28,6 +28,8 @@
                 <!-- header section starts -->
     <%@include file="header_external.jsp"%>
     <!-- header section ends -->
+                    <h1 style="text-align:center">Order Summary</h1>
+
              <table class="table">
      <thead>
      	<tr>
@@ -254,9 +256,6 @@ th:last-child{
     padding-bottom: 30px;
 }
 
-
-
-
 .table{
 	width: 100%;
 	border-collapse: collapse;
@@ -276,6 +275,13 @@ th:last-child{
 
 .table tbody tr:nth-child(even){
 	background-color: #f5f5f5;
+}
+
+h1{
+    font-size: 30px;
+    color: #130f40;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 /*responsive*/

@@ -21,6 +21,21 @@
     margin-top: 4rem;
 }
 
+.colmine1{
+
+    width:  100%;
+    background-color: red;
+}
+.colmine2{
+    width:  100%;
+    background-color: #e9ebf0;
+}
+
+.colmine3{
+    width:  100%;
+    background-color: green 
+}
+
 html {
     font-size: 62.5%;
     overflow-x: hidden;

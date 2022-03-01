@@ -32,9 +32,8 @@
     <link rel="stylesheet" href="css/style.css">
     </head>
     
-  
     <body>
-         <!-- header section starts -->
+    <!-- header section starts -->
     <%@include file="header_external.jsp"%>
      <!-- header section ends -->
         <section>

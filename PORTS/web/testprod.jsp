@@ -45,6 +45,7 @@
             <!-- Cable Configuration -->
             <div class="cable-config">
                 <span>Add-Ons</span>
+                <br>
                 <div class = "separation">
                     <div class = "indiv-toppings">
                         <h4>Mozzarella ₱50.00/50 g.</h4>
@@ -84,7 +85,7 @@
                             <option value = "5">5</option>
                         </select>
                     </div>
-                                        
+                                     
                     <div class = "indiv-toppings">
                     <h4>Pepperoni ₱100.00/50 g.</h4>
                         <select class= "Pep">
@@ -126,10 +127,11 @@
                 </div>                
             </div>
         </div>
-        
+        <br>
         <!-- Product Pricing -->
         <div class="product-price">
             <h2>Total: ₱290.00</h2>
+            <br>
             <a href="#" class="cart-btn">Add to cart</a>
         </div>
     </div>
@@ -226,6 +228,7 @@
             height: 100%;
             width: 100%;
             margin: 0;
+            background-color: #1e1f20;
         }
         
         .container
@@ -268,7 +271,7 @@
         /* Product Description */
         .product-description 
         {
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid white;
             margin-top: 10px;
             margin-bottom: 10px;
         }
@@ -277,21 +280,21 @@
         {
             font-weight: 300;
             font-size: 45px;
-            color: black;
+            color: white;
         }
         
         .product-description h3
         {
             font-weight: 700;
             font-size: 25px;
-            color: black;
+            color: white;
             margin-bottom: 5px;
         }
         .product-description p 
         {
             font-size: 16px;
             font-weight: 300;
-            color: black;
+            color: white;
             font-style: italic;
             line-height: 24px;
             margin-bottom: 10px;
@@ -307,12 +310,15 @@
         {
             font-size: 30px;
             font-weight: 500;
+            color: white;
         }
 
         .cable-config 
         {
             border-bottom: 1px solid #E1E8EE;
             margin-bottom: 10px;
+            color: white;
+            
         }
         
         /* Product Price */
@@ -320,11 +326,12 @@
         {
             font-size: 30px;
             font-weight: 600;
+            color: white;
         }
         .cart-btn
         {
             display: inline-block;
-            background-color: #7DC855;
+            background-color: #ff523b;
             border-radius: 6px;
             font-size: 16px;
             color: #FFFFFF;
@@ -335,7 +342,8 @@
         
         .cart-btn:hover
         {
-            background-color: #64af3d;
+            background-color: white;
+            color: black;
         }
         
         .separation

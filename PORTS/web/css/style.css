@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
-* {
+*{
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
@@ -21,21 +21,6 @@
     margin-top: 4rem;
 }
 
-
-.colmine1{
-
-    width:  100%;
-    background-color: red;
-}
-.colmine2{
-    width:  100%;
-    background-color: #e9ebf0;   
-}
-
-.colmine3{
-    width:  100%;
-    background-color: green 
-}
 html {
     font-size: 62.5%;
     overflow-x: hidden;
@@ -90,7 +75,6 @@ section {
 
 .btn:hover {
     background: #130f40;
-
 }
 
 .header {
@@ -100,7 +84,7 @@ section {
     left: 0;
     right: 0;
     z-index: 1000;
-    background: #fff;
+    background: #302c2c;
     -webkit-box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.05);
     box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.05);
     display: -webkit-box;
@@ -118,7 +102,7 @@ section {
 .header .logo {
     font-size: 2.5rem;
     font-weight: bolder;
-    color: #130f40;
+    color: white;
 }
 
 .header .logo i {
@@ -129,7 +113,7 @@ section {
 .header .navbar a {
     font-size: 1.7rem;
     margin: 0 1rem;
-    color: #666;
+    color: white;
 }
 
 .header .navbar a:hover {
@@ -146,7 +130,7 @@ section {
     width: 4.5rem;
     line-height: 4.5rem;
     font-size: 2rem;
-    background: #f7f7f7;
+    background: whitesmoke;
     color: #130f40;
     border-radius: .5rem;
     margin-left: .3rem;

@@ -41,7 +41,7 @@
     </section>
     
 
-    <!-- header section ends -->
+   <!-- header section ends -->
    <script src="js/script.js"></script>
    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
    </body>

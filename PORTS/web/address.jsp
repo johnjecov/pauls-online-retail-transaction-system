@@ -40,7 +40,7 @@
         <section>
             <div class = "container">
                 <div class = "user Aaddress">
-                     <!-- a -->
+                    
                     <div class = "formBx">
                             <div class="scrollbx">
                
@@ -107,35 +107,33 @@
                             </div>
                 </div>
             </div>
-                    <div class = "imgBx"><img src="images/ntbk.jpg"></div>
+                      <div class = "imgBx"><img src="image/home-img.png" alt=""></div>
+                  
                 </div>
                 <div class = "user Vaddress">
-                         <div class = "imgBx"><img src="images/ntbk.jpg"></div>
+                    <div class = "imgBx"><img src="image/home-img.png" alt=""></div>
                     <div class = "formBx">
                         <form method="POST" action="login" autocomplete="off">
                             <h2>Add New Address</h2>
                             <input id ="user" type = "text" placeholder = "Address Name" name="addressName" required="required">
-                            <div class ="radiocon">
-                                 <input id ="user" type = "text" placeholder = "First Name" name="firstName" required="required">
-                                 <div class="box"></div>
-                                 <input id ="user" type = "text" placeholder = "Last Name" name="lastName" required="required">
-                                                            </div>
-                            
+                           
+                      
                          
-                            <input id ="user" type = "text" placeholder = "Street Number" name="stNumber" required="required">
-                            <input id ="user" type = "text" placeholder = "Street Name" name="stName" required="required">
+                            <input id ="user" type = "text" placeholder = "House No." name="houseNo" required="required">
+                            <input id ="user" type = "text" placeholder = "Street" name="street" required="required">
                             
                             <div class ="radiocon">
-                                 <input id ="user" type = "text" placeholder = "Province" name="province" required="required">
+                                 <input id ="user" type = "text" placeholder = "Postal Code" name="postalCode" required="required">
                                     <div class="box"></div>
-                            <input id ="user" type = "text" placeholder = "Barangay No." name="barangay" required="required">
+                            <input id ="user" type = "text" placeholder = "Province" name="province" required="required">
                                     <div class="box"></div>
                             <input id ="user" type = "text" placeholder = "City" name="city" required="required">
                                     <div class="box"></div>
                         </div>
                            
+                            <input id ="user" type = "text" placeholder = "Additional Address Details (optional)" name="additionalAddress" >
                           
-                            <input id ="user" type = "text" placeholder = "Additional Information" name="additionalInfo" required="required">
+                            <input id ="user" type = "text" placeholder = "Additional Information (optional)" name="additionalInfo" >
                           
                             <input type = "submit" value = "Submit"> 
                             <p class = "signup"><a href = "#" onclick = "toggleForm();">View Addresses</a></p>
@@ -198,7 +196,7 @@
            width: 30px;
        }
         input:required:focus {
-            border: 1px solid cyan !important;
+            border: 1px solid #aacc9f !important;
         }
         
        

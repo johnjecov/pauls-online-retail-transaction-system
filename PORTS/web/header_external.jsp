@@ -1,6 +1,6 @@
 <header class="header">
 
-    <a href="#" class="logo"> <i class="fas fa-utensils"></i>Paul's Pizzeria  </a>
+    <a href="/PORTS/index.jsp" class="logo"> <i class="fas fa-utensils"></i>Paul's Pizzeria  </a>
     
     <nav class="navbar">
         <a class = "navLink" id="homeL" href="/PORTS/index.jsp#home">home</a>

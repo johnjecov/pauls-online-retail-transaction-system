@@ -1,6 +1,19 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="/PORTS/css/style.css">
+    <link rel="stylesheet" href="/PORTS/css/cssfile.css">
+</head>
+
 <header class="header">
 
-    <a href="#" class="logo"> <i class="fas fa-utensils"></i>Paul's Pizzeria  </a>
+    <a href="/PORTS/index.jsp" class="logo"> <i class="fas fa-utensils"></i>Paul's Pizzeria  </a>
     
     <nav class="navbar">
         <a class = "navLink" id="homeL" href="#home">home</a>
@@ -15,3 +28,6 @@
         <a id="login-btn" class="fas fa-user" href="/PORTS/login.jsp"></a>
     </div>
 </header>
+
+
+

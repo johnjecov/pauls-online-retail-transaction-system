@@ -114,28 +114,28 @@
                     <div class = "formBx">
                         <form method="POST" action="login" autocomplete="off">
                             <h2>Add New Address</h2>
-                            <input id ="user" type = "text" placeholder = "Address Name" name="username" required="required">
+                            <input id ="user" type = "text" placeholder = "Address Name" name="addressName" required="required">
                             <div class ="radiocon">
-                                 <input id ="user" type = "text" placeholder = "First Name" name="username" required="required">
+                                 <input id ="user" type = "text" placeholder = "First Name" name="firstName" required="required">
                                  <div class="box"></div>
-                                 <input id ="user" type = "text" placeholder = "Last Name" name="username" required="required">
+                                 <input id ="user" type = "text" placeholder = "Last Name" name="lastName" required="required">
                                                             </div>
                             
                          
-                            <input id ="user" type = "text" placeholder = "Street Number" name="username" required="required">
-                            <input id ="user" type = "text" placeholder = "Street Name" name="username" required="required">
+                            <input id ="user" type = "text" placeholder = "Street Number" name="stNumber" required="required">
+                            <input id ="user" type = "text" placeholder = "Street Name" name="stName" required="required">
                             
                             <div class ="radiocon">
-                                 <input id ="user" type = "text" placeholder = "Province" name="username" required="required">
+                                 <input id ="user" type = "text" placeholder = "Province" name="province" required="required">
                                     <div class="box"></div>
-                            <input id ="user" type = "text" placeholder = "Barangay" name="username" required="required">
+                            <input id ="user" type = "text" placeholder = "Barangay No." name="barangay" required="required">
                                     <div class="box"></div>
-                            <input id ="user" type = "text" placeholder = "City" name="username" required="required">
+                            <input id ="user" type = "text" placeholder = "City" name="city" required="required">
                                     <div class="box"></div>
                         </div>
                            
                           
-                            <input id ="user" type = "text" placeholder = "Additional Information" name="username" required="required">
+                            <input id ="user" type = "text" placeholder = "Additional Information" name="additionalInfo" required="required">
                           
                             <input type = "submit" value = "Submit"> 
                             <p class = "signup"><a href = "#" onclick = "toggleForm();">View Addresses</a></p>

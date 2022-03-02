@@ -1,13 +1,3 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 02 14, 22, 1:50:52 AM
-    Author     : chuah_000
-*/
-
 @import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
 
 *{
@@ -92,7 +82,6 @@ html,body {
     margin-left: 20%;
     display: block;
     color: white;
-    padding: 4%;
     text-decoration: none;
     background-color: #2e2e2e
 }
@@ -151,11 +140,11 @@ label {
     margin-top: 2%;
 }
 
-.orderProperties {
+.orderAttributes {
     list-style-type: none;
     margin: -1%;
     padding: 1%;
-    font-size: 1.4vw;
+    font-size: 1.2vw;
     display: flex;
 }
 
@@ -165,7 +154,7 @@ label {
     margin-right: 5%;
 }
 
-.orders {
+.orderBody {
     background-color: #2e2e2e;
     margin-top: 1%;
     margin-left: 5%;
@@ -175,14 +164,34 @@ label {
     padding: 1%;
 }
 
-.pageList {
+.orders{
+    font-size: 1.2vw;
+    margin-left: -5%;
+}
+
+.orderProperty {
     list-style-type: none;
+    display: inline-block;
+    margin-right: 6%;
+    width: auto;
+}
+
+.orderRemove {
+    width: 5%;
+    position: relative;
+    right: 2%;
+}
+
+.pageSelector{
+    bottom: 5%;
+    position: fixed;
     width: 100%;
     overflow: hidden;
-    font-size: 1vw;
     margin-left: 2.5%;
-    bottom: 13.5%;
-    position: fixed;
+}
+
+.pageList {
+    list-style-type: none;
 }
 
 .pageNumber,.pageNumber2 {
@@ -198,21 +207,4 @@ label {
 
 .pageNumber2 {
     background-color: #008c45;
-}
-
-.PDFGenerator {
-    margin-left: 5%;
-    bottom: 5%;
-    position: fixed;
-}
-
-.generatePDF {
-    border: 0;
-    line-height: 2.5;
-    padding: 0 20px;
-    font-size: 1vw;
-    text-align: center;
-    color: #fff;
-    border-radius: 10px;
-    background-color: #884e3d;
 }

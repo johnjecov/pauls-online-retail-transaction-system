@@ -8,11 +8,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="css/admin.css?nocache={timestamp}" type="text/css">
+        <link rel="stylesheet" href="css/generatePDF.css?nocache={timestamp}" type="text/css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>PDF Page</title>
     </head>
-    <body scroll="no" style="overflow: hidden">
+    <body>
         <div class="contentHolder">
             <div class="sidebar">
                 <img class="logo" src="image/Paul's Pizzeria Logo.jpg" alt="Paul's Pizzeria Logo">

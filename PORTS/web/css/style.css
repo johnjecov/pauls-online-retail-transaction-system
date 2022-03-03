@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
+
 *{
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -12,7 +13,6 @@
     text-transform: capitalize;
     -webkit-transition: .2s linear;
     transition: .2s linear;
-
 }
 
 .line {
@@ -22,18 +22,17 @@
 }
 
 .colmine1{
-
     width:  100%;
-    background-color: red;
+    background-color: #CD212A;
 }
 .colmine2{
     width:  100%;
-    background-color: #e9ebf0;
+    background-color: #F4F5F0;
 }
 
 .colmine3{
     width:  100%;
-    background-color: green 
+    background-color: #008C45;
 }
 
 html {
@@ -52,7 +51,7 @@ html::-webkit-scrollbar-track {
 }
 
 html::-webkit-scrollbar-thumb {
-    background: #27ae60;
+    background: #CD212A;
     border-radius: 5rem;
 }
 
@@ -65,33 +64,29 @@ section {
     padding-bottom: 2rem;
 }
 
-
 .heading span {
     font-family: 'Satisfy', cursive;
     font-size: 3rem;
-    color: #27ae60;
+    color: #CD212A;
 }
 
 .heading h3 {
     font-size: 3rem;
-    color: #130f40;
+    color: black;
 }
-
+/*Index Button CSS*/
 .btn {
     display: inline-block;
     margin-top: 1rem;
     padding: .7rem 1.8rem;
     font-size: 1.7rem;
     cursor: pointer;
-    color: #fff;
-    background: #27ae60;
+    color: white;
+    background: #CD212A;
     border-radius: .5rem;
 }
 
-.btn:hover {
-    background: #130f40;
-}
-
+/*Start of Nav Bar CSS*/
 .header {
     position: -webkit-sticky;
     position: sticky;
@@ -122,7 +117,7 @@ section {
 
 .header .logo i {
     padding-right: .5rem;
-    color: #27ae60;
+    color: #CD212A;
 }
 
 .header .navbar a {
@@ -132,11 +127,11 @@ section {
 }
 
 .header .navbar a:hover {
-    color: #27ae60;
+    color: #CD212A;
 }
 
 .navLink.active {
-    color: #27ae60 !important;
+    color: #CD212A !important;
     border-bottom: 2px solid gray;
 }
 
@@ -146,17 +141,18 @@ section {
     line-height: 4.5rem;
     font-size: 2rem;
     background: whitesmoke;
-    color: #130f40;
+    color: #1e1f20;
     border-radius: .5rem;
     margin-left: .3rem;
     cursor: pointer;
     text-align: center;
 }
 
-.header .icons a:hover {
+.header .icons a:hover{
     color: #fff;
-    background: #27ae60;
+    background: #CD212A;
 }
+/*End of Nav Bar CSS*/
 
 #menu-btn {
     display: none;
@@ -178,6 +174,7 @@ section {
     }
 }
 
+/* Deleted Search Function
 .search-form-container {
     position: fixed;
     top: 8.5rem;
@@ -225,7 +222,9 @@ section {
 .search-form-container form label:hover {
     color: #27ae60;
 }
+*/
 
+/*
 .shopping-cart-container {
     position: fixed;
     top: 8.5rem;
@@ -355,7 +354,9 @@ section {
 .shopping-cart-container .cart-total .box h3 span {
     color: #27ae60;
 }
+*/
 
+/*Login Form CSS start*/
 .login-form-container {
     position: fixed;
     top: 8.5rem;
@@ -439,6 +440,8 @@ section {
     color: #130f40;
     text-decoration: underline;
 }
+/*Login Form CSS end*/
+
 
 .home {
     display: -webkit-box;
@@ -460,24 +463,28 @@ section {
     flex: 1 1 41rem;
 }
 
+/*Welcome to Paul's Pizzeria*/
 .home .content span {
     font-size: 2rem;
-    color: #27ae60;
+    color: #CD212A;
 }
 
+/*Anytime is a Good time for Pizza*/
 .home .content h3 {
     font-size: 4rem;
-    color: #130f40;
+    color: black;
     padding-top: 1rem;
 }
 
+/*Par*/
 .home .content p {
     font-size: 1.4rem;
-    color: #666;
+    color: black;
     line-height: 2;
     padding: 1rem 0;
 }
 
+/*Home Page Picture CSS start*/
 .home .image {
     -webkit-box-flex: 1;
     -ms-flex: 1 1 41rem;
@@ -497,7 +504,9 @@ section {
     right: -10rem;
     width: 80vw;
 }
+/*Home Page Picture CSS end*/
 
+/*
 .category {
     display: -ms-grid;
     display: grid;
@@ -507,11 +516,11 @@ section {
     padding-bottom: 5rem;
 }
 
-.category .box {
+.category .box{
     padding: 2rem;
     text-align: center;
     border-radius: .5rem;
-    background: #f7f7f7;
+    background: #302c2c;
 }
 
 .category .box:hover {
@@ -530,24 +539,9 @@ section {
     font-size: 1.8rem;
     color: #130f40;
 }
+*/
 
-.LRForm {
-    min-height: 100vh;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    background: #f7f7f7;
-    text-align: justify;
-    font-size: 1.5rem;
-    -webkit-transition: none !important;
-    transition: none !important;
-}
-
+/*Change Password CSS start*/
 .changePass {
     min-height: 100vh;
     display: -webkit-box;
@@ -581,7 +575,6 @@ section {
     color: #574b3e;
 }
 
-
 #changePassForm {
     display: flex;
     flex-direction: column;
@@ -589,6 +582,26 @@ section {
     background-color: #f7f7f7;
     padding: 4rem;
     border-radius: 50px 0px 50px 0px;
+}
+/*Change Password CSS end*/
+
+
+/*Login Form CSS Start*/
+.LRForm {
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background: #f7f7f7;
+    text-align: justify;
+    font-size: 1.5rem;
+    -webkit-transition: none !important;
+    transition: none !important;
 }
 
 .inputsC{
@@ -599,9 +612,68 @@ section {
     min-width: 40rem;
 }
 
-
 .inputsC:hover{
     font-size: 1.6rem;
+}
+
+
+#loginForm {
+    gap: 3rem;
+
+}
+
+#regForm {
+    gap: 1rem;
+    padding: 1.5rem;
+}
+
+.LRForm .content .formTitle {
+    font-family: 'Satisfy', cursive;
+    font-size: 3rem;
+    color: #574b3e;
+}
+
+.inputs{
+    padding: 1.5rem;
+    background: none;
+    border-bottom: 2px solid gray;
+    font-size: 1.5rem;
+    min-width: 40rem;
+}
+
+.inputs:hover{
+    font-size: 1.6rem;
+}
+
+.inputsR{
+    padding: 1rem;
+    background: none;
+    border-bottom: 2px solid gray;
+    font-size: 1.5rem;
+    min-width: 40rem;
+}
+
+.inputsR:hover{
+    font-size: 1.6rem;
+}
+
+#recaptcha{
+    background: white;
+    border: 1px solid black;
+    color: black;
+    text-align: center;
+}
+
+.LRButton{
+    background: #574b3e;
+    border: none;
+    color: white;
+}
+
+.LRButton:hover{
+    cursor: pointer;
+    background: #27ae60;
+    color: black;
 }
 
 .LRForm .image {
@@ -616,10 +688,7 @@ section {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-
-
 }
-
 
 .LRForm .content {
     min-height: 70vh;
@@ -640,7 +709,9 @@ section {
     justify-content: center;
     align-items: center;
 }
+/*Login Form CSS end*/
 
+/*Order Status CSS Start*/
 .status {
     display: flex;
     min-height: 100vh;
@@ -740,7 +811,9 @@ section {
     text-align: center;
     display: inline-block;
 }
+/*Order Status CSS End*/
 
+/*Feedback CSS Start*/
 .feedbackbutton:hover, .feedbackbutton:active{
     background-color: #27ae60;
 }
@@ -846,67 +919,9 @@ textarea#feedbacktext {
     background: #27ae60;
     color: black;
 }
+/*Feedback CSS End*/
 
-#loginForm {
-    gap: 3rem;
-
-}
-
-#regForm {
-    gap: 1rem;
-    padding: 1.5rem;
-}
-
-.LRForm .content .formTitle {
-    font-family: 'Satisfy', cursive;
-    font-size: 3rem;
-    color: #574b3e;
-}
-
-.inputs{
-    padding: 1.5rem;
-    background: none;
-    border-bottom: 2px solid gray;
-    font-size: 1.5rem;
-    min-width: 40rem;
-}
-
-.inputs:hover{
-    font-size: 1.6rem;
-}
-
-.inputsR{
-    padding: 1rem;
-    background: none;
-    border-bottom: 2px solid gray;
-    font-size: 1.5rem;
-    min-width: 40rem;
-}
-
-.inputsR:hover{
-    font-size: 1.6rem;
-}
-
-#recaptcha{
-    background: white;
-    border: 1px solid black;
-    color: black;
-    text-align: center;
-}
-
-.LRButton{
-    background: #574b3e;
-    border: none;
-    color: white;
-}
-
-.LRButton:hover{
-    cursor: pointer;
-    background: #27ae60;
-    color: black;
-}
-
-
+/*About Section CSS Start*/
 .about {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -988,7 +1003,9 @@ textarea#feedbacktext {
     font-size: 1.7rem;
     color: #130f40;
 }
+/*About Section CSS End*/
 
+/*Popular Section CSS Start*/
 .popular .box-container {
     display: -ms-grid;
     display: grid;
@@ -1054,7 +1071,9 @@ textarea#feedbacktext {
     color: #666;
     text-decoration: line-through;
 }
+/*Popular Section CSS End*/
 
+/*Promo Section CSS Start*/
 .banner .row-banner {
     background: url(../image/row-banner.png) no-repeat;
     height: 45rem;
@@ -1145,7 +1164,9 @@ textarea#feedbacktext {
     color: #fff;
     padding-top: .5rem;
 }
+/*Promo Section CSS End*/
 
+/*Menu Page CSS Start*/
 .menu .box-container {
     display: -ms-grid;
     display: grid;
@@ -1190,80 +1211,6 @@ textarea#feedbacktext {
     color: #27ae60;
 }
 
-.order .icons-container {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: (minmax(30rem, 1fr))[auto-fit];
-    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-}
-
-.order .icons-container .icons {
-    border-radius: .5rem;
-    padding: 2rem;
-    text-align: center;
-    background: #f7f7f7;
-}
-
-.order .icons-container .icons img {
-    height: 10rem;
-}
-
-.order .icons-container .icons h3 {
-    font-size: 2rem;
-    color: #130f40;
-    margin-top: .5rem;
-}
-
-.order form {
-    background: #f7f7f7;
-    padding: 2rem;
-    border-radius: .5rem;
-}
-
-.order form .flex {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-}
-
-.order form .flex .inputBox {
-    width: 49%;
-    padding: .7rem 0;
-}
-
-.order form .flex span {
-    font-size: 1.7rem;
-    color: #666;
-}
-
-.order form .flex input, .order form .flex textarea {
-    width: 100%;
-    margin-top: .5rem;
-    padding: 1rem 1.2rem;
-    width: 100%;
-    border-radius: .5rem;
-    font-size: 1.6rem;
-    text-transform: none;
-    color: #130f40;
-}
-
-.order form .flex textarea {
-    height: 20rem;
-    resize: none;
-}
-
-.order form .flex .map {
-    height: 100%;
-    width: 100%;
-    border-radius: .5rem;
-}
 
 .blogs .box-container {
     display: -ms-grid;
@@ -1353,8 +1300,87 @@ textarea#feedbacktext {
     padding: 1rem 0;
     line-height: 2;
 }
+/*Menu Page CSS End*/
 
-.footer {
+/*Order Now Section CSS Start*/
+.order .icons-container {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (minmax(30rem, 1fr))[auto-fit];
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.order .icons-container .icons {
+    border-radius: .5rem;
+    padding: 2rem;
+    text-align: center;
+    background: #f7f7f7;
+}
+
+.order .icons-container .icons img {
+    height: 10rem;
+}
+
+.order .icons-container .icons h3 {
+    font-size: 2rem;
+    color: #130f40;
+    margin-top: .5rem;
+}
+
+.order form {
+    background: #f7f7f7;
+    padding: 2rem;
+    border-radius: .5rem;
+}
+
+.order form .flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.order form .flex .inputBox {
+    width: 49%;
+    padding: .7rem 0;
+}
+
+.order form .flex span {
+    font-size: 1.7rem;
+    color: #666;
+}
+
+.order form .flex input, .order form .flex textarea {
+    width: 100%;
+    margin-top: .5rem;
+    padding: 1rem 1.2rem;
+    width: 100%;
+    border-radius: .5rem;
+    font-size: 1.6rem;
+    text-transform: none;
+    color: #130f40;
+}
+
+.order form .flex textarea {
+    height: 20rem;
+    resize: none;
+}
+
+.order form .flex .map {
+    height: 100%;
+    width: 100%;
+    border-radius: .5rem;
+}
+/*Order Now Section CSS End*/
+
+/*Footer Section Starts*/
+.footer{
     background: #f7f7f7;
 }
 
@@ -1474,6 +1500,7 @@ textarea#feedbacktext {
 .footer .bottom .credit span {
     color: #27ae60;
 }
+/*Footer Section End*/
 
 @media (max-width: 991px) {
     html {

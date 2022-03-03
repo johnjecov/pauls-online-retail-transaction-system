@@ -80,11 +80,9 @@
                           
                 </div>
             </div>
-                      <div class = "imgBx"><img src="image/home-img.png" alt=""></div>
                   
                 </div>
                 <div class = "user Vaddress">
-                    <div class = "imgBx"><img src="image/home-img.png" alt=""></div>
                     <div class = "formBx">
                         <form method="POST" action="addAddress" autocomplete="off">
                             <h2>Add New Address</h2>
@@ -145,47 +143,49 @@
     
     <style>
         
-        .scrollbx{
+        .scrollbx
+        {
             overflow: hidden;
             overflow-y: scroll;
             height: 100%;
             width: 100%;
-            
         }
         
-        .viewAddressBx{
-            background-color: #eeeeee;
+        .viewAddressBx
+        {
+            background-color: whitesmoke;
             border-radius: 15px;
             padding: 20px;
         }
  
-        .edit{
+        .edit
+        {
             display: flex;
-           
         }
         
-       .box
-       {
-           width: 30px;
-       }
-        input:required:focus {
+        .box
+        {
+            width: 30px;
+        }
+        
+        input:required:focus
+        {
             border: 1px solid #aacc9f !important;
         }
-        
-       
-         *
+
+        *
         {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Open Sans', sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
         
         section
         {
             position: relative;
             min-height: 100vh;
-            background: #f7f7f7;
+            background: #1e1f20;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -195,16 +195,15 @@
 
         section.active
         {
-            background: #f7f7f7;
+            background: #1e1f20;
         }
         
         section .container
         {
-           
             position: relative;
             width: 1000px;
             height: 800px;
-            background: #fff;
+            background: #302c2c;
             box-shadow: 0 15px 50px rgba(0,0,0,0.1);
             overflow: hidden;
             margin-top: 70px;
@@ -219,48 +218,36 @@
             height: 100%;
             display: flex;
         }
-        
-        section .container .user .imgBx
-        {
-            position: relative;
-            width: 50%;
-            height: 100%;
-            transition: 0.5s;
-        }
-        
-        section .container .user .imgBx img
-        {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
+                
         section .container .user .formBx
         {
             position: relative;
             width: 100%;
             height: 100%;
-            background: #fff;
+            background: #302c2c;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 40px;
             transition: 0.5s;
+            font-size: 12px;
+        }
+        
+        section .container .user .formBx h3
+        {
+            font-size: 22px;
         }
         
         section .container .user .formBx h2
         {
-            font-size: 18px;
-            font-weight: 600;
+            font-size: 25px;
+            font-weight: 500;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 5px;
             text-align: center;
             width: 100%;
             margin-bottom: 10px;
-            color: #555;
+            color: white;
         }
         
         section .container .user .formBx input
@@ -281,7 +268,7 @@
         section .container .user .formBx input[type="submit"]
         {
             max-width: 100px;
-            background: #677eff;
+            background: #CD212A;
             color: #fff;
             cursor: pointer;
             font-size: 14px;
@@ -292,7 +279,7 @@
 
         section .container .user.Vaddress .formBx input[type="submit"]
         {
-            background: #8bc34a;
+            background: #CD212A;
         }
         
         section .container .user .formBx .signup
@@ -308,15 +295,17 @@
         
         section .container .user .formBx .signup a
         {
+            font-size: 15px;
             font-weight: 600;
             text-decoration: none;
-            color: #577eff;
+            color: #CD212A;
         }
         
         section .container .user .formBx .Vaddress
         {
             display: none;
         }
+        
         section .container .Vaddress
         {
             pointer-events: none;
@@ -363,6 +352,7 @@
             top: 0;
             transition: 0.5s;
         }
+        
         section .container.active .Aaddress .imgBx
         {
             top: 100%;
@@ -423,6 +413,7 @@
             background: linear-gradient(to right bottom, hsl(154, 97%, 62%), hsl(225, 97%, 62%));
             position: relative;
         }
+        
         .rad-design::before
         {
             content: '';
@@ -469,6 +460,5 @@
                 flex-direction: column;
             }
         }
-        </style>
-        
+        </style> 
 </html>

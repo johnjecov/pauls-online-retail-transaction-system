@@ -7,24 +7,6 @@
             <minimum-ant-version>1.6.5</minimum-ant-version>
             <web-module-libraries>
                 <library dirs="200">
-                    <file>${file.reference.derbyclient.jar}</file>
-                </library>
-                <library dirs="200">
-                    <file>${file.reference.New_folder-HibernateDrivers}</file>
-                </library>
-                <library dirs="200">
-                    <file>${file.reference.commons-codec-1.9.jar}</file>
-                </library>
-                <library dirs="200">
-                    <file>${file.reference.itextpdf-5.5.9.jar}</file>
-                </library>
-                <library dirs="200">
-                    <file>${file.reference.mysql-connector-java-5.1.34.jar}</file>
-                </library>
-                <library dirs="200">
-                    <file>${file.reference.simplecaptcha-1.2.1.jar}</file>
-                </library>
-                <library dirs="200">
                     <file>${file.reference.derbyclient.jar-1}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>

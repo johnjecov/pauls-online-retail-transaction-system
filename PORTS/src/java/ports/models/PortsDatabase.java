@@ -95,7 +95,7 @@ public class PortsDatabase {
         }
     }
     
-        public ArrayList getAddresses(int customerID){
+    public ArrayList getAddresses(int customerID){
         System.out.print("TEST get ADDRESSES");
         String query1 = "SELECT * FROM address order by 'address_id' asc";
      
@@ -119,10 +119,7 @@ public class PortsDatabase {
                         results.getString("postal_code")
                         ));
             }
-     
-            System.out.println("Addresses of Cusomer: "+customerID+" added");
-          
-       
+    
                 
         }
         catch(SQLException sqle){
@@ -132,9 +129,151 @@ public class PortsDatabase {
     }
     
     
-    //database commands for products and toppings
-    
+    //database commands for products
+    public void addProduct(Product a){
+        System.out.print("TEST ADD Product");
+
+        String query = "INSERT INTO products (product_name, product_stock, product_type,"
+                + " product_desc, product_image, product_availability, product_price) VALUES(?,?,?,?,?,?,?)";
+     
         
+        try {
+            PreparedStatement ps = portsConnection.prepareStatement(query);
+            ps.setString(1, a.getName());
+            ps.setInt(2, a.getStock());
+            ps.setString(3, a.getType());
+            ps.setString(4, a.getDesc());
+            ps.setString(5, a.getImage());
+            ps.setString(6, a.getAvailability());
+            ps.setDouble(7, a.getPrice());
+            
+            //update the database
+            ps.executeUpdate();
+            System.out.println("added this record on products table");
+            System.out.println(a);
+                
+        }
+        catch(SQLException sqle){
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        }
+    }
+    
+    public void removeProduct(int productId){
+        System.out.print("TEST remove product");
+
+        String query = "DELETE FROM products where product_id = ?";
+
+        try {
+            PreparedStatement ps = portsConnection.prepareStatement(query);
+            ps.setInt(1, productId);
+            ps.executeUpdate();
+            System.out.println("Product id: "+productId+" removed");
+        }
+        catch(SQLException sqle){
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        }
+    }
+    
+    public ArrayList getProducts(){
+        System.out.print("TEST get Products");
+        String query1 = "SELECT * FROM products order by 'product_id' asc";
+     
+        ArrayList<Product> products = new ArrayList<>();
+        try {
+            PreparedStatement ps = portsConnection.prepareStatement(query1);
+            
+            ResultSet results = ps.executeQuery();
+            
+            while(results.next()){
+                products.add(
+                        new Product(Integer.parseInt(results.getString("product_id")),
+                        results.getString("product_name"),
+                        Integer.parseInt(results.getString("product_stock")),
+                        results.getString("product_type"),
+                        results.getString("product_desc"),
+                        results.getString("product_image"),
+                        results.getString("product_availability"),
+                        Double.parseDouble(results.getString("product_price"))
+                        ));
+            }        
+        }
+        catch(SQLException sqle){
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        }
+        return products;
+    }
+    
+    //database commands for toppings
+     public void addTopping(Topping a){
+        System.out.print("TEST ADD topping");
+
+        String query = "INSERT INTO toppings (toppings_name, toppings_stock,"
+                + " toppings_desc, toppings_image, toppings_availability, toppings_price) VALUES(?,?,?,?,?,?)";
+     
+        
+        try {
+            PreparedStatement ps = portsConnection.prepareStatement(query);
+            ps.setString(1, a.getName());
+            ps.setInt(2, a.getStock());
+            ps.setString(3, a.getDesc());
+            ps.setString(4, a.getImage());
+            ps.setString(5, a.getAvailability());
+            ps.setDouble(6, a.getPrice());
+            
+            //update the database
+            ps.executeUpdate();
+            System.out.println("added this record on toppings table");
+            System.out.println(a);
+                
+        }
+        catch(SQLException sqle){
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        }
+    }
+    
+    public void removeToppings(int toppingId){
+        System.out.print("TEST remove product");
+
+        String query = "DELETE FROM toppings where topping_id = ?";
+
+        try {
+            PreparedStatement ps = portsConnection.prepareStatement(query);
+            ps.setInt(1, toppingId);
+            ps.executeUpdate();
+            System.out.println("Topping id: "+toppingId+" removed");
+        }
+        catch(SQLException sqle){
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        }
+    }
+    
+    public ArrayList getToppings(){
+        System.out.print("TEST get toppings");
+        String query1 = "SELECT * FROM toppings order by 'toppings_id' asc";
+     
+        ArrayList<Topping> toppings = new ArrayList<>();
+        try {
+            PreparedStatement ps = portsConnection.prepareStatement(query1);
+            
+            ResultSet results = ps.executeQuery();
+            
+            while(results.next()){
+                toppings.add(
+                        new Topping(Integer.parseInt(results.getString("toppings_id")),
+                        results.getString("toppings_name"),
+                        Integer.parseInt(results.getString("toppings_stock")),
+                        results.getString("toppings_desc"),
+                        results.getString("toppings_image"),
+                        results.getString("toppings_availability"),
+                        Double.parseDouble(results.getString("toppings_price"))
+                        ));
+            }        
+        }
+        catch(SQLException sqle){
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        }
+        return toppings;
+    }       
     
     public void setConnection(Connection con){
         portsConnection = con;

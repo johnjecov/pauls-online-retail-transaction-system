@@ -37,8 +37,8 @@
 
             <form id = "loginForm" action="">
                 <h3 class = "formTitle">login</h3>
-                <input type="email" name="" placeholder="enter your email" id="" class="inputs">
-                <input type="password" name="" placeholder="enter your password" id="" class="inputs">
+                <input type="text" name="loginUname" placeholder="enter your username" id="" class="inputs">
+                <input type="password" name="loginPass" placeholder="enter your password" id="" class="inputs">
                 <input type="captcha" value="Recaptcha Placeholder" class="inputs" id = "recaptcha">
                 <input type="submit" value="login now" class="inputs LRButton" id = "loginButton">
                 <p>don't have an account? <a href="register.jsp" id = "goReg">create one</a></p>

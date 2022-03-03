@@ -95,9 +95,7 @@ public class PortsDatabase {
         }
     }
     
-        public String testing(){
-            return "hello";
-        }
+     
         public ArrayList getAddresses(int customerID){
         System.out.print("TEST get ADDRESSES");
         String query1 = "SELECT * FROM address order by 'address_id' asc";

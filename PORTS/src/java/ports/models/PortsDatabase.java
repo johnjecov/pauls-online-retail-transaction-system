@@ -9,7 +9,6 @@ public class PortsDatabase {
     public PortsDatabase(Connection con){
         setConnection(con);
         System.out.println("database connection created");
-        displayTables();
     }
     
     public void displayTables() {
@@ -22,14 +21,7 @@ public class PortsDatabase {
                 System.out.println(results.getString("TABLE_NAME"));
             }
             System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            
-            removeAddress(1);
-            /*
-             Address test = new Address("-1","1", "testName", "testDetails", "testAdditional"
-            ,"TestNo", "testStreet","testCity","testProvince","1900");
-            addAddress(test);
-            */
-            
+        
         }
         catch (SQLException sqle)
         {
@@ -37,6 +29,8 @@ public class PortsDatabase {
         } 
     }
     
+    
+    //database commands for address
     public void addAddress(Address a){
         System.out.print("TEST ADD ADDRESS");
         int id = 1;
@@ -85,11 +79,11 @@ public class PortsDatabase {
         }
     }
     
-        public void removeAddress(int addressId){
+    public void removeAddress(int addressId){
         System.out.print("TEST remove ADDRESS");
-  
+
         String query = "DELETE FROM address where address_id = ?";
-     
+
         try {
             PreparedStatement ps = portsConnection.prepareStatement(query);
             ps.setInt(1, addressId);
@@ -100,6 +94,46 @@ public class PortsDatabase {
             System.out.println("SQLException error occured - " + sqle.getMessage());
         }
     }
+    
+        public ArrayList getAddresses(int customerID){
+        System.out.print("TEST get ADDRESSES");
+        String query1 = "SELECT * FROM address order by 'address_id' asc";
+     
+        ArrayList<Address> addresses = new ArrayList<>();
+        try {
+            PreparedStatement ps = portsConnection.prepareStatement(query1);
+            
+            ResultSet results = ps.executeQuery();
+            
+            while(results.next()){
+                addresses.add(
+                        new Address(results.getString("address_id"),
+                        results.getString("customer_id"),
+                        results.getString("address_name"),
+                        results.getString("address_details"),
+                        results.getString("additional_details"),
+                        results.getString("house_no"),
+                        results.getString("street"),
+                        results.getString("city"),
+                        results.getString("province"),
+                        results.getString("postal_code")
+                        ));
+            }
+     
+            System.out.println("Addresses of Cusomer: "+customerID+" added");
+          
+       
+                
+        }
+        catch(SQLException sqle){
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        }
+        return addresses;
+    }
+    
+    
+    //database commands for products and toppings
+    
         
     
     public void setConnection(Connection con){

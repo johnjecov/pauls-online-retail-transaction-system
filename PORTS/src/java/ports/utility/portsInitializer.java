@@ -31,7 +31,7 @@ public class portsInitializer implements ServletContextListener
             
             //passes the model on the ports object so connection is not always created.
             PortsDatabase ports = new PortsDatabase(conn);
-            sc.setAttribute("dbConnection", conn);
+            sc.setAttribute("dbConnection", ports);
         } 
         catch (SQLException sqle)
         {

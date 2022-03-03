@@ -17,6 +17,7 @@ import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletContext;
+import ports.models.*;
 
 public class addAddressServlet extends HttpServlet {
 
@@ -69,36 +70,41 @@ public class addAddressServlet extends HttpServlet {
         String id="";
         int insert;
         ServletContext app = getServletContext();
+
+        
+        
+        
         HttpSession session = null;
         
-        
-        try
-        {   
-            if (conn != null) 
-            {
-                PreparedStatement stmt;
-                stmt = conn.prepareStatement("SELECT * FROM customer WHERE customer_id = ?");     
-                //stmt.setString(1, username);
-                ResultSet records = stmt.executeQuery();
-                session = request.getSession();
-                    
-                while (records.next())
-                {
-                    id = records.getString("customer_id");
-             
-                }
-            }
-            
-            else
-            {
-                response.sendRedirect("error_session.jsp");
-            }
-        }
-        
-          catch (SQLException sqle)
-        {
-            response.sendRedirect("error_session.jsp");
-        }
+    
+   
+//        try
+//        {   
+//            if (conn != null) 
+//            {
+//                PreparedStatement stmt;
+//                stmt = conn.prepareStatement("SELECT * FROM customer WHERE customer_id = ?");     
+//                //stmt.setString(1, username);
+//                ResultSet records = stmt.executeQuery();
+//                session = request.getSession();
+//                    
+//                while (records.next())
+//                {
+//                    id = records.getString("customer_id");
+//             
+//                }
+//            }
+//            
+//            else
+//            {
+//                response.sendRedirect("error_session.jsp");
+//            }
+//        }
+//        
+//          catch (SQLException sqle)
+//        {
+//            response.sendRedirect("error_session.jsp");
+//        }
      
          if (addressName.isEmpty() | street.isEmpty() | houseNo.isEmpty() | province.isEmpty()
             | postalCode.isEmpty() | city.isEmpty() )
@@ -107,34 +113,23 @@ public class addAddressServlet extends HttpServlet {
             //throw new SignUpNullException();
         }
          
-            try
-            {
-                if (id.equals(idFromWeb))
-                {
-                    PreparedStatement stmt2 = conn.prepareStatement
-                    ("INSERT INTO USER_INFO (NAME,PASSWORD,ROLE,EMAIL,CITY,LASTNAME,FIRSTNAME) VALUES (?,?,?,?,?,?,?)"); 
-//                    stmt2.setString(1,username);
-//                    stmt2.setString(2,encrypt);
-//                    stmt2.setString(3,role);
-//                    stmt2.setString(4,email);
-//                    stmt2.setString(5,city);
-//                    stmt2.setString(6,lastname);
-//                    stmt2.setString(7,firstname);
-//                    insert = stmt2.executeUpdate();
-                    response.sendRedirect("Login.jsp");
-                }
-                
-                else
-                {
-                    app.setAttribute("app", "Entered password does not match the Confirmed Password");
-                    //throw new SignUpAuthenticationException();
-                }
-            }
+         if (id.equals(idFromWeb))
+         {
+             Address newAdd = new Address("1","1",addressName,addInfo,addDetail,houseNo,street,city,province,postalCode);
+             System.out.print("HELLO KASI");
+             PortsDatabase port = (PortsDatabase)app.getAttribute("dbConnection");
+             port.addAddress(newAdd);
+             response.sendRedirect("address.jsp");
+             
+         }
+         
+         else
+         {
+             app.setAttribute("app", "Entered password does not match the Confirmed Password");
+             //throw new SignUpAuthenticationException();
+         }
             
-            catch (SQLException sqle)
-            {
-                System.out.println("SQLException error occured - " + sqle.getMessage());
-            }
+           
        
         
         

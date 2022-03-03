@@ -7,6 +7,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+    <%@  page import = "ports.models.*" %> 
+    <%@  page import = "java.util.*" %>  
+    <%@  page import = "javax.servlet.*" %>  
+  
+     <%  ServletContext app = getServletContext();
+         PortsDatabase port = (PortsDatabase)app.getAttribute("dbConnection");
+             %>
     <head>
         <title>Login</title>
         <link rel="shortcut icon" type="image/png" href="images/logotrans.png">
@@ -47,63 +54,30 @@
                             <h2>View Addresses</h2>
                             <p class = "signup"><a href = "#" onclick = "toggleForm();">Add New Address</a></p>
                             <br>
+                            <% for (int i=0; i < port.getAddresses(1).size(); i++) { %>
                                 <div class="viewAddressBx">
                                     <div class="edit">
-                                        <h3>Address#1</h3>
+                                        <h3><%= ((Address)port.getAddresses(1).get(i)).getAddressName() %></h3>
                                         <div class="box"></div>
                                        
                                     </div>
-                            
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                                       Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                                       when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+                                    <p> <% 
+        
+                                       out.print(((Address)port.getAddresses(1).get(i)).getHouseNo()+ " " +
+                                                   ((Address)port.getAddresses(1).get(i)).getStreet()+ " " +
+                                                   ((Address)port.getAddresses(1).get(i)).getCity()+ " " +
+                                                   ((Address)port.getAddresses(1).get(i)).getProvince()+ " " +
+                                                   ((Address)port.getAddresses(1).get(i)).getPostalCode()+ " " +
+                                                   ((Address)port.getAddresses(1).get(i)).getDetails()+ " " +
+                                                  "(" + ((Address)port.getAddresses(1).get(i)).getAdditionalDetails()+ ") " 
+                                                    ); %>
                                    </p>
                                     <input type = "submit" value = "Edit">
                                </div>
-                            <br>
+                            <br> <% } %>
                             
-                            <div class="viewAddressBx">
-                                    <div class="edit">
-                                        <h3>Address#2</h3>
-                                        <div class="box"></div>
-                                    </div>
-                            
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                                       Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                                       when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-                                   </p>
-                                    <input type = "submit" value = "Edit">
-                               </div>
-                            <br>
-                            <div class="viewAddressBx">
-                                    <div class="edit">
-                                        <h3>Address#3</h3>
-                                        <div class="box"></div>
-                                    </div>
-                            
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                                       Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                                       when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-                                   </p>
-                                    <input type = "submit" value = "Edit">
-                               </div>
-                            <br>
-                            
-                            <div class="viewAddressBx">
-                                    <div class="edit">
-                                        <h3>Address#4</h3>
-                                        <div class="box"></div>
-                                     </div>
-                            
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                                       Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                                       when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-                                   </p>
-                                    <input type = "submit" value = "Edit">
-                              
-                         
                     </form>  
-                            </div>
+                          
                 </div>
             </div>
                       <div class = "imgBx"><img src="image/home-img.png" alt=""></div>
@@ -112,7 +86,7 @@
                 <div class = "user Vaddress">
                     <div class = "imgBx"><img src="image/home-img.png" alt=""></div>
                     <div class = "formBx">
-                        <form method="POST" action="login" autocomplete="off">
+                        <form method="POST" action="addAddress" autocomplete="off">
                             <h2>Add New Address</h2>
                             <input id ="user" type = "text" placeholder = "Address Name" name="addressName" required="required">
                            

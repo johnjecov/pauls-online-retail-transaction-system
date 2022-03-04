@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="css/generatePDF.css?nocache={timestamp}" type="text/css">
+        <link rel="stylesheet" href="css/admin.css?nocache={timestamp}" type="text/css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>PDF Page</title>
     </head>

@@ -281,12 +281,85 @@ public class PortsDatabase {
     //database functions for cart
     public void getCartData(int customer_id){
         
-        String query = "INSERT INTO cart (customer_id, cart_total) VALUES(?,?)";
-        
+        String query1 = "SELECT * FROM carts where customer_id = ?";
+        String query2 = "SELECT * FROM cart_purchase where cart_id = ?";
+        String query3 = "SELECT * FROM cart_purchase_toppings where cart_purchase_id = ?";
+        String query4 = "SELECT * FROM products where product_id = ?";
+        String query5 = "SELECT * FROM toppings where toppings_id = ?";
+        Cart c;
         try {
-            PreparedStatement ps = portsConnection.prepareStatement(query);
+            PreparedStatement ps = portsConnection.prepareStatement(query1);
+            
+            
             ps.setInt(1, customer_id);
-            ps.setDouble(2, 0);
+            
+            ResultSet results = ps.executeQuery();
+          
+            int cart_id = 0;
+            double cart_total = 0;
+            
+            if(results.next()){
+                cart_id = Integer.parseInt(results.getString("cart_id"));
+                cart_total = Integer.parseInt(results.getString("cart_total"));
+            }
+            
+            //done getting the info of cart now get the data from the cart purchases
+            ps = portsConnection.prepareStatement(query2);
+            ps.setInt(1, cart_id);
+            
+            results = ps.executeQuery();
+            ArrayList<CartItem> items = new ArrayList<>();
+            while(results.next()){
+                int cart_purchase_id = Integer.parseInt(results.getString("cart_purchase_id"));
+                int product_id = Integer.parseInt(results.getString("product_id"));
+                int quantity = Integer.parseInt(results.getString("product_quantity"));
+                
+                //get the specific product and create a product object for the CartItem
+                PreparedStatement forProducts = portsConnection.prepareStatement(query4);
+                forProducts.setInt(1, product_id);
+                ResultSet product = forProducts.executeQuery();
+                
+                product.next();
+                Product pizza = new Product(product_id, product.getString("product_name"), 
+                        Integer.parseInt(product.getString("product_stock")), product.getString("product_type"), product.getString("product_desc"),
+                        product.getString("product_image"), product.getString("product_availability"), Double.parseDouble(product.getString("product_price")));
+                
+               
+                
+                PreparedStatement ps2 = portsConnection.prepareStatement(query3);
+                ps2.setInt(1, cart_purchase_id);
+                
+                ResultSet forToppings = ps2.executeQuery();
+                
+                //while loop
+                 //create array list for the toppings for the product
+                ArrayList<CartItemToppings> toppings = new ArrayList<>();
+                
+                while (forToppings.next()){
+                    int cart_purchase_toppings_id = Integer.parseInt(results.getString("cart_purchase_toppings_id"));
+                    int toppings_id = Integer.parseInt(results.getString("toppings_id"));
+                    int toppings_quantity = Integer.parseInt(results.getString("toppings_quantity"));
+                    
+                    //get the specific topping and create a topping object for the CartItemTopping
+                    PreparedStatement forTopping = portsConnection.prepareStatement(query5);
+                    forTopping.setInt(1, toppings_id);
+                   
+                    ResultSet resultTopping = forTopping.executeQuery();
+                    product.next();
+                    Topping topping = new Topping(toppings_id, resultTopping.getString("toppings_name"), Integer.parseInt(resultTopping.getString("toppings_stock")), 
+                                           resultTopping.getString("toppings_desc"), resultTopping.getString("toppings_image"), resultTopping.getString("toppings_availability"),
+                                           Double.parseDouble(resultTopping.getString("toppings_stock")));
+                            
+                    toppings.add(new CartItemToppings(cart_purchase_toppings_id, topping, toppings_quantity));
+              
+                }
+                
+                //add CartItem
+                
+                items.add(new CartItem(cart_purchase_id, cart_id, pizza, toppings, quantity));
+            }
+            
+            c = new Cart(cart_id, customer_id, 0, items);
             
             //update the database
             ps.executeUpdate();

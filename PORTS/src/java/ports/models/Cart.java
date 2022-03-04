@@ -9,7 +9,7 @@ public class Cart {
     private double cart_total;
     private ArrayList<CartItem> items;
     
-    public Cart(int cart_id, int customer_id, double cart_total, CartItem Items){
+    public Cart(int cart_id, int customer_id, double cart_total, ArrayList<CartItem> Items){
         this.cart_id = cart_id;
         this.customer_id = customer_id;
         this.cart_total = cart_total;

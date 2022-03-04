@@ -10,7 +10,7 @@ public class CartItem {
     private ArrayList<CartItemToppings> toppings;
     private int quantity;
     
-    public CartItem(int cartItemId, int cartId, Product pizza, ArrayList toppings, int quantity){
+    public CartItem(int cartItemId, int cartId, Product pizza, ArrayList<CartItemToppings> toppings, int quantity){
         this.cartItemId = cartItemId;
         this.cartId = cartId;
         this.product = product;

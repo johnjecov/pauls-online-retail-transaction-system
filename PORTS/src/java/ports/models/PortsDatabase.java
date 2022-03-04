@@ -297,7 +297,7 @@ public class PortsDatabase {
         catch(SQLException sqle){
             System.out.println("SQLException error occured - " + sqle.getMessage());
         }
-   
+        //to finish
     }
     
     public void addCart(int customer_id) {
@@ -343,7 +343,7 @@ public class PortsDatabase {
     
     public void addItemToCart(int cart_id, CartItem item) {
         System.out.print("TEST ADD Item to cart");
-
+        
         String query1 = "INSERT INTO cart_purchase (cart_purchase_id, cart_id, product_id, product_quantity) VALUES(?, ?,?,?)";
         String query2 = "INSERT INTO cart_purchase_toppings (cart_purchase_id, toppings_id, toppings_quantity) VALUES(?,?,?)";
         String query3 = "SELECT cart_puchase_id FROM cart_purchase where cart_id = ? order by cart_purchase_id desc";

@@ -21,9 +21,7 @@
 <%@include file="header.jsp"%>
 <!-- header section ends  -->
 
-<section class="shopping-cart-container">
-    
-</section>
+
 
 <!-- home section starts  -->
 <section class="home" id="home">

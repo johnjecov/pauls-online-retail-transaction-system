@@ -158,6 +158,10 @@
     </script>
     
     <style>
+        *
+        {
+            font-family: 'Poppins', sans-serif;
+        }
         html
         {
             background-color: #1e1f20;
@@ -298,7 +302,7 @@
         .btn
         {
             margin-left: auto;
-            background-color: #ff523b;
+            background-color: #CD212A;
         }
         
         .btn:hover

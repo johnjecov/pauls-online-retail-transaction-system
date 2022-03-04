@@ -137,7 +137,7 @@
     </div>
     </main>
     
-    <style>
+     <style>
         
         h4
         {
@@ -331,7 +331,7 @@
         .cart-btn
         {
             display: inline-block;
-            background-color: #ff523b;
+            background-color: #CD212A;
             border-radius: 6px;
             font-size: 16px;
             color: #FFFFFF;

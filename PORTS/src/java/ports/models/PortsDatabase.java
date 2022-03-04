@@ -106,6 +106,8 @@ public class PortsDatabase {
             
             ResultSet results = ps.executeQuery();
             
+            
+            
             while(results.next()){
                 addresses.add(
                         new Address(results.getString("address_id"),
@@ -276,6 +278,142 @@ public class PortsDatabase {
         return toppings;
     }       
     
+    //database functions for cart
+    public void getCartData(int customer_id){
+        
+        String query = "INSERT INTO cart (customer_id, cart_total) VALUES(?,?)";
+        
+        try {
+            PreparedStatement ps = portsConnection.prepareStatement(query);
+            ps.setInt(1, customer_id);
+            ps.setDouble(2, 0);
+            
+            //update the database
+            ps.executeUpdate();
+            System.out.println("added this record on cart table");
+            System.out.println("Cart of: "+ customer_id);
+                
+        }
+        catch(SQLException sqle){
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        }
+   
+    }
+    
+    public void addCart(int customer_id) {
+        System.out.print("TEST ADD cart");
+
+        String query = "INSERT INTO cart (customer_id, cart_total) VALUES(?,?)";
+        
+        try {
+            PreparedStatement ps = portsConnection.prepareStatement(query);
+            ps.setInt(1, customer_id);
+            ps.setDouble(2, 0);
+            
+            //update the database
+            ps.executeUpdate();
+            System.out.println("added this record on cart table");
+            System.out.println("Cart of: "+ customer_id);
+                
+        }
+        catch(SQLException sqle){
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        }
+    }
+    
+    public void setCartTotal(int cart_id, double cart_total) {
+         System.out.print("TEST edit Total of cart");
+
+        String query = "UPDATE carts SET cart_total = ? WHERE cart_id = ?";
+        
+        try {
+            PreparedStatement ps = portsConnection.prepareStatement(query);
+            ps.setDouble(1, cart_total);
+            ps.setDouble(2, cart_id);
+            
+            //update the database
+            ps.executeUpdate();
+            System.out.println("Change Total of Cart of: "+ cart_id+" into "+cart_total);
+                
+        }
+        catch(SQLException sqle){
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        }
+    }
+    
+    public void addItemToCart(int cart_id, CartItem item) {
+        System.out.print("TEST ADD Item to cart");
+
+        String query1 = "INSERT INTO cart_purchase (cart_purchase_id, cart_id, product_id, product_quantity) VALUES(?, ?,?,?)";
+        String query2 = "INSERT INTO cart_purchase_toppings (cart_purchase_id, toppings_id, toppings_quantity) VALUES(?,?,?)";
+        String query3 = "SELECT cart_puchase_id FROM cart_purchase where cart_id = ? order by cart_purchase_id desc";
+        int cart_purchase_id = 1;
+        try {
+            
+            //compute the purchase id
+            PreparedStatement ps = portsConnection.prepareStatement(query1);
+            ResultSet results = ps.executeQuery();
+            
+            if(results.next())
+                cart_purchase_id = Integer.parseInt(results.getString("cart_purchase_id")) + 1;
+            
+            
+            //add the item to the cart
+            ps = portsConnection.prepareStatement(query1);
+            ps.setInt(1, cart_purchase_id);
+            ps.setInt(2, cart_id);
+            ps.setInt(3, item.getProduct().getId());
+            ps.setInt(4, item.getQuantity());
+            
+         
+            //add the toppings for that specific item if there are any
+            ArrayList toppings = item.getToppings();
+            for(int i = 0; i < toppings.size(); i++) {
+                ps = portsConnection.prepareStatement(query2);
+                CartItemToppings t = (CartItemToppings) toppings.get(i);
+                ps.setInt(1, cart_purchase_id);
+                ps.setInt(2, t.getTopping().getId());
+                ps.setInt(3, t.getQuantity());
+                
+            }
+            
+            //update the database
+            ps.executeUpdate();
+            System.out.println("added this record on cart table");
+            System.out.println("Cart of: "+ cart_id);
+                
+        }
+        catch(SQLException sqle){
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        }
+    }
+    
+
+     public void removeFromCart(int cart_id, int cart_purchase_id){
+        System.out.print("TEST remove item from cart");
+
+        String query1 = "DELETE FROM cart_purchase_toppings where cart_purchase_id = ?";
+        String query2 = "DELETE FROM cart_purchase where cart_purchase_id = ?";
+
+        try {
+            //removes the toppings for purchase id first before removing the actual item from the cart_purchase table.
+            PreparedStatement ps = portsConnection.prepareStatement(query1);
+            ps.setInt(1, cart_purchase_id);
+            ps.executeUpdate();
+ 
+            ps = portsConnection.prepareStatement(query2);
+            ps.setInt(1, cart_purchase_id);
+            ps.executeUpdate();
+            
+            System.out.printf("Purchase %d removed from cart %d\n", cart_purchase_id, cart_id);
+                
+        }
+        catch(SQLException sqle){
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        }
+    }
+     
+     
     public void setConnection(Connection con){
         portsConnection = con;
         System.out.println("Ports Set.");

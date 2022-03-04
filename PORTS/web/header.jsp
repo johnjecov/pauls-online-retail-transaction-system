@@ -102,12 +102,21 @@ nav .mainMenu .closeMenu , .icons i {
 .fa-instagram:hover {color: rgb(255, 0, 191);}
 .fa-github:hover {color: rgb(255, 123, 0);}
 
+
+#openMenu {
+    visibility: hidden;
+}
+
 nav .logo {
     margin: 6px;
     font-size: 25px;
     cursor: pointer;
 }
 @media(max-width: 800px){
+#openMenu {
+    visibility: visible;
+}
+
     nav .mainMenu {
         height: 100vh;
         position: fixed;

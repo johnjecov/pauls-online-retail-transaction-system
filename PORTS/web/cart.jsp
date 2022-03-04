@@ -35,6 +35,7 @@
         <thead>
      	<tr>
             <th>Product</th>
+            <th>Toppings</th>
             <th>Price</th>
             <th>Quantity</th>
             <th>Total</th>
@@ -53,7 +54,8 @@
                     </div>
                 </div>
             </td>
-            
+            <td data-label="Toppings">Cheese</td>
+   
             <td data-label="Price">P250.00</td>
             <td data-label="Quantity"> 1 </td>
             <td data-label="Price">P250.00</td>
@@ -70,7 +72,8 @@
                     </div>
                 </div>
             </td>
-            
+            <td data-label="Toppings">Cheese</td>
+               
             <td data-label="Price">P250.00 </td>
             <td data-label="Quantity"> 1 </td>
             <td data-label="Price">P250.00</td>
@@ -87,7 +90,9 @@
                     </div>
                 </div>
             </td>
-            
+           
+            <td data-label="Toppings">Cheese</td>
+   
             <td data-label="Price">P250.00 </td>
             <td data-label="Quantity"> 1 </td>
             <td data-label="Price">P250.00</td>

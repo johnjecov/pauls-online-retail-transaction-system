@@ -102,9 +102,9 @@
                                     <div class="box"></div>
                         </div>
                            
-                            <input id ="user" type = "text" placeholder = "Additional Address Details (optional)" name="additionalAddress" >
+                            <input id ="user" type = "text" placeholder = "Additional Address Details" name="additionalAddress" required="required" >
                           
-                            <input id ="user" type = "text" placeholder = "Additional Information (optional)" name="additionalInfo" >
+                            <input id ="user" type = "text" placeholder = "Additional Information" name="additionalInfo" required="required" >
                           
                             <input type = "submit" value = "Submit"> 
                             <p class = "signup"><a href = "#" onclick = "toggleForm();">View Addresses</a></p>

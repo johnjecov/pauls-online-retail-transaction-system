@@ -12,11 +12,10 @@
 </head>
 
 <header class="header">
-     
-      <a href="/PORTS/index.jsp" class="logo"> <i class="fas fa-utensils"></i>Paul's Pizzeria  </a>
-      
+
+       <a href="/PORTS/index.jsp" class="logo"> <i class="fas fa-utensils"></i>Paul's Pizzeria  </a>
+    
     <nav class="navbar0">
-            <div class="openMenu"><i class="fas fa-bars"></i></div>
             <ul class="mainMenu">
                 <li><a href="/PORTS/index.jsp#home">Home</a></li>
                 <li><a href="/PORTS/index.jsp#about">about</a></li>
@@ -30,18 +29,18 @@
                 </span>
             </ul>
     </nav>
-    
+                
     <div class="icons">
+        <a id="openMenu" class="fas fa-bars"></a>
         <a id="cart-btn" class="fas fa-shopping-cart" href="/PORTS/cart.jsp"></a>
-        <a id="login-btn" class="fas fa-user" href="/PORTS/index.jsp#home"></a>
+        <a id="login-btn" class="fas fa-user" href="/PORTS/login.jsp"></a>
     </div>
 </header>
-
 
 <script>
     const mainMenu = document.querySelector('.mainMenu');
 const closeMenu = document.querySelector('.closeMenu');
-const openMenu = document.querySelector('.openMenu');
+const openMenu = document.getElementById('openMenu');
 
 openMenu.addEventListener('click',show);
 closeMenu.addEventListener('click',close);
@@ -56,6 +55,8 @@ function close(){
     </script>
     
 
+    
+    
 <style>
 * {
     box-sizing: border-box;
@@ -82,35 +83,30 @@ nav .mainMenu li a {
     color: #fff;
     font-size: 1.5rem;
 }
-
 nav .mainMenu li a:hover {
     background: green;
 }
-
 nav .openMenu {
     font-size: 2rem;
     margin: 20px;
     display: none;
     cursor: pointer;
 }
-
 nav .mainMenu .closeMenu , .icons i {
     font-size: 2rem;
     display: none;
     cursor: pointer;
 }
-
 .fa-facebook:hover {color: rgb(0, 110, 255);}
 .fa-twitter:hover {color: rgb(86, 154, 243);}
 .fa-instagram:hover {color: rgb(255, 0, 191);}
-
+.fa-github:hover {color: rgb(255, 123, 0);}
 
 nav .logo {
     margin: 6px;
     font-size: 25px;
     cursor: pointer;
 }
-
 @media(max-width: 800px){
     nav .mainMenu {
         height: 100vh;
@@ -134,9 +130,11 @@ nav .logo {
     }
     nav .openMenu {
         display: block;
-        position: fixed;
         top: 0;
-        margin-left: 30px;
+        
+        position: fixed;
+        padding-left: 20px;
+        right: 21%;
     }
     
     nav .mainMenu li a:hover {
@@ -147,7 +145,7 @@ nav .logo {
     .icons i {
         display: inline-block;
         padding: 12px;
+        
     }
 }
-
     </style>

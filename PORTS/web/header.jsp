@@ -16,7 +16,6 @@
        <a href="/PORTS/index.jsp" class="logo"> <i class="fas fa-utensils"></i>Paul's Pizzeria  </a>
     
     <nav class="navbar0">
-            <div class="openMenu"><i class="fas fa-bars"></i></div>
             <ul class="mainMenu">
                 <li><a href="/PORTS/index.jsp#home">Home</a></li>
                 <li><a href="/PORTS/index.jsp#about">about</a></li>
@@ -32,6 +31,7 @@
     </nav>
                 
     <div class="icons">
+        <a id="openMenu" class="fas fa-bars"></a>
         <a id="cart-btn" class="fas fa-shopping-cart" href="/PORTS/cart.jsp"></a>
         <a id="login-btn" class="fas fa-user" href="/PORTS/login.jsp"></a>
     </div>
@@ -40,7 +40,7 @@
 <script>
     const mainMenu = document.querySelector('.mainMenu');
 const closeMenu = document.querySelector('.closeMenu');
-const openMenu = document.querySelector('.openMenu');
+const openMenu = document.getElementById('openMenu');
 
 openMenu.addEventListener('click',show);
 closeMenu.addEventListener('click',close);
@@ -131,6 +131,7 @@ nav .logo {
     nav .openMenu {
         display: block;
         top: 0;
+        
         position: fixed;
         padding-left: 20px;
         right: 21%;
@@ -144,6 +145,7 @@ nav .logo {
     .icons i {
         display: inline-block;
         padding: 12px;
+        
     }
 }
     </style>

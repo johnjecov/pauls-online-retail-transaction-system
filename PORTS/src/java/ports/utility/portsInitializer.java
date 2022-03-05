@@ -3,7 +3,8 @@ package ports.utility;
 import ports.controllers.*;
 import java.sql.*;
 import javax.servlet.*;
-import ports.models.PortsDatabase;
+import ports.models.*;
+import java.util.*;
 
 public class portsInitializer implements ServletContextListener
 {
@@ -32,6 +33,13 @@ public class portsInitializer implements ServletContextListener
             //passes the model on the ports object so connection is not always created.
             PortsDatabase ports = new PortsDatabase(conn);
             sc.setAttribute("dbConnection", ports);
+            
+            //Gets the Products, Toppings, Order Status Objects into an arraylist of this objects.
+            ArrayList<Product> products = ports.getProducts();
+            ArrayList<Topping> toppings = ports.getToppings();
+            ArrayList<String> order_status = ports.getOrderStats();
+          
+            
         } 
         catch (SQLException sqle)
         {

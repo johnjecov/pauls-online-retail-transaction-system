@@ -14,6 +14,11 @@ public class CartItemToppings {
         this.quantity = quantity;
     }
     
+
+    //setter
+   public void setId(int id) {
+       cartItemToppingsId = id;
+   }
     //getters
     public int getCartItemToppingsId() {
         return cartItemToppingsId;

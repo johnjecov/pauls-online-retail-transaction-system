@@ -14,6 +14,7 @@ public class Cart {
         this.customer_id = customer_id;
         this.cart_total = cart_total;
         this.items = items;
+        
     }
     
     //process cart functions
@@ -71,6 +72,8 @@ public class Cart {
         return items;
     }
     
-    
+    public String toString() {
+        return String.format("This is cart # %d of customer %d", cart_id, customer_id);
+    }
     
 }

@@ -13,10 +13,15 @@ public class CartItem {
     public CartItem(int cartItemId, int cartId, Product pizza, ArrayList<CartItemToppings> toppings, int quantity){
         this.cartItemId = cartItemId;
         this.cartId = cartId;
-        this.product = product;
+        this.product = pizza;
         this.toppings = toppings;
         this.quantity = quantity;
     }
+    
+   //setter
+   public void setId(int id) {
+       cartItemId = id;
+   }
     
     //getters
    public int getCartItemId() {

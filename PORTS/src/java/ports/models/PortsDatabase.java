@@ -8,7 +8,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 public class PortsDatabase {
     static Connection portsConnection;
-    
     public PortsDatabase(Connection con){
         setConnection(con);
         System.out.println("database connection created");
@@ -23,7 +22,6 @@ public class PortsDatabase {
         
         ArrayList<CartItemToppings> withToppings = new ArrayList<>();
         withToppings.add(new CartItemToppings(-1, testTopping, 2));
-        
         //clearCartForCheckout(1);
         //System.out.println(getCartData(1));
         /*
@@ -41,9 +39,12 @@ public class PortsDatabase {
         //test getting the actual cart on startup
         //test checkout
         //Cart checkoutCart = getCartData(1);
+        //System.out.println(checkoutCart.getCart_Total());
+        //checkoutCart.clearCart(this);
+        
+        //setCartTotal(checkoutCart.getCart_Id(), checkoutCart.computeTotal());
         //System.out.println(checkoutCart);
-        //checkoutCart.computeTotal();
-       
+        
         //checkOutCart(checkoutCart, "TestCheckoutDate", "TestDeliveryDate");
     }
     

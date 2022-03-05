@@ -18,8 +18,10 @@ public class Cart {
     
     public void clearCart(PortsDatabase ports) {
         items.clear();
+        computeTotal();
+        ports.setCartTotal(cart_id, cart_total);
         ports.clearCartForCheckout(cart_id);
-        ports.setCartTotal(cart_id, computeTotal());
+        System.out.println("here");
     }
     
     public double computeTotal(){
@@ -30,13 +32,11 @@ public class Cart {
             CartItem item = items.get(i);
             Product p = item.getProduct();
             cart_total += (p.getPrice() * item.getQuantity());
-            System.out.println(p.getPrice());
             ArrayList<CartItemToppings> toppings = item.getToppings();
-            for (int j = 0; j < toppings.size(); i++){
+            for (int j = 0; j < toppings.size(); j++){
                 CartItemToppings itemToppings = toppings.get(j);
                 Topping t = itemToppings.getTopping();
                 cart_total += (t.getPrice() * itemToppings.getQuantity());
-                 System.out.println(t.getPrice());
             }
         }
         }
@@ -51,7 +51,8 @@ public class Cart {
         //add item to cart and update database
         items.add(item);
         ports.addItemToCart(cart_id, item);
-        ports.setCartTotal(cart_id, computeTotal());
+        computeTotal();
+        ports.setCartTotal(cart_id, cart_total);
     }
     
     public void removeFromCart(PortsDatabase ports, int cart_purchase_id){
@@ -63,7 +64,8 @@ public class Cart {
             }
         }
         ports.removeFromCart(cart_id, cart_purchase_id);
-        ports.setCartTotal(cart_id, computeTotal());
+        computeTotal();
+        ports.setCartTotal(cart_id, cart_total);
     }
     
     //getters

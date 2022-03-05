@@ -9,15 +9,12 @@ public class Cart {
     private double cart_total;
     private ArrayList<CartItem> items;
     
-    public Cart(int cart_id, int customer_id, double cart_total, ArrayList<CartItem> Items){
+    public Cart(int cart_id, int customer_id, double cart_total, ArrayList<CartItem> items){
         this.cart_id = cart_id;
         this.customer_id = customer_id;
         this.cart_total = cart_total;
         this.items = items;
-        
     }
-    
-    //process cart functions
     
     public void clearCart(PortsDatabase ports) {
         items.clear();
@@ -27,18 +24,25 @@ public class Cart {
     
     public double computeTotal(){
         cart_total = 0;
-        
+        System.out.println("Called Here");
+        try {
         for (int i = 0 ; i < items.size(); i++) {
             CartItem item = items.get(i);
             Product p = item.getProduct();
             cart_total += (p.getPrice() * item.getQuantity());
-            ArrayList toppings = item.getToppings();
+            System.out.println(p.getPrice());
+            ArrayList<CartItemToppings> toppings = item.getToppings();
             for (int j = 0; j < toppings.size(); i++){
-                Topping t = (Topping) toppings.get(j);
-                cart_total += t.getPrice();
+                CartItemToppings itemToppings = toppings.get(j);
+                Topping t = itemToppings.getTopping();
+                cart_total += (t.getPrice() * itemToppings.getQuantity());
+                 System.out.println(t.getPrice());
             }
         }
-        
+        }
+        catch(Exception e) {
+           System.out.println(e.getMessage());
+        }
         return cart_total;
     }
     

@@ -2,7 +2,10 @@ package ports.models;
 
 import java.sql.*;
 import java.sql.DatabaseMetaData;
+import java.text.SimpleDateFormat;
 import java.util.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 public class PortsDatabase {
     static Connection portsConnection;
     
@@ -21,7 +24,7 @@ public class PortsDatabase {
         ArrayList<CartItemToppings> withToppings = new ArrayList<>();
         withToppings.add(new CartItemToppings(-1, testTopping, 2));
         
-        clearCartForCheckout(1);
+        //clearCartForCheckout(1);
         //System.out.println(getCartData(1));
         /*
         testItem1 = new CartItem(-1, 1, testProduct, noToppings, 1);
@@ -31,13 +34,17 @@ public class PortsDatabase {
         
         
         //removeFromCart(1, 1);
-       
+        
         //testItem2 = new CartItem(-1, 1, testProduct, withToppings, 1);
         //addItemToCart(1, testItem2);
         
         //test getting the actual cart on startup
-        
-        
+        //test checkout
+        //Cart checkoutCart = getCartData(1);
+        //System.out.println(checkoutCart);
+        //checkoutCart.computeTotal();
+       
+        //checkOutCart(checkoutCart, "TestCheckoutDate", "TestDeliveryDate");
     }
     
     public void displayTables() {
@@ -308,7 +315,7 @@ public class PortsDatabase {
         return toppings;
     }       
     
-    //database functions for cart
+    //database functions for cart and order
     
     public void clearCartForCheckout(int cart_id){
         System.out.print("TEST clear cart");
@@ -344,7 +351,101 @@ public class PortsDatabase {
         }       
     }
     
-    public Cart getCartData(int customer_id){
+    public void checkOutCart(Cart orderCart, String checkoutDate, String deliveryDate) {
+        System.out.println("TEST CHECKOUT OF CART");
+        int order_id = -999; //to be changed later
+        int cart_id = orderCart.getCart_Id();
+        int customer_id = orderCart.getCustomer_Id();
+        double order_total = orderCart.getCart_Total();
+        
+        ArrayList<CartItem> items = orderCart.getItems();
+        try {
+            //create an order record
+            String query1 = "INSERT INTO orders (customer_id, employee_id, order_status_id, order_total, order_made_date, order_delivery_date, payment_method, payment_date, payment_status)"
+                    + " VALUES (?,?,?,?,?,?,?,?,?)";
+            PreparedStatement psQuery1 = portsConnection.prepareStatement(query1);
+            psQuery1.setInt(1, orderCart.getCustomer_Id());
+            psQuery1.setInt(2, 1);
+            psQuery1.setInt(3, 1);
+            psQuery1.setDouble(4, order_total);
+            psQuery1.setString(5,  checkoutDate);
+            psQuery1.setString(6, deliveryDate);
+            psQuery1.setString(7, "GCASH");
+            psQuery1.setString(8, "TESTDATE");
+            psQuery1.setString(9, "not paid");
+            
+            psQuery1.executeUpdate();
+            System.out.println("Order Created");
+            
+            //get the latest id of orders
+            String query2 = "SELECT order_id FROM orders order by order_id desc";
+            PreparedStatement psQuery2 = portsConnection.prepareStatement(query2);
+            ResultSet forOrderId = psQuery2.executeQuery();
+            
+            forOrderId.next();
+            order_id = Integer.parseInt(forOrderId.getString("order_id"));
+            System.out.println("Andito before sa products part");
+             //insert the purchases into the purchase table
+            for (int i = 0; i < items.size(); i++) {
+                
+                CartItem item = items.get(i);
+                //gets the latest purchase id before inserting
+                int purchase_id = 1;
+                String query3 = "SELECT purchase_id FROM purchase order by purchase_id desc";
+                PreparedStatement psQuery3 = portsConnection.prepareStatement(query3);
+                
+                ResultSet forPurchaseId = psQuery3.executeQuery();
+                
+                if(forPurchaseId.next())
+                    purchase_id = Integer.parseInt(forPurchaseId.getString("purchase_id")) + 1;
+                
+                //insert the actual record
+                String query4 = "INSERT INTO purchase (purchase_id, order_id, product_id, product_quantity) VALUES(?,?,?,?)";
+                PreparedStatement psQuery4 = portsConnection.prepareStatement(query4);
+                psQuery4.setInt(1, purchase_id);
+                psQuery4.setInt(2, order_id);
+                psQuery4.setInt(3, item.getProduct().getId());
+                psQuery4.setInt(4, item.getQuantity());
+                
+                psQuery4.executeUpdate();
+                System.out.println("Purchase +"+purchase_id+" added.");
+                
+                ArrayList<CartItemToppings> toppings = item.getToppings();
+                for(int j = 0; j < toppings.size(); j++) {
+                    
+                    int purchase_toppings_id = 1;
+                    String query5 = "SELECT purchase_toppings_id FROM purchase_toppings order by purchase_toppings_id desc";
+                    PreparedStatement psQuery5 = portsConnection.prepareStatement(query5);
+
+                    ResultSet forPurchaseToppingsId = psQuery5.executeQuery();
+
+                    if(forPurchaseToppingsId.next())
+                        purchase_toppings_id = Integer.parseInt(forPurchaseId.getString("purchase_toppings_id")) + 1;
+
+                    //insert the actual purchase toppings record
+                    CartItemToppings t = toppings.get(i);
+                    String query6 = "INSERT INTO purchase_toppings (purchase_toppings_id, purchase_id, toppings_id, toppings_quantity) VALUES(?,?,?,?)";
+                    PreparedStatement psQuery6 = portsConnection.prepareStatement(query6);
+                    psQuery6.setInt(1, purchase_toppings_id);
+                    psQuery6.setInt(2, purchase_id);
+                    psQuery6.setInt(3, t.getTopping().getId());
+                    psQuery6.setInt(4, t.getQuantity());
+
+                    psQuery6.executeUpdate();
+                    System.out.println("Purchase Toppings +"+purchase_toppings_id+" added.");
+                }
+                
+                
+            }
+           
+        }
+
+        catch(SQLException sqle){
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        }
+    }
+    
+    public synchronized Cart getCartData(int customer_id){
         
         String query1 = "SELECT * FROM carts where customer_id = ?";
         String query2 = "SELECT * FROM cart_purchase where cart_id = ?";
@@ -417,7 +518,7 @@ public class PortsDatabase {
                     resultTopping.next();
                     Topping topping = new Topping(toppings_id, resultTopping.getString("toppings_name"), Integer.parseInt(resultTopping.getString("toppings_stock")), 
                                            resultTopping.getString("toppings_desc"), resultTopping.getString("toppings_image"), resultTopping.getString("toppings_availability"),
-                                           Double.parseDouble(resultTopping.getString("toppings_stock")));
+                                           Double.parseDouble(resultTopping.getString("toppings_price")));
                             
                     toppings.add(new CartItemToppings(cart_purchase_toppings_id, topping, toppings_quantity));
               
@@ -483,7 +584,7 @@ public class PortsDatabase {
     public void addItemToCart(int cart_id, CartItem item) {
         System.out.print("TEST ADD Item to cart");
         
-        String query1 = "INSERT INTO cart_purchase (cart_purchase_id, cart_id, product_id, product_quantity) VALUES(?, ?,?,?)";
+        String query1 = "INSERT INTO cart_purchase (cart_purchase_id, cart_id, product_id, product_quantity) VALUES(?,?,?,?)";
         String query2 = "INSERT INTO cart_purchase_toppings (cart_purchase_toppings_id, cart_purchase_id, toppings_id, toppings_quantity) VALUES(?,?,?,?)";
         String query3 = "SELECT cart_purchase_id FROM cart_purchase where cart_id = ? order by 'cart_purchase_id' desc";
         String query4 = "SELECT cart_purchase_toppings_id FROM cart_purchase_toppings where cart_purchase_id = ? order by 'cart_purchase_toppings_id' desc";

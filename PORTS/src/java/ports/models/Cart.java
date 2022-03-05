@@ -18,6 +18,13 @@ public class Cart {
     }
     
     //process cart functions
+    
+    public void clearCart(PortsDatabase ports) {
+        items.clear();
+        ports.clearCartForCheckout(cart_id);
+        ports.setCartTotal(cart_id, computeTotal());
+    }
+    
     public double computeTotal(){
         cart_total = 0;
         

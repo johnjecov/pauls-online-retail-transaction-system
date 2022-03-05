@@ -21,8 +21,8 @@ public class PortsDatabase {
         ArrayList<CartItemToppings> withToppings = new ArrayList<>();
         withToppings.add(new CartItemToppings(-1, testTopping, 2));
         
-        System.out.println("DITO BEFORE MAG GET DATA");
-        System.out.println(getCartData(1));
+        clearCartForCheckout(1);
+        //System.out.println(getCartData(1));
         /*
         testItem1 = new CartItem(-1, 1, testProduct, noToppings, 1);
         System.out.println("Umabot dito");
@@ -309,6 +309,41 @@ public class PortsDatabase {
     }       
     
     //database functions for cart
+    
+    public void clearCartForCheckout(int cart_id){
+        System.out.print("TEST clear cart");
+        String query1 = "SELECT * FROM cart_purchase where cart_id = ?";
+        String query2 = "DELETE FROM cart_purchase_toppings where cart_purchase_id = ?";
+        String query3 = "DELETE FROM cart_purchase where cart_id = ?";
+        
+        try {
+            PreparedStatement ps = portsConnection.prepareStatement(query1);
+            ps.setInt(1, cart_id);
+            
+            ResultSet results = ps.executeQuery();
+            while(results.next()){
+                //loop for deleting all the toppings for each cart item
+                int cart_purchase_id = Integer.parseInt(results.getString("cart_purchase_id"));
+                
+                ps = portsConnection.prepareStatement(query2);
+                ps.setInt(1, cart_purchase_id);
+                ps.executeUpdate();
+                System.out.println("Toppings fo Cart "+cart_purchase_id+" deleted.");
+            }
+            
+            //delete the items of this cart from the cart_purchase 
+            ps = portsConnection.prepareStatement(query3);
+            ps.setInt(1, cart_id);
+     
+            ps.executeUpdate();
+            System.out.println("Cleared the Cart of: "+ cart_id);
+                
+        }
+        catch(SQLException sqle){
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        }       
+    }
+    
     public Cart getCartData(int customer_id){
         
         String query1 = "SELECT * FROM carts where customer_id = ?";
@@ -395,7 +430,6 @@ public class PortsDatabase {
             
             c = new Cart(cart_id, customer_id, cart_total, items);
             
-            System.out.println("added this record on cart table");
             System.out.println("Cart of: "+ customer_id);
                 
         }

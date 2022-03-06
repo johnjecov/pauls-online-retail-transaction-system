@@ -1,11 +1,5 @@
 /*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 02 14, 22, 1:50:52 AM
-    Author     : chuah_000
+GAWAN NG MAX WIDTH MGA PICTURES
 */
 
 @import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
@@ -165,32 +159,48 @@ pdfItem {
     display: table-row;
 }
 
-.pizzaDisplay1{
+.pizzaDisplay1, .pizzaDisplay2, .pizzaDisplay3{
     display: table-cell;
-}
-
-.pizzaDisplay2{
-    display: table-cell;
-}
-
-.pizzaDisplay3 {
-    display: table-cell;
+    position: relative;
 }
 
 .pizzaImg {
-    width: 65%;
+    max-width: 50%;
     margin-top: 5%;
     margin-left: auto;
     margin-right: auto;
     display: block;
 }
 
-.pizzaName1, .pizzaName2, .pizzaName3, .pizzaDesc1, .pizzaDesc2, .pizzaDesc3, .price1, .price2, .price3 {
+.pizzaName1, .pizzaName2, .pizzaName3, .pizzaDesc1, .pizzaDesc2, .pizzaDesc3, .price1, .price2, .price3, .quantity1, .quantity2, .quantity3, .availabilityButton {
     text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2.5%;
 }
 
 .pizzaName1, .pizzaName2, .pizzaName3, .price1, .price2, .price3 {
     font-size: 130%;
+}
+
+::placeholder {
+    color: #fff;
+    opacity: 0.5;
+}
+
+input {
+    background-color: #2e2e2e;
+    color: #fff;
+    width: 40%;
+}
+
+.availabilityButton {
+    font-size: 100%;
+    background-color: #008c45;
+    padding: 2% 3% 2% 3%;
+    border-radius: 15%;
+    cursor: pointer;
 }
 
 .bottomButtons{
@@ -219,7 +229,7 @@ pdfItem {
     border-radius: 15%;
 }
 
-.editProductsButton {
+.saveChangesButton {
     float: right;
     margin-right: 5%;
     border: 0;
@@ -227,22 +237,19 @@ pdfItem {
     padding: 0 20px;
     font-size: 1vw;
     text-align: center;
-    color: #fff;
+    color: #000;
     border-radius: 10px;
-    background-color: #cd212a;
+    background-color: #ffde59;
     width: 15%;
     cursor: pointer;
 }
 
-.pdfContent {
-    float: left;
-    margin-left: 5%;
-    bottom: 5%;
-    width: 80%;
-    height: 80%;
-}
-
-.pdfItem {
-    width: 100%;
-    height: 100%;
+.orderRemove {
+    font-size: 500%;
+    position: absolute;
+    right: 10%;
+    top: -10%;
+    cursor: pointer;
+    transform: rotate(45deg);
+    color: #ff5757;
 }

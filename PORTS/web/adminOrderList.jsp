@@ -1,6 +1,19 @@
 <%-- 
  scroll="no" style="overflow: hidden"
 ^sa <body> for no scroll
+
+<ul class="orders" id="order0">
+                            <li class="orderProperty">Sample</li>
+                            <li class="orderProperty">Sample</li>
+                            <li class="orderProperty">Sample</li>
+                            <li class="orderProperty">Sample</li>
+                            <li class="orderProperty">Sample</li>
+                            <li class="orderProperty">Sample</li>
+                            <li class="orderProperty">Sample</li>
+                            <li class="orderProperty">Sample</li>
+                            <li class="orderProperty">Sample</li>
+                            <img class="orderRemove" id="orderRemoveID" src="image/close-button-orders.png" alt="remove order?">
+                        </ul>
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -56,27 +69,155 @@
                     </ul>
                 </div>
                 <div class="orderBody">
-                    <ul class="listOfOrders">
-                        <ul class="orders" id="order0">
-                            <li class="orderProperty">Sample</li>
-                            <li class="orderProperty">Sample</li>
-                            <li class="orderProperty">Sample</li>
-                            <li class="orderProperty">Sample</li>
-                            <li class="orderProperty">Sample</li>
-                            <li class="orderProperty">Sample</li>
-                            <li class="orderProperty">Sample</li>
-                            <li class="orderProperty">Sample</li>
-                            <li class="orderProperty">Sample</li>
-                            <img class="orderRemove" src="image/close-button-orders.png" alt="remove order?">
-                        </ul>
+
+                    <ul class="orders" id="order1">
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample<br>Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
                     </ul>
+                    <p class="orderRemove" id="orderRemoveID">+</p>
+
                 </div>
+                <div class="orderBody">
+
+                    <ul class="orders" id="order2">
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample<br>Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                    </ul>
+                    <p class="orderRemove" id="orderRemoveID">+</p>
+
+                </div>
+                <div class="orderBody">
+
+                    <ul class="orders" id="order3">
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample<br>Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                    </ul>
+                    <p class="orderRemove" id="orderRemoveID">+</p>
+
+                </div>
+                <div class="orderBody">
+
+                    <ul class="orders" id="order4">
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample<br>Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                    </ul>
+                    <p class="orderRemove" id="orderRemoveID">+</p>
+
+                </div>
+                <div class="orderBody">
+
+                    <ul class="orders" id="order5">
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample<br>Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                    </ul>
+                    <p class="orderRemove" id="orderRemoveID">+</p>
+
+                </div>
+                <div class="orderBody">
+
+                    <ul class="orders" id="order6">
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample<br>Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                    </ul>
+                    <p class="orderRemove" id="orderRemoveID">+</p>
+
+                </div>
+                <div class="orderBody">
+
+                    <ul class="orders" id="order7">
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample<br>Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                        <li class="orderProperty">Sample</li>
+                    </ul>
+                    <p class="orderRemove" id="orderRemoveID">+</p>
+
+                </div>
+                <script>
+                    document.getElementById('orderRemoveID').addEventListener('click',
+                            function () {
+                                document.querySelector('.cancelModal').style.display = 'flex';
+                            });
+                            
+                </script>
                 <div class="pageSelector">
                     <ul class="pageList">
-                        <li class="pageNumber"><a>1</a></li>
-                        <li class="pageNumber2"><a>2</a></li>
+                        <li class="pageNumber1"><a>1</a></li>
+                        <li class="pageNumber"><a>2</a></li>
                         <li class="pageNumber"><a>3</a></li>
                     </ul>
+                </div>
+            </div>
+        </div>
+        <div class="cancelModal">
+            <div class="modalContent">
+                <p class="modalText">
+                    Do you want to cancel<br>orderN
+                </p>
+                <div class="modalButtons">
+                    <button class="modalButtonYes" type="button">Yes</button>
+                    <button class="modalButtonNo" type="button">No</button>
+                    <script>
+                        document.querySelector('.modalButtonYes').addEventListener('click',
+                                function () {
+                                    document.querySelector('.cancelModal').style.display = 'none';
+                                    var myobj = document.getElementById("order1");
+                                    myobj.remove();
+                                });
+
+                        document.querySelector('.modalButtonNo').addEventListener('click',
+                                function () {
+                                    document.querySelector('.cancelModal').style.display = 'none';
+                                });
+
+                    </script>
                 </div>
             </div>
         </div>

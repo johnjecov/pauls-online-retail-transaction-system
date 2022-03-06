@@ -23,6 +23,8 @@ html,body {
     border-bottom-right-radius:5%;
     margin-left: -2%;
     margin-top: -2%;
+    z-index: 2;
+    position: relative;
 }
 
 .logo {
@@ -40,13 +42,11 @@ html,body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #2e2e2e;
     font-size: 1.5vw;
 }
 
 .options {
     float: bottom;
-    background-color: #2e2e2e
 }
 
 .options a {
@@ -56,7 +56,6 @@ html,body {
     color: white;
     padding: 4%;
     text-decoration: none;
-    background-color: #2e2e2e
 }
 
 .options a:hover {
@@ -68,13 +67,13 @@ html,body {
 
 .logout {
     overflow: hidden;
-    background-color: #2e2e2e;
     font-size: 1.2vw;
     margin-top: 80%;
     margin-left: 5%;
     bottom: 0%;
     position: fixed;
     padding: 1%;
+    cursor: pointer;
 }
 
 .logout a {
@@ -135,55 +134,60 @@ label {
 }
 
 .orderList {
-    width: 100%;
+    width: 99%;
     margin-left: 5%;
-    margin-top: 2%;
+    margin-top: 5%;
 }
 
 .orderAttributes {
     list-style-type: none;
-    margin: -1%;
-    padding: 1%;
-    font-size: 1.2vw;
     display: flex;
+    justify-content: space-around;
 }
 
 .property {
-    flex: 1;
-    float: left;
-    margin-right: 5%;
+    list-style-type: none;
+    font-size: 1.4vw;
+    display:inline-block; 
 }
 
 .orderBody {
     background-color: #2e2e2e;
-    margin-top: 1%;
     margin-left: 5%;
     width: 99%;
-    font-size: 1.5vw;
-    border-radius: 2.5%;
-    padding: 1%;
+    border-radius: 5%;
+    position: relative;
 }
 
 .orders{
-    font-size: 1.2vw;
-    margin-left: -5%;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
 }
 
 .orderProperty {
     list-style-type: none;
-    display: inline-block;
-    margin-right: 6%;
-    width: auto;
+    font-size: 0.9vw;
+    display:inline-block; 
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    overflow: hidden;
+    white-space: nowrap; /* Don't forget this one */
+    text-overflow: ellipsis;
+
 }
 
 .orderRemove {
-    width: 5%;
-    position: relative;
-    right: 2%;
+    font-size: 2vw;
+    position: absolute;
+    right: 0.5%;
+    bottom: -20%;
+    cursor: pointer;
+    transform: rotate(45deg);
 }
 
 .pageSelector{
-    bottom: 5%;
+    bottom: 3%;
     position: fixed;
     width: 100%;
     overflow: hidden;
@@ -194,7 +198,7 @@ label {
     list-style-type: none;
 }
 
-.pageNumber,.pageNumber2 {
+.pageNumber,.pageNumber1 {
     float: left;
     background-color: #737373;
     margin-right: 1%;
@@ -205,6 +209,52 @@ label {
     border-radius: 15%;
 }
 
-.pageNumber2 {
+.pageNumber1 {
     background-color: #008c45;
 }
+
+.cancelModal {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.modalContent {
+    width: 500px;
+    height: 300px;
+    background-color: #f2f4ea;
+    text-align: center;
+}
+
+.modalText {
+    font-size: 200%;
+    color: #1e1f20;
+}
+
+.modalButtonYes {
+    color: #000;
+    background-color: #f2f4ea;
+    font-size: 200%;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-right: 15%;
+    border-radius: 5%;
+    cursor: pointer;
+}
+
+.modalButtonNo {
+    color: #000;
+    background-color: #ff5757;
+    font-size: 200%;
+    padding-left: 5%;
+    padding-right: 5%;
+    border-radius: 5%;
+    cursor: pointer;
+}
+

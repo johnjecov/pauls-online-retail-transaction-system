@@ -16,9 +16,9 @@ public class Cart {
         this.items = items;
     }
     
-    public void checkOut(PortsDatabase ports, String checkoutDate, String deliveryDate) {
+    public void checkOut(PortsDatabase ports, String checkoutDate, String deliveryDate, int address_id) {
         //access the cart to checkout the cart.
-        ports.checkOutCart(this, checkoutDate, deliveryDate);
+        ports.checkOutCart(this, checkoutDate, deliveryDate, address_id);
         clearCart(ports);
     }
     

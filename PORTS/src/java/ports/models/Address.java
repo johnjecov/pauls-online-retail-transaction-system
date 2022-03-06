@@ -94,4 +94,8 @@ public class Address {
         return addressInfo;
     }
     
+    public String toString() {
+        return "Address Name: "+addressName;
+    }
+    
 }

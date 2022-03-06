@@ -15,12 +15,13 @@ public class Order {
     private String payment_date;
     private String payment_status;
     private ArrayList<OrderItem> items;
+    private Address address;
     
     public Order() {
         System.out.println("Order Placeholder");
     }
     public Order(int order_id, int customer_id, int employee_id, int order_status_id, double order_total, String order_made_date, String order_delivery_date,
-            String payment_method, String payment_date, String payment_status,ArrayList<OrderItem> Items){
+            String payment_method, String payment_date, String payment_status,ArrayList<OrderItem> Items, Address address){
         
         this.order_id = order_id;
         this.customer_id = customer_id;
@@ -33,6 +34,7 @@ public class Order {
         this.payment_date = payment_date;
         this.payment_status = payment_status;
         this.items = items;
+        this.address = address;
     }
      
     
@@ -77,12 +79,17 @@ public class Order {
         return items;
     }
     
+    public Address getAddress() {
+        return address;
+    }
+    
     public String toString() {
         return String.format("Hello this is order # %d of customer %d\n"
                 + "Order Total: %f\n"
                 + "Order Status: %d\n"
                 + "Payment Method: %s\n"
-                + "Payment Status: %s\n", order_id, customer_id, order_total, order_status_id, payment_method, payment_status);
+                + "Payment Status: %s\n"
+                + "Address Name: %s", order_id, customer_id, order_total, order_status_id, payment_method, payment_status, address.getAddressName());
     }
     
 }

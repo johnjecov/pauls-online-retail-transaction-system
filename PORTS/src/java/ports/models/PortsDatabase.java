@@ -12,8 +12,11 @@ public class PortsDatabase {
     ArrayList<Product> products;
     ArrayList<Topping> toppings;
     ArrayList<String> order_status;
+    ArrayList<Address> addresses;
+        
     ArrayList<Order> OrderSales;
     ArrayList<Order> OrderHistory;
+
     String defaultOrder = "asc";
     public PortsDatabase(Connection con){
         setConnection(con);
@@ -22,6 +25,7 @@ public class PortsDatabase {
         products = getProducts();
         toppings = getToppings();
         order_status = getOrderStats();
+        addresses = getAllAddresses();
         //Code sample for testing cart
         int testCartId = 1;
         CartItem testItem1;
@@ -39,7 +43,6 @@ public class PortsDatabase {
         System.out.println("Umabot dito");
         addItemToCart(1, testItem1);
         */
-        
         
         //removeFromCart(1, 1);
         //Cart checkoutCart = getCartData(1);
@@ -62,6 +65,7 @@ public class PortsDatabase {
         //updateOrderStatus(2);
         //updateOrderPayment(2, "soon");
       
+        
         OrderSales = getOrderSales("asc");
         
         System.out.println("~~~~~~~~~~Orders that are done~~~~~~~~~");
@@ -171,9 +175,43 @@ public class PortsDatabase {
             System.out.println("SQLException error occured - " + sqle.getMessage());
         }
     }
-    
-     
+         
     public ArrayList getAddresses(int customerID){
+        System.out.print("TEST get ADDRESSES");
+        String query1 = "SELECT * FROM address WHERE customer_id = ? order by 'address_id' asc";
+     
+        ArrayList<Address> addresses = new ArrayList<>();
+        try {
+            PreparedStatement ps = portsConnection.prepareStatement(query1);
+            ps.setInt(1, customerID);
+            ResultSet results = ps.executeQuery();
+            
+            
+            
+            while(results.next()){
+                addresses.add(
+                        new Address(results.getString("address_id"),
+                        results.getString("customer_id"),
+                        results.getString("address_name"),
+                        results.getString("address_details"),
+                        results.getString("additional_details"),
+                        results.getString("house_no"),
+                        results.getString("street"),
+                        results.getString("city"),
+                        results.getString("province"),
+                        results.getString("postal_code")
+                        ));
+            }
+    
+                
+        }
+        catch(SQLException sqle){
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        }
+        return addresses;
+    }
+    
+        public ArrayList getAllAddresses(){
         System.out.print("TEST get ADDRESSES");
         String query1 = "SELECT * FROM address order by 'address_id' asc";
      
@@ -207,7 +245,6 @@ public class PortsDatabase {
         }
         return addresses;
     }
-    
     
     //database commands for products
     public void addProduct(Product a){
@@ -487,7 +524,7 @@ public class PortsDatabase {
             o = new Order(order_id, Integer.parseInt(orderResults.getString("customer_id")), Integer.parseInt(orderResults.getString("employee_id")), 
                     Integer.parseInt(orderResults.getString("order_status_id")), Double.parseDouble(orderResults.getString("order_total")), orderResults.getString("order_made_date"),
                     orderResults.getString("order_delivery_date"), orderResults.getString("payment_method"), orderResults.getString("payment_date"), orderResults.getString("payment_status"),
-                    items);
+                    items, addresses.get(Integer.parseInt(orderResults.getString("address_id")) - 1));
   
             System.out.println("Order of: "+ order_id);
                 
@@ -502,9 +539,9 @@ public class PortsDatabase {
     //for specific customer to get his or her latest order
     
     //update order status
-    public void updateOrderStatus(int order_id){
+    public void updateOrderStatus(int order_id, int employee_id){
         String query1 = "SELECT * FROM orders where order_id = ?";
-        String query2 = "UPDATE orders SET order_status_id = ? WHERE order_id = ?";
+        String query2 = "UPDATE orders SET order_status_id = ?, employee_id = ? WHERE order_id = ?";
         
         try {
             PreparedStatement ps = portsConnection.prepareStatement(query1);
@@ -521,7 +558,8 @@ public class PortsDatabase {
                 order_status += 1;
             
             ps.setInt(1, order_status);
-            ps.setInt(2, order_id);
+            ps.setInt(2, employee_id);
+            ps.setInt(3, order_id);
             
             ps.executeUpdate();
             this.OrderHistory = getOrderHistory(defaultOrder);
@@ -534,9 +572,9 @@ public class PortsDatabase {
     }
     
     //update payment status
-    public void updateOrderPayment(int order_id, String payment_date){
+    public void updateOrderPayment(int order_id, int employee_id, String payment_date){
         String query1 = "SELECT * FROM orders where order_id = ?";
-        String query2 = "UPDATE orders SET payment_date = ?, payment_status = ? WHERE order_id = ?";
+        String query2 = "UPDATE orders SET payment_date = ?, payment_status = ?, employee_id = ? WHERE order_id = ?";
         
         try {
             PreparedStatement ps = portsConnection.prepareStatement(query1);
@@ -552,7 +590,8 @@ public class PortsDatabase {
                 ps.setString(2, "not paid");
             
             ps.setString(1, payment_date);
-            ps.setInt(3, order_id);
+            ps.setInt(3, employee_id);
+            ps.setInt(4, order_id);
             ps.executeUpdate();
             this.OrderHistory = getOrderHistory(defaultOrder);
             this.OrderSales = getOrderSales(defaultOrder);
@@ -625,8 +664,9 @@ public class PortsDatabase {
             o = new Order(order_id, Integer.parseInt(orderResults.getString("customer_id")), Integer.parseInt(orderResults.getString("employee_id")), 
                     Integer.parseInt(orderResults.getString("order_status_id")), Double.parseDouble(orderResults.getString("order_total")), orderResults.getString("order_made_date"),
                     orderResults.getString("order_delivery_date"), orderResults.getString("payment_method"), orderResults.getString("payment_date"), orderResults.getString("payment_status"),
-                    items);
+                    items, addresses.get(Integer.parseInt(orderResults.getString("address_id")) - 1));
   
+            
             System.out.println("Order of: "+ customer_id);
                 
         }
@@ -669,7 +709,7 @@ public class PortsDatabase {
         }       
     }
     
-    public void checkOutCart(Cart orderCart, String checkoutDate, String deliveryDate) {
+    public void checkOutCart(Cart orderCart, String checkoutDate, String deliveryDate, int address_id) {
         System.out.println("TEST CHECKOUT OF CART");
         int order_id = -999; //to be changed later
         int cart_id = orderCart.getCart_Id();
@@ -679,8 +719,8 @@ public class PortsDatabase {
         ArrayList<CartItem> items = orderCart.getItems();
         try {
             //create an order record
-            String query1 = "INSERT INTO orders (customer_id, employee_id, order_status_id, order_total, order_made_date, order_delivery_date, payment_method, payment_date, payment_status)"
-                    + " VALUES (?,?,?,?,?,?,?,?,?)";
+            String query1 = "INSERT INTO orders (customer_id, employee_id, order_status_id, order_total, order_made_date, order_delivery_date, payment_method, payment_date, payment_status, address_id)"
+                    + " VALUES (?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement psQuery1 = portsConnection.prepareStatement(query1);
             psQuery1.setInt(1, orderCart.getCustomer_Id());
             psQuery1.setInt(2, 1);
@@ -691,6 +731,7 @@ public class PortsDatabase {
             psQuery1.setString(7, "GCASH");
             psQuery1.setString(8, "TESTDATE");
             psQuery1.setString(9, "not paid");
+            psQuery1.setInt(10, address_id);
             
             psQuery1.executeUpdate();
             System.out.println("Order Created");

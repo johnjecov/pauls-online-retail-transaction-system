@@ -13,7 +13,6 @@ public class PortsDatabase {
     ArrayList<Topping> toppings;
     ArrayList<String> order_status;
     ArrayList<Address> addresses;
-        
     ArrayList<Order> OrderSales;
     ArrayList<Order> OrderHistory;
 
@@ -1051,7 +1050,7 @@ public class PortsDatabase {
         return addresses;
     }
     
-     public ArrayList getOrderSales(String orderBy){
+    public ArrayList getOrderSales(String orderBy){
         OrderSales = retrieveOrderSales(orderBy);
         return OrderSales;
     }

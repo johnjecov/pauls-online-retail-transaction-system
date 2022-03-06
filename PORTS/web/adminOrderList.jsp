@@ -1,21 +1,5 @@
-<%-- 
- scroll="no" style="overflow: hidden"
-^sa <body> for no scroll
-
-<ul class="orders" id="order0">
-                            <li class="orderProperty">Sample</li>
-                            <li class="orderProperty">Sample</li>
-                            <li class="orderProperty">Sample</li>
-                            <li class="orderProperty">Sample</li>
-                            <li class="orderProperty">Sample</li>
-                            <li class="orderProperty">Sample</li>
-                            <li class="orderProperty">Sample</li>
-                            <li class="orderProperty">Sample</li>
-                            <li class="orderProperty">Sample</li>
-                            <img class="orderRemove" id="orderRemoveID" src="image/close-button-orders.png" alt="remove order?">
-                        </ul>
---%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.*, ports.models.*"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -68,118 +52,35 @@
                         <li class="property">Status</li>
                     </ul>
                 </div>
-                <div class="orderBody">
-
-                    <ul class="orders" id="order1">
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample<br>Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                    </ul>
-                    <p class="orderRemove" id="orderRemoveID">+</p>
-
-                </div>
-                <div class="orderBody">
-
-                    <ul class="orders" id="order2">
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample<br>Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                    </ul>
-                    <p class="orderRemove" id="orderRemoveID">+</p>
-
-                </div>
-                <div class="orderBody">
-
-                    <ul class="orders" id="order3">
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample<br>Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                    </ul>
-                    <p class="orderRemove" id="orderRemoveID">+</p>
-
-                </div>
-                <div class="orderBody">
-
-                    <ul class="orders" id="order4">
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample<br>Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                    </ul>
-                    <p class="orderRemove" id="orderRemoveID">+</p>
-
-                </div>
-                <div class="orderBody">
-
-                    <ul class="orders" id="order5">
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample<br>Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                    </ul>
-                    <p class="orderRemove" id="orderRemoveID">+</p>
-
-                </div>
-                <div class="orderBody">
-
-                    <ul class="orders" id="order6">
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample<br>Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                    </ul>
-                    <p class="orderRemove" id="orderRemoveID">+</p>
-
-                </div>
-                <div class="orderBody">
-
-                    <ul class="orders" id="order7">
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample<br>Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                        <li class="orderProperty">Sample</li>
-                    </ul>
-                    <p class="orderRemove" id="orderRemoveID">+</p>
-
-                </div>
+                
+                <%
+                    ServletContext sc = getServletContext();
+                    PortsDatabase ports = (PortsDatabase) getServletContext().getAttribute("dbConnection");
+                    ArrayList<Order> orderList = (ArrayList) ports.getOrderHistory("asc");
+                    ArrayList orderStatus = ports.getOrderStats();
+                    for (Order x : orderList) 
+                    {
+                       
+                        String s = String.format("<div class = 'orderBody'>\n"
+                                + "<ul class = 'orders'>\n"
+                                + "<li class = 'orderProperty'>%s</li>"
+                                + "<li class = 'orderProperty'>%s</li>\n"
+                                + "<li class = 'orderProperty'>%s</li>\n"
+                                + "<li class = 'orderProperty'>%s</li>\n"
+                                + "<li class = 'orderProperty'>%s</li>\n"
+                                + "<li class = 'orderProperty'>%s</li>\n"
+                                + "<li class = 'orderProperty'>%s</li>\n"
+                                + "<li class = 'orderProperty'>%s</li>\n"
+                                + "<li class = 'orderProperty'>%s</li>\n"
+                                + "</ul>\n"
+                                + "<p class = 'orderRemove' id = 'orderRemoveID'>%s</p>\n"
+                                + "</div>",
+                                String.valueOf(x.getOrder_Id()),x.getOrder_Delivery_Date(),String.valueOf(x.getCustomer_Id()),x.getPayment_Method(),
+                                x.getAddress(),String.valueOf(x.getOrder_Id()),String.valueOf(x.getOrder_Id()),x.getPayment_Status(),orderStatus.get(x.getOrder_Status_Id()-1),"+");
+                        out.println(s);
+                    }
+                %>
+    
                 <script>
                     document.getElementById('orderRemoveID').addEventListener('click',
                             function () {

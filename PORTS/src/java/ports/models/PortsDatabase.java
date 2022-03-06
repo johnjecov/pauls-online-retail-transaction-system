@@ -21,11 +21,10 @@ public class PortsDatabase {
     public PortsDatabase(Connection con){
         setConnection(con);
         System.out.println("database connection created");
-        
-        products = getProducts();
-        toppings = getToppings();
+        products = retrieveProducts();
+        toppings = retrieveToppings();
         order_status = getOrderStats();
-        addresses = getAllAddresses();
+        addresses = retrieveAllAddresses();
         //Code sample for testing cart
         int testCartId = 1;
         CartItem testItem1;
@@ -66,7 +65,7 @@ public class PortsDatabase {
         //updateOrderPayment(2, "soon");
       
         
-        OrderSales = getOrderSales("asc");
+        OrderSales = retrieveOrderSales("asc");
         
         System.out.println("~~~~~~~~~~Orders that are done~~~~~~~~~");
         for(Order x : OrderSales){
@@ -74,7 +73,7 @@ public class PortsDatabase {
         }
         
         System.out.println("~~~~~~~~~~Orders that are not yet done~~~~~~~~~");
-        OrderHistory = getOrderHistory("asc");
+        OrderHistory = retrieveOrderHistory("asc");
         for(Order x : OrderHistory){
             System.out.println(x);
         }
@@ -176,7 +175,7 @@ public class PortsDatabase {
         }
     }
          
-    public ArrayList getAddresses(int customerID){
+    public ArrayList getCustomerAddresses(int customerID){
         System.out.print("TEST get ADDRESSES");
         String query1 = "SELECT * FROM address WHERE customer_id = ? order by 'address_id' asc";
      
@@ -211,7 +210,7 @@ public class PortsDatabase {
         return addresses;
     }
     
-        public ArrayList getAllAddresses(){
+        public ArrayList retrieveAllAddresses(){
         System.out.print("TEST get ADDRESSES");
         String query1 = "SELECT * FROM address order by 'address_id' asc";
      
@@ -293,7 +292,7 @@ public class PortsDatabase {
         }
     }
     
-    public ArrayList getProducts(){
+    public ArrayList retrieveProducts(){
         System.out.print("TEST get Products");
         String query1 = "SELECT * FROM products order by 'product_id' asc";
      
@@ -390,7 +389,7 @@ public class PortsDatabase {
         }
     }
     
-    public ArrayList getToppings(){
+    public ArrayList retrieveToppings(){
         System.out.print("TEST get toppings");
         String query1 = "SELECT * FROM toppings order by 'toppings_id' asc";
      
@@ -424,7 +423,7 @@ public class PortsDatabase {
     
     //admin side get orders, 1 for the history, 1 for the status
     
-    public ArrayList getOrderSales(String orderBy) {
+    public ArrayList retrieveOrderSales(String orderBy) {
         ArrayList<Order> orders = new ArrayList<>();
         
         try {
@@ -446,7 +445,7 @@ public class PortsDatabase {
     }
     
     //the orders that are not yet done
-    public ArrayList getOrderHistory(String orderBy) {
+    public ArrayList retrieveOrderHistory(String orderBy) {
         ArrayList<Order> orders = new ArrayList<>();
         
         try {
@@ -1033,7 +1032,35 @@ public class PortsDatabase {
         }
     }
      
+    //getters
+    public ArrayList getProducts(){
+        products = retrieveProducts();
+        return products;
+    }
+    public ArrayList getToppings(){
+        toppings = retrieveToppings();
+        return toppings;
+    }
+    
+    public ArrayList getOrderStatus(){
+        order_status = getOrderStats();
+        return order_status;
+    }
+    public ArrayList getAddresses(){
+        addresses = retrieveAllAddresses();
+        return addresses;
+    }
+    
+     public ArrayList getOrderSales(String orderBy){
+        OrderSales = retrieveOrderSales(orderBy);
+        return OrderSales;
+    }
      
+    public ArrayList getOrderHistory(String orderBy){
+        OrderHistory = retrieveOrderHistory(orderBy);
+        return OrderHistory;
+    }
+    
     public void setConnection(Connection con){
         portsConnection = con;
         System.out.println("Ports Set.");

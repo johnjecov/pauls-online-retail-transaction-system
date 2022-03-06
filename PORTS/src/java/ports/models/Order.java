@@ -78,7 +78,11 @@ public class Order {
     }
     
     public String toString() {
-        return String.format("This is order # %d of customer %d", order_id, customer_id);
+        return String.format("Hello this is order # %d of customer %d\n"
+                + "Order Total: %f\n"
+                + "Order Status: %d\n"
+                + "Payment Method: %s\n"
+                + "Payment Status: %s\n", order_id, customer_id, order_total, order_status_id, payment_method, payment_status);
     }
     
 }

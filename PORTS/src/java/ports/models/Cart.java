@@ -92,7 +92,8 @@ public class Cart {
     }
     
     public String toString() {
-        return String.format("This is cart # %d of customer %d", cart_id, customer_id);
+        return String.format("This is cart # %d of customer %d\n"
+                + "Cart Total: %f\n", cart_id, customer_id, cart_total);
     }
     
 }

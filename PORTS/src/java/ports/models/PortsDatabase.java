@@ -6,15 +6,22 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 public class PortsDatabase {
     static Connection portsConnection;  
     ArrayList<Product> products;
     ArrayList<Topping> toppings;
     ArrayList<String> order_status;
+    ArrayList<Order> OrderSales;
+    ArrayList<Order> OrderHistory;
+    String defaultOrder = "asc";
     public PortsDatabase(Connection con){
         setConnection(con);
         System.out.println("database connection created");
         
+        products = getProducts();
+        toppings = getToppings();
+        order_status = getOrderStats();
         //Code sample for testing cart
         int testCartId = 1;
         CartItem testItem1;
@@ -42,12 +49,31 @@ public class PortsDatabase {
         
         //test getting the actual cart on startup
         //test checkout
+        
         Cart checkoutCart = getCartData(1);
         System.out.println(checkoutCart.getCart_Total());
         
         
         Order test = getOrderData(1);
         System.out.println(test);
+        
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        
+        //updateOrderStatus(2);
+        //updateOrderPayment(2, "soon");
+      
+        OrderSales = getOrderSales("asc");
+        
+        System.out.println("~~~~~~~~~~Orders that are done~~~~~~~~~");
+        for(Order x : OrderSales){
+            System.out.println(x);
+        }
+        
+        System.out.println("~~~~~~~~~~Orders that are not yet done~~~~~~~~~");
+        OrderHistory = getOrderHistory("asc");
+        for(Order x : OrderHistory){
+            System.out.println(x);
+        }
         //checkoutCart.clearCart(this);
         //checkoutCart.checkOut(this, "testDate", "deliveryDate");
         //System.out.println(checkoutCart.getCart_Total());
@@ -58,6 +84,8 @@ public class PortsDatabase {
         
         //checkOutCart(checkoutCart, "TestCheckoutDate", "TestDeliveryDate");
     }
+    
+
     
     public void displayTables() {
         System.out.println("Print here the tables.");
@@ -250,8 +278,7 @@ public class PortsDatabase {
                         Double.parseDouble(results.getString("product_price"))
                         ));
             }      
-            
-            this.products = products;
+            //this.products = products;
         }
         catch(SQLException sqle){
             System.out.println("SQLException error occured - " + sqle.getMessage());
@@ -273,7 +300,7 @@ public class PortsDatabase {
                 order_status.add(results.getString("order_status_step"));
             }        
             
-            this.order_status = order_status;
+            //this.order_status = order_status;
         }
         catch(SQLException sqle){
             System.out.println("SQLException error occured - " + sqle.getMessage());
@@ -348,7 +375,7 @@ public class PortsDatabase {
                         ));
             }        
             
-            this.toppings = toppings;
+            //this.toppings = toppings;
         }
         catch(SQLException sqle){
             System.out.println("SQLException error occured - " + sqle.getMessage());
@@ -358,15 +385,184 @@ public class PortsDatabase {
     
     //database functions for cart and order
     
-    public void getOrderSales() {
+    //admin side get orders, 1 for the history, 1 for the status
+    
+    public ArrayList getOrderSales(String orderBy) {
+        ArrayList<Order> orders = new ArrayList<>();
+        
+        try {
+            String query = "SELECT order_id FROM orders WHERE order_status_id = 5 order by order_id "+orderBy;
+            PreparedStatement ps = portsConnection.prepareStatement(query);
+            ResultSet results = ps.executeQuery();
+            
+            while(results.next()){
+                int order_id = Integer.parseInt(results.getString("order_id"));
+                Order o = getOrder(order_id);
+                orders.add(o);
+            }
+        }
+        catch(SQLException sqle){
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        }
+        
+        return orders;   
+    }
+    
+    //the orders that are not yet done
+    public ArrayList getOrderHistory(String orderBy) {
+        ArrayList<Order> orders = new ArrayList<>();
+        
+        try {
+            String query = "SELECT order_id FROM orders WHERE order_status_id < 5 order by order_id "+orderBy;
+            PreparedStatement ps = portsConnection.prepareStatement(query);
+            ResultSet results = ps.executeQuery();
+            
+            while(results.next()){
+                int order_id = Integer.parseInt(results.getString("order_id"));
+                Order o = getOrder(order_id);
+                orders.add(o);
+            }
+        }
+        catch(SQLException sqle){
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        }
+        
+        return orders;   
+    }
+    
+    public Order getOrder(int order_id) {
+      
+        String query1 = "SELECT * FROM orders where order_id = ?";
+        String query2 = "SELECT * FROM purchase where order_id = ?";
+        String query3 = "SELECT * FROM purchase_toppings where purchase_id = ?";
+        
+        Order o = new Order();
+
+        try {
+            PreparedStatement ps = portsConnection.prepareStatement(query1);
+            
+            
+            ps.setInt(1, order_id);
+            
+            ResultSet orderResults = ps.executeQuery();
+            
+            orderResults.next();
+            //done getting the info of cart now get the data from the cart purchases
+            ps = portsConnection.prepareStatement(query2);
+            ps.setInt(1, order_id);
+            
+            ResultSet purchaseResults = ps.executeQuery();
+            ArrayList<OrderItem> items = new ArrayList<>();
+            while(purchaseResults.next()){
+                int purchase_id = Integer.parseInt(purchaseResults.getString("purchase_id"));
+                int product_id = Integer.parseInt(purchaseResults.getString("product_id"));
+                int quantity = Integer.parseInt(purchaseResults.getString("product_quantity"));
+                
+                Product pizza = this.products.get(product_id - 1);
+                PreparedStatement ps2 = portsConnection.prepareStatement(query3);
+                ps2.setInt(1, purchase_id);
+                
+                ResultSet forToppings = ps2.executeQuery();
+                
+                //while loop
+                 //create array list for the toppings for the product
+                ArrayList<OrderItemToppings> toppings = new ArrayList<>();
+                
+                while (forToppings.next()){
+                    int purchase_toppings_id = Integer.parseInt(forToppings.getString("purchase_toppings_id"));
+                    int toppings_id = Integer.parseInt(forToppings.getString("toppings_id"));
+                    int toppings_quantity = Integer.parseInt(forToppings.getString("toppings_quantity"));
+                    
+                    Topping topping = this.toppings.get(toppings_id - 1 );
+                    toppings.add(new OrderItemToppings(purchase_toppings_id, topping, toppings_quantity));
+              
+                }
+                
+                //add OrderItem
+                
+                items.add(new OrderItem(purchase_id, order_id, pizza, toppings, quantity));
+            }
+            
+            
+            o = new Order(order_id, Integer.parseInt(orderResults.getString("customer_id")), Integer.parseInt(orderResults.getString("employee_id")), 
+                    Integer.parseInt(orderResults.getString("order_status_id")), Double.parseDouble(orderResults.getString("order_total")), orderResults.getString("order_made_date"),
+                    orderResults.getString("order_delivery_date"), orderResults.getString("payment_method"), orderResults.getString("payment_date"), orderResults.getString("payment_status"),
+                    items);
+  
+            System.out.println("Order of: "+ order_id);
+                
+        }
+        catch(SQLException sqle){
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        }
+        return o;       
+    }
+    
+    
+    //for specific customer to get his or her latest order
+    
+    //update order status
+    public void updateOrderStatus(int order_id){
+        String query1 = "SELECT * FROM orders where order_id = ?";
+        String query2 = "UPDATE orders SET order_status_id = ? WHERE order_id = ?";
+        
+        try {
+            PreparedStatement ps = portsConnection.prepareStatement(query1);
+            ps.setInt(1, order_id);
+            ResultSet results = ps.executeQuery();
+            
+            results.next();
+            
+            ps = portsConnection.prepareStatement(query2);
+            int order_status = 1;
+            order_status = Integer.parseInt(results.getString("order_status_id"));
+            
+            if(order_status < 5)
+                order_status += 1;
+            
+            ps.setInt(1, order_status);
+            ps.setInt(2, order_id);
+            
+            ps.executeUpdate();
+            this.OrderHistory = getOrderHistory(defaultOrder);
+            this.OrderSales = getOrderSales(defaultOrder);
+        }
+        catch(SQLException sqle){
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        }
         
     }
     
-    public void getOrders() {
+    //update payment status
+    public void updateOrderPayment(int order_id, String payment_date){
+        String query1 = "SELECT * FROM orders where order_id = ?";
+        String query2 = "UPDATE orders SET payment_date = ?, payment_status = ? WHERE order_id = ?";
+        
+        try {
+            PreparedStatement ps = portsConnection.prepareStatement(query1);
+            ps.setInt(1, order_id);
+            
+            ResultSet results = ps.executeQuery();
+            results.next();
+            
+            ps = portsConnection.prepareStatement(query2); 
+            if(results.getString("payment_status").equals("not paid"))
+                ps.setString(2, "paid");
+            else
+                ps.setString(2, "not paid");
+            
+            ps.setString(1, payment_date);
+            ps.setInt(3, order_id);
+            ps.executeUpdate();
+            this.OrderHistory = getOrderHistory(defaultOrder);
+            this.OrderSales = getOrderSales(defaultOrder);
+        }
+        catch(SQLException sqle){
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        }
         
     }
     
-    //for specific customer
     public Order getOrderData(int customer_id){
         
         String query1 = "SELECT * FROM orders where customer_id = ? order by order_id desc";
@@ -396,11 +592,10 @@ public class PortsDatabase {
             ResultSet purchaseResults = ps.executeQuery();
             ArrayList<OrderItem> items = new ArrayList<>();
             while(purchaseResults.next()){
-                int purchase_id = Integer.parseInt(purchaseResults.getString("cart_purchase_id"));
+                int purchase_id = Integer.parseInt(purchaseResults.getString("purchase_id"));
                 int product_id = Integer.parseInt(purchaseResults.getString("product_id"));
                 int quantity = Integer.parseInt(purchaseResults.getString("product_quantity"));
                 
-                          
                 Product pizza = this.products.get(product_id - 1);
                 PreparedStatement ps2 = portsConnection.prepareStatement(query3);
                 ps2.setInt(1, purchase_id);
@@ -412,7 +607,7 @@ public class PortsDatabase {
                 ArrayList<OrderItemToppings> toppings = new ArrayList<>();
                 
                 while (forToppings.next()){
-                    int purchase_toppings_id = Integer.parseInt(forToppings.getString("cart_purchase_toppings_id"));
+                    int purchase_toppings_id = Integer.parseInt(forToppings.getString("purchase_toppings_id"));
                     int toppings_id = Integer.parseInt(forToppings.getString("toppings_id"));
                     int toppings_quantity = Integer.parseInt(forToppings.getString("toppings_quantity"));
                     

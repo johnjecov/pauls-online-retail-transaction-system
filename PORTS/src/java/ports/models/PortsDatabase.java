@@ -470,7 +470,7 @@ public class PortsDatabase {
         String query1 = "SELECT * FROM orders where order_id = ?";
         String query2 = "SELECT * FROM purchase where order_id = ?";
         String query3 = "SELECT * FROM purchase_toppings where purchase_id = ?";
-        
+        String query4 = "SELECT * FROM customer where customer_id = ?";
         Order o = new Order();
 
         try {
@@ -517,12 +517,18 @@ public class PortsDatabase {
                 
                 items.add(new OrderItem(purchase_id, order_id, pizza, toppings, quantity));
             }
+            PreparedStatement ps2 = portsConnection.prepareStatement(query4);
+            ps2.setInt(1, Integer.parseInt(orderResults.getString("customer_id")));
             
+            ResultSet customerResult = ps2.executeQuery();
+            customerResult.next();
             
+            String customer_name = customerResult.getString("customer_name") + " " + customerResult.getString("customer_surname");
+            String contact_number = customerResult.getString("customer_contact_number");
             o = new Order(order_id, Integer.parseInt(orderResults.getString("customer_id")), Integer.parseInt(orderResults.getString("employee_id")), 
                     Integer.parseInt(orderResults.getString("order_status_id")), Double.parseDouble(orderResults.getString("order_total")), orderResults.getString("order_made_date"),
                     orderResults.getString("order_delivery_date"), orderResults.getString("payment_method"), orderResults.getString("payment_date"), orderResults.getString("payment_status"),
-                    items, addresses.get(Integer.parseInt(orderResults.getString("address_id")) - 1));
+                    items, addresses.get(Integer.parseInt(orderResults.getString("address_id")) - 1), customer_name, contact_number);
   
             System.out.println("Order of: "+ order_id);
                 
@@ -605,7 +611,7 @@ public class PortsDatabase {
         String query1 = "SELECT * FROM orders where customer_id = ? order by order_id desc";
         String query2 = "SELECT * FROM purchase where order_id = ?";
         String query3 = "SELECT * FROM purchase_toppings where purchase_id = ?";
-        
+        String query4 = "SELECT * FROM customer where customer_id = ?";
         Order o = new Order();
 
         try {
@@ -658,11 +664,19 @@ public class PortsDatabase {
                 items.add(new OrderItem(purchase_id, order_id, pizza, toppings, quantity));
             }
             
+            PreparedStatement ps2 = portsConnection.prepareStatement(query4);
+            ps2.setInt(1, Integer.parseInt(orderResults.getString("customer_id")));
+            
+            ResultSet customerResult = ps2.executeQuery();
+            customerResult.next();
+            
+            String customer_name = customerResult.getString("customer_name") + " " + customerResult.getString("customer_surname");
+            String contact_number = customerResult.getString("customer_contact_number");           
             
             o = new Order(order_id, Integer.parseInt(orderResults.getString("customer_id")), Integer.parseInt(orderResults.getString("employee_id")), 
                     Integer.parseInt(orderResults.getString("order_status_id")), Double.parseDouble(orderResults.getString("order_total")), orderResults.getString("order_made_date"),
                     orderResults.getString("order_delivery_date"), orderResults.getString("payment_method"), orderResults.getString("payment_date"), orderResults.getString("payment_status"),
-                    items, addresses.get(Integer.parseInt(orderResults.getString("address_id")) - 1));
+                    items, addresses.get(Integer.parseInt(orderResults.getString("address_id")) - 1), customer_name, contact_number);
   
             
             System.out.println("Order of: "+ customer_id);

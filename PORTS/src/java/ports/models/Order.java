@@ -16,12 +16,14 @@ public class Order {
     private String payment_status;
     private ArrayList<OrderItem> items;
     private Address address;
+    private String customer_name;
+    private String contact_number;
     
     public Order() {
         System.out.println("Order Placeholder");
     }
     public Order(int order_id, int customer_id, int employee_id, int order_status_id, double order_total, String order_made_date, String order_delivery_date,
-            String payment_method, String payment_date, String payment_status,ArrayList<OrderItem> Items, Address address){
+            String payment_method, String payment_date, String payment_status,ArrayList<OrderItem> Items, Address address, String customer_name, String contact_number){
         
         this.order_id = order_id;
         this.customer_id = customer_id;
@@ -35,6 +37,8 @@ public class Order {
         this.payment_status = payment_status;
         this.items = items;
         this.address = address;
+        this.customer_name = customer_name;
+        this.contact_number = contact_number;
     }
      
     
@@ -83,13 +87,23 @@ public class Order {
         return address;
     }
     
+    public String getCustomerName() {
+        return customer_name;
+    }
+    
+    public String getCustomerContactNumber() {
+        return contact_number;
+    }
+    
     public String toString() {
         return String.format("Hello this is order # %d of customer %d\n"
                 + "Order Total: %f\n"
                 + "Order Status: %d\n"
                 + "Payment Method: %s\n"
                 + "Payment Status: %s\n"
-                + "Address Name: %s", order_id, customer_id, order_total, order_status_id, payment_method, payment_status, address.getAddressName());
+                + "Address Name: %s\n"
+                + "Customer Name: %s\n"
+                + "Number: %s\n", order_id, customer_id, order_total, order_status_id, payment_method, payment_status, address.getAddressName(), customer_name, contact_number);
     }
     
 }

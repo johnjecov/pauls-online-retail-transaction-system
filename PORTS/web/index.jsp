@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="java.util.*, ports.models.*"%>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -27,7 +28,15 @@
 <section class="home" id="home">
 
     <div class="content">
-        <span>Welcome to Paul's Pizzeria</span>
+        <%  
+            String user = "";
+            if(session.getAttribute("customer")!= null)
+            {
+                Customer c = (Customer) session.getAttribute("customer");
+                user = (String) c.getUsername();
+            }
+        %>
+        <span>Welcome to Paul's Pizzeria <%= user %></span>
         <h3>Any time is a good time for Pizza!</h3>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis unde dolores temporibus hic quam debitis tenetur harum nemo.</p>
         <a href="#" class="btn">ORDER NOW</a>

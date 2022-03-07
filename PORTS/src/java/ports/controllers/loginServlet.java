@@ -7,11 +7,17 @@ package ports.controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.servlet.*;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import ports.models.*;
 
 /**
  *
@@ -20,30 +26,50 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "loginServlet", urlPatterns = {"/loginServlet"})
 public class loginServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet loginServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet loginServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        
+        ServletContext sc = request.getServletContext();
+        PortsDatabase ports = (PortsDatabase) sc.getAttribute("dbConnection");
+        
+        String unameL = request.getParameter("loginUname").trim();
+        String pwordL = request.getParameter("loginPass").trim();
+
+        System.out.printf("Username: %s\nPassword: %s", unameL, pwordL);
+        
+        String loginResult = ports.login(unameL, pwordL);
+        HttpSession session = request.getSession();
+        
+        if(loginResult.equals("employee")) {          
+            int id = ports.getUserId(unameL, pwordL);
+            
+            Employee employee = ports.retrieveEmployeeData(id);
+            
+            session.setAttribute("employee", employee);
+            
+            response.sendRedirect("adminOrderList.jsp");
         }
+        else if (loginResult.equals("customer")){
+            
+            System.out.println("CUSTOMERR!!");
+            int id = ports.getUserId(unameL, pwordL);
+            
+            Customer customer = ports.retrieveCustomerData(id);
+            
+            session.setAttribute("customer", customer);
+            
+            if(customer.getAddresses().isEmpty())
+                response.sendRedirect("address.jsp");
+            else
+                response.sendRedirect("index.jsp");
+        }
+        else {
+            sc.setAttribute("ErrorMessageL", "Invalid Username/Password. Try again!");
+            response.sendRedirect("login.jsp");
+        }
+        
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

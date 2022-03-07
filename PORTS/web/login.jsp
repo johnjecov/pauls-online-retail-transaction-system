@@ -35,11 +35,20 @@
     
         <div class="content">
 
-            <form id = "loginForm" action="">
+            <form id = "loginForm" action="login" method = "POST">
                 <h3 class = "formTitle">login</h3>
-                <input type="text" name="loginUname" placeholder="enter your username" id="" class="inputs">
-                <input type="password" name="loginPass" placeholder="enter your password" id="" class="inputs">
-                <input type="captcha" value="Recaptcha Placeholder" class="inputs" id = "recaptcha">
+                <input type="text" name="loginUname" placeholder="enter your username" id="loginUname" class="inputs" required>
+                <input type="password" name="loginPass" placeholder="enter your password" id="loginPass" class="inputs" required>
+                <% 
+                    String errorMessage = "";
+                    ServletContext sc = getServletContext();
+                    if(sc.getAttribute("ErrorMessageL") != null)
+                    {
+                        errorMessage = (String) sc.getAttribute("ErrorMessageL");
+                        sc.removeAttribute("ErrorMessageL");
+                    }
+                %>
+                <p style = "color: #302c2c;font-size: 1.3rem"><%= errorMessage %></p>
                 <input type="submit" value="login now" class="inputs LRButton" id = "loginButton">
                 <p>don't have an account? <a href="register.jsp" id = "goReg">create one</a></p>
             </form>

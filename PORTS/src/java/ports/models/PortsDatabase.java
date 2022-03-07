@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import ports.utility.*;
 
 public class PortsDatabase {
     static Connection portsConnection;  
@@ -87,7 +88,135 @@ public class PortsDatabase {
         //checkOutCart(checkoutCart, "TestCheckoutDate", "TestDeliveryDate");
     }
     
-
+    
+    //check login
+    public int getUserId(String username, String password) {
+        int id = -999;
+        
+        String checkEmployee = "SELECT * FROM employee where employee_username = ? AND employee_password = ?";
+        String checkCustomer = "SELECT * FROM customer where customer_username = ? AND customer_password = ?";
+        //password = security.encrypt(password);
+        try {
+            PreparedStatement ps = portsConnection.prepareStatement(checkEmployee);
+            ps.setString(1, username);
+            ps.setString(2, password);
+            
+            ResultSet result = ps.executeQuery();
+            if(result.next()){
+                id = Integer.parseInt(result.getString("employee_id"));
+                return id;
+            }
+            else {  
+                ps = portsConnection.prepareStatement(checkCustomer);
+                ps.setString(1, username);
+                ps.setString(2, password);          
+                
+                result = ps.executeQuery();
+                
+                if(result.next()){
+                    id = Integer.parseInt(result.getString("customer_id"));
+                    return id;
+                }
+                                  
+            }
+        }
+        catch (SQLException sqle)
+        {
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        } 
+        
+        return id;
+    }
+    public String login(String username, String password) {
+        String loginResult = "";
+        
+        
+        //password = security.encrypt(password);
+        
+        
+        String checkEmployee = "SELECT * FROM employee where employee_username = ? AND employee_password = ?";
+        String checkCustomer = "SELECT * FROM customer where customer_username = ? AND customer_password = ?";
+        
+        try {
+            PreparedStatement ps = portsConnection.prepareStatement(checkEmployee);
+            ps.setString(1, username);
+            ps.setString(2, password);
+            
+            ResultSet result = ps.executeQuery();
+            if(result.next()){
+                loginResult = "employee";
+                return loginResult;
+            }
+            else {  
+                ps = portsConnection.prepareStatement(checkCustomer);
+                ps.setString(1, username);
+                ps.setString(2, password);          
+                
+                result = ps.executeQuery();
+                
+                if(result.next()){
+                    System.out.println("ANDITO");
+                    loginResult = "customer";
+                    return loginResult;
+                }
+                                  
+            }
+        }
+        catch (SQLException sqle)
+        {
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        } 
+        
+        return loginResult;
+    }
+    //for customer, employee
+   public Employee retrieveEmployeeData(int employee_id) {
+        Employee employee = new Employee();
+        
+        String query = "SELECT * FROM employee where employee_id = ?";
+        try {
+            PreparedStatement ps = portsConnection.prepareStatement(query);
+            ps.setInt(1, employee_id);
+            
+            ResultSet results = ps.executeQuery();
+            results.next();
+            
+            employee = new Employee(Integer.parseInt(results.getString("employee_id")), results.getString("employee_username"), results.getString("employee_password"), results.getString("employee_role"),
+                    results.getString("employee_name"), results.getString("employee_surname"), results.getString("employee_email"), results.getString("employee_contact_number"));
+        
+        }
+        catch (SQLException sqle)
+        {
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        } 
+        
+        return employee;
+    }
+   
+    public Customer retrieveCustomerData(int customer_id) {
+        Customer customer = new Customer();
+        Order o = this.getOrderData(customer_id);
+        Cart c = this.getCartData(customer_id);
+        ArrayList<Address> addresses = this.getCustomerAddresses(customer_id);
+        
+        String query = "SELECT * FROM customer where customer_id = ?";
+        try {
+            PreparedStatement ps = portsConnection.prepareStatement(query);
+            ps.setInt(1, customer_id);
+            
+            ResultSet results = ps.executeQuery();
+            results.next();
+            customer = new Customer(Integer.parseInt(results.getString("customer_id")), results.getString("customer_username"), results.getString("customer_password"), 
+                    results.getString("customer_name"), results.getString("customer_surname"), results.getString("customer_email"), results.getString("customer_contact_number"), addresses, c, o);
+        
+        }
+        catch (SQLException sqle)
+        {
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        } 
+        
+        return customer;
+    }
     
     public void displayTables() {
         System.out.println("Print here the tables.");
@@ -243,7 +372,7 @@ public class PortsDatabase {
         }
         return addresses;
     }
-    
+   
     //database commands for products
     public void addProduct(Product a){
         System.out.print("TEST ADD Product");
@@ -622,10 +751,13 @@ public class PortsDatabase {
             
             ResultSet orderResults = ps.executeQuery();
             int order_id = -999;
-            
+            System.out.println("here");
             if(orderResults.next()){
                 System.out.println("Order number ni customer: "+Integer.parseInt(orderResults.getString("order_id")));
                 order_id = Integer.parseInt(orderResults.getString("order_id"));
+            }else {
+                //no results of the order, return an empty order means there are no existing orders for a customer yet.
+                return o;
             }
             
             //done getting the info of cart now get the data from the cart purchases

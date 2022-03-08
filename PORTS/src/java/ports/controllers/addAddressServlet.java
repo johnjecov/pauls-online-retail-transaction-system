@@ -26,30 +26,7 @@ public class addAddressServlet extends HttpServlet {
     public void init(ServletConfig config) throws ServletException 
     {
         super.init(config);
-        try 
-        {	
-            Class.forName(config.getInitParameter("jdbcClassName"));
-            //System.out.println("jdbcClassName: " + config.getInitParameter("jdbcClassName"));
-            //creates the url for database
-            String dbusername = config.getInitParameter("dbUserName");
-            String dbpassword = config.getInitParameter("dbPassword");
-            StringBuffer url = new StringBuffer(config.getInitParameter("jdbcDriverURL"))
-                    .append("://")
-                    .append(config.getInitParameter("dbHostName"))
-                    .append(":")
-                    .append(config.getInitParameter("dbPort"))
-                    .append("/")
-                    .append(config.getInitParameter("databaseName"));
-            conn =  DriverManager.getConnection(url.toString(),dbusername, dbpassword);
-        } 
-        catch (SQLException sqle)
-        {
-            System.out.println("SQLException error occured - " + sqle.getMessage());
-        } 
-        catch (ClassNotFoundException nfe)
-        {
-            System.out.println("ClassNotFoundException error occured - " + nfe.getMessage());
-        }
+        
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -116,10 +93,10 @@ public class addAddressServlet extends HttpServlet {
          if (id.equals(idFromWeb))
          {
              Address newAdd = new Address("1","1",addressName,addInfo,addDetail,houseNo,street,city,province,postalCode);
-             System.out.print("HELLO KASI");
              PortsDatabase port = (PortsDatabase)app.getAttribute("dbConnection");
              port.addAddress(newAdd);
              response.sendRedirect("address.jsp");
+             
              
          }
          

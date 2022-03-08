@@ -54,22 +54,22 @@
                             <h2>View Addresses</h2>
                             <p class = "signup"><a href = "#" onclick = "toggleForm();">Add New Address</a></p>
                             <br>
-                            <% for (int i=0; i < port.getAddresses(1).size(); i++) { %>
+                            <% for (int i=0; i < port.getAddresses().size(); i++) { %>
                                 <div class="viewAddressBx">
                                     <div class="edit">
-                                        <h3><%= ((Address)port.getAddresses(1).get(i)).getAddressName() %></h3>
+                                        <h3><%= ((Address)port.getAddresses().get(i)).getAddressName() %></h3>
                                         <div class="box"></div>
                                        
                                     </div>
                                     <p> <% 
         
-                                       out.print(((Address)port.getAddresses(1).get(i)).getHouseNo()+ " " +
-                                                   ((Address)port.getAddresses(1).get(i)).getStreet()+ " " +
-                                                   ((Address)port.getAddresses(1).get(i)).getCity()+ " " +
-                                                   ((Address)port.getAddresses(1).get(i)).getProvince()+ " " +
-                                                   ((Address)port.getAddresses(1).get(i)).getPostalCode()+ " " +
-                                                   ((Address)port.getAddresses(1).get(i)).getDetails()+ " " +
-                                                  "(" + ((Address)port.getAddresses(1).get(i)).getAdditionalDetails()+ ") " 
+                                       out.print(((Address)port.getAddresses().get(i)).getHouseNo()+ " " +
+                                                   ((Address)port.getAddresses().get(i)).getStreet()+ " " +
+                                                   ((Address)port.getAddresses().get(i)).getCity()+ " " +
+                                                   ((Address)port.getAddresses().get(i)).getProvince()+ " " +
+                                                   ((Address)port.getAddresses().get(i)).getPostalCode()+ " " +
+                                                   ((Address)port.getAddresses().get(i)).getDetails()+ " " +
+                                                  "(" + ((Address)port.getAddresses().get(i)).getAdditionalDetails()+ ") " 
                                                     ); %>
                                    </p>
                                     <input type = "submit" value = "Edit">

@@ -83,9 +83,48 @@
             <param-value>PORTS</param-value>
         </init-param>
     </servlet>
+    
+    <servlet>
+        <servlet-name>addToCartServlet</servlet-name>
+        <servlet-class>ports.controllers.addToCartServlet</servlet-class>
+        <init-param>
+            <param-name>jdbcClassName</param-name>
+            <param-value>org.apache.derby.jdbc.ClientDriver</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbUserName</param-name>
+            <param-value>app</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbPassword</param-name>
+            <param-value>app</param-value>
+        </init-param>
+        <init-param>
+            <param-name>jdbcDriverURL</param-name>
+            <param-value>jdbc:derby</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbHostName</param-name>
+            <param-value>localhost</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbPort</param-name>
+            <param-value>1527</param-value>
+        </init-param>
+        <init-param>
+            <param-name>databaseName</param-name>
+            <param-value>PORTS</param-value>
+        </init-param>
+    </servlet>
+    
     <servlet-mapping>
         <servlet-name>addAddressServlet</servlet-name>
         <url-pattern>/addAddress</url-pattern>
+    </servlet-mapping>
+    
+     <servlet-mapping>
+        <servlet-name>addToCartServlet</servlet-name>
+        <url-pattern>/addToCart</url-pattern>
     </servlet-mapping>
     
     <session-config>

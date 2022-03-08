@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-  
+
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,7 +35,7 @@
     <div class="right-column">
         <!-- Product Description -->
         <div class="product-description">
-            <h1>Pepperoni Pizza</h1>
+            <h1>Cheese Pizza</h1>
             <h3>₱208.00</h3>
             <p>Extra-virgin oil, garlic, mozzarella, mushrooms and olives</p>
         </div>
@@ -52,7 +52,7 @@
                         <h4>Mozzarella ₱50.00/50 g.</h4>
                         <select class= "Moz" name="moz"> 
                             <option disabled selected>Quantity</option>
-                            <option value = "0" selected="selected">0</option>
+                            <option value = "0">0</option>
                             <option value = "1">1</option>
                             <option value = "2">2</option>
                             <option value = "3">3</option>
@@ -134,11 +134,10 @@
         <div class="product-price">
             <h2>Total: ₱290.00</h2>
             <br>  
-            
-            <button name ="pizza" value="Pepperoni" class="cart-btn" style="cursor: pointer;">ADD TO CART</button>
+            <button name ="pizza" value="Cheese"  class="cart-btn" style="cursor: pointer;" value="Pepperoni">ADD TO CART</button>
            <!-- <a href="#" class="cart-btn">Add to cart</a> -->
         </div>
-        
+      
          </form>
     </div>
     </main>

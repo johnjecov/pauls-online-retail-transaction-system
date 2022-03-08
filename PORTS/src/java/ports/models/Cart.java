@@ -96,4 +96,11 @@ public class Cart {
                 + "Cart Total: %f\n", cart_id, customer_id, cart_total);
     }
     
+    
+    public boolean isEmpty() {
+        if(items.size() == 0)
+            return true;
+        else
+            return false;
+    }
 }

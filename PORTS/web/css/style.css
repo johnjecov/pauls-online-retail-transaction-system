@@ -15,6 +15,9 @@
     transition: .2s linear;
 }
 
+input {
+    text-transform: none !important;
+}
 /*Italy Theme CSS Start*/
 .line {
     display: flex;
@@ -576,13 +579,45 @@ section {
     font-size: 1.6rem;
 }
 
+#givenLast {
+    display: flex;
+    gap: 1rem;
+    background: none;
+    font-size: 1.5rem;
+    min-height: 5rem;
+    min-width: 40rem;
+    align-items: flex-end;
+}
+
+#givenNameR {
+    width: 40%;
+}
+
+#lastNameR {
+    width: 60%;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.givenLastField {
+    padding: 0.5rem;
+    background: none;
+    border-bottom: 2px solid gray;
+}
 .inputsR {
     padding: 1rem;
     background: none;
     border-bottom: 2px solid gray;
     font-size: 1.5rem;
     min-width: 40rem;
+    
 }
+
+
 
 .inputsR:hover {
     font-size: 1.6rem;
@@ -1610,7 +1645,35 @@ textarea#feedbacktext {
         background-image: none;
         background-color: #f7f7f7 !important;
     }
+    
+    
+    .inputsR {
+        min-width: 30rem;
+    }
 
+    #givenLast {
+        flex-direction: column;
+        align-items: center;
+        gap: none;
+        min-width: 30rem;
+    }
+    
+    #givenNameR {
+        padding: 1rem;
+        background: none;
+        border-bottom: 2px solid gray;
+        font-size: 1.5rem;
+        min-width: 30rem;
+    }
+    
+    #lastNameR {
+        padding: 1rem;
+        background: none;
+        border-bottom: 2px solid gray;
+        font-size: 1.5rem;
+        min-width: 30rem;
+    }
+    
 }
 
 @media (max-width: 860px) {

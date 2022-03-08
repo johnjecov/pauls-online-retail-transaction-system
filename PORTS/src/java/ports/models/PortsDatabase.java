@@ -88,6 +88,63 @@ public class PortsDatabase {
         //checkOutCart(checkoutCart, "TestCheckoutDate", "TestDeliveryDate");
     }
     
+    //register 
+    
+    public boolean checkCustomer(String username) {
+        boolean customerExists = false;
+        String query = "SELECT * FROM customer where customer_username = ?";
+        
+        try {
+            PreparedStatement ps = portsConnection.prepareStatement(query);
+            ps.setString(1, username);
+            
+            ResultSet results = ps.executeQuery();
+            
+            if(results.next())
+                customerExists = true;
+        }
+        catch (SQLException sqle)
+        {
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        } 
+        return customerExists;
+    }
+    
+    public Customer addCustomer(String username, String password, String name, String surname, String email, String contact_number) {
+        int customer_id = 1;
+        String getCustomerId = "SELECT * FROM customer order by customer_id desc";
+        String insertCustomer =  "INSERT INTO customer VALUES(?,?,?,?,?,?,?)";
+        
+        Customer c = new Customer();
+        try {
+            PreparedStatement ps = portsConnection.prepareStatement(getCustomerId);
+            
+            ResultSet results = ps.executeQuery();
+            
+            if(results.next())
+                customer_id = Integer.parseInt(results.getString("customer_id")) + 1;
+            
+            ps = portsConnection.prepareStatement(insertCustomer);
+            ps.setInt(1, customer_id);
+            ps.setString(2, username);
+            ps.setString(3, password);
+            ps.setString(4, name);
+            ps.setString(5, surname);
+            ps.setString(6, email);
+            ps.setString(7, contact_number);
+            
+            ps.executeUpdate();
+            
+            addCart(customer_id);
+            
+            c = retrieveCustomerData(customer_id);
+        }
+        catch (SQLException sqle)
+        {
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        } 
+        return c;
+    }
     
     //check login
     public int getUserId(String username, String password) {
@@ -1046,7 +1103,7 @@ public class PortsDatabase {
     public void addCart(int customer_id) {
         System.out.print("TEST ADD cart");
 
-        String query = "INSERT INTO cart (customer_id, cart_total) VALUES(?,?)";
+        String query = "INSERT INTO carts (customer_id, cart_total) VALUES(?,?)";
         
         try {
             PreparedStatement ps = portsConnection.prepareStatement(query);

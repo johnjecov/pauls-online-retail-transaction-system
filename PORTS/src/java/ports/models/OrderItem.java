@@ -9,7 +9,7 @@ public class OrderItem {
     private Product product;
     private ArrayList<OrderItemToppings> toppings;
     private int quantity;
-    
+ 
     public OrderItem(int purchase_id, int order_id, Product pizza, ArrayList<OrderItemToppings> toppings, int quantity){
         this.purchase_id = purchase_id;
         this.order_id = order_id;

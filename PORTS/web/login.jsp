@@ -37,8 +37,8 @@
 
             <form id = "loginForm" action="login" method = "POST">
                 <h3 class = "formTitle">login</h3>
-                <input type="text" name="loginUname" placeholder="enter your username" id="loginUname" class="inputs" required>
-                <input type="password" name="loginPass" placeholder="enter your password" id="loginPass" class="inputs" required>
+                <input type="text" name="loginUname" placeholder="Enter your username" id="loginUname" class="inputs" required>
+                <input type="password" name="loginPass" placeholder="Enter your password" id="loginPass" class="inputs" required>
                 <% 
                     String errorMessage = "";
                     ServletContext sc = getServletContext();
@@ -49,7 +49,7 @@
                     }
                 %>
                 <p style = "color: #302c2c;font-size: 1.3rem"><%= errorMessage %></p>
-                <input type="submit" value="login now" class="inputs LRButton" id = "loginButton">
+                <input type="submit" value="Login Now" class="inputs LRButton" id = "loginButton">
                 <p>don't have an account? <a href="register.jsp" id = "goReg">create one</a></p>
             </form>
             

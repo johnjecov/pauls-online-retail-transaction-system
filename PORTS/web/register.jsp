@@ -34,22 +34,35 @@
         </div>
     
         <div class="content">            
-            <form id = "regForm" action="">
+            <form id = "regForm" action="register" method = "POST">
                 <h3 class = "formTitle">register</h3>
-                <input type="text" name="" placeholder="enter your username" id="" class="inputsR">
-                <input type="password" name="" placeholder="enter your password" id="" class="inputsR">
-                  <input type="password" name="" placeholder="confirm password" id="" class="inputsR">
-                <input type="email" name="" placeholder="enter your email" id="" class="inputsR">
-                  <input type="number" name="" placeholder="enter your contact number" id="" class="inputsR">
-                <input type="text" name="" placeholder="enter your address" id="" class="inputsR">
-                <input type="captcha" value="Recaptcha Placeholder" class="inputsR" id = "recaptcha">
-                <input type="submit" value="register now" class="inputsR LRButton" id = "regButton">
+                <input type="text" name="unameR" placeholder="Username" id="" class="inputsR" required>
+                <div id ="givenLast">
+                    <input type="text" name="givenNameR" placeholder="Given name" id="givenNameR" class="givenLastField" required>
+                    <input type="text" name="lastNameR" placeholder="Last name" id="lastNameR" class="givenLastField" required>
+                </div>
+                <input type="password" name="pwordR" placeholder="Password" id="" class="inputsR" required>
+                <input type="password" name="cpwordR" placeholder="Confirm password" id="" class="inputsR" required>
+                <input type="email" name="emailR" placeholder="Email" id="" class="inputsR" required>
+                <input type="number" name="contactR" placeholder="Contact Number" id="" class="inputsR" required>
+      
+                <img src ="Captcha" >
+                <input type="text" name = "captchaR" placeholder = "Input Captcha" class="inputsR" id = "captcha" required>
+                <% 
+                    String errorMessageR = "";
+                    ServletContext sc = getServletContext();
+                    if(sc.getAttribute("ErrorMessageR") != null)
+                    {
+                        errorMessageR = (String) sc.getAttribute("ErrorMessageR");
+                        sc.removeAttribute("ErrorMessageR");
+                    }
+                %>
+                <p style = "color: #302c2c;font-size: 1.3rem"><%= errorMessageR %></p>
+                <input type="submit" value="Register Now" class="inputsR LRButton" id = "regButton">
                 <p>Already have an account? <a href="login.jsp" id = "goLogin">Login</a></p>
             </form>
-            
-            
-
         </div>
+                
     </section>
     
 

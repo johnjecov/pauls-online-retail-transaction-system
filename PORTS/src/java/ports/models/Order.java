@@ -18,7 +18,7 @@ public class Order {
     private Address address;
     private String customer_name;
     private String contact_number;
-    
+    private boolean exists = false;
     public Order() {
         System.out.println("Order Placeholder");
     }
@@ -39,6 +39,7 @@ public class Order {
         this.address = address;
         this.customer_name = customer_name;
         this.contact_number = contact_number;
+        this.exists = true;
     }
      
     
@@ -104,6 +105,20 @@ public class Order {
                 + "Address Name: %s\n"
                 + "Customer Name: %s\n"
                 + "Number: %s\n", order_id, customer_id, order_total, order_status_id, payment_method, payment_status, address.getAddressName(), customer_name, contact_number);
+    }
+    
+    public boolean existingOrder(){
+        if(exists)
+            return true;
+        else
+            return false;
+    }
+    
+    public boolean isEmpty() {
+        if(items.size() == 0)
+            return true;
+        else
+            return false;
     }
     
 }

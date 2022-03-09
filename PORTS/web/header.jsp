@@ -1,4 +1,6 @@
 <head>
+    <%@page import="java.util.*, ports.models.*"%>
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,9 +11,20 @@
     <!-- custom css file link  -->
     <link rel="stylesheet" href="/PORTS/css/style.css">
     <link rel="stylesheet" href="/PORTS/css/cssfile.css">
+     <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
 </head>
 
 <header class="header">
+    <%  
+            String navUser = "";
+            
+            if(session.getAttribute("customer")!= null)
+            {
+                Customer c = (Customer) session.getAttribute("customer");
+                navUser = (String) c.getUsername();
+            }
+        %>
+        
 
        <a href="/PORTS/index.jsp" class="logo"> <i class="fas fa-utensils"></i>Paul's Pizzeria  </a>
     
@@ -20,7 +33,8 @@
                 <li><a href="/PORTS/index.jsp#home">Home</a></li>
                 <li><a href="/PORTS/index.jsp#about">about</a></li>
                 <li><a href="/PORTS/index.jsp#popular">popular</a></li>
-                <li><a href="/PORTS/menu.jsp#menu">menu</a></li>
+                <li><a href="/PORTS/menu.jsp#menu">menu</a></li> 
+                                   
             <div class="closeMenu"><i class="fa fa-times"></i></div>
                 <span class="icons">
                     <i class="fab fa-facebook"></i>
@@ -28,13 +42,27 @@
                     <i class="fab fa-twitter"></i>
                 </span>
             </ul>
-    </nav>
+    </nav> 
                 
     <div class="icons">
         <a id="openMenu" class="fas fa-bars"></a>
         <a id="cart-btn" class="fas fa-shopping-cart" href="/PORTS/cart.jsp"></a>
+        
+        <% if (navUser == "") { %>
         <a id="login-btn" class="fas fa-user" href="/PORTS/login.jsp"></a>
+        <% } %>
     </div>
+        <% if (navUser != "") { %>
+       <div class="dropdown">
+  <button class="dropbtn"> <%= navUser%> </button>
+  <div class="dropdown-content">
+    <a href="/PORTS/address.jsp">View Address</a>
+    <a href="/PORTS/changePassword.jsp">Change Password</a>
+    <a href="/PORTS/orderstatus.jsp">View Order Status</a>
+    <a href="#logout">Logout</a>
+  </div>
+</div>
+  <% } %>
 </header>
 
 <script>
@@ -157,4 +185,158 @@ nav .logo {
         
     }
 }
+
+
+
+
+
+
+
+
+
+
+.icons-size{
+    color: #333;
+    font-size: 14px;
+}
+.action{
+    position: fixed;
+    right: 30px;
+    top:20px
+}
+.action .profile{
+    border-radius: 50%;
+    cursor: pointer;
+    height: 60px;
+    overflow: hidden;
+    position: relative;
+    width: 60px;
+}
+.action .profile img{
+    width: 100%;
+    top:0;
+    position: absolute;
+    object-fit: cover;
+    left: 0;
+    height: 100%;
+}
+.action .menu{
+    background-color:#FFF;
+    box-sizing:0 5px 25px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    padding: 10px 20px;
+    position: absolute;
+    right: -10px;
+    width: 200px;
+    transition: 0.5s;
+    top: 120px;
+    visibility: hidden;
+    opacity: 0;
+}
+.action .menu.active{
+    opacity: 1;
+    top: 80px;
+    visibility: visible;
+}
+.action .menu::before{
+    background-color:#fff;
+    content: '';
+    height: 20px;
+    position: absolute;
+    right: 30px;
+    transform:rotate(45deg);
+    top:-5px;
+    width: 20px;
+}
+.action .menu h3{
+    color: #555;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.3em;
+    padding: 20px 0px;
+    text-align: left;
+    width: 100%;
+}
+.action .menu h3 div{
+    color: #818181;
+    font-size: 14px;
+    font-weight: 400;
+}
+.action .menu ul li{
+    align-items: center;
+    border-top:1px solid rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: left;
+    list-style: none;
+    padding: 10px 0px;
+}
+.action .menu ul li img{
+    max-width: 20px;
+    margin-right: 10px;
+    opacity: 0.5;
+    transition:0.5s
+}
+.action .menu ul li a{
+    display: inline-block;
+    color: #555;
+    font-size: 14px;
+    font-weight: 600;
+    padding-left: 15px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.5s;
+}
+.action .menu ul li:hover img{
+    opacity: 1;
+}
+.action .menu ul li:hover a{
+    color:#ff00ff;
+}
+
+
+
+
+/* Dropdown Button */
+.dropbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+
     </style>

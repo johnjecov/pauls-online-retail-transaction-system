@@ -1,9 +1,4 @@
-<%-- 
-    Document   : testprod
-    Created on : 02 17, 22, 4:30:12 PM
-    Author     : manuellouisecruz
---%>
-
+<%@page import="java.util.*, ports.models.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -25,19 +20,35 @@
     <!-- header section ends -->
     
     <main class="container">
- 
+    <% 
+       ServletContext sc = getServletContext();
+       int product_id = 0; //default
+
+       if(sc.getAttribute("specificProductId")!= null)
+               product_id = Integer.parseInt((String) sc.getAttribute("specificProductId")) - 1;
+
+       PortsDatabase ports = (PortsDatabase) getServletContext().getAttribute("dbConnection");
+       ArrayList<Product> menu = ports.getProducts();
+       Product pizza = menu.get(product_id);
+       
+
+       //for toppings, pwede gamitin para dun sa quantity sa ilalim
+       ArrayList<Topping> toppings = ports.getToppings();
+       
+   %>
     <!-- Left Column / Headphones Image -->
     <div class="left-column">
-        <img data-image="red" class="active" src="image/prod-sample.jpeg" alt="">
+        <img data-image="red" class="active" src=<%= pizza.getImage() %> alt="">
     </div>
     
     <!-- Right Column -->
     <div class="right-column">
         <!-- Product Description -->
+
         <div class="product-description">
-            <h1>Pepperoni Pizza</h1>
-            <h3>₱208.00</h3>
-            <p>Extra-virgin oil, garlic, mozzarella, mushrooms and olives</p>
+            <h1><%= pizza.getName()%></h1>
+            <h3>₱<%= pizza.getPrice()%></h3>
+            <p><%= pizza.getDesc()%></p>
         </div>
         <div class = "indiv-toppings">
             <h4>Quantity</h4>

@@ -33,6 +33,7 @@ public class PortsDatabase {
         Topping testTopping = new Topping(1, "Cheese", 40, "Cheesiest Cheese", "/testTopping.jpg", "available", 15);
         ArrayList<CartItemToppings> noToppings = new ArrayList<>();
         
+        
         ArrayList<CartItemToppings> withToppings = new ArrayList<>();
         withToppings.add(new CartItemToppings(-1, testTopping, 2));
         //clearCartForCheckout(1);
@@ -458,6 +459,8 @@ public class PortsDatabase {
                         results.getString("province"),
                         results.getString("postal_code")
                         ));
+                
+                System.out.printf("Address name: %s, Address id: %s",  results.getString("address_name"), results.getString("address_id"));
             }
     
                 
@@ -517,7 +520,7 @@ public class PortsDatabase {
     
     public ArrayList retrieveProducts(){
         System.out.print("TEST get Products");
-        String query1 = "SELECT * FROM products order by 'product_id' asc";
+        String query1 = "SELECT * FROM products";
      
         ArrayList<Product> products = new ArrayList<>();
         try {
@@ -536,6 +539,7 @@ public class PortsDatabase {
                         results.getString("product_availability"),
                         Double.parseDouble(results.getString("product_price"))
                         ));
+                System.out.printf("Pizza name : %s, Pizza id : %d", results.getString("product_name"), Integer.parseInt(results.getString("product_id")));
             }      
             //this.products = products;
         }

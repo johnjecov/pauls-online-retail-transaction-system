@@ -1266,19 +1266,30 @@ textarea#feedbacktext {
 */
 
 /*Menu Page CSS Start*/
+
+#menuBody {
+    background: #1e1f20 !important;
+}
 .blogs {
     background: #1e1f20;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .blogs .box-container {
-    display: -ms-grid;
+    width: 100%;
     display: grid;
-    -ms-grid-columns: (minmax(30rem, 1fr))[auto-fit];
-    grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(40rem, 45rem));
+    grid-gap: 1rem;
+    align-items: stretch;
+    justify-content: center;
 }
 
 .blogs .box-container .box {
+    max-width: 50rem !important;
+    min-width: 40rem;
     border-radius: .5rem;
     overflow: hidden;
 }
@@ -1294,7 +1305,7 @@ textarea#feedbacktext {
 
 .blogs .box-container .box .image {
     position: relative;
-    height: 25rem;
+    height: 63%;
     overflow: hidden;
     width: 100%;
 }
@@ -1324,6 +1335,7 @@ textarea#feedbacktext {
 }
 
 .blogs .box-container .box .content {
+    height: 37%;
     padding: 2rem 1.5rem;
     background: #f7f7f7;
 }

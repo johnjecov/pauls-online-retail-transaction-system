@@ -91,7 +91,7 @@
 
         <div class="box">
             <div class="image">
-                <img src="image/pepperoni2-removebg-preview-cropped.png" alt="">
+                <img src="image/pepperoni-removebg-preview.png" alt="">
             </div>
             <div class="content">
                 <h3>delicious food</h3>
@@ -113,7 +113,7 @@
         
         <div class="box">
             <div class="image">
-                <img src="image/pepperoni2-removebg-preview-cropped.png" alt="">
+                <img src="image/pepperoni-removebg-preview.png" alt="">
             </div>
             <div class="content">
                 <h3>delicious food</h3>
@@ -137,7 +137,7 @@
         </div>
         
         <div class="grid">
-            <img src="image/peperonni2.jpg" alt="">
+            <img src="image/pepperoni.jpg" alt="">
             <div class="content center">
                 <span>special offer</span>
                 <h3>upto 25% extra</h3>
@@ -145,7 +145,7 @@
         </div>
         
         <div class="grid">        
-            <img src="image/Chicken BBQ.png" alt="">
+            <img src="image/pepperoni.jpg" alt="">
             <div class="content">
                 <span>limited offer</span>
                 <h3>100% cashback</h3>

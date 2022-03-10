@@ -113,7 +113,7 @@
         
         <div class="box">
             <div class="image">
-                <img src="image/Chicken BBQ.png" alt="">
+                <img src="image/pepperoni2-removebg-preview-cropped.png" alt="">
             </div>
             <div class="content">
                 <h3>delicious food</h3>

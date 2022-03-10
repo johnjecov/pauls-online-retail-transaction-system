@@ -52,15 +52,14 @@
                         <li class="property">Status</li>
                     </ul>
                 </div>
-                
+
                 <%
                     ServletContext sc = getServletContext();
                     PortsDatabase ports = (PortsDatabase) getServletContext().getAttribute("dbConnection");
                     ArrayList<Order> orderList = (ArrayList) ports.getOrderHistory("asc");
                     ArrayList orderStatus = ports.getOrderStats();
-                    for (Order x : orderList) 
-                    {
-                       
+                    for (Order x : orderList) {
+                        String listString = String.join(", ", x.getItems());
                         String s = String.format("<div class = 'orderBody'>\n"
                                 + "<ul class = 'orders'>\n"
                                 + "<li class = 'orderProperty'>%s</li>"
@@ -75,18 +74,18 @@
                                 + "</ul>\n"
                                 + "<p class = 'orderRemove' id = 'orderRemoveID'>%s</p>\n"
                                 + "</div>",
-                                String.valueOf(x.getOrder_Id()),x.getOrder_Delivery_Date(),String.valueOf(x.getCustomer_Id()),x.getPayment_Method(),
-                                x.getAddress(),String.valueOf(x.getOrder_Id()),String.valueOf(x.getOrder_Id()),x.getPayment_Status(),orderStatus.get(x.getOrder_Status_Id()-1),"+");
+                                String.valueOf(x.getOrder_Id()), x.getOrder_Delivery_Date(), String.valueOf(x.getCustomer_Id()), x.getPayment_Method(),
+                                x.getAddress(), listString, String.valueOf(x.getOrder_Id()), x.getPayment_Status(), orderStatus.get(x.getOrder_Status_Id() - 1), "+");
                         out.println(s);
                     }
                 %>
-    
+
                 <script>
                     document.getElementById('orderRemoveID').addEventListener('click',
                             function () {
                                 document.querySelector('.cancelModal').style.display = 'flex';
                             });
-                            
+
                 </script>
                 <div class="pageSelector">
                     <ul class="pageList">

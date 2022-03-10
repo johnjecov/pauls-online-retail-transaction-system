@@ -39,12 +39,11 @@
         <span>Welcome to Paul's Pizzeria, <%= user %></span>
         <h3>Any time is a good time for Pizza!</h3>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis unde dolores temporibus hic quam debitis tenetur harum nemo.</p>
-        <a href="#" class="btn">ORDER NOW</a>
+        <a href="menu.jsp" class="btn">ORDER NOW</a>
     </div>
 
     <div class="image">
-        <img src="image/home-img.png" alt="" class="home-img">
-        <img src="image/home-parallax-img.png" alt="" class="home-parallax-img">
+        <img src="image/pepperoni2-removebg-preview-cropped.png" alt="" class="home-img">
     </div>
     
 </section>
@@ -92,34 +91,34 @@
 
         <div class="box">
             <div class="image">
-                <img src="image/food-1.png" alt="">
+                <img src="image/pepperoni-removebg-preview.png" alt="">
             </div>
             <div class="content">
                 <h3>delicious food</h3>
                 <div class="price">$40.00</div>
-                <a href="#" class="btn">View More</a>
+                <a href="testprod.jsp" class="btn">View More</a>
             </div>
         </div>
 
         <div class="box">
             <div class="image">
-                <img src="image/food-1.png" alt="">
+                <img src="image/pepperoni-removebg-preview.png" alt="">
             </div>
             <div class="content">
                 <h3>delicious food</h3>
                 <div class="price">$40.00</div>
-                <a href="#" class="btn">View More</a>
+                <a href="testprod.jsp" class="btn">View More</a>
             </div>
         </div>
         
         <div class="box">
             <div class="image">
-                <img src="image/food-1.png" alt="">
+                <img src="image/pepperoni-removebg-preview.png" alt="">
             </div>
             <div class="content">
                 <h3>delicious food</h3>
                 <div class="price">$40.00</div>
-                <a href="#" class="btn">View More</a>
+                <a href="testprod.jsp" class="btn">View More</a>
             </div>
         </div>
     </div>
@@ -130,7 +129,7 @@
 <section class="banner">
     <div class="grid-banner">
         <div class="grid">
-            <img src="image/banner-1.png" alt="">
+            <img src="image/pepperoni.jpg" alt="">
             <div class="content">
                 <span>special offer</span>
                 <h3>upto 50% off</h3>
@@ -138,7 +137,7 @@
         </div>
         
         <div class="grid">
-            <img src="image/banner-2.png" alt="">
+            <img src="image/pepperoni.jpg" alt="">
             <div class="content center">
                 <span>special offer</span>
                 <h3>upto 25% extra</h3>
@@ -146,7 +145,7 @@
         </div>
         
         <div class="grid">        
-            <img src="image/banner-3.png" alt="">
+            <img src="image/pepperoni.jpg" alt="">
             <div class="content">
                 <span>limited offer</span>
                 <h3>100% cashback</h3>
@@ -230,11 +229,12 @@
 
         <div class="box">
             <h3>our menu</h3>
-            <a href="#"><i class="fas fa-arrow-right"></i> (NAME OF the) pizza</a>
-             <a href="#"><i class="fas fa-arrow-right"></i> (NAME OF the) pizza</a>
-              <a href="#"><i class="fas fa-arrow-right"></i> (NAME OF the) pizza</a>
-               <a href="#"><i class="fas fa-arrow-right"></i> (NAME OF the) pizza</a>
-                <a href="#"><i class="fas fa-arrow-right"></i> (NAME OF the) pizza</a>
+            <a href="#"><i class="fas fa-arrow-right"></i> Chicken BBQ </a>
+             <a href="#"><i class="fas fa-arrow-right"></i> Garlic Shrimp with Parsley </a>
+              <a href="#"><i class="fas fa-arrow-right"></i> Creamy Spinach </a>
+               <a href="testprod2.jsp"><i class="fas fa-arrow-right"></i> Cheese With Basil </a>
+                <a href="#"><i class="fas fa-arrow-right"></i> Hawaiian</a>
+                <a href="testprod.jsp"><i class="fas fa-arrow-right"></i> Pepperoni</a>
         </div>
 
         <div class="box">
@@ -250,7 +250,6 @@
             <h3>extra links</h3>
             <a href="#"> <i class="fas fa-arrow-right"></i> my order</a>
             <a href="#"> <i class="fas fa-arrow-right"></i> my account</a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> my favorite</a>
         </div>
 
         <div class="box">

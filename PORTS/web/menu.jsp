@@ -1,9 +1,4 @@
-<%-- 
-    Document   : menu
-    Created on : 02 10, 22, 6:11:38 PM
-    Author     : Lucas
---%>
-
+<%@page import="java.util.*, ports.models.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -20,7 +15,7 @@
     <link rel="stylesheet" href="css/style.css">
 
 </head>
-    <body>
+<body id = "menuBody">
     <!-- header section starts -->
     <%@include file="header_external.jsp"%>
      <!-- header section ends -->
@@ -35,61 +30,36 @@
     </div>
 
     <div class="box-container">
-        <div class="box">
-            <div class="image">
-                <img src="image/blog-1.jpg" alt="">
-            </div>
-            <div class="content">
-                <div class="tags">
-                    <a href="#"> <i class="fas fa-tag"></i>₱290.00</a>
-                </div>
-                <h3>Creamy Spinach Pizza</h3>
-                <p>Toppings list....</p>
-                <a href="testprod.jsp" class="btn">view more</a>
-            </div>
-        </div>
-
-        <div class="box">
-            <div class="image">
-                <img src="image/blog-2.jpg" alt="">
-            </div>
-            <div class="content">
-                <div class="tags">
-                    <a href="#"> <i class="fas fa-tag"></i>₱198.00</a>
-                </div>
-                <h3>Cheese with Basil Pizza</h3>
-                <p>Toppings list....</p>
-                <a href="#" class="btn">view more</a>
-            </div>
-        </div>
-
-        <div class="box">
-            <div class="image">
-                <img src="image/blog-3.jpg" alt="">
-            </div>
-            <div class="content">
-                <div class="tags">
-                    <a href="#"> <i class="fas fa-tag"></i>₱211.00</a>
-                </div>
-                <h3>Hawaiian Pizza</h3>
-                <p>Toppings list....</p>
-                <a href="#" class="btn">view more</a>
-            </div>
-        </div>
         
-        <div class="box">
-            <div class="image">
-                <img src="image/blog-3.jpg" alt="">
-            </div>
-            <div class="content">
-                <div class="tags">
-                    <a href="#"> <i class="fas fa-tag"></i>₱208.00</a>
-                </div>
-                <h3>Pepperoni Pizza</h3>
-                <p>Toppings list....</p>
-                <a href="#" class="btn">view more</a>
-            </div>
-        </div>
+        <% 
+            ServletContext sc = getServletContext();
+            PortsDatabase ports = (PortsDatabase) getServletContext().getAttribute("dbConnection");
+            ArrayList<Product> menu = ports.getProducts();
+ 
+            for (Product x : menu) 
+            {
+                String box = String.format(
+                       "<form class = 'box' id = 'menuBox' action = 'SpecificProduct' method = 'POST'>"
+                           + "<input type = 'text' value = '%d' name = 'specificProduct'style = 'display: none;'>"
+                           + "<div class = 'image'>"
+                               + "<img src = '%s' alt = 'no image'>"
+                           + "</div>"
+                           + "<div class = 'content'>"
+                               + "<div class = 'tags'>"
+                                   + "<a> <i class = 'fas fa-tag' ></i>₱%s</a>"
+                               + "</div>"
+                               + "<h3>%s</h3>"
+                               + "<p>%s</p>"
+                               + "<input type = 'submit' class = 'btn' value = 'Add to Cart'>"
+                           + "</div>"
+                       + "</form>", 
+                       x.getId(),x.getImage(), x.getPrice(), x.getName(), x.getDesc()
+                       );           
+                  out.println(box);
+            }
+        %>
+     
+     
     </div>
 </section>
 

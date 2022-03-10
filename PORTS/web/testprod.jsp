@@ -1,9 +1,4 @@
-<%-- 
-    Document   : testprod
-    Created on : 02 17, 22, 4:30:12 PM
-    Author     : manuellouisecruz
---%>
-
+<%@page import="java.util.*, ports.models.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -25,21 +20,47 @@
     <!-- header section ends -->
     
     <main class="container">
- 
+    <% 
+       ServletContext sc = getServletContext();
+       int product_id = 0; //default
+
+       if(sc.getAttribute("specificProductId")!= null)
+               product_id = Integer.parseInt((String) sc.getAttribute("specificProductId")) - 1;
+
+       PortsDatabase ports = (PortsDatabase) getServletContext().getAttribute("dbConnection");
+       ArrayList<Product> menu = ports.getProducts();
+       Product pizza = menu.get(product_id);
+       
+
+       //for toppings, pwede gamitin para dun sa quantity sa ilalim
+       ArrayList<Topping> toppings = ports.getToppings();
+       
+   %>
     <!-- Left Column / Headphones Image -->
     <div class="left-column">
-        <img data-image="red" class="active" src="image/prod-sample.jpeg" alt="">
+        <img data-image="red" class="active" src=<%= pizza.getImage() %> alt="">
     </div>
     
     <!-- Right Column -->
     <div class="right-column">
         <!-- Product Description -->
+
         <div class="product-description">
-            <h1>Pepperoni Pizza</h1>
-            <h3>₱208.00</h3>
-            <p>Extra-virgin oil, garlic, mozzarella, mushrooms and olives</p>
+            <h1><%= pizza.getName()%></h1>
+            <h3>₱<%= pizza.getPrice()%></h3>
+            <p><%= pizza.getDesc()%></p>
         </div>
-        
+        <div class = "indiv-toppings">
+            <h4>Quantity</h4>
+                <select class= "Quan" name="quan"> 
+                    <option disabled selected>Quantity</option>
+                    <option value = "1" selected="selected">1</option>
+                    <option value = "2">2</option>
+                    <option value = "3">3</option>
+                    <option value = "4">4</option>
+                    <option value = "5">5</option>
+                </select>
+        </div>
         <!-- Product Configuration -->
         <form method="POST" action="addToCart">
         <div class="product-configuration">
@@ -65,7 +86,7 @@
                     <h4>Ham ₱80.00/50 g.</h4>
                         <select class= "Ham" name="ham"> 
                             <option disabled selected>Quantity</option>
-                            <option value = "0">0</option>
+                            <option value = "0" selected="selected">0</option>
                             <option value = "1">1</option>
                             <option value = "2">2</option>
                             <option value = "3">3</option>
@@ -78,7 +99,7 @@
                         <h4>Parmesan ₱50.00/50 g.</h4>
                         <select class= "Par" name="par"> 
                             <option disabled selected>Quantity</option>
-                            <option value = "0">0</option>
+                            <option value = "0" selected="selected">0</option>
                             <option value = "1">1</option>
                             <option value = "2">2</option>
                             <option value = "3">3</option>
@@ -91,7 +112,7 @@
                     <h4>Pepperoni ₱100.00/50 g.</h4>
                         <select class= "Pep" name="pep"> 
                             <option disabled selected>Quantity</option>
-                            <option value = "0">0</option>
+                            <option value = "0" selected="selected">0</option>
                             <option value = "1">1</option>
                             <option value = "2">2</option>
                             <option value = "3">3</option>
@@ -104,7 +125,7 @@
                         <h4>Spinach ₱30.00/10 pc.</h4>
                         <select class= "Spi" name="spi"> 
                             <option disabled selected>Quantity</option>
-                            <option value = "0">0</option>
+                            <option value = "0" selected="selected">0</option>
                             <option value = "1">1</option>
                             <option value = "2">2</option>
                             <option value = "3">3</option>
@@ -117,7 +138,7 @@
                         <h4>Cream Cheese ₱100.00/75 g.</h4>
                         <select class= "Cre" name="cre"> 
                             <option disabled selected>Quantity</option>
-                            <option value = "0">0</option>
+                            <option value = "0" selected="selected">0</option>
                             <option value = "1">1</option>
                             <option value = "2">2</option>
                             <option value = "3">3</option>
@@ -149,6 +170,20 @@
         {
             font-size: 15px;
             text-transform: none;
+            color: white;
+        }
+        
+        .Quan
+        {
+            flex-direction: column;
+            padding: 8px 12px;
+            color: #333333;
+            font-size: 15px;
+            background-color: #eeeeee;
+            border: 1px solid #dddddd;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-bottom: 20px;
         }
         
         .Moz

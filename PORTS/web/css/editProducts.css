@@ -165,7 +165,8 @@ pdfItem {
 }
 
 .pizzaImg {
-    max-width: 50%;
+    max-width: 40%;
+    max-height: 40%;
     margin-top: 5%;
     margin-left: auto;
     margin-right: auto;
@@ -177,7 +178,7 @@ pdfItem {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 2.5%;
+    margin-top: 2%;
 }
 
 .pizzaName1, .pizzaName2, .pizzaName3, .price1, .price2, .price3 {
@@ -201,6 +202,31 @@ input {
     padding: 2% 3% 2% 3%;
     border-radius: 15%;
     cursor: pointer;
+}
+
+.quantityDiv {
+    text-align: center;
+}
+
+.quantityPlusButton, .quantityMinusButton, .quantity1, .quantity2, .quantity3 {
+    display: inline-block;
+    
+}
+
+.quantityPlusButton, .quantityMinusButton {
+    cursor: pointer;
+    max-height: 25px;
+    max-width: 25px;
+}
+
+.quantityPlusButton {
+    margin-right: 5%;
+    margin-left: auto;
+}
+
+.quantityMinusButton {
+    margin-left: 5%;
+    margin-right: auto;
 }
 
 .bottomButtons{

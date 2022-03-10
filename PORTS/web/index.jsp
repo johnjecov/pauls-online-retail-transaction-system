@@ -43,8 +43,7 @@
     </div>
 
     <div class="image">
-        <img src="image/home-img.png" alt="" class="home-img">
-        <img src="image/home-parallax-img.png" alt="" class="home-parallax-img">
+        <img src="image/pepperoni2-removebg-preview.png" alt="" class="home-img">
     </div>
     
 </section>
@@ -230,11 +229,12 @@
 
         <div class="box">
             <h3>our menu</h3>
-            <a href="#"><i class="fas fa-arrow-right"></i> (NAME OF the) pizza</a>
-             <a href="#"><i class="fas fa-arrow-right"></i> (NAME OF the) pizza</a>
-              <a href="#"><i class="fas fa-arrow-right"></i> (NAME OF the) pizza</a>
-               <a href="#"><i class="fas fa-arrow-right"></i> (NAME OF the) pizza</a>
-                <a href="#"><i class="fas fa-arrow-right"></i> (NAME OF the) pizza</a>
+            <a href="#"><i class="fas fa-arrow-right"></i> Chicken BBQ </a>
+             <a href="#"><i class="fas fa-arrow-right"></i> Garlic Shrimp with Parsley </a>
+              <a href="#"><i class="fas fa-arrow-right"></i> Creamy Spinach </a>
+               <a href="testprod2.jsp"><i class="fas fa-arrow-right"></i> Cheese With Basil </a>
+                <a href="#"><i class="fas fa-arrow-right"></i> Hawaiian</a>
+                <a href="testprod.jsp"><i class="fas fa-arrow-right"></i> Pepperoni</a>
         </div>
 
         <div class="box">
@@ -250,7 +250,6 @@
             <h3>extra links</h3>
             <a href="#"> <i class="fas fa-arrow-right"></i> my order</a>
             <a href="#"> <i class="fas fa-arrow-right"></i> my account</a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> my favorite</a>
         </div>
 
         <div class="box">

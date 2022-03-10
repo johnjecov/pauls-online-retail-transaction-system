@@ -39,11 +39,11 @@
         <span>Welcome to Paul's Pizzeria, <%= user %></span>
         <h3>Any time is a good time for Pizza!</h3>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis unde dolores temporibus hic quam debitis tenetur harum nemo.</p>
-        <a href="#" class="btn">ORDER NOW</a>
+        <a href="menu.jsp" class="btn">ORDER NOW</a>
     </div>
 
     <div class="image">
-        <img src="image/pepperoni2-removebg-preview.png" alt="" class="home-img">
+        <img src="image/pepperoni2-removebg-preview-cropped.png" alt="" class="home-img">
     </div>
     
 </section>
@@ -91,34 +91,34 @@
 
         <div class="box">
             <div class="image">
-                <img src="image/food-1.png" alt="">
+                <img src="image/pepperoni2-removebg-preview-cropped.png" alt="">
             </div>
             <div class="content">
                 <h3>delicious food</h3>
                 <div class="price">$40.00</div>
-                <a href="#" class="btn">View More</a>
+                <a href="testprod.jsp" class="btn">View More</a>
             </div>
         </div>
 
         <div class="box">
             <div class="image">
-                <img src="image/food-1.png" alt="">
+                <img src="image/pepperoni-removebg-preview.png" alt="">
             </div>
             <div class="content">
                 <h3>delicious food</h3>
                 <div class="price">$40.00</div>
-                <a href="#" class="btn">View More</a>
+                <a href="testprod.jsp" class="btn">View More</a>
             </div>
         </div>
         
         <div class="box">
             <div class="image">
-                <img src="image/food-1.png" alt="">
+                <img src="image/Chicken BBQ.png" alt="">
             </div>
             <div class="content">
                 <h3>delicious food</h3>
                 <div class="price">$40.00</div>
-                <a href="#" class="btn">View More</a>
+                <a href="testprod.jsp" class="btn">View More</a>
             </div>
         </div>
     </div>
@@ -129,7 +129,7 @@
 <section class="banner">
     <div class="grid-banner">
         <div class="grid">
-            <img src="image/banner-1.png" alt="">
+            <img src="image/pepperoni.jpg" alt="">
             <div class="content">
                 <span>special offer</span>
                 <h3>upto 50% off</h3>
@@ -137,7 +137,7 @@
         </div>
         
         <div class="grid">
-            <img src="image/banner-2.png" alt="">
+            <img src="image/peperonni2.jpg" alt="">
             <div class="content center">
                 <span>special offer</span>
                 <h3>upto 25% extra</h3>
@@ -145,7 +145,7 @@
         </div>
         
         <div class="grid">        
-            <img src="image/banner-3.png" alt="">
+            <img src="image/Chicken BBQ.png" alt="">
             <div class="content">
                 <span>limited offer</span>
                 <h3>100% cashback</h3>

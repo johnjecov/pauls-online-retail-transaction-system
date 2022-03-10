@@ -1,10 +1,29 @@
-<%-- 
-    Document   : menu
-    Created on : 02 10, 22, 6:11:38 PM
-    Author     : Lucas
---%>
+<%@page import="java.util.*, ports.models.*"%>
+<%
+ 
+    //clears cache so that if session is already destroyed then user won't be able to go 
+    //back to the success page
+    response.setHeader("Cache-control", "no-cache, no-store, must-revalidate");
+    response.setHeader("Pragma", "no-cache");
+    response.setDateHeader("Expire", 0);
+ 
+    if (session.getAttribute("customer") != null)
+    {
+         Customer c = (Customer) session.getAttribute("customer");
+         if(c.getAddresses().isEmpty())
+            response.sendRedirect("address.jsp");
+         else
+            response.sendRedirect("login.jsp"); 
+    }
+    else if (session.getAttribute("employee") != null)
+    {
+        response.sendRedirect("adminOrderList.jsp");
+    }
+ 
+%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
    <head>

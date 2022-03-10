@@ -28,15 +28,24 @@
     <!-- Login/Register section starts  -->
     <section class="changePass" id="changePass">
         <div class = "content">
-            <form id = "changePassForm" action="">
+            <form id = "changePassForm" action="changePassword" method = "POST">
                 <h3 class = "formTitle">change password</h3>
-                <input type="password" name="" placeholder="enter your old password" id="" class="inputsC">
-                <input type="password" name="" placeholder="enter your password" id="" class="inputsC">
-                <input type="password" name="" placeholder="confirm password" id="" class="inputsC">
+                
+                <input type="password" name="newPassC" placeholder="Enter your new password" id="" class="inputsC" required>
+                <input type="password" name="confirmNewPassC" placeholder="Confirm password" id="" class="inputsC" required>
+                <input type="password" name="oldPassC" placeholder="Enter your old password" id="" class="inputsC" required>
+                <% 
+                    String errorMessageC = "";
+                    ServletContext sc = getServletContext();
+                    if(sc.getAttribute("ErrorMessageC") != null)
+                    {
+                        errorMessageC = (String) sc.getAttribute("ErrorMessageC");
+                        sc.removeAttribute("ErrorMessageC");
+                    }
+                %>
+                <p style = "color: #302c2c;font-size: 1.3rem"><%= errorMessageC %></p>                
                 <input type="submit" value="change password now" class="inputsC LRButton" id = "regButton">
-         
-            </form>
-            
+            </form>  
         </div>
     </section>
     

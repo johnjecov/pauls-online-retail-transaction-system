@@ -90,6 +90,44 @@ public class PortsDatabase {
     
     //register 
     
+    public boolean changeCustomerPassword(int customer_id, String oldPassword, String newPassword) {
+        boolean changed = false;
+          //newPassword = security.encrypt(password);
+          //oldPassword = security.encrypt(password);
+        String checkOldPassword = "SELECT * FROM customer where customer_id = ? and customer_password = ?";
+        String updateNewPassword = "UPDATE customer SET customer_password = ? where customer_id = ?";
+ 
+        try {
+            PreparedStatement ps = portsConnection.prepareStatement(checkOldPassword);
+            ps.setInt(1, customer_id);
+            ps.setString(2, oldPassword);
+            
+            ResultSet result = ps.executeQuery();
+            
+            if(result.next()) {
+                //correct old password
+                ps = portsConnection.prepareStatement(updateNewPassword);
+                ps.setString(1, newPassword);
+                ps.setInt(2, customer_id);
+                
+                ps.executeUpdate();
+                
+                changed = true;
+            }
+            else {
+                changed = false;
+            }
+            
+        }
+        catch (SQLException sqle)
+        {
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        }         
+        
+        
+        return changed;
+    
+    }
     public boolean checkCustomer(String username) {
         boolean customerExists = false;
         String query = "SELECT * FROM customer where customer_username = ?";
@@ -1161,7 +1199,7 @@ public class PortsDatabase {
                 cart_purchase_id = Integer.parseInt(results.getString("cart_purchase_id")) + 1;
                 System.out.println("dito ba?");
             }
-            
+   
             //add the item to the cart
             System.out.println(item.getProduct());
             ps = portsConnection.prepareStatement(query1);

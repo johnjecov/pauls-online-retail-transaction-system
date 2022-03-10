@@ -66,7 +66,7 @@ public class registerServlet extends HttpServlet {
                 else {
                     System.out.println("Ready to add customer!!");
      
-                    Customer customer = ports.addCustomer(unameR, givenNameR, lastNameR, pwordR, emailR, contactR);
+                    Customer customer = ports.addCustomer(unameR, pwordR, lastNameR, givenNameR, emailR, contactR);
 
                     session.setAttribute("customer", customer);
 
@@ -75,13 +75,7 @@ public class registerServlet extends HttpServlet {
                 }
                 
             }
-        }
-        
-        
-        
-        
- 
-        
+        }      
         
     }
 

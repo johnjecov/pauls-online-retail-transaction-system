@@ -7,12 +7,17 @@ package ports.controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.servlet.*;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
+import ports.models.*;
 /**
  *
  * @author Kirby Wenceslao
@@ -31,19 +36,42 @@ public class changePasswordServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet changePasswordServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet changePasswordServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        
+        ServletContext sc = request.getServletContext();
+        HttpSession session = request.getSession();
+        PortsDatabase ports = (PortsDatabase) sc.getAttribute("dbConnection");
+        
+        //initialize
+        Customer c = (Customer) session.getAttribute("customer");
+        String oldPassword = request.getParameter("oldPassC").trim();
+        String confirmPass = request.getParameter("confirmNewPassC").trim();
+        String newPassword = request.getParameter("newPassC").trim();
+
+        int customer_id = c.getCustomer_Id();
+        System.out.println("Change Password of Customer_id: "+customer_id);
+        
+        //check conditions
+        System.out.println(oldPassword);
+        System.out.println(confirmPass);
+        if(!newPassword.equals(confirmPass)){
+            //different passwords
+            sc.setAttribute("ErrorMessageC", "Passwords do not match. Try again!");
+            response.sendRedirect("changePassword.jsp");
         }
+        else if (ports.changeCustomerPassword(customer_id, oldPassword, newPassword) == false){
+            //old password is incorrect
+            sc.setAttribute("ErrorMessageC", "Incorrect old password. Try again!");
+            response.sendRedirect("changePassword.jsp");
+        }
+        else{
+            //password was successfully changed
+            sc.setAttribute("ErrorMessageC", "Password successfully changed!");
+            response.sendRedirect("changePassword.jsp");
+        }
+            
+            
+            
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

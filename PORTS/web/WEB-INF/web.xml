@@ -60,6 +60,15 @@
         <url-pattern>/register</url-pattern>
     </servlet-mapping>   
     
+    <servlet>
+        <servlet-name>changePasswordServlet</servlet-name>
+        <servlet-class>ports.controllers.changePasswordServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>changePasswordServlet</servlet-name>
+        <url-pattern>/changePassword</url-pattern>
+    </servlet-mapping>  
+    
     
     <servlet>
         <servlet-name>CaptchaServlet</servlet-name>

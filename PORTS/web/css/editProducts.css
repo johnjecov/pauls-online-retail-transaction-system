@@ -112,11 +112,11 @@ html,body {
 
 .adminContent {
     background-color: #2e2e2e;
-    margin-left: 15%;
-    margin-right: 1%;
-    bottom: auto;
+    left: 15%;
+    right: 1%;
+    bottom: 5%;
     position: fixed;
-    margin-top: -1%;
+    top: 13%;
 }
 
 .pdfContent {
@@ -171,6 +171,7 @@ pdfItem {
     margin-left: auto;
     margin-right: auto;
     display: block;
+    margin-bottom: 5%;
 }
 
 .pizzaName1, .pizzaName2, .pizzaName3, .pizzaDesc1, .pizzaDesc2, .pizzaDesc3, .price1, .price2, .price3, .quantity1, .quantity2, .quantity3, .availabilityButton {
@@ -241,7 +242,8 @@ input {
     width: 75%;
     overflow: hidden;
     font-size: 1vw;
-    margin-left: 0%;
+    position: fixed;
+    bottom: 7%;
 }
 
 .pageNumber{
@@ -268,13 +270,16 @@ input {
     background-color: #ffde59;
     width: 15%;
     cursor: pointer;
+    position: fixed;
+    bottom: 7%;
+    right: 1%;
 }
 
 .orderRemove {
     font-size: 500%;
     position: absolute;
-    right: 10%;
-    top: -10%;
+    right: 15%;
+    bottom: 60%;
     cursor: pointer;
     transform: rotate(45deg);
     color: #ff5757;

@@ -42,6 +42,16 @@
     <body>
     <!-- header section starts -->
     <%@include file="header_external.jsp"%>
+     <%  
+            String user = "";
+            Customer c=null;
+            if(session.getAttribute("customer")!= null)
+            {
+                 c = (Customer) session.getAttribute("customer");
+                user = (String) c.getUsername();
+                
+            }
+        %>
      <!-- header section ends -->
         <section>
             <div class = "container">
@@ -54,27 +64,38 @@
                             <h2>View Addresses</h2>
                             <p class = "signup"><a href = "#" onclick = "toggleForm();">Add New Address</a></p>
                             <br>
-                            <% for (int i=0; i < port.getAddresses().size(); i++) { %>
+                            <%  if(c.getAddresses().size()==0)
+                                
+                            {out.print(user);
+                            out.print(c.getAddresses().size());%>
+                            <br><br><br><br><br>
+                            <h2>You Do not Have Any Addresses</h2>
+                            <h2>Click on the <b>ADD NEW ADDRESS</b> to add</h2>
+                            <% } else%>
+                            <%  { %> 
+                            <% for (int i=0; i < c.getAddresses().size(); i++) { %>
                                 <div class="viewAddressBx">
                                     <div class="edit">
-                                        <h3><%= ((Address)port.getAddresses().get(i)).getAddressName() %></h3>
+                                        <h3><%= ((Address)c.getAddresses().get(i)).getAddressName() %></h3>
                                         <div class="box"></div>
                                        
                                     </div>
                                     <p> <% 
         
-                                       out.print(((Address)port.getAddresses().get(i)).getHouseNo()+ " " +
-                                                   ((Address)port.getAddresses().get(i)).getStreet()+ " " +
-                                                   ((Address)port.getAddresses().get(i)).getCity()+ " " +
-                                                   ((Address)port.getAddresses().get(i)).getProvince()+ " " +
-                                                   ((Address)port.getAddresses().get(i)).getPostalCode()+ " " +
-                                                   ((Address)port.getAddresses().get(i)).getDetails()+ " " +
-                                                  "(" + ((Address)port.getAddresses().get(i)).getAdditionalDetails()+ ") " 
+                                       out.print(((Address)c.getAddresses().get(i)).getHouseNo()+ " " +
+                                                   ((Address)c.getAddresses().get(i)).getStreet()+ " " +
+                                                   ((Address)c.getAddresses().get(i)).getCity()+ " " +
+                                                   ((Address)c.getAddresses().get(i)).getProvince()+ " " +
+                                                   ((Address)c.getAddresses().get(i)).getPostalCode()+ " " +
+                                                   ((Address)c.getAddresses().get(i)).getDetails()+ " " +
+                                                  "(" + ((Address)c.getAddresses().get(i)).getAdditionalDetails()+ ") " 
                                                     ); %>
                                    </p>
                                     <input type = "submit" value = "Edit">
+                                    <input type = "submit" value = "Remove">
                                </div>
                             <br> <% } %>
+                            <% } %>
                             
                     </form>  
                           

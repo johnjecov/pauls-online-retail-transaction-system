@@ -92,7 +92,15 @@ public class addAddressServlet extends HttpServlet {
          
          if (id.equals(idFromWeb))
          {
-             Address newAdd = new Address("1","1",addressName,addInfo,addDetail,houseNo,street,city,province,postalCode);
+              session = request.getSession();               
+              Customer c = (Customer) session.getAttribute("customer");
+              int addressId = c.getAddresses().size()+1;
+              int cId = c.getCustomer_Id();
+              
+              String AI = String.valueOf(addressId);
+             String CI = String.valueOf(cId);
+             
+              Address newAdd = new Address(AI,CI,addressName,addInfo,addDetail,houseNo,street,city,province,postalCode);
              PortsDatabase port = (PortsDatabase)app.getAttribute("dbConnection");
              port.addAddress(newAdd);
              response.sendRedirect("address.jsp");

@@ -7,6 +7,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+    <%@  page import = "ports.models.*" %> 
+    <%@  page import = "java.util.*" %>  
+    <%@  page import = "javax.servlet.*" %>  
+  
+     <%  ServletContext app = getServletContext();
+         PortsDatabase port = (PortsDatabase)app.getAttribute("dbConnection");
+             %>
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -34,7 +41,7 @@
         <table class="table">
         <thead>
      	<tr>
-            <th>Product</th>
+            <th>Pizza</th>
             <th>Toppings</th>
             <th>Price</th>
             <th>Quantity</th>
@@ -42,13 +49,21 @@
      	</tr>
         </thead>
         <tbody>
-        
+        <% 
+            //Cart(int cart_id, int customer_id, double cart_total, ArrayList<CartItem> items)
+            Cart theCart = (Cart)(port.getCartData(1));
+            ArrayList items = (theCart.getItems());
+            for(int a=0; items.size() > a; a++)
+            { 
+        %>
         <tr>
-            <td data-label="Product Name">
+            <td data-label="Pizza">
                 <div class="cart-info">
                     <img src="image/food-3.png">
                     <div class="pizza-name">
-                        Pizza Name
+                        <% String pizzaName = ((CartItem)(items.get(a))).getProduct().getName();
+                            out.print(pizzaName);
+                        %>
                         <br>
                         <a href="">Remove</a>
                     </div>
@@ -60,43 +75,9 @@
             <td data-label="Quantity"> 1 </td>
             <td data-label="Price">P250.00</td>
         </tr>
+        <% }
+        %>
         
-        <tr>
-            <td data-label="Product Name">
-                <div class="cart-info">
-                    <img src="image/food-3.png">
-                    <div class="pizza-name">
-                        Pizza Name
-                        <br>
-                        <a href="">Remove</a>
-                    </div>
-                </div>
-            </td>
-            <td data-label="Toppings">Cheese</td>
-               
-            <td data-label="Price">P250.00 </td>
-            <td data-label="Quantity"> 1 </td>
-            <td data-label="Price">P250.00</td>
-        </tr>
-        
-        <tr>
-            <td data-label="Product Name">
-                <div class="cart-info">
-                    <img src="image/food-3.png">
-                    <div class="pizza-name">
-                        Pizza Name
-                        <br>
-                        <a href="">Remove</a>
-                    </div>
-                </div>
-            </td>
-           
-            <td data-label="Toppings">Cheese</td>
-   
-            <td data-label="Price">P250.00 </td>
-            <td data-label="Quantity"> 1 </td>
-            <td data-label="Price">P250.00</td>
-        </tr>
           
         </tbody>
         </table>

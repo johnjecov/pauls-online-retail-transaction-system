@@ -1,4 +1,6 @@
 <head>
+    <%@page import="java.util.*, ports.models.*"%>
+        
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +14,15 @@
 </head>
 
 <header class="header">
-
+<%  
+        String navUser = "";
+            
+        if(session.getAttribute("customer")!= null)
+        {
+            Customer c = (Customer) session.getAttribute("customer");
+            navUser = (String) c.getUsername();
+        }
+    %>
        <a href="/PORTS/index.jsp" class="logo"> <i class="fas fa-utensils"></i>Paul's Pizzeria  </a>
     
     <nav class="navbar0">
@@ -29,12 +39,33 @@
                 </span>
             </ul>
     </nav>
-                
-    <div class="icons">
+     
+     <div class="icons">
         <a id="openMenu" class="fas fa-bars"></a>
-        <a id="cart-btn" class="fas fa-shopping-cart" href="/PORTS/cart.jsp"></a>
-        <a id="login-btn" class="fas fa-user" href="/PORTS/login.jsp"></a>
+        
     </div>
+       
+       <% if (navUser == "") { %>
+       <div class="dropdown">
+            <button class="dropbtn" style="cursor: pointer;" onclick="window.location.href='/PORTS/login.jsp'">Login</button>
+            
+        </div>
+        <% } %>
+        
+        <% if (navUser != "") { %>
+        <div class="dropdown">
+            <button class="dropbtn"> <%= navUser%> </button>
+            <div class="dropdown-content">
+                <a href="/PORTS/address.jsp">View Address</a>
+                <a href="/PORTS/changePassword.jsp">Change Password</a>
+                <a href="/PORTS/orderstatus.jsp">View Order Status</a>
+                <a href="#logout">Logout</a>
+            </div>
+        </div>
+        <% } %>  
+       
+     
+   
 </header>
 
 <script>
@@ -157,4 +188,56 @@ nav .logo {
         
     }
 }
+
+
+
+
+    /* Dropdown Button */
+    .dropbtn {
+        background-color: #008C45;
+        color: white;
+        padding: 12px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5%;
+        
+    }
+
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+   
+        
+    }
+
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #302c2c;
+        min-width: 145px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        
+    }
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+        color: white;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        font-size: 12px;
+    }
+
+    /* Change color of dropdown links on hover */
+    .dropdown-content a:hover {background-color: whitesmoke; color: black;}
+
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {display: block;}
+
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropdown:hover .dropbtn {background-color: #CD212A;}
+
     </style>

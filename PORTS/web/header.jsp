@@ -43,15 +43,17 @@
             </ul>
     </nav> 
                 
-    <div class="icons">
+      <div class="icons">
         <a id="openMenu" class="fas fa-bars"></a>
-        <a id="cart-btn" class="fas fa-shopping-cart" href="/PORTS/cart.jsp"></a>
         
-        <% if (navUser == "") { %>
-        <a id="login-btn" class="fas fa-user" href="/PORTS/login.jsp"></a>
-        <% } %>
     </div>
-    
+     <% if (navUser == "") { %>
+       <div class="dropdown">
+            <button class="dropbtn" style="cursor: pointer;" onclick="window.location.href='/PORTS/login.jsp'">Login</button>
+            
+        </div>
+        <% } %>
+        
         <% if (navUser != "") { %>
         <div class="dropdown">
             <button class="dropbtn"> <%= navUser%> </button>
@@ -59,10 +61,11 @@
                 <a href="/PORTS/address.jsp">View Address</a>
                 <a href="/PORTS/changePassword.jsp">Change Password</a>
                 <a href="/PORTS/orderstatus.jsp">View Order Status</a>
-              <a href="#logout">Logout</a>
+                <a href="#logout">Logout</a>
             </div>
         </div>
         <% } %>
+    
 </header>
 
 <script>
@@ -306,16 +309,19 @@
     .dropbtn {
         background-color: #008C45;
         color: white;
-        padding: 16px;
+        padding: 12px;
         font-size: 16px;
         border: none;
+        border-radius: 5%;
+        
     }
 
     /* The container <div> - needed to position the dropdown content */
     .dropdown {
         position: relative;
         display: inline-block;
-        margin-left: -350px;
+   
+        
     }
 
     /* Dropdown Content (Hidden by Default) */
@@ -326,6 +332,7 @@
         min-width: 145px;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         z-index: 1;
+        
     }
 
     /* Links inside the dropdown */

@@ -23,7 +23,7 @@ public class Order {
         System.out.println("Order Placeholder");
     }
     public Order(int order_id, int customer_id, int employee_id, int order_status_id, double order_total, String order_made_date, String order_delivery_date,
-            String payment_method, String payment_date, String payment_status,ArrayList<OrderItem> Items, Address address, String customer_name, String contact_number){
+            String payment_method, String payment_date, String payment_status,ArrayList<OrderItem> items, Address address, String customer_name, String contact_number){
         
         this.order_id = order_id;
         this.customer_id = customer_id;

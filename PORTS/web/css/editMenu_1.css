@@ -3,7 +3,7 @@ GAWAN NG MAX WIDTH MGA PICTURES
 */
 
 @import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Open+Sans:wght@300&display=swap');
 *{
     font-family: 'Satisfy', cursive;
     color: #fff;
@@ -26,6 +26,8 @@ html,body {
     width: 15%;
     border-top-right-radius:5%;
     border-bottom-right-radius:5%;
+ 
+    
 }
 
 .logo {
@@ -108,6 +110,8 @@ html,body {
     min-width: 15rem;
     padding: 1rem;
     border-radius: 10px;
+    box-shadow: inset 15px 15px 30px #212121,
+                inset -15px -15px 30px #3b3b3b;
 }
 
 .pageContent {
@@ -133,16 +137,23 @@ html,body {
     min-height: 2.5rem;
 }
 
-.pizzaOrTopping li{
+.pizzaOrTopping li, button{
     text-align: center;
     font-size: 2rem;
     height: 100%;
     background-color: black;
     border-radius: 10px;
     min-width: 150px;
+    background: #2e2e2e;
+    box-shadow: inset 15px 15px 30px #212121,
+                inset -15px -15px 30px #3b3b3b;
 }
 
 
+.pizzaOrTopping li:hover {
+    background: #5c5c5c;
+    cursor: pointer;
+}
 .adminContent {
     background-color: #2e2e2e;
     width: auto;
@@ -152,6 +163,7 @@ html,body {
     gap: 1rem;
     padding: 1rem;
     border-radius: 10px;
+    font-family: "roboto";
 }
 
 .pizzaOrToppingContent {
@@ -161,11 +173,12 @@ html,body {
     display: flex;
     flex-direction: row;
     overflow-x: scroll;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
 .pizzaOrToppingContent::-webkit-scrollbar {
     width: 1rem;
+    scroll-behavior: smooth;
 }
 
 .pizzaOrToppingContent::-webkit-scrollbar-track {
@@ -191,18 +204,28 @@ html,body {
     align-content: center;
     gap: 0.8rem;
     background: linear-gradient(145deg, #292929, #313131);
-    box-shadow:  15px 15px 30px #212121,
-                 -15px -15px 30px #3b3b3b;
+    background: #2e2e2e;
+    box-shadow: inset 15px 15px 30px #212121,
+                inset -15px -15px 30px #3b3b3b;
 }
 
 .pizzaOrToppingImage {
     height: 300px;
     width: auto;
 }
-input {
-    color: black;
+input, button {
     padding: 0.5rem;
-    background: white;
+    background: none;
     font-size: 1rem;
     width: auto;
+    border-radius: 10px;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+}
+
+img {
+    border-radius: 10px;
+}
+buttonh:over {
+    cursor: pointer;
 }

@@ -6,9 +6,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="css/editProducts.css?nocache={timestamp}" type="text/css">
+        <link rel="stylesheet" href="css/editMenu.css?nocache={timestamp}" type="text/css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Edit Products Page</title>
+        <title>Edit Menu</title>
     </head>
     <body scroll="no" style="overflow: hidden">
         <div class="contentHolder">
@@ -25,6 +25,8 @@
             <div class="adminGreetings">
                 <p class='helloAdmin'>Hello, admin</p>
             </div>
+            
+            
             <div class="adminContent">
                 <div class="menuCategory">
                     <ul class="pizzaOrToppings">
@@ -43,10 +45,15 @@
                             <input type="text" id="quantity1" class="quantity1" name="enterQuantity" placeholder="0">
                             <img id="quantityMinusButton" class="quantityMinusButton" src="image/minus_yellow.png" alt="minus button">
                         </div>
-                        <button class="availabilityButton" type="button">Available</button>
                     </div>
                     <div class="pizzaDisplay2">
-                        <img class="pizzaImg" src="image/pizza-sample.png" alt="mama mia">
+                        
+                        <% 
+                            String imageString = "https://drive.google.com/uc?export=view&id=";
+                            String url[] = "drive.google.com/file/d/1GYvV2aIoSe0LqEA90P9Dvthw8lNhKiq7/view?usp=sharing".split("/");
+                            imageString = imageString + url[3];
+                            %>
+                        <img class="pizzaImg" src= <%= imageString %>  alt="mama mia">
                         <p class="pizzaName2">CREAMY SPINACH PIZZA</p>
                         <p class="pizzaDesc2">Cream cheese,  Mozarella, Spinach, and Tomato Sauce</p>
                         <p class="price2">- ₱290.00 -</p>
@@ -56,20 +63,6 @@
                             <img id="quantityMinusButton" class="quantityMinusButton" src="image/minus_yellow.png" alt="minus button">
                         </div>
                         <button class="availabilityButton" type="button">Available</button>
-                        <p class="orderRemove" id="orderRemoveID">+</p>
-                    </div>
-                    <div class="pizzaDisplay3">
-                        <img class="pizzaImg" src="image/pizza-sample.png" alt="mama mia">
-                        <p class="pizzaName3">CHEESE WITH BASIL</p>
-                        <p class="pizzaDesc3">Mozarella, Parmesan, Basil, and Tomato Sauce</p>
-                        <p class="price3">- ₱198.00 -</p>
-                        <div class="quantityDiv">
-                            <img id="quantityPlusButton" class="quantityPlusButton" src="image/plus_yellow.png" alt="plus button">
-                            <input type="text" id="quantity3" class="quantity3" name="enterQuantity" placeholder="0">
-                            <img id="quantityMinusButton" class="quantityMinusButton" src="image/minus_yellow.png" alt="minus button">
-                        </div>
-                        <button class="availabilityButton" type="button">Available</button>
-                        <p class="orderRemove" id="orderRemoveID">+</p>
                     </div>
                     <script>
                         document.querySelector('.availabilityButton').addEventListener('click',
@@ -94,11 +87,6 @@
                     </script>
                 </div>
                 <div class="bottomButtons">
-                    <ul class="pageList">
-                        <li class="pageNumber">1</li>
-                        <li class="pageNumber">2</li>
-                        <li class="pageNumber">3</li>
-                    </ul>
                     <div class="saveChanges">
                         <button class="saveChangesButton" type="button">
                             Save Changes

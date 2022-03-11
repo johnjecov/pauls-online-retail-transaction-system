@@ -22,11 +22,8 @@
 <%@include file="header.jsp"%>
 <!-- header section ends  -->
 
-
-
 <!-- home section starts  -->
 <section class="home" id="home">
-
     <div class="content">
         <%  
             String user = "";
@@ -57,7 +54,6 @@
 
 <!-- about section starts  -->
 <section class="about" id="about">
-
     <div class="image">
         <img src="image/about-img.png" alt="">
     </div>
@@ -73,9 +69,7 @@
             but now he creates pizza that can make customers go for seconds. </p>
          <h3 class="title">The Vision of Paul's Pizzeria</h3>
          <p>To expand the business, franchise more branches, and be the best Pizzeria in the Philippines.</p>
-        </div>
     </div>
-
 </section>
 <!-- about section ends -->
 
@@ -88,7 +82,6 @@
     </div>
 
     <div class="box-container">
-
         <div class="box">
             <div class="image">
                 <img src="image/pepperoni-removebg-preview.png" alt="">
@@ -132,7 +125,7 @@
             <img src="image/pepperoni.jpg" alt="">
             <div class="content">
                 <span>special offer</span>
-                <h3>upto 50% off</h3>
+                <h3>up to 50% off</h3>
             </div>
         </div>
         
@@ -140,7 +133,7 @@
             <img src="image/pepperoni.jpg" alt="">
             <div class="content center">
                 <span>special offer</span>
-                <h3>upto 25% extra</h3>
+                <h3>up to 25% extra</h3>
             </div>
         </div>
         
@@ -151,24 +144,23 @@
                 <h3>100% cashback</h3>
             </div>
         </div>
-        
     </div>
 </section>
 <!-- banner section ends -->
 
 <section class="about" id="about">
     <div class="image">
-       <div class="mapouter">
-        <div class="gmap_canvas">
-            <iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=112%20Copenhagen%20St.
-            %20Green%20Park%20Village,%20Manggahan,%20Pasig%20City&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-            frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-        <style>.mapouter{position:relative;text-align:right;height:500px;width:100%;}</style>
-        <a href="https://www.embedgooglemap.net">google maps link html</a>
-        <style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:100%;}</style>
-        <style>.gmap_canvas iframe{position: relative; width: 100%; height: 100%;}</style>
-    </div>
-</div>
+        <div class="mapouter">
+            <div class="gmap_canvas">
+                <iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=112%20Copenhagen%20St.
+                %20Green%20Park%20Village,%20Manggahan,%20Pasig%20City&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+            <style>.mapouter{position:relative;text-align:right;height:500px;width:100%;}</style>
+            <a href="https://www.embedgooglemap.net">google maps link html</a>
+            <style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:100%;}</style>
+            <style>.gmap_canvas iframe{position: relative; width: 100%; height: 100%;}</style>
+            </div>
+        </div>
     </div>
 
     <div class="content">
@@ -176,23 +168,17 @@
         <p>Located in the heart of <b>Pasig</b>, Paul's Pizzeria is situated in the residential 
             zone of <b>Manggahan</b>. Bridging together household communities with the 
             welcoming satisfaction from home-made pizzas. Delivered fresh at your doorstep daily.</p>
-        </div>
     </div>
-
 </section>
 
-
 <!-- order section starts  -->
-
 <section class="order" id="order">
-
     <div class="heading">
         <span>order now</span>
         <h3>Freshly Made Pizza Home Delivery</h3>
     </div>
 
     <div class="icons-container">
-
         <div class="icons">
             <img src="image/icon-1.png" alt="">
             <h3> Tuesday to Sunday</h3>
@@ -208,33 +194,23 @@
             <img src="image/icon-3.png" alt="">
             <h3>112 Copenhagen St. Green Park Village, Manggahan, Pasig City</h3>
         </div>
-
     </div>
-
-    
-
 </section>
-
 <!-- order section ends -->
-
-
 
 <!-- footer section starts  -->
 
 <section class="footer">
-
-    
-
     <div class="box-container">
 
         <div class="box">
             <h3>our menu</h3>
             <a href="#"><i class="fas fa-arrow-right"></i> Chicken BBQ </a>
-             <a href="#"><i class="fas fa-arrow-right"></i> Garlic Shrimp with Parsley </a>
-              <a href="#"><i class="fas fa-arrow-right"></i> Creamy Spinach </a>
-               <a href="testprod2.jsp"><i class="fas fa-arrow-right"></i> Cheese With Basil </a>
-                <a href="#"><i class="fas fa-arrow-right"></i> Hawaiian</a>
-                <a href="testprod.jsp"><i class="fas fa-arrow-right"></i> Pepperoni</a>
+            <a href="#"><i class="fas fa-arrow-right"></i> Garlic Shrimp with Parsley </a>
+            <a href="#"><i class="fas fa-arrow-right"></i> Creamy Spinach </a>
+            <a href="testprod2.jsp"><i class="fas fa-arrow-right"></i> Cheese With Basil </a>
+            <a href="#"><i class="fas fa-arrow-right"></i> Hawaiian</a>
+            <a href="testprod.jsp"><i class="fas fa-arrow-right"></i> Pepperoni</a>
         </div>
 
         <div class="box">
@@ -243,36 +219,28 @@
             <a href="#about"> <i class="fas fa-arrow-right"></i> about</a>
             <a href="#popular"> <i class="fas fa-arrow-right"></i> popular</a>
             <a href="#menu"> <i class="fas fa-arrow-right"></i> menu</a>
-            <a href="#order"> <i class="fas fa-arrow-right"></i> order</a>
         </div>
 
         <div class="box">
             <h3>extra links</h3>
-            <a href="#"> <i class="fas fa-arrow-right"></i> my order</a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> my account</a>
+            <a href="login.jsp"> <i class="fas fa-arrow-right"></i> my account</a>
         </div>
 
         <div class="box">
             <h3>opening hours</h3>
-            <p>tuesday: 1:00 P.M. to 8:00 P.M.</p>
-            <p>wednesday : 1:00 P.M. to 8:00 P.M.</p>
-            <p>friday : 1:00 P.M. to 8:00 P.M.</p>
-            <p>Saturday: 1:00 P.M. to 8:00 P.M.</p>
-            <p> Sunday and Monday: CLOSED</p>
+            <p>Tuesday to Saturday: 1:00 P.M. to 8:00 P.M.</p>
+            <p>Sunday and Monday: CLOSED</p>
         </div>
-
     </div>
 
     <div class="bottom">
-
         <div class="share">
             <a href="https://www.facebook.com/Pauls-Pizzeria-100627485039888/" class="fab fa-facebook-f"></a>
             <a href="" class="fab fa-twitter"></a>
-            <a href="" class="fab fa-instagram"></a>
+            <a href="https://www.instagram.com/paulspizzeria/" class="fab fa-instagram"></a>
         </div>
-
-        <div class="credit"> created <span>TechPare</span> | all rights reserved </div>
         
+        <div class="credit"> created <span>TechPare</span> | all rights reserved </div>
     </div>
 
 </section>

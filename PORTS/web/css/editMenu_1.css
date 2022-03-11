@@ -177,7 +177,8 @@ html,body {
 }
 
 .pizzaOrToppingContent::-webkit-scrollbar {
-    width: 1rem;
+    width: 10px;
+    height: 10px;
     scroll-behavior: smooth;
 }
 

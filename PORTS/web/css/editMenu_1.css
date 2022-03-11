@@ -1,0 +1,159 @@
+/*
+GAWAN NG MAX WIDTH MGA PICTURES
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
+
+*{
+    font-family: 'Satisfy', cursive;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+html,body { 
+    height:100%; 
+    background-color: #1e1f20;
+}
+.contentHolder {
+    height: 100%;
+    display: flex;
+}
+
+.sidebar {
+    background-color: #2e2e2e;
+    height: 100%;
+    width: 15%;
+    border-top-right-radius:5%;
+    border-bottom-right-radius:5%;
+}
+
+.logo {
+    border-radius: 50%;
+    width: 40%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 12%;
+    margin-bottom: 27%;
+}
+
+.adminOptions {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #2e2e2e;
+    font-size: 1.5vw;
+}
+
+.options {
+    float: bottom;
+    background-color: #2e2e2e
+}
+
+.options a {
+    margin-bottom: 4%;
+    margin-left: 20%;
+    display: block;
+    color: white;
+    padding: 4%;
+    text-decoration: none;
+    background-color: #2e2e2e
+}
+
+.options a:hover {
+    background-color: #fff;
+    color: #000;
+    border-radius: 5px;
+    margin-right: 20%;
+}
+
+.logout {
+    overflow: hidden;
+    font-size: 1.2vw;
+    margin-top: 80%;
+    margin-left: 5%;
+    bottom: 0%;
+    position: fixed;
+    padding: 1%;
+    cursor: pointer;
+}
+
+.logout a {
+    margin-bottom: 4%;
+    margin-left: 20%;
+    display: block;
+    color: white;
+    text-decoration: none;
+    background-color: #2e2e2e
+}
+
+.logout:hover {
+    background-color: #cd212a;
+    color: #fff;
+    border-radius: 15%;
+}   
+
+.adminGreetings {
+    width: 20%;
+}
+
+
+
+.helloAdmin {
+    font-size: 3rem;
+    text-align: center;
+    background-color: #2e2e2e;
+    min-width: 15rem;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.pageContent {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 2rem;
+    margin: 1rem;
+    
+    width: 100%;
+}
+
+
+
+.pizzaOrTopping {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    min-height: 2.5rem;
+}
+
+.pizzaOrTopping li{
+    text-align: center;
+    font-size: 2rem;
+    height: 100%;
+    background-color: black;
+    border-radius: 10px;
+    min-width: 150px;
+}
+
+
+.adminContent {
+    background-color: #2e2e2e;
+    width: auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.pizzaOrToppingContent {
+    width: 100%;
+    flex-grow: 1;
+    background-color: black;
+    text-align: center;
+}

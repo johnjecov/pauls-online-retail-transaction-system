@@ -87,9 +87,9 @@
                 <img src="image/pepperoni-removebg-preview.png" alt="">
             </div>
             <div class="content">
-                <h3>delicious food</h3>
-                <div class="price">$40.00</div>
-                <a href="testprod.jsp" class="btn">View More</a>
+                <h3>Pepperoni</h3>
+                <div class="price">P208.00</div>
+                <a href="menu.jsp" class="btn">View More</a>
             </div>
         </div>
 
@@ -98,9 +98,9 @@
                 <img src="image/pepperoni-removebg-preview.png" alt="">
             </div>
             <div class="content">
-                <h3>delicious food</h3>
-                <div class="price">$40.00</div>
-                <a href="testprod.jsp" class="btn">View More</a>
+                <h3>Chicken BBQ </h3>
+                <div class="price">P315.00</div>
+                <a href="menu.jsp" class="btn">View More</a>
             </div>
         </div>
         
@@ -109,9 +109,9 @@
                 <img src="image/pepperoni-removebg-preview.png" alt="">
             </div>
             <div class="content">
-                <h3>delicious food</h3>
-                <div class="price">$40.00</div>
-                <a href="testprod.jsp" class="btn">View More</a>
+                <h3>Creamy Spinach</h3>
+                <div class="price">P290.00</div>
+                <a href="menu.jsp" class="btn">View More</a>
             </div>
         </div>
     </div>

@@ -35,8 +35,23 @@
                             Toppings
                         </li>
                     </ul>
+                    <% 
+                        String imageString = "https://drive.google.com/uc?export=view&id=";
+                        String url[] = "drive.google.com/file/d/1GYvV2aIoSe0LqEA90P9Dvthw8lNhKiq7/view?usp=sharing".split("/");
+                        imageString = imageString + url[3];
+                    %>
                     <div class = "pizzaOrToppingContent">
-                        Body for content
+                        <form class = "pizzaOrToppingForm">
+                            <img class = "pizzaOrToppingImage" src = <%= imageString %> alt="No Image Found">
+                            <input type = "text" placeholder = "Product Image Url" name = "productImageUrl">
+                            <input type = "text" placeholder = "Product Name" name = "productName">
+                            <input type = "text" placeholder = "Product Desc" name = "productDesc">
+                            <input type = "text" placeholder = "Product Price" name = "productName">
+                            <input type = "text" placeholder = "Product Stock" name = "productName">
+                            <input type = "text" placeholder = "Product Availability" name = "productName">
+                            <input type = "submit" value = "Edit Product" name = "productName">
+                        </form>
+                                          
                     </div>
                 </div>
             </div>

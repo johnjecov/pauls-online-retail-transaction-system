@@ -222,8 +222,18 @@
         </div>
 
         <div class="box">
-            <h3>extra links</h3>
-            <a href="login.jsp"> <i class="fas fa-arrow-right"></i> my account</a>
+            <h3>extra links</h3>            
+                <% if (navUser == "") { %>
+                <div class="dropdown">
+                    <a href="login.jsp"> <i class="fas fa-arrow-right"></i> my account</a>            
+                </div>
+                <% } %>
+
+                <% if (navUser != "") { %>
+                <div class="dropdown">
+                    <a href="address.jsp"> <i class="fas fa-arrow-right"></i> my account</a>
+                </div>
+            <% } %>
         </div>
 
         <div class="box">

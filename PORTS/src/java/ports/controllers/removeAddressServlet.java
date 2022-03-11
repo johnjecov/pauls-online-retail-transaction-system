@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 import javax.servlet.ServletContext;
 import ports.models.*;
 
-public class addAddressServlet extends HttpServlet {
+public class removeAddressServlet extends HttpServlet {
 
     Connection conn;
 
@@ -32,52 +32,19 @@ public class addAddressServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException 
     {
-        String addressName = request.getParameter("addressName");
-        String street = request.getParameter("street");
-        String houseNo = request.getParameter("houseNo");
-        String province = request.getParameter("province");
-        String postalCode = request.getParameter("postalCode");
-        String city = request.getParameter("city");
-        String addInfo = request.getParameter("additionalInfo");
-        String addDetail = request.getParameter("additionalAddress");
+        
      
         ServletContext app = getServletContext();
-
-        
-        
-        
+  
         HttpSession session = null;
         
-         if (addressName.isEmpty() | street.isEmpty() | houseNo.isEmpty() | province.isEmpty()
-            | postalCode.isEmpty() | city.isEmpty() )
-        {
-            app.setAttribute("ErrorMessage", "Please enter the required fields");  
-            //throw new SignUpNullException();
-        }
-         
-        else
-         {
-              session = request.getSession();               
-              Customer c = (Customer) session.getAttribute("customer");
-              int addressId = c.getAddresses().size()+1;
-              int cId = c.getCustomer_Id();
-              
-              String AI = String.valueOf(addressId);
-             String CI = String.valueOf(cId);
-             
-              Address newAdd = new Address(AI,CI,addressName,addInfo,addDetail,houseNo,street,city,province,postalCode);
+    
+             String addressId = request.getParameter("remove"); 
+              System.out.print(addressId);
+              int AI = Integer.parseInt(addressId);
              PortsDatabase port = (PortsDatabase)app.getAttribute("dbConnection");
-             port.addAddress(newAdd);
+             port.removeAddress(AI);
              response.sendRedirect("address.jsp");
-             
-             
-         }
-     
-            
-           
-       
-        
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

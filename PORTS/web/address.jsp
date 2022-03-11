@@ -45,10 +45,13 @@
      <%  
             String user = "";
             Customer c=null;
+            ArrayList<Address> add = new ArrayList<Address>();
+            
             if(session.getAttribute("customer")!= null)
             {
                  c = (Customer) session.getAttribute("customer");
                 user = (String) c.getUsername();
+                add = port.getCustomerAddresses(c.getCustomer_Id());
                 
             }
         %>
@@ -60,39 +63,38 @@
                     <div class = "formBx">
                             <div class="scrollbx">
                
-                        <form method="POST" action="signup" autocomplete="off">
+                        <form method="POST" action="removeAddress" autocomplete="off">
                             <h2>View Addresses</h2>
                             <p class = "signup"><a href = "#" onclick = "toggleForm();">Add New Address</a></p>
                             <br>
-                            <%  if(c.getAddresses().size()==0)
+                            <%  if(add.size()==0)
                                 
-                            {out.print(user);
-                            out.print(c.getAddresses().size());%>
+                            { %>
                             <br><br><br><br><br>
                             <h2>You Do not Have Any Addresses</h2>
                             <h2>Click on the <b>ADD NEW ADDRESS</b> to add</h2>
                             <% } else%>
                             <%  { %> 
-                            <% for (int i=0; i < c.getAddresses().size(); i++) { %>
+                            <% for (int i=0; i < add.size(); i++) { %>
                                 <div class="viewAddressBx">
                                     <div class="edit">
-                                        <h3><%= ((Address)c.getAddresses().get(i)).getAddressName() %></h3>
+                                        <h3><%= ((Address)add.get(i)).getAddressName() %></h3>
                                         <div class="box"></div>
                                        
                                     </div>
                                     <p> <% 
         
-                                       out.print(((Address)c.getAddresses().get(i)).getHouseNo()+ " " +
-                                                   ((Address)c.getAddresses().get(i)).getStreet()+ " " +
-                                                   ((Address)c.getAddresses().get(i)).getCity()+ " " +
-                                                   ((Address)c.getAddresses().get(i)).getProvince()+ " " +
-                                                   ((Address)c.getAddresses().get(i)).getPostalCode()+ " " +
-                                                   ((Address)c.getAddresses().get(i)).getDetails()+ " " +
-                                                  "(" + ((Address)c.getAddresses().get(i)).getAdditionalDetails()+ ") " 
+                                       out.print(((Address)add.get(i)).getHouseNo()+ " " +
+                                                   ((Address)add.get(i)).getStreet()+ " " +
+                                                   ((Address)add.get(i)).getCity()+ " " +
+                                                   ((Address)add.get(i)).getProvince()+ " " +
+                                                   ((Address)add.get(i)).getPostalCode()+ " " +
+                                                   ((Address)add.get(i)).getDetails()+ " " +
+                                                  "(" + ((Address)add.get(i)).getAdditionalDetails()+ ") " 
                                                     ); %>
                                    </p>
-                                    <input type = "submit" value = "Edit">
-                                    <input type = "submit" value = "Remove">
+                                    <button name ="remove" value="<%= ((Address)add.get(i)).getAddressId() %>" class="removebtn" style="cursor: pointer;">Remove</button>
+           
                                </div>
                             <br> <% } %>
                             <% } %>
@@ -163,6 +165,14 @@
     </body>
     
     <style>
+        
+        .removebtn
+        {
+            background: red;
+            padding: 5px;
+            color: white;
+            border-radius: 7%;
+        }
         
         .scrollbx
         {

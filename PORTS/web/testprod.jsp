@@ -183,7 +183,8 @@
             border: 1px solid #dddddd;
             cursor: pointer;
             border-radius: 5px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            margin-top: 5px;
         }
         
         .Moz
@@ -197,6 +198,7 @@
             cursor: pointer;
             border-radius: 5px;
             margin-bottom: 20px;
+            margin-top: 5px;
         }
         
         .Par
@@ -210,6 +212,7 @@
             cursor: pointer;
             border-radius: 5px;
             margin-bottom: 20px;
+            margin-top: 5px;            
         }
         
         .Ham
@@ -223,6 +226,7 @@
             cursor: pointer;
             border-radius: 5px;
             margin-bottom: 20px;
+            margin-top: 5px;            
         }
         
         .Pep
@@ -236,6 +240,7 @@
             cursor: pointer;
             border-radius: 5px;
             margin-bottom: 20px;
+            margin-top: 5px;            
         }
         
         .Cre
@@ -249,6 +254,7 @@
             cursor: pointer;
             border-radius: 5px;
             margin-bottom: 20px;
+            margin-top: 5px;            
         }
         
         .Spi
@@ -262,6 +268,7 @@
             cursor: pointer;
             border-radius: 5px;
             margin-bottom: 20px;
+            margin-top: 5px;           
         }
         
         html, body
@@ -313,7 +320,6 @@
         .product-description 
         {
             border-bottom: 1px solid white;
-            margin-top: 10px;
             margin-bottom: 10px;
         }
         
@@ -351,15 +357,14 @@
         {
             font-size: 30px;
             font-weight: 500;
-            color: white;
+            color: #008C45;
         }
 
         .cable-config 
         {
             border-bottom: 1px solid #E1E8EE;
             margin-bottom: 10px;
-            color: white;
-            
+            color: white; 
         }
         
         /* Product Price */
@@ -396,6 +401,123 @@
         .indiv-toppings
         {
             width: auto;
+        }
+        
+        @media(max-width: 768px)
+        {
+            .left-column 
+            {
+                width: 100%;
+                position: relative;
+                height: 100%;
+            }
+
+            .right-column 
+            {
+                width: 0%;
+                height: 100%;
+            }
+            
+            .left-column img
+            {
+                width: 100%;
+                position: absolute;
+                left: 0;
+                top: 0;
+                opacity: 0;
+                transition: all 0.3s ease;
+                align-items: center;
+            }
+
+            .left-column img.active 
+            {
+                opacity: 1;
+            }    
+            
+            .product-description 
+            {
+                margin-top: 250px;
+                margin-left: -380px;
+                align-items: center;
+            }
+
+            .product-description h1 
+            {
+                font-size: 30px;
+            }
+
+            .product-description h3
+            {
+                font-size: 20px;
+            }
+            .product-description p 
+            {
+                font-size: 14px;
+            }
+            
+            .cable-config span
+            {
+                margin-left: -380px;
+                font-size: 20px;
+                font-weight: 500;
+            }
+            
+            h4
+            {
+                margin-left: -380px;
+            }
+            
+            .Quan
+            {
+                margin-left: -380px;
+            }
+            
+            .Moz
+            {
+                margin-left: -380px;
+            }
+            
+            .Ham
+            {
+                margin-left: -380px;
+            }
+            
+            .Par
+            {
+                margin-left: -380px;
+            }
+            
+            .Pep
+            {
+                margin-left: -380px;
+            }
+            
+            .Spi
+            {
+                margin-left: -380px;
+            }
+            
+            .Cre
+            {
+                margin-left: -380px;
+            }
+            
+            /* Product Price */
+            .product-price h2
+            {
+                margin-top: -20px;
+                margin-left: -380px;
+                font-size: 30px;
+            }
+            .cart-btn
+            {
+                margin-left: -380px;
+            }
+            
+            .separation
+            {
+                grid-template-columns: repeat(auto-fit, minmax(0px, 2fr));
+            }
         }
         
     </style>

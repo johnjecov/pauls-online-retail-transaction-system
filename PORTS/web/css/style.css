@@ -1147,7 +1147,6 @@ textarea#feedbacktext {
     font-family: 'Satisfy', cursive;
     font-size: 4rem;
     color: #27ae60;
-    color: #130f40;
 }
 
 .banner .row-banner .content h3 {
@@ -1200,11 +1199,11 @@ textarea#feedbacktext {
 }
 
 .banner .grid-banner .grid .content.center span {
-    color: #666;
+    color: white;
 }
 
 .banner .grid-banner .grid .content.center h3 {
-    color: #130f40;
+    color: white;
 }
 
 .banner .grid-banner .grid .content span {

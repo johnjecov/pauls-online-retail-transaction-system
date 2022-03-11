@@ -43,12 +43,12 @@
             </ul>
     </nav> 
                 
-      <div class="icons">
-        <a id="openMenu" class="fas fa-bars"></a>
-        
+    <div class="icons">
+        <a id="openMenu" class="fas fa-bars"></a>    
     </div>
-     <% if (navUser == "") { %>
-       <div class="dropdown">
+    
+    <% if (navUser == "") { %>
+        <div class="dropdown">
             <button class="dropbtn" style="cursor: pointer;" onclick="window.location.href='/PORTS/login.jsp'">Login</button>
             
         </div>
@@ -65,7 +65,6 @@
             </div>
         </div>
         <% } %>
-    
 </header>
 
 <script>
@@ -96,10 +95,12 @@
     {
         
     }
+    
     nav {
         color: #fff;
         display: flex;
         justify-content: space-between;
+        margin-left: 100px;
     }
     
     nav .mainMenu {
@@ -148,10 +149,16 @@
         cursor: pointer;
     }
     
-    @media(max-width: 800px){
-    #openMenu {
-        visibility: visible;
-    }
+    @media(max-width: 750px){
+        #openMenu {
+            visibility: visible;
+        }
+        nav {
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            margin-left: 50px;
+        }
         nav .mainMenu {
             height: 100vh;
             position: fixed;
@@ -353,4 +360,4 @@
     /* Change the background color of the dropdown button when the dropdown content is shown */
     .dropdown:hover .dropbtn {background-color: #CD212A;}
 
-    </style>
+</style>

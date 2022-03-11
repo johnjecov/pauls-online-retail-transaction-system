@@ -157,7 +157,7 @@
             color: #fff;
             display: flex;
             justify-content: space-between;
-            margin-left: 50px;
+            margin-left: 100px;
         }
         nav .mainMenu {
             height: 100vh;

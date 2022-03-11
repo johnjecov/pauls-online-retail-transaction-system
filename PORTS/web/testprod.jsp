@@ -70,7 +70,7 @@
                 <br>
                 <div class = "separation">
                     <div class = "indiv-toppings">
-                        <h4>Mozzarella ₱50.00/50 g.</h4>
+                        <h4>Mozzarella ₱50/50 g.</h4>
                         <select class= "Moz" name="moz"> 
                             <option disabled selected>Quantity</option>
                             <option value = "0" selected="selected">0</option>
@@ -83,7 +83,7 @@
                     </div>
                                         
                     <div class = "indiv-toppings">
-                    <h4>Ham ₱80.00/50 g.</h4>
+                        <h4>Addtl. Ham ₱80/50 g.</h4>
                         <select class= "Ham" name="ham"> 
                             <option disabled selected>Quantity</option>
                             <option value = "0" selected="selected">0</option>
@@ -96,7 +96,7 @@
                     </div>
                     
                     <div class = "indiv-toppings">
-                        <h4>Parmesan ₱50.00/50 g.</h4>
+                        <h4>Parmesan ₱50/50 g.</h4>
                         <select class= "Par" name="par"> 
                             <option disabled selected>Quantity</option>
                             <option value = "0" selected="selected">0</option>
@@ -109,7 +109,7 @@
                     </div>
                                      
                     <div class = "indiv-toppings">
-                    <h4>Pepperoni ₱100.00/50 g.</h4>
+                    <h4>Pepperoni ₱100/50 g.</h4>
                         <select class= "Pep" name="pep"> 
                             <option disabled selected>Quantity</option>
                             <option value = "0" selected="selected">0</option>
@@ -122,7 +122,7 @@
                     </div>
                     
                     <div class = "indiv-toppings">
-                        <h4>Spinach ₱30.00/10 pc.</h4>
+                        <h4>Spinach ₱30/10 pc.</h4>
                         <select class= "Spi" name="spi"> 
                             <option disabled selected>Quantity</option>
                             <option value = "0" selected="selected">0</option>
@@ -135,7 +135,7 @@
                     </div>
                                                             
                     <div class = "indiv-toppings">
-                        <h4>Cream Cheese ₱100.00/75 g.</h4>
+                        <h4>Cream Cheese ₱100/75 g.</h4>
                         <select class= "Cre" name="cre"> 
                             <option disabled selected>Quantity</option>
                             <option value = "0" selected="selected">0</option>
@@ -285,6 +285,7 @@
             margin: 0 auto;
             padding: 15px;
             display: flex;
+            flex-wrap: wrap;
         }
 
         /* Columns */
@@ -405,6 +406,54 @@
         
         @media(max-width: 768px)
         {
+            .container
+            {
+                flex-direction: column;
+            }
+            
+            .left-column 
+            {
+                width: 100%;
+                position: relative;
+            }
+
+            .right-column 
+            {
+                width: 100%;
+                margin-top: 0px;
+            }
+            
+            .left-column img
+            {
+                width: 100%;
+                position: relative;
+            }
+
+            .product-description h1 
+            {
+                font-size: 30px;
+            }
+
+            .product-description h3
+            {
+                font-size: 20px;
+            }
+            
+            .product-description p 
+            {
+                font-size: 14px;
+            }
+            
+            .product-price h2
+            {
+                font-size: 30px;
+            }
+    
+            
+        }
+        /*
+        @media(max-width: 768px)
+        {
             .left-column 
             {
                 width: 100%;
@@ -502,7 +551,6 @@
                 margin-left: -380px;
             }
             
-            /* Product Price */
             .product-price h2
             {
                 margin-top: -20px;
@@ -519,6 +567,7 @@
                 grid-template-columns: repeat(auto-fit, minmax(0px, 2fr));
             }
         }
+        */
         
     </style>
 </html>

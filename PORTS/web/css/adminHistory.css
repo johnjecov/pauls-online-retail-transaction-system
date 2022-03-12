@@ -208,6 +208,8 @@ label {
     background-color: #2e2e2e;
     border-radius: 5px;
     font-size: 1.5vw;
+    box-shadow: inset 8px 8px 16px #252525,
+                inset -8px -8px 16px #373737;
 }
 
 .orderPropertyColumnBig {

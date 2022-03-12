@@ -91,14 +91,14 @@ change orders from "----------" to backend
                             String u = "";
                             String v = "";
                             for (OrderItem y : orderItems) {
-                                if(y.getToppings().size()==0) {
+                                if (y.getToppings().size() == 0) {
                                     u += String.format(
-                                                "<div class = 'orderPropertyEmptyRow2'>"
-                                                + "<div class = 'orderPropertyChildren'>%s</div>\n"
-                                                + "</div>",
-                                                "No Toppings Added");
+                                            "<div class = 'orderPropertyEmptyRow2'>"
+                                            + "<div class = 'orderPropertyChildren'>%s</div>\n"
+                                            + "</div>",
+                                            "No Toppings Added");
                                 }
-                                
+
                                 productsList.add(String.valueOf(y.getProduct().getId()));
                                 productsList.add(String.valueOf(y.getProduct().getName()));
                                 productsList.add(String.valueOf(y.getQuantity()));
@@ -112,17 +112,17 @@ change orders from "----------" to backend
                                         productsList.remove(),
                                         productsList.remove(),
                                         productsList.remove());
-                                
-                                if (y.getToppings().size()>1) {
-                                        s += String.format(
-                                                "<div class = 'orderPropertyEmptyRow'>"
-                                                + "<div class = 'orderPropertyChildren'>%s</div>\n"
-                                                + "</div>",
-                                                "e");
+
+                                if (y.getToppings().size() > 1) {
+                                    s += String.format(
+                                            "<div class = 'orderPropertyEmptyRow'>"
+                                            + "<div class = 'orderPropertyChildren'>%s</div>\n"
+                                            + "</div>",
+                                            "e");
                                 }
-                                
+
                                 ArrayList<OrderItemToppings> orderItemToppings = y.getToppings();
-                                
+
                                 for (OrderItemToppings z : orderItemToppings) {
                                     toppingsList.add(String.valueOf(z.getTopping().getId()));
                                     toppingsList.add(String.valueOf(z.getTopping().getName()));

@@ -58,6 +58,7 @@
         <div class="dropdown">
             <button class="dropbtn"> <%= navUser%> </button>
             <div class="dropdown-content">
+                <a href="/PORTS/cart.jsp">My Cart</a>
                 <a href="/PORTS/address.jsp">View Address</a>
                 <a href="/PORTS/changePassword.jsp">Change Password</a>
                 <a href="/PORTS/orderstatus.jsp">View Order Status</a>

@@ -13,6 +13,8 @@
         <!-- custom css file link  -->
         <link rel="stylesheet" href="css/style.css">
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     </head>
     
     <!-- header section starts -->
@@ -47,12 +49,12 @@
 
         <div class="product-description">
             <h1><%= pizza.getName()%></h1>
-            <h3>₱<%= pizza.getPrice()%></h3>
+            <h3 >₱<%= pizza.getPrice()%></h3>
             <p><%= pizza.getDesc()%></p>
         </div>
         <div class = "indiv-toppings">
             <h4>Quantity</h4>
-                <select class= "Quan" name="quan"> 
+                <select class= "toppings" id="quantity" name="quan"> 
                     <option disabled selected>Quantity</option>
                     <option value = "1" selected="selected">1</option>
                     <option value = "2">2</option>
@@ -71,7 +73,7 @@
                 <div class = "separation">
                     <div class = "indiv-toppings">
                         <h4>Mozzarella ₱50/50 g.</h4>
-                        <select class= "Moz" name="moz"> 
+                        <select class= "toppings" id ="toppings1" name="moz"> 
                             <option disabled selected>Quantity</option>
                             <option value = "0" selected="selected">0</option>
                             <option value = "1">1</option>
@@ -84,7 +86,7 @@
                                         
                     <div class = "indiv-toppings">
                         <h4>Addtl. Ham ₱80/50 g.</h4>
-                        <select class= "Ham" name="ham"> 
+                        <select class= "toppings" id ="toppings2" name="ham"> 
                             <option disabled selected>Quantity</option>
                             <option value = "0" selected="selected">0</option>
                             <option value = "1">1</option>
@@ -97,7 +99,7 @@
                     
                     <div class = "indiv-toppings">
                         <h4>Parmesan ₱50/50 g.</h4>
-                        <select class= "Par" name="par"> 
+                        <select class= "toppings" id ="toppings3" name="par"> 
                             <option disabled selected>Quantity</option>
                             <option value = "0" selected="selected">0</option>
                             <option value = "1">1</option>
@@ -110,7 +112,7 @@
                                      
                     <div class = "indiv-toppings">
                     <h4>Pepperoni ₱100/50 g.</h4>
-                        <select class= "Pep" name="pep"> 
+                        <select class= "toppings" id ="toppings4" name="pep"> 
                             <option disabled selected>Quantity</option>
                             <option value = "0" selected="selected">0</option>
                             <option value = "1">1</option>
@@ -123,7 +125,7 @@
                     
                     <div class = "indiv-toppings">
                         <h4>Spinach ₱30/10 pc.</h4>
-                        <select class= "Spi" name="spi"> 
+                        <select class= "toppings" id ="toppings5" name="spi"> 
                             <option disabled selected>Quantity</option>
                             <option value = "0" selected="selected">0</option>
                             <option value = "1">1</option>
@@ -136,7 +138,7 @@
                                                             
                     <div class = "indiv-toppings">
                         <h4>Cream Cheese ₱100/75 g.</h4>
-                        <select class= "Cre" name="cre"> 
+                        <select class= "toppings" id ="toppings6" name="cre"> 
                             <option disabled selected>Quantity</option>
                             <option value = "0" selected="selected">0</option>
                             <option value = "1">1</option>
@@ -153,14 +155,56 @@
         <br>
         <!-- Product Pricing -->
         <div class="product-price">
-            <h2>Total: ₱290.00</h2>
+            <h2 id="result"></h2>
+            
             <br>  
             
-            <button name ="pizza" value="Pepperoni" class="cart-btn" style="cursor: pointer;">ADD TO CART</button>
+            <button name ="pizza" value="<%= pizza.getName()%>" class="cart-btn" style="cursor: pointer;">ADD TO CART</button>
            <!-- <a href="#" class="cart-btn">Add to cart</a> -->
         </div>
         
          </form>
+           <script>
+                     $(document).ready(function(){
+                         $("#quantity, #toppings1, #toppings2, #toppings3, #toppings4, #toppings5, #toppings6").change(function(event){
+                             var total=0;
+                             <%double priceDouble = pizza.getPrice();%>
+                             var price = <%=priceDouble%>;
+
+                             $("#quantity").each(function(){
+                                 total += parseInt($(this).val())*price;
+                             });
+                             $("#toppings1").each(function(){
+                                 total += parseInt($(this).val())*50;
+                             });
+                             $("#toppings2").each(function(){
+                                 total += parseInt($(this).val())*80;
+                             });
+                             $("#toppings3").each(function(){
+                                 total += parseInt($(this).val())*50;
+                             });
+                             $("#toppings4").each(function(){
+                                 total += parseInt($(this).val())*100;
+                             });
+                             $("#toppings5").each(function(){
+                                 total += parseInt($(this).val())*30;
+                             });
+                             $("#toppings6").each(function(){
+                                 total += parseInt($(this).val())*100;
+                             });
+                             if(total===0){
+                                 $('#result').text('');
+                             }
+                             else
+                             {
+                                 $('#result').text("Total: ₱"+total);
+                             }
+                             
+                             
+                         });
+                     });
+               
+           </script>
     </div>
     </main>
     
@@ -173,7 +217,7 @@
             color: white;
         }
         
-        .Quan
+        .toppings
         {
             flex-direction: column;
             padding: 8px 12px;
@@ -187,89 +231,7 @@
             margin-top: 5px;
         }
         
-        .Moz
-        {
-            flex-direction: column;
-            padding: 8px 12px;
-            color: #333333;
-            font-size: 15px;
-            background-color: #eeeeee;
-            border: 1px solid #dddddd;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            margin-top: 5px;
-        }
         
-        .Par
-        {
-            flex-direction: column;
-            padding: 8px 12px;
-            color: #333333;
-            font-size: 15px;
-            background-color: #eeeeee;
-            border: 1px solid #dddddd;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            margin-top: 5px;            
-        }
-        
-        .Ham
-        {
-            flex-direction: column;
-            padding: 8px 12px;
-            color: #333333;
-            font-size: 15px;
-            background-color: #eeeeee;
-            border: 1px solid #dddddd;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            margin-top: 5px;            
-        }
-        
-        .Pep
-        {
-            flex-direction: column;
-            padding: 8px 12px;
-            color: #333333;
-            font-size: 15px;
-            background-color: #eeeeee;
-            border: 1px solid #dddddd;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            margin-top: 5px;            
-        }
-        
-        .Cre
-        {
-            flex-direction: column;
-            padding: 8px 12px;
-            color: #333333;
-            font-size: 15px;
-            background-color: #eeeeee;
-            border: 1px solid #dddddd;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            margin-top: 5px;            
-        }
-        
-        .Spi
-        {
-            flex-direction: column;
-            padding: 8px 12px;
-            color: #333333;
-            font-size: 15px;
-            background-color: #eeeeee;
-            border: 1px solid #dddddd;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            margin-top: 5px;           
-        }
         
         html, body
         {

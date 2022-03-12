@@ -47,7 +47,7 @@ public class loginServlet extends HttpServlet {
             
             session.setAttribute("employee", employee);
             
-            response.sendRedirect("adminOrderList.jsp");
+            response.sendRedirect("admin.jsp");
         }
         else if (loginResult.equals("customer")){
             

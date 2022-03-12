@@ -1,19 +1,14 @@
 <%-- 
-    Document   : admin
-    Created on : 02 15, 22, 5:20:11 PM
-    Author     : chuah_000
-
-change li class pageNumber2 because it is a placeholder
- scroll="no" style="overflow: hidden"
+    GAWAN NG MAX WIDTH MGA PICTURES
 --%>
-
+<%@page import="java.util.*, ports.models.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <link rel="stylesheet" href="css/admin.css?nocache={timestamp}" type="text/css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Admin Page</title>
+        <title>Edit Menu</title>
     </head>
     <body scroll="no" style="overflow: hidden">
         <div class="contentHolder">
@@ -27,49 +22,113 @@ change li class pageNumber2 because it is a placeholder
                 </ul>
                 <p class='logout'>Logout</p>
             </div>
-            <div class="adminGreetings">
-                <p class='helloAdmin'>Hello, admin</p>
-            </div>
-            <div class="adminContent">
-                <div class="menuCategory">
-                    <ul class="pizzaOrToppings">
-                        <li class="pizzaOrToppingsCategory">Pizza</li>
-                        <li class="pizzaOrToppingsCategory">Toppings</li>
+            <div class = "pageContent">
+                 <div class="adminGreetings">
+                    <p class='helloAdmin'>Hello, admin</p>
+                </div>          
+                <div class="adminContent">
+                    <ul class = "pizzaOrTopping">
+                        <li style = "background: black;" id = 'togglePizza' onclick= togglePizzaOrTopping("formPizza")>
+                            Pizzas
+                        </li>
+                        <li style = "background: #2e2e2e;"id = 'toggleTopping' onclick= togglePizzaOrTopping("formTopping")>
+                            Toppings
+                        </li>
                     </ul>
-                </div>
-                <div class="pizzaChoices">
-                    <div class="pizzaDisplay1">
-                        <img class="pizzaImg" src="image/pizza-sample.png" alt="mama mia">
-                        <p class="pizzaName1">PEPPERONI PIZZA</p>
-                        <p class="pizzaDesc1">Mozarella, Pepperoni, and Tomato Sauce</p>
-                        <p class="price1">- ₱208.00 -</p>
+                    <div class = "pizzaOrToppingContent">
+                        <% 
+                            /*
+                            String imageString = "https://drive.google.com/uc?export=view&id=";
+                            String url[] = "drive.google.com/file/d/1GYvV2aIoSe0LqEA90P9Dvthw8lNhKiq7/view?usp=sharing".split("/");
+                            imageString = imageString + url[3];
+                            */
+                            ServletContext sc = getServletContext();
+                            PortsDatabase ports = (PortsDatabase) getServletContext().getAttribute("dbConnection");
+                            ArrayList<Product> menuPizza = ports.getProducts();
+                            ArrayList<Topping> menuToppings = ports.getToppings();
+                            for (Product x : menuPizza) 
+                            {
+                                String box = String.format(
+                                        "<form class = 'pizzaOrToppingForm formPizza'>"
+                                            + "<img class = 'pizzaOrToppingImage' src = %s alt = 'No Image Found'>"
+                                            + "<input type = 'text' value = 'pizza' style = 'display: none;' name = 'productType'>"
+                                            + "<input type = 'text' placeholder = 'Product Image Url' value = '%s' name = 'productImageUrl' readonly>"
+                                            + "<input type = 'text' placeholder = 'Product Name' value = '%s' name = 'productName' readonly>"
+                                            + "<input type = 'text' placeholder = 'Product Desc' value = '%s' name = 'productDesc' readonly>"
+                                            + "<input type = 'number' min = '0' placeholder = 'Product Price' value = '%s' name = 'productPrice' readonly>"
+                                            + "<input type = 'number' min = '0' placeholder = 'Product Stock' value = '%s' name = 'productStock' readonly>"
+                                            + "<input type = 'text' placeholder = 'Product Availability' value = '%s' name = 'productAvailability' readonly>"
+                                       + "</form>",x.getImage(),x.getImage(),x.getName(), x.getDesc(), x.getPrice(), x.getStock(), x.getAvailability()
+                                     );           
+                                  out.println(box);
+                            }
+                            
+                            
+                            for (Topping x : menuToppings) 
+                            {
+                                String box = String.format(
+                                        "<form style = 'display: none' class = 'pizzaOrToppingForm formTopping'>"
+                                            + "<img class = 'pizzaOrToppingImage' src = %s alt = 'No Image Found'>"
+                                            + "<input type = 'text' value = 'topping' style = 'display: none;' name = 'productType'>"
+                                            + "<input type = 'text' placeholder = 'Product Image Url' value = '%s' name = 'productImageUrl' readonly>"
+                                            + "<input type = 'text' placeholder = 'Product Name' value = '%s' name = 'productName' readonly>"
+                                            + "<input type = 'text' placeholder = 'Product Desc' value = '%s' name = 'productDesc' readonly>"
+                                            + "<input type = 'number' min = '0' placeholder = 'Product Price' value = '%s' name = 'productPrice' readonly>"
+                                            + "<input type = 'number' min = '0' placeholder = 'Product Stock' value = '%s' name = 'productStock' readonly>"
+                                            + "<input type = 'text' placeholder = 'Product Availability' value = '%s' name = 'productAvailability' readonly>"
+                                       + "</form>",x.getImage(),x.getImage(),x.getName(), x.getDesc(), x.getPrice(), x.getStock(), x.getAvailability()
+                                     );           
+                                  out.println(box);
+                            }
+                        %>         
                     </div>
-                    <div class="pizzaDisplay2">
-                        <img class="pizzaImg" src="image/pizza-sample.png" alt="mama mia">
-                        <p class="pizzaName2">CREAMY SPINACH PIZZA</p>
-                        <p class="pizzaDesc2">Cream cheese,  Mozarella, Spinach, and Tomato Sauce</p>
-                        <p class="price2">- ₱290.00 -</p>
-                    </div>
-                    <div class="pizzaDisplay3">
-                        <img class="pizzaImg" src="image/pizza-sample.png" alt="mama mia">
-                        <p class="pizzaName3">CHEESE WITH BASIL</p>
-                        <p class="pizzaDesc3">Mozarella, Parmesan, Basil, and Tomato Sauce</p>
-                        <p class="price3">- ₱198.00 -</p>
-                    </div>
-                </div>
-                <div class="bottomButtons">
-                    <ul class="pageList">
-                        <li class="pageNumber">1</li>
-                        <li class="pageNumber">2</li>
-                        <li class="pageNumber">3</li>
-                    </ul>
-                    <div class="editProducts">
-                        <button href="PORTS/editProducts.jsp" class="editProductsButton" type="button">
-                            Edit Products
-                        </button>
-                    </div>
+                    <button onclick= "window.location.href='editMenuTest.jsp'" class="editProductsButton" type="button">
+                        Edit Menu
+                    </button>
                 </div>
             </div>
         </div>
     </body>
+    <script>
+        
+        function togglePizzaOrTopping(pizzaOrTopping)
+        {      
+
+            if(pizzaOrTopping === 'formPizza')
+            {
+                var productClass = document.getElementsByClassName('formPizza');
+                var hideClass = document.getElementsByClassName('formTopping');
+                var productColor = document.getElementById('togglePizza');
+                var hideColor = document.getElementById('toggleTopping');
+                
+                productColor.style.background = 'black';
+                hideColor.style.background = '#2e2e2e';
+                for (var i=0;i<productClass.length;i++){
+                  productClass[i].style.display = 'flex';
+                }
+                for (var i=0;i<hideClass.length;i++){
+                  hideClass[i].style.display = 'none';
+                }
+            }
+            else 
+            {
+                var hideClass = document.getElementsByClassName('formPizza');
+                var productClass = document.getElementsByClassName('formTopping');
+                var hideColor = document.getElementById('togglePizza');
+                var productColor = document.getElementById('toggleTopping');
+                
+                productColor.style.background = 'black';
+                hideColor.style.background = '#2e2e2e';              
+            
+            
+                for (var i=0;i<productClass.length;i++){
+                  productClass[i].style.display = 'flex';
+                }
+                for (var i=0;i<hideClass.length;i++){
+                  hideClass[i].style.display = 'none';
+                }
+            }
+        }
+      
+    </script>
 </html>

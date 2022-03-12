@@ -11,7 +11,7 @@ and open the template in the editor.
 @import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
 
 *{
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Satisfy', cursive;
     color: #fff;
     margin: 0;
     padding: 0;
@@ -20,6 +20,7 @@ and open the template in the editor.
 html,body {
     background-color: #1e1f20;
     height:100%; 
+    font-size: 14px;
 }
 
 .contentHolder {
@@ -56,15 +57,17 @@ html,body {
 
 .options {
     float: bottom;
-    background-color: #2e2e2e
+    background-color: #2e2e2e;
+    text-align: left;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
 }
 
 .options a {
     margin-bottom: 4%;
-    margin-left: 20%;
     display: block;
+    padding: 1rem;
     color: white;
-    padding: 4%;
     text-decoration: none;
     background-color: #2e2e2e
 }
@@ -72,8 +75,7 @@ html,body {
 .options a:hover {
     background-color: #fff;
     color: #000;
-    border-radius: 5%;
-    margin-right: 20%;
+    border-radius: 10px;
 }
 
 .logout {
@@ -103,24 +105,25 @@ html,body {
 }
 
 .adminGreetings {
-    width: 30%;
+    width: 20%;
 }
 
 .helloAdmin {
-    font-size: 3vw;
+    font-size: 2rem;
     text-align: center;
     background-color: #2e2e2e;
-    padding: 1vw;
+    min-width: 15rem;
+    padding: 1rem;
     border-radius: 10px;
     box-shadow: inset 15px 15px 30px #212121,
-        inset -15px -15px 30px #3b3b3b;
+                inset -15px -15px 30px #3b3b3b;
 }
 
 .pageContent {
     display: flex;
     flex-direction: column;
     padding: 1.5rem;
-    gap: 1rem;
+    gap: 2rem;
     margin: 1rem;
     width: 100%;
 }
@@ -130,10 +133,10 @@ html,body {
     height: 850px;
     display: flex;
     flex-direction: column;
-    gap: 1vw;
-    padding: 0;
+    gap: 1rem;
+    padding: 1rem;
     
-    border-radius: 5px;
+    border-radius: 10px;
     font-family: "roboto";
 }
 

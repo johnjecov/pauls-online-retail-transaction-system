@@ -661,7 +661,7 @@ public class PortsDatabase {
         ArrayList<Order> orders = new ArrayList<>();
         
         try {
-            String query = "SELECT order_id FROM orders WHERE order_status_id = 5 order by ? asc";
+            String query = "SELECT order_id FROM orders WHERE order_status_id = 5 order by '?' asc";
             PreparedStatement ps = portsConnection.prepareStatement(query);
             ps.setString(1,orderBy);
             ResultSet results = ps.executeQuery();
@@ -684,7 +684,7 @@ public class PortsDatabase {
         ArrayList<Order> orders = new ArrayList<>();
         
         try {
-            String query = "SELECT order_id FROM orders WHERE order_status_id < 5 order by ? asc";
+            String query = "SELECT order_id FROM orders WHERE order_status_id < 5 order by '?' asc";
             PreparedStatement ps = portsConnection.prepareStatement(query);
             ps.setString(1, orderBy);
             ResultSet results = ps.executeQuery();

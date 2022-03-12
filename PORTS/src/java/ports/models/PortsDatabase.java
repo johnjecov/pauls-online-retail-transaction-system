@@ -66,7 +66,7 @@ public class PortsDatabase {
         //updateOrderPayment(2, "soon");
       
         
-        OrderSales = retrieveOrderSales("asc");
+        OrderSales = retrieveOrderSales("order_id");
         
         System.out.println("~~~~~~~~~~Orders that are done~~~~~~~~~");
         for(Order x : OrderSales){
@@ -74,7 +74,7 @@ public class PortsDatabase {
         }
         
         System.out.println("~~~~~~~~~~Orders that are not yet done~~~~~~~~~");
-        OrderHistory = retrieveOrderHistory("asc");
+        OrderHistory = retrieveOrderHistory("order_id");
         for(Order x : OrderHistory){
             System.out.println(x);
         }
@@ -661,8 +661,9 @@ public class PortsDatabase {
         ArrayList<Order> orders = new ArrayList<>();
         
         try {
-            String query = "SELECT order_id FROM orders WHERE order_status_id = 5 order by order_id "+orderBy;
+            String query = "SELECT order_id FROM orders WHERE order_status_id = 5 order by ? asc";
             PreparedStatement ps = portsConnection.prepareStatement(query);
+            ps.setString(1,orderBy);
             ResultSet results = ps.executeQuery();
             
             while(results.next()){
@@ -683,8 +684,9 @@ public class PortsDatabase {
         ArrayList<Order> orders = new ArrayList<>();
         
         try {
-            String query = "SELECT order_id FROM orders WHERE order_status_id < 5 order by order_id "+orderBy;
+            String query = "SELECT order_id FROM orders WHERE order_status_id < 5 order by ? asc";
             PreparedStatement ps = portsConnection.prepareStatement(query);
+            ps.setString(1, orderBy);
             ResultSet results = ps.executeQuery();
             
             while(results.next()){

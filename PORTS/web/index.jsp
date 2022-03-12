@@ -215,9 +215,7 @@
             <h3>EXTRA LINKS</h3>            
                 <% if (navUser == "") { %>
                 <div class="dropdown">
-                    <a href="login.jsp"> <i class="fas fa-arrow-right"></i> My Account</a>    
-                    <a href="cart.jsp"> <i class="fas fa-arrow-right"></i> My Cart</a>
-                    <a href="changePassword.jsp"> <i class="fas fa-arrow-right"></i> Change Password</a>    
+                    <a href="login.jsp"> <i class="fas fa-arrow-right"></i> My Account</a>       
                 </div>
                 <% } %>
 

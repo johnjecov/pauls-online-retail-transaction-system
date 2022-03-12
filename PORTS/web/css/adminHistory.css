@@ -11,7 +11,7 @@ and open the template in the editor.
 @import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
 
 *{
-    font-family: 'Satisfy', cursive;
+    font-family: 'Poppins', sans-serif;
     color: #fff;
     margin: 0;
     padding: 0;
@@ -20,7 +20,6 @@ and open the template in the editor.
 html,body {
     background-color: #1e1f20;
     height:100%; 
-    font-size: 14px;
 }
 
 .contentHolder {
@@ -57,17 +56,15 @@ html,body {
 
 .options {
     float: bottom;
-    background-color: #2e2e2e;
-    text-align: left;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    background-color: #2e2e2e
 }
 
 .options a {
     margin-bottom: 4%;
+    margin-left: 20%;
     display: block;
-    padding: 1rem;
     color: white;
+    padding: 4%;
     text-decoration: none;
     background-color: #2e2e2e
 }
@@ -75,7 +72,8 @@ html,body {
 .options a:hover {
     background-color: #fff;
     color: #000;
-    border-radius: 10px;
+    border-radius: 5%;
+    margin-right: 20%;
 }
 
 .logout {
@@ -105,38 +103,37 @@ html,body {
 }
 
 .adminGreetings {
-    width: 20%;
+    width: 30%;
 }
 
 .helloAdmin {
-    font-size: 2rem;
+    font-size: 3vw;
     text-align: center;
     background-color: #2e2e2e;
-    min-width: 15rem;
-    padding: 1rem;
+    padding: 1vw;
     border-radius: 10px;
     box-shadow: inset 15px 15px 30px #212121,
-                inset -15px -15px 30px #3b3b3b;
+        inset -15px -15px 30px #3b3b3b;
 }
 
 .pageContent {
     display: flex;
     flex-direction: column;
     padding: 1.5rem;
-    gap: 2rem;
+    gap: 1rem;
     margin: 1rem;
     width: 100%;
 }
 
 .adminContent {
     width: auto;
-    height: 850px;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    padding: 1rem;
+    gap: 1vw;
+    padding: 1vw;
     
-    border-radius: 10px;
+    border-radius: 5px;
     font-family: "roboto";
 }
 
@@ -182,6 +179,27 @@ label {
     color: pink;
 }
 
+.orderMain {
+    max-height: 65%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.orderMain::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    scroll-behavior: smooth;
+}
+
+.orderMain::-webkit-scrollbar-track {
+    background:#302c2c;
+}
+
+.orderMain::-webkit-scrollbar-thumb {
+    background: #CD212A;
+    border-radius: 5rem;
+}
+
 .orderBody {
     display: flex;
     width: 100%;
@@ -203,6 +221,20 @@ label {
     flex: 1;
 }
 
+.orderPropertyEmptyRow {
+    display: flex;
+    flex: 1;
+    visibility: hidden;
+}
+
+.orderPropertyEmptyRow2 {
+    display: flex;
+    flex: 1;
+    font-size: 0.8vw;
+    text-align: center;
+    align-items: center;
+}
+
 .orderPropertyChildren {
     display: flex;
     flex: 1;
@@ -220,90 +252,6 @@ label {
     padding: 1%;
 }
 
-.orderRemove {
-    display: flex;
-    flex: 1;
-    justify-content: center;
-    text-align: center;
-}
-
-#orderRemoveID {
-    font-size: 2vw;
-    cursor: pointer;
-    transform: rotate(45deg);
-}
-
-.pageList {
-    list-style-type: none;
-    width: 100%;
-    overflow: hidden;
-    font-size: 1vw;
-    margin-left: 2.5%;
-    bottom: 13.5%;
-    position: fixed;
-}
-
-.pageNumber,.pageNumber2 {
-    float: left;
-    background-color: #737373;
-    margin-right: 1%;
-    padding-top: .5%;
-    padding-bottom: .5%;
-    padding-left: 1%;
-    padding-right: 1%;
-    border-radius: 10px;
-}
-
-.pageNumber2 {
-    background-color: #008c45;
-}
-
-.cancelModal {
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    position: absolute;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    display: none;
-}
-
-.modalContent {
-    width: 500px;
-    height: 300px;
-    background-color: #f2f4ea;
-    text-align: center;
-}
-
-.modalText {
-    font-size: 200%;
-    color: #1e1f20;
-}
-
-.modalButtonYes {
-    color: #000;
-    background-color: #f2f4ea;
-    font-size: 200%;
-    padding-left: 5%;
-    padding-right: 5%;
-    margin-right: 15%;
-    border-radius: 5%;
-    cursor: pointer;
-}
-
-.modalButtonNo {
-    color: #000;
-    background-color: #ff5757;
-    font-size: 200%;
-    padding-left: 5%;
-    padding-right: 5%;
-    border-radius: 5%;
-    cursor: pointer;
-}
-
-
 .pagenumbers {
     display: flex;
     flex-wrap: wrap;
@@ -312,7 +260,7 @@ label {
 }
 
 .pagenumbers button {
-    width: 3%;
+    width: 5%;
     height: 120%;
 
     appearance: none;
@@ -320,7 +268,7 @@ label {
     outline: none;
     cursor: pointer;
 
-    background-color: #574b3e;
+    background-color: #555555;
 
     margin: 5px;
     transition: 0.4s;
@@ -349,12 +297,34 @@ label {
 }
 
 .generatePDF {
-    border: 0;
-    line-height: 2.5;
-    padding: 0 20px;
-    font-size: 1vw;
-    text-align: center;
-    color: #fff;
-    border-radius: 10px;
-    background-color: #884e3d;
+    width: 25%;
+    height: 25%;
+
+    appearance: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    background-color: #555555;
+
+    margin: 1.2vw 2vw 8vw 5px;
+    padding: 1vw;
+    transition: 0.4s;
+
+    color: #FFF;
+    font-size: 1.2vw;
+    vertical-align: center;
+    text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+    
+    border-radius: 5px;
+}
+
+.generatePDF:hover {
+    background-color: #008C45;
+}
+
+.generatePDF.active {
+    background-color: #008C45;
+    box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.2);
 }

@@ -113,7 +113,7 @@
                                 <input type = "number" min = "0" placeholder = "Product Price" name = "productPrice" required>
                                 <input type = "number" min = "0" placeholder = "Product Stock" name = "productStock" required>
                                 <input type = "text" placeholder = "Product Availability" name = "productAvailability" required>
-                                <input value = 'Save Changes' type = 'submit'>
+                                <input style = 'cursor: pointer;' value = 'Save Changes' type = 'submit'>
                         </form>    
 
                         <% 
@@ -138,7 +138,7 @@
                                             + "<input type = 'number' min = '0' placeholder = 'Product Price' value = '%s' name = 'productPrice' required>"
                                             + "<input type = 'number' min = '0' placeholder = 'Product Stock' value = '%s' name = 'productStock' required>"
                                             + "<input type = 'text' placeholder = 'Product Availability' value = '%s' name = 'productAvailability' required>"
-                                            + "<input onclick = test() value = 'Save Changes' type = 'submit'>"
+                                            + "<input style = 'cursor: pointer;' value = 'Save Changes' type = 'submit'>"
                                        + "</form>", x.getImage(),x.getId(),x.getImage(),x.getName(), x.getDesc(), x.getPrice(), x.getStock(), x.getAvailability()
                                      );           
                                   out.println(box);
@@ -158,7 +158,7 @@
                                             + "<input type = 'number' min = '0' placeholder = 'Product Price' value = '%s' name = 'productPrice' required>"
                                             + "<input type = 'number' min = '0' placeholder = 'Product Stock' value = '%s' name = 'productStock' required>"
                                             + "<input type = 'text' placeholder = 'Product Availability' value = '%s' name = 'productAvailability' required>"
-                                            + "<input onclick = test() value = 'Save Changes' type = 'submit'>"
+                                            + "<input style = 'cursor: pointer;' value = 'Save Changes' type = 'submit'>"
                                        + "</form>",x.getImage(),x.getId(),x.getImage(),x.getName(), x.getDesc(), x.getPrice(), x.getStock(), x.getAvailability()
                                      );           
                                   out.println(box);

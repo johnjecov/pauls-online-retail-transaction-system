@@ -618,7 +618,7 @@ public class PortsDatabase {
     
     public ArrayList retrieveToppings(){
         System.out.print("TEST get toppings");
-        String query1 = "SELECT * FROM toppings order by 'toppings_id' asc";
+        String query1 = "SELECT * FROM toppings";
      
         ArrayList<Topping> toppings = new ArrayList<>();
         try {

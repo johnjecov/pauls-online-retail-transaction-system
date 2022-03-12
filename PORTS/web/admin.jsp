@@ -82,7 +82,7 @@
                             }
                         %>         
                     </div>
-                    <button onclick= "window.location.href='editMenuTest.jsp'" class="editProductsButton" type="button">
+                    <button onclick= "window.location.href='editMenu.jsp'" class="editProductsButton" type="button">
                         Edit Menu
                     </button>
                 </div>

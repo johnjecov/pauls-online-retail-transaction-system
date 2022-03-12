@@ -3,32 +3,34 @@ GAWAN NG MAX WIDTH MGA PICTURES
 */
 
 @import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Open+Sans:wght@300&display=swap');
 *{
     font-family: 'Satisfy', cursive;
     color: #fff;
+    margin: 0;
+    padding: 0;
 }
 
+html {
+    font-size: 14px;
+}
 html,body { 
     height:100%; 
     background-color: #1e1f20;
-    
 }
-
 .contentHolder {
     height: 100%;
-    
+    display: flex;
 }
 
 .sidebar {
     background-color: #2e2e2e;
-    float: left;
     height: 100%;
     width: 15%;
     border-top-right-radius:5%;
     border-bottom-right-radius:5%;
-    margin-left: -2%;
-    margin-top: -2%;
+ 
+    
 }
 
 .logo {
@@ -100,166 +102,231 @@ html,body {
 
 .adminGreetings {
     width: 20%;
-    margin-left: 16%;
 }
+
+
 
 .helloAdmin {
-    font-size: 2vw;
+    font-size: 3rem;
     text-align: center;
     background-color: #2e2e2e;
-    border-radius: 2.5%;
+    min-width: 15rem;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: inset 15px 15px 30px #212121,
+                inset -15px -15px 30px #3b3b3b;
 }
 
-.adminContent {
-    background-color: #2e2e2e;
-    left: 15%;
-    right: 1%;
-    bottom: 5%;
-    position: fixed;
-    top: 13%;
-}
-
-.pdfContent {
-    background-color: #2e2e2e;
+.pageContent {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 2rem;
+    margin: 1rem;
     width: 100%;
+    overflow-y: scroll;
 }
 
-pdfItem {
+.pageContent::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+}
+
+.pizzaOrTopping {
     width: 100%;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    min-height: 2.5rem;
 }
 
-.menuCategory {
-    padding-left: 1%;
-    padding-right: 1%;
-    float: left;
-    width: 100%;
-    margin-left: 7%;
-}
-
-.pizzaOrToppings {
-    list-style-type: none;
-    font-size: 1.5rem;
-}
-
-.pizzaOrToppingsCategory {
-    background-color: #2e2e2e;
-    padding-left: 3%;
-    padding-right: 3%;
-    margin-right: 0.5%;
-}
-
-.pizzaOrToppingsCategory:hover {
-    background-color: #fff;
-    color: #000;
-    border-radius: 5%;
-}
-
-.pizzaChoices {
-    display: table-row;
-}
-
-.pizzaDisplay1, .pizzaDisplay2, .pizzaDisplay3{
-    display: table-cell;
-    position: relative;
-}
-
-.pizzaImg {
-    max-width: 40%;
-    max-height: 40%;
-    margin-top: 5%;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    margin-bottom: 5%;
-}
-
-.pizzaName1, .pizzaName2, .pizzaName3, .pizzaDesc1, .pizzaDesc2, .pizzaDesc3, .price1, .price2, .price3, .quantity1, .quantity2, .quantity3, .availabilityButton {
+.pizzaOrTopping li, button{
     text-align: center;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2%;
+    font-size: 2rem;
+    height: 100%;
+    background-color: black;
+    border-radius: 10px;
+    min-width: 150px;
+    background: #2e2e2e;
+    box-shadow: inset 15px 15px 30px #212121,
+                inset -15px -15px 30px #3b3b3b;
 }
 
-.pizzaName1, .pizzaName2, .pizzaName3, .price1, .price2, .price3 {
-    font-size: 130%;
-}
 
-::placeholder {
-    color: #fff;
-    opacity: 0.5;
-}
-
-input {
-    background-color: #2e2e2e;
-    color: #fff;
-    width: 40%;
-}
-
-.availabilityButton {
-    font-size: 100%;
-    background-color: #008c45;
-    padding: 2% 3% 2% 3%;
-    border-radius: 15%;
+.pizzaOrTopping li:hover {
+    background: #5c5c5c;
     cursor: pointer;
 }
-
-.quantityDiv {
-    text-align: center;
-}
-
-.quantityPlusButton, .quantityMinusButton, .quantity1, .quantity2, .quantity3 {
-    display: inline-block;
+.adminContent {
+    background-color: #2e2e2e;
+    width: auto;
+    min-height: 850px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
     
 }
 
-.quantityPlusButton, .quantityMinusButton {
-    cursor: pointer;
-    max-height: 25px;
-    max-width: 25px;
-}
-
-.quantityPlusButton {
-    margin-right: 5%;
-    margin-left: auto;
-}
-
-.quantityMinusButton {
-    margin-left: 5%;
-    margin-right: auto;
-}
-
-.bottomButtons{
-    background-color: #2e2e2e;
-    padding: 1%;
-    margin-top: 2%;
-}
-
-.pageList {
-    float:left;
-    list-style-type: none;
-    width: 75%;
-    overflow: hidden;
-    font-size: 1vw;
-    position: fixed;
-    bottom: 7%;
-}
-
-
-.saveChangesButton {
-    float: right;
-    margin-right: 5%;
-    border: 0;
-    line-height: 2.5;
-    padding: 0 20px;
-    font-size: 1vw;
+.pizzaOrToppingContent {
+    width: auto;
+    flex-grow: 1;
     text-align: center;
-    color: #000;
-    border-radius: 10px;
-    background-color: #ffde59;
-    width: 15%;
-    cursor: pointer;
-    position: fixed;
-    bottom: 7%;
-    right: 1%;
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    gap: 2.5rem;
+    align-items: center;
 }
+
+.pizzaOrToppingContent::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    scroll-behavior: smooth;
+}
+
+.pizzaOrToppingContent::-webkit-scrollbar-track {
+    background: #302c2c;
+}
+
+.pizzaOrToppingContent::-webkit-scrollbar-thumb {
+    background: #CD212A;
+    border-radius: 5rem;
+}
+
+.pizzaOrToppingForm {
+    color: black;
+    display: flex;
+    flex-direction: column;
+    min-width: 25rem;
+    max-width: 25rem;
+    justify-content: space-around;
+    text-align: center;
+    padding: 1.5rem;
+    height: auto;
+    border-radius: 10px;
+    align-content: center;
+    gap: 0.8rem;
+    background: linear-gradient(145deg, #292929, #313131);
+    background: #2e2e2e;
+    box-shadow: inset 15px 15px 30px #212121,
+                inset -15px -15px 30px #3b3b3b;
+    margin-bottom: 10px;
+    max-height: 50rem;
+}
+
+.pizzaOrToppingImage {
+    height: 300px;
+    width: auto;
+}
+
+.addImage {
+    border-radius: 50%;
+    box-shadow: inset 15px 15px 30px #212121,
+                inset -15px -15px 30px #3b3b3b;
+    opacity: 0.4;
+}
+input, input[type = "button"] {
+    padding: 0.5rem;
+    background: none;
+    font-size: 1rem;
+    width: auto;
+    border-radius: 10px;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+}
+
+input[type = "button"] {
+    max-height: 3rem;
+}
+
+img {
+    border-radius: 10px;
+}
+
+input[type = "button"]:hover {
+    cursor: pointer;
+}
+
+.editProductsButton {
+    max-width: 5rem;
+    max-height:3rem;
+    font-size: 1.5rem;
+}
+
+.editProductsButton:hover {
+    cursor: pointer;
+}
+
+#transactionModal
+{
+    position: fixed; /* Stay in place */
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    -webkit-animation-name: fadeIn; /* Fade in the background */
+    -webkit-animation-duration: 0.4s;
+    animation-name: fadeIn;
+    animation-duration: 0.4s;
+    text-align: center;
+    justify-content: center !important;
+    align-items: center !important;
+    font-family: 'Open Sans', sans-serif;
+    z-index: 1;
+}
+
+
+.mContent
+{     
+    box-sizing: border-box;
+    padding: 30px;
+    -webkit-animation-name: slideIn;
+    -webkit-animation-duration: 0.4s;
+    animation-name: slideIn;
+    animation-duration: 0.4s;
+    min-height: clamp(600px, 55vh, 550px);
+    min-width: clamp(350px, 100vw, 550px);
+    background-color: #f3eee8;
+    border: 5px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+   
+}
+
+.mContent p, .mContent h3 {
+    color: black;
+}
+
+.mContent h3 {
+    font-size: 20px;
+}
+
+.mContent p {
+    font-family: 'Open Sans', sans-serif;
+    text-align: left;
+    margin-left: 15px;
+    font-weight: 900;
+}
+
+.summaryButtons
+{
+    text-align: center;
+    background-color: black;
+    text-decoration: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: 'Open Sans', sans-serif;
+
+}
+
+.summaryButtons:hover
+{
+    transition: linear 0.1s;
+    background-color: #2e2e2e;
+}
+

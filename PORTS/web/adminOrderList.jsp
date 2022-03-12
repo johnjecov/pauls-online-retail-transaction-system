@@ -59,11 +59,9 @@
                     ArrayList<Order> orderList = (ArrayList) ports.getOrderHistory("asc");
                     ArrayList orderStatus = ports.getOrderStats();
                     for (Order x : orderList) {
-                        String listString = String.join(", ", x.getItems());
                         String s = String.format("<div class = 'orderBody'>\n"
                                 + "<ul class = 'orders'>\n"
                                 + "<li class = 'orderProperty'>%s</li>"
-                                + "<li class = 'orderProperty'>%s</li>\n"
                                 + "<li class = 'orderProperty'>%s</li>\n"
                                 + "<li class = 'orderProperty'>%s</li>\n"
                                 + "<li class = 'orderProperty'>%s</li>\n"
@@ -75,7 +73,7 @@
                                 + "<p class = 'orderRemove' id = 'orderRemoveID'>%s</p>\n"
                                 + "</div>",
                                 String.valueOf(x.getOrder_Id()), x.getOrder_Delivery_Date(), String.valueOf(x.getCustomer_Id()), x.getPayment_Method(),
-                                x.getAddress(), listString, String.valueOf(x.getOrder_Id()), x.getPayment_Status(), orderStatus.get(x.getOrder_Status_Id() - 1), "+");
+                                x.getAddress(), String.valueOf(x.getOrder_Id()), x.getPayment_Status(), orderStatus.get(x.getOrder_Status_Id() - 1), "+");
                         out.println(s);
                     }
                 %>

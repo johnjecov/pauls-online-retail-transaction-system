@@ -11,7 +11,6 @@ and open the template in the editor.
 @import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
 
 *{
-    font-family: 'Satisfy', cursive;
     color: #fff;
 }
 
@@ -144,24 +143,52 @@ label {
     font-size: 1.5vw;
 }
 
-.orderList {
-    width: 100%;
-    margin-left: 5%;
-    margin-top: 2%;
-}
-
 .orderProperties {
-    list-style-type: none;
-    margin: -1%;
-    padding: 1%;
-    font-size: 1.4vw;
     display: flex;
+    width: 95%;
+    padding: 1%;
+    margin: 2% 0 0 5%;
+    font-size: 1.4vw;
+    align-items: center;
 }
 
 .property {
     flex: 1;
-    float: left;
-    margin-right: 5%;
+    justify-content: center;
+    text-align: center;
+}
+
+.test {
+    background-color: yellow;
+    color: pink;
+}
+
+.orderBody {
+    display: flex;
+    width: 95%;
+    margin: 1% 0 0 5%;
+    padding: 1%;
+    background-color: #2e2e2e;
+    border-radius: 5px;
+    font-size: 1vw;
+}
+
+.orderPropertyColumnBig {
+    display: flex;
+    flex-direction: column;
+    flex: 3;
+}
+
+.orderPropertyRow {
+    display: flex;
+    flex: 1;
+}
+
+.orderPropertyChildren {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    text-align: center;
 }
 
 .orders {
@@ -172,6 +199,15 @@ label {
     font-size: 1.5vw;
     border-radius: 2.5%;
     padding: 1%;
+}
+
+.orderRemove {
+    font-size: 2vw;
+    position: absolute;
+    right: 0.5%;
+    bottom: -20%;
+    cursor: pointer;
+    transform: rotate(45deg);
 }
 
 .pageList {
@@ -197,6 +233,88 @@ label {
 
 .pageNumber2 {
     background-color: #008c45;
+}
+
+.cancelModal {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.modalContent {
+    width: 500px;
+    height: 300px;
+    background-color: #f2f4ea;
+    text-align: center;
+}
+
+.modalText {
+    font-size: 200%;
+    color: #1e1f20;
+}
+
+.modalButtonYes {
+    color: #000;
+    background-color: #f2f4ea;
+    font-size: 200%;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-right: 15%;
+    border-radius: 5%;
+    cursor: pointer;
+}
+
+.modalButtonNo {
+    color: #000;
+    background-color: #ff5757;
+    font-size: 200%;
+    padding-left: 5%;
+    padding-right: 5%;
+    border-radius: 5%;
+    cursor: pointer;
+}
+
+
+.pagenumbers {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.pagenumbers button {
+	width: 50px;
+	height: 50px;
+
+	appearance: none;
+	border: none;
+	outline: none;
+	cursor: pointer;
+
+	background-color: #44AAEE;
+
+	margin: 5px;
+	transition: 0.4s;
+
+	color: #FFF;
+	font-size: 18px;
+	text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+}
+
+.pagenumbers button:hover {
+	background-color: #44EEAA;
+}
+
+.pagenumbers button.active {
+	background-color: #44EEAA;
+	box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.2);
 }
 
 .PDFGenerator {

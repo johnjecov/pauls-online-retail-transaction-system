@@ -131,7 +131,7 @@ html,body {
     display: flex;
     flex-direction: column;
     gap: 1vw;
-    padding: 1vw;
+    padding: 0;
     
     border-radius: 5px;
     font-family: "roboto";

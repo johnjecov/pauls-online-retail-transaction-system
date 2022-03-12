@@ -19,78 +19,78 @@
                 </ul>
                 <p class='logout'>Logout</p>
             </div>
-            <div class="adminGreetings">
-                <p class='helloAdmin'>Hello, admin</p>
-            </div>
-            <div class="adminContent">
-                <div class="arrangeOptions">
-                    <label for="arrange">Arrange by: </label>
-
-                    <select name="arrange" class="arrange">
-                        <option value="aProperty">Order ID</option>
-                        <option value="aProperty">Date</option>
-                        <option value="aProperty">Name</option>
-                        <option value="aProperty">Payment</option>
-                        <option value="aProperty">Address</option>
-                        <option value="aProperty">Order</option>
-                        <option value="aProperty">Contact</option>
-                        <option value="aProperty">Paid</option>
-                        <option value="aProperty">Status</option>
-                    </select>
-
+            <div class="pageContent">
+                <div class="adminGreetings">
+                    <p class='helloAdmin'>Hello, admin</p>
                 </div>
-                <div class="orderList">
-                    <ul class='orderAttributes'>
-                        <li class="property">Order ID</li>
-                        <li class="property">Date</li>
-                        <li class="property">Name</li>
-                        <li class="property">Payment</li>
-                        <li class="property">Address</li>
-                        <li class="property">Order</li>
-                        <li class="property">Contact</li>
-                        <li class="property">Paid</li>
-                        <li class="property">Status</li>
-                    </ul>
-                </div>
+                <div class="adminContent">
+                    <div class="arrangeOptions">
+                        <label for="arrange">Arrange by: </label>
 
-                <%
-                    ServletContext sc = getServletContext();
-                    PortsDatabase ports = (PortsDatabase) getServletContext().getAttribute("dbConnection");
-                    ArrayList<Order> orderList = (ArrayList) ports.getOrderHistory("asc");
-                    ArrayList orderStatus = ports.getOrderStats();
-                    for (Order x : orderList) {
-                        String s = String.format("<div class = 'orderBody'>\n"
-                                + "<ul class = 'orders'>\n"
-                                + "<li class = 'orderProperty'>%s</li>"
-                                + "<li class = 'orderProperty'>%s</li>\n"
-                                + "<li class = 'orderProperty'>%s</li>\n"
-                                + "<li class = 'orderProperty'>%s</li>\n"
-                                + "<li class = 'orderProperty'>%s</li>\n"
-                                + "<li class = 'orderProperty'>%s</li>\n"
-                                + "<li class = 'orderProperty'>%s</li>\n"
-                                + "<li class = 'orderProperty'>%s</li>\n"
-                                + "</ul>\n"
-                                + "<p class = 'orderRemove' id = 'orderRemoveID'>%s</p>\n"
-                                + "</div>",
-                                String.valueOf(x.getOrder_Id()), x.getOrder_Delivery_Date(), String.valueOf(x.getCustomer_Id()), x.getPayment_Method(),
-                                x.getAddress(), String.valueOf(x.getOrder_Id()), x.getPayment_Status(), orderStatus.get(x.getOrder_Status_Id() - 1), "+");
-                        out.println(s);
-                    }
-                %>
+                        <select name="arrange" class="arrange">
+                            <option value="aProperty">Order ID</option>
+                            <option value="aProperty">Date</option>
+                            <option value="aProperty">Name</option>
+                            <option value="aProperty">Payment</option>
+                            <option value="aProperty">Address</option>
+                            <option value="aProperty">Order</option>
+                            <option value="aProperty">Contact</option>
+                            <option value="aProperty">Paid</option>
+                            <option value="aProperty">Status</option>
+                        </select>
 
-                <script>
-                    document.getElementById('orderRemoveID').addEventListener('click',
-                            function () {
-                                document.querySelector('.cancelModal').style.display = 'flex';
-                            });
+                    </div>
+                    <div class='orderList'>
+                        <div class="property">Order ID</div>
+                        <div class="property">Date</div>
+                        <div class="property">Name</div>
+                        <div class="property">Payment</div>
+                        <div class="property">Address</div>
+                        <div class="property">Order</div>
+                        <div class="property">Contact</div>
+                        <div class="property">Paid</div>
+                        <div class="property">Status</div>
+                    </div>
 
-                </script>
-                <div class="pageSelector">
-                    <ul class="pageList">
-                        <li class="pageNumber1"><a>1</a></li>
-                        <li class="pageNumber"><a>2</a></li>
-                        <li class="pageNumber"><a>3</a></li>
-                    </ul>
+                    <%
+                        ServletContext sc = getServletContext();
+                        PortsDatabase ports = (PortsDatabase) getServletContext().getAttribute("dbConnection");
+                        ArrayList<Order> orderList = (ArrayList) ports.getOrderHistory("order_id");
+                        ArrayList orderStatus = ports.getOrderStats();
+                        for (Order x : orderList) {
+                            String s = String.format("<div class = 'orderBody'>\n"
+                                    + "<ul class = 'orders'>\n"
+                                    + "<li class = 'orderProperty'>%s</li>"
+                                    + "<li class = 'orderProperty'>%s</li>\n"
+                                    + "<li class = 'orderProperty'>%s</li>\n"
+                                    + "<li class = 'orderProperty'>%s</li>\n"
+                                    + "<li class = 'orderProperty'>%s</li>\n"
+                                    + "<li class = 'orderProperty'>%s</li>\n"
+                                    + "<li class = 'orderProperty'>%s</li>\n"
+                                    + "<li class = 'orderProperty'>%s</li>\n"
+                                    + "</ul>\n"
+                                    + "<p class = 'orderRemove' id = 'orderRemoveID'>%s</p>\n"
+                                    + "</div>",
+                                    String.valueOf(x.getOrder_Id()), x.getOrder_Delivery_Date(), String.valueOf(x.getCustomer_Id()), x.getPayment_Method(),
+                                    x.getAddress(), String.valueOf(x.getOrder_Id()), x.getPayment_Status(), orderStatus.get(x.getOrder_Status_Id() - 1), "+");
+                            out.println(s);
+                        }
+                    %>
+
+                    <script>
+                        document.getElementById('orderRemoveID').addEventListener('click',
+                                function () {
+                                    document.querySelector('.cancelModal').style.display = 'flex';
+                                });
+
+                    </script>
+                    <div class="pageSelector">
+                        <ul class="pageList">
+                            <li class="pageNumber1"><a>1</a></li>
+                            <li class="pageNumber"><a>2</a></li>
+                            <li class="pageNumber"><a>3</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

@@ -3,28 +3,27 @@
 *{
     font-family: 'Satisfy', cursive;
     color: #fff;
+    margin: 0;
+    padding: 0;
 }
 
 html,body {
     background-color: #1e1f20;
     height:100%; 
+    font-size: 14px;
 }
 
 .contentHolder {
     height: 100%;
+    display: flex;
 }
 
 .sidebar {
     background-color: #2e2e2e;
-    float: left;
     height: 100%;
     width: 15%;
     border-top-right-radius:5%;
     border-bottom-right-radius:5%;
-    margin-left: -2%;
-    margin-top: -2%;
-    z-index: 2;
-    position: relative;
 }
 
 .logo {
@@ -42,11 +41,13 @@ html,body {
     margin: 0;
     padding: 0;
     overflow: hidden;
+    background-color: #2e2e2e;
     font-size: 1.5vw;
 }
 
 .options {
     float: bottom;
+    background-color: #2e2e2e
 }
 
 .options a {
@@ -56,6 +57,7 @@ html,body {
     color: white;
     padding: 4%;
     text-decoration: none;
+    background-color: #2e2e2e
 }
 
 .options a:hover {
@@ -69,7 +71,7 @@ html,body {
     overflow: hidden;
     font-size: 1.2vw;
     margin-top: 80%;
-    margin-left: 5%;
+    margin-left: 3%;
     bottom: 0%;
     position: fixed;
     padding: 1%;
@@ -89,35 +91,49 @@ html,body {
     background-color: #cd212a;
     color: #fff;
     border-radius: 15%;
-}
+}   
 
 .adminGreetings {
     width: 20%;
-    margin-left: 16%;
 }
 
 .helloAdmin {
-    font-size: 2vw;
+    font-size: 2rem;
     text-align: center;
-    background-color: #302c2c;
-    border-radius: 2.5%;
+    background-color: #2e2e2e;
+    min-width: 15rem;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: inset 15px 15px 30px #212121,
+                inset -15px -15px 30px #3b3b3b;
+}
+
+.pageContent {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 2rem;
+    margin: 1rem;
+    width: 100%;
 }
 
 .adminContent {
-    margin-left: 11.7%;
-    margin-right: 1%;
-    bottom: auto;
-    position: fixed;
-    width: 82%;
+    width: auto;
+    height: 850px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    
+    border-radius: 10px;
+    font-family: "roboto";
 }
 
 .arrangeOptions {
-    float: left;
     width: 100%;
-    margin-left: 5%;
     margin-top: -1%;
     background-color: #302c2c;
-    border-radius: 2.5%;
+    border-radius: 10px;
     padding: 0.5%;
 }
 
@@ -134,29 +150,26 @@ label {
 }
 
 .orderList {
-    width: 99%;
-    margin-left: 5%;
-    margin-top: 5%;
-}
-
-.orderAttributes {
-    list-style-type: none;
     display: flex;
-    justify-content: space-around;
+    width: 100%;
+    padding: 1%;
+    margin: 2% 0 0 0;
+    font-size: 1.4vw;
+    align-items: center;
 }
 
 .property {
-    list-style-type: none;
-    font-size: 1.4vw;
-    display:inline-block; 
+    flex: 1;
+    justify-content: center;
+    text-align: center;
 }
 
 .orderBody {
     background-color: #2e2e2e;
-    margin-left: 5%;
     width: 99%;
-    border-radius: 5%;
-    position: relative;
+    font-size: 1.5vw;
+    border-radius: 10px;
+    padding: 1%;
 }
 
 .orders{
@@ -185,17 +198,23 @@ label {
     cursor: pointer;
     transform: rotate(45deg);
 }
-
+/*
 .pageSelector{
     bottom: 3%;
     position: fixed;
     width: 100%;
     overflow: hidden;
     margin-left: 2.5%;
-}
+}*/
 
 .pageList {
     list-style-type: none;
+    width: 100%;
+    overflow: hidden;
+    font-size: 1vw;
+    margin-left: 2.5%;
+    bottom: 13.5%;
+    position: fixed;
 }
 
 .pageNumber,.pageNumber1 {
@@ -206,7 +225,7 @@ label {
     padding-bottom: .5%;
     padding-left: 1%;
     padding-right: 1%;
-    border-radius: 15%;
+    border-radius: 10px;
 }
 
 .pageNumber1 {

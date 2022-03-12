@@ -33,18 +33,19 @@ change orders from "----------" to backend
                 </ul>
                 <p class='logout'>Logout</p>
             </div>
-            <div class="adminGreetings">
-                <p class='helloAdmin'>Hello, admin</p>
-            </div>
-            <div class="adminContent">
-                <form class="arrangeOptions" id = "adminSortForm" action="adminHistorySort" method = "POST">
-                    <label for="arrange">Arrange by: </label>
-                    <select name="arrange" class="arrange" id="arrange" onchange="this.form.submit()">
-                        <option value="order_id">Order ID</option>
-                        <option value="order_delivery_date">Date</option>
-                        <option value="order_total">Price</option>
-                    </select>
-                    <script>
+            <div class="pageContent">
+                <div class="adminGreetings">
+                    <p class='helloAdmin'>Hello, admin</p>
+                </div>
+                <div class="adminContent">
+                    <form class="arrangeOptions" id = "adminSortForm" action="adminHistorySort" method = "POST">
+                        <label for="arrange">Arrange by: </label>
+                        <select name="arrange" class="arrange" id="arrange" onchange="this.form.submit()">
+                            <option value="order_id">Order ID</option>
+                            <option value="order_delivery_date">Date</option>
+                            <option value="order_total">Price</option>
+                        </select>
+                        <script>
                             $("#arrange").on("change", function () {
                                 var val = $(this).val();
                                 // save to local
@@ -58,124 +59,125 @@ change orders from "----------" to backend
                                 if (item)
                                     $("#arrange").val(item);
                             }
-                        
 
-                    </script>
-                </form>
 
-                <div class='orderProperties'>
-                    <div class="property">Order ID</div>
-                    <div class="property">Date</div>
-                    <div class="property">Product ID</div>
-                    <div class="property">Product Name</div>
-                    <div class="property">Quantity</div>
-                    <div class="property">Toppings ID</div>
-                    <div class="property">Toppings</div>
-                    <div class="property">Toppings Quantity</div>
-                    <div class="property">Total Price</div>
-                </div>
+                        </script>
+                    </form>
 
-                <%
-                    ServletContext sc = getServletContext();
-                    PortsDatabase ports = (PortsDatabase) sc.getAttribute("dbConnection");
+                    <div class='orderProperties'>
+                        <div class="property">Order ID</div>
+                        <div class="property">Date</div>
+                        <div class="property">Product ID</div>
+                        <div class="property">Product Name</div>
+                        <div class="property">Quantity</div>
+                        <div class="property">Toppings ID</div>
+                        <div class="property">Toppings</div>
+                        <div class="property">Toppings Quantity</div>
+                        <div class="property">Total Price</div>
+                    </div>
 
-                    String selectedSort = "order_id";
-                    if (sc.getAttribute("selectedSortAttribute") != null) {
-                        selectedSort = (String) sc.getAttribute("selectedSortAttribute");
-                    }
+                    <%
+                        ServletContext sc = getServletContext();
+                        PortsDatabase ports = (PortsDatabase) sc.getAttribute("dbConnection");
 
-                    ArrayList<Order> orderList = (ArrayList) ports.getOrderSales(selectedSort);
-                    Queue<String> productsList = new LinkedList();
-                    Queue<String> toppingsList = new LinkedList();
-                    ArrayList<String> orderReports = new ArrayList();
+                        String selectedSort = "order_id";
+                        if (sc.getAttribute("selectedSortAttribute") != null) {
+                            selectedSort = (String) sc.getAttribute("selectedSortAttribute");
+                        }
 
-                    String q = "<div class='orderMain' id='orderMain'>";
-                    out.println(q);
+                        ArrayList<Order> orderList = (ArrayList) ports.getOrderSales(selectedSort);
+                        Queue<String> productsList = new LinkedList();
+                        Queue<String> toppingsList = new LinkedList();
+                        ArrayList<String> orderReports = new ArrayList();
 
-                    for (Order x : orderList) {
-                        ArrayList<OrderItem> orderItems = x.getItems();
+                        String q = "<div class='orderMain' id='orderMain'>";
+                        out.println(q);
 
-                        String r = String.format("<div class = 'orderPropertyChildren'>%s</div>\n"
-                                + "<div class = 'orderPropertyChildren'>%s</div>\n"
-                                + "<div class = 'orderPropertyColumnBig'>",
-                                String.valueOf(x.getOrder_Id()),
-                                x.getOrder_Delivery_Date());
+                        for (Order x : orderList) {
+                            ArrayList<OrderItem> orderItems = x.getItems();
 
-                        String s = "";
-                        String t = "";
-                        String u = "";
-                        String v = "";
-                        for (OrderItem y : orderItems) {
-                            productsList.add(String.valueOf(y.getProduct().getId()));
-                            productsList.add(String.valueOf(y.getProduct().getName()));
-                            productsList.add(String.valueOf(y.getQuantity()));
-
-                            s += String.format(
-                                    "<div class = 'orderPropertyRow'>"
+                            String r = String.format("<div class = 'orderPropertyChildren'>%s</div>\n"
                                     + "<div class = 'orderPropertyChildren'>%s</div>\n"
-                                    + "<div class = 'orderPropertyChildren'>%s</div>\n"
-                                    + "<div class = 'orderPropertyChildren'>%s</div>\n"
-                                    + "</div>",
-                                    productsList.remove(),
-                                    productsList.remove(),
-                                    productsList.remove());
+                                    + "<div class = 'orderPropertyColumnBig'>",
+                                    String.valueOf(x.getOrder_Id()),
+                                    x.getOrder_Delivery_Date());
 
-                            ArrayList<OrderItemToppings> orderItemToppings = y.getToppings();
+                            String s = "";
+                            String t = "";
+                            String u = "";
+                            String v = "";
+                            for (OrderItem y : orderItems) {
+                                productsList.add(String.valueOf(y.getProduct().getId()));
+                                productsList.add(String.valueOf(y.getProduct().getName()));
+                                productsList.add(String.valueOf(y.getQuantity()));
 
-                            for (OrderItemToppings z : orderItemToppings) {
-                                toppingsList.add(String.valueOf(z.getTopping().getId()));
-                                toppingsList.add(String.valueOf(z.getTopping().getName()));
-                                toppingsList.add(String.valueOf(z.getQuantity()));
-
-                                u += String.format(
+                                s += String.format(
                                         "<div class = 'orderPropertyRow'>"
                                         + "<div class = 'orderPropertyChildren'>%s</div>\n"
                                         + "<div class = 'orderPropertyChildren'>%s</div>\n"
                                         + "<div class = 'orderPropertyChildren'>%s</div>\n"
                                         + "</div>",
-                                        toppingsList.remove(),
-                                        toppingsList.remove(),
-                                        toppingsList.remove());
+                                        productsList.remove(),
+                                        productsList.remove(),
+                                        productsList.remove());
+
+                                ArrayList<OrderItemToppings> orderItemToppings = y.getToppings();
+
+                                for (OrderItemToppings z : orderItemToppings) {
+                                    toppingsList.add(String.valueOf(z.getTopping().getId()));
+                                    toppingsList.add(String.valueOf(z.getTopping().getName()));
+                                    toppingsList.add(String.valueOf(z.getQuantity()));
+
+                                    u += String.format(
+                                            "<div class = 'orderPropertyRow'>"
+                                            + "<div class = 'orderPropertyChildren'>%s</div>\n"
+                                            + "<div class = 'orderPropertyChildren'>%s</div>\n"
+                                            + "<div class = 'orderPropertyChildren'>%s</div>\n"
+                                            + "</div>",
+                                            toppingsList.remove(),
+                                            toppingsList.remove(),
+                                            toppingsList.remove());
+                                }
                             }
+                            t = String.format(
+                                    "</div>"
+                                    + "<div class = 'orderPropertyColumnBig'>");
+                            v = String.format(
+                                    "</div>"
+                                    + "<div class = 'orderPropertyChildren'>%s</div>\n"
+                                    + "<p class = 'orderRemove' id = 'orderRemoveID'>%s</p>\n",
+                                    x.getOrder_Total(),
+                                    "+");
+                            String orderReport = r + s + t + u + v;
+                            orderReports.add(orderReport);
+
                         }
-                        t = String.format(
-                                "</div>"
-                                + "<div class = 'orderPropertyColumnBig'>");
-                        v = String.format(
-                                "</div>"
-                                + "<div class = 'orderPropertyChildren'>%s</div>\n"
-                                + "<p class = 'orderRemove' id = 'orderRemoveID'>%s</p>\n",
-                                x.getOrder_Total(),
-                                "+");
-                        String orderReport = r + s + t + u + v;
-                        orderReports.add(orderReport);
+                        String w = "</div>";
+                        out.println(w);
 
-                    }
-                    String w = "</div>";
-                    out.println(w);
+                        JSONArray data = new JSONArray(orderReports);
+                    %>
 
-                    JSONArray data = new JSONArray(orderReports);
-                %>
-
-                <script>
+                    <script>
                     var list_items = <%=data%>
-                </script>
+                    </script>
 
 
-                <script>
-                    document.getElementById('orderRemoveID').addEventListener('click',
-                            function () {
-                                document.querySelector('.cancelModal').style.display = 'flex';
-                            });
-                </script>
+                    <script>
+                        document.getElementById('orderRemoveID').addEventListener('click',
+                                function () {
+                                    document.querySelector('.cancelModal').style.display = 'flex';
+                                });
+                    </script>
 
-                <div class="pagenumbers" id="pagenumbers">
-                </div>
+                    <div class="pagenumbers" id="pagenumbers">
+                    </div>
 
-                <div class="PDFGenerator">
-                    <button class="generatePDF" type="button">
-                        Generate Summary Report PDF
-                    </button>
+                    <div class="PDFGenerator">
+                        <button class="generatePDF" type="button">
+                            Generate Summary Report PDF
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

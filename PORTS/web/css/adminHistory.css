@@ -13,6 +13,8 @@ and open the template in the editor.
 *{
     font-family: 'Poppins', sans-serif;
     color: #fff;
+    margin: 0;
+    padding: 0;
 }
 
 html,body {
@@ -22,17 +24,15 @@ html,body {
 
 .contentHolder {
     height: 100%;
+    display: flex;
 }
 
 .sidebar {
     background-color: #2e2e2e;
-    float: left;
     height: 100%;
     width: 15%;
     border-top-right-radius:5%;
     border-bottom-right-radius:5%;
-    margin-left: -2%;
-    margin-top: -2%;
 }
 
 .logo {
@@ -80,7 +80,7 @@ html,body {
     overflow: hidden;
     font-size: 1.2vw;
     margin-top: 80%;
-    margin-left: 5%;
+    margin-left: 3%;
     bottom: 0%;
     position: fixed;
     padding: 1%;
@@ -100,35 +100,49 @@ html,body {
     background-color: #cd212a;
     color: #fff;
     border-radius: 15%;
-}   
+}
 
 .adminGreetings {
     width: 20%;
-    margin-left: 16%;
 }
 
 .helloAdmin {
-    font-size: 2vw;
+    font-size: 2rem;
     text-align: center;
-    background-color: #302c2c;
-    border-radius: 2.5%;
+    background-color: #2e2e2e;
+    min-width: 15rem;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: inset 15px 15px 30px #212121,
+        inset -15px -15px 30px #3b3b3b;
+}
+
+.pageContent {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 2rem;
+    margin: 1rem;
+    width: 100%;
 }
 
 .adminContent {
-    margin-left: 11.7%;
-    margin-right: 1%;
-    bottom: auto;
-    position: fixed;
-    width: 82%;
+    width: auto;
+    height: 850px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    
+    border-radius: 10px;
+    font-family: "roboto";
 }
 
 .arrangeOptions {
-    float: left;
     width: 100%;
-    margin-left: 5%;
     margin-top: -1%;
     background-color: #302c2c;
-    border-radius: 2.5%;
+    border-radius: 10px;
     padding: 0.5%;
 }
 
@@ -144,11 +158,12 @@ label {
     font-size: 1.5vw;
 }
 
+
 .orderProperties {
     display: flex;
-    width: 95%;
+    width: 100%;
     padding: 1%;
-    margin: 2% 0 0 5%;
+    margin: 2% 0 0 0;
     font-size: 1.4vw;
     align-items: center;
 }
@@ -166,8 +181,8 @@ label {
 
 .orderBody {
     display: flex;
-    width: 95%;
-    margin: 1% 0 0 5%;
+    width: 100%;
+    margin: 1% 0 0 0;
     padding: 1%;
     background-color: #2e2e2e;
     border-radius: 5px;
@@ -229,7 +244,7 @@ label {
     padding-bottom: .5%;
     padding-left: 1%;
     padding-right: 1%;
-    border-radius: 15%;
+    border-radius: 10px;
 }
 
 .pageNumber2 {
@@ -283,39 +298,39 @@ label {
 
 
 .pagenumbers {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .pagenumbers button {
-	width: 50px;
-	height: 50px;
+    width: 50px;
+    height: 50px;
 
-	appearance: none;
-	border: none;
-	outline: none;
-	cursor: pointer;
+    appearance: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
 
-	background-color: #574b3e;
+    background-color: #44AAEE;
 
-	margin: 5px;
-	transition: 0.4s;
+    margin: 5px;
+    transition: 0.4s;
 
-	color: #FFF;
-	font-size: 18px;
-	text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
-	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+    color: #FFF;
+    font-size: 18px;
+    text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
 }
 
 .pagenumbers button:hover {
-	background-color: #008C45;
+    background-color: #44EEAA;
 }
 
 .pagenumbers button.active {
-	background-color: #008C45;
-	box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.2);
+    background-color: #44EEAA;
+    box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.2);
 }
 
 .PDFGenerator {

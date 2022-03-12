@@ -38,31 +38,15 @@ change orders from "----------" to backend
                     <p class='helloAdmin'>Hello, admin</p>
                 </div>
                 <div class="adminContent">
-                    <form class="arrangeOptions" id = "adminSortForm" action="adminHistorySort" method = "POST">
-                        <label for="arrange">Arrange by: </label>
-                        <select name="arrange" class="arrange" id="arrange" onchange="this.form.submit()">
-                            <option value="order_id">Order ID</option>
-                            <option value="order_delivery_date">Date</option>
-                            <option value="order_total">Price</option>
-                        </select>
-                        <script>
-                            $("#arrange").on("change", function () {
-                                var val = $(this).val();
-                                // save to local
-                                if (window.localStorage) {
-                                    window.localStorage.setItem("#arrange-val", val);
-                                }
-                            });
-
-                            if (window.localStorage) {
-                                var item = window.localStorage.getItem("#arrange-val");
-                                if (item)
-                                    $("#arrange").val(item);
-                            }
-
-
-                        </script>
-                    </form>
+                     <form class="arrangeOptions" id = "adminSortForm" action="adminHistorySort" method = "POST">
+                    <label for="arrange">Arrange by: </label>
+                    <select name="arrange" class="arrange" id="arrange" onchange="this.form.submit()">
+                        <option value="order_id"></option>
+                        <option value="order_id">Order ID</option>
+                        <option value="order_delivery_date">Date</option>
+                        <option value="order_total">Price</option>
+                    </select>
+                </form>
 
                     <div class='orderProperties'>
                         <div class="property">Order ID</div>

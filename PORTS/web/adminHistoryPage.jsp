@@ -26,9 +26,9 @@ change orders from "----------" to backend
             <div class="sidebar">
                 <img class="logo" src="image/Paul's Pizzeria Logo.jpg" alt="Paul's Pizzeria Logo">
                 <ul class='adminOptions'>
-                    <li class="options"><a href="/PORTS/adminHistoryPage.jsp">Sales</a></li>
-                    <li class="options"><a href="/PORTS/adminOrderList.jsp">Order List</a></li>
-                    <li class="options"><a href="/PORTS/admin.jsp">Menu</a></li>
+                    <li class="options"><a href="#home">Sales</a></li>
+                    <li class="options"><a href="#home">Order List</a></li>
+                    <li class="options"><a href="#home">Menu</a></li>
                     <li class="options"><a href="#home">Analytics</a></li>
                 </ul>
                 <p class='logout'>Logout</p>
@@ -38,7 +38,7 @@ change orders from "----------" to backend
                     <p class='helloAdmin'>Hello, admin</p>
                 </div>
                 <div class="adminContent">
-                     <form class="arrangeOptions" id = "adminSortForm" action="adminHistorySort" method = "POST">
+                <form class="arrangeOptions" id = "adminSortForm" action="adminHistorySort" method = "POST">
                     <label for="arrange">Arrange by: </label>
                     <select name="arrange" class="arrange" id="arrange" onchange="this.form.submit()">
                         <option value="order_id"></option>
@@ -128,10 +128,8 @@ change orders from "----------" to backend
                                     + "<div class = 'orderPropertyColumnBig'>");
                             v = String.format(
                                     "</div>"
-                                    + "<div class = 'orderPropertyChildren'>%s</div>\n"
-                                    + "<p class = 'orderRemove' id = 'orderRemoveID'>%s</p>\n",
-                                    x.getOrder_Total(),
-                                    "+");
+                                    + "<div class = 'orderPropertyChildren'>%s</div>\n",
+                                    x.getOrder_Total());
                             String orderReport = r + s + t + u + v;
                             orderReports.add(orderReport);
 

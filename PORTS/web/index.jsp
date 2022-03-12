@@ -204,16 +204,6 @@
     <div class="box-container">
 
         <div class="box">
-            <h3>OUR MENU</h3>
-            <a href="#"><i class="fas fa-arrow-right"></i> Chicken BBQ </a>
-            <a href="#"><i class="fas fa-arrow-right"></i> Garlic Shrimp with Parsley </a>
-            <a href="#"><i class="fas fa-arrow-right"></i> Creamy Spinach </a>
-            <a href="testprod2.jsp"><i class="fas fa-arrow-right"></i> Cheese With Basil </a>
-            <a href="#"><i class="fas fa-arrow-right"></i> Hawaiian</a>
-            <a href="testprod.jsp"><i class="fas fa-arrow-right"></i> Pepperoni</a>
-        </div>
-
-        <div class="box">
             <h3>QUICK LINKS</h3>
             <a href="#home"> <i class="fas fa-arrow-right"></i> Home</a>
             <a href="#about"> <i class="fas fa-arrow-right"></i> About</a>
@@ -225,7 +215,9 @@
             <h3>EXTRA LINKS</h3>            
                 <% if (navUser == "") { %>
                 <div class="dropdown">
-                    <a href="login.jsp"> <i class="fas fa-arrow-right"></i> My Account</a>            
+                    <a href="login.jsp"> <i class="fas fa-arrow-right"></i> My Account</a>    
+                    <a href="cart.jsp"> <i class="fas fa-arrow-right"></i> My Cart</a>
+                    <a href="changePassword.jsp"> <i class="fas fa-arrow-right"></i> Change Password</a>    
                 </div>
                 <% } %>
 

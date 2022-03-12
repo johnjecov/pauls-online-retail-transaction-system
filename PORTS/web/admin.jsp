@@ -15,9 +15,9 @@
             <div class="sidebar">
                 <img class="logo" src="image/Paul's Pizzeria Logo.jpg" alt="Paul's Pizzeria Logo">
                 <ul class='adminOptions'>
-                    <li class="options"><a href="#home">Sales</a></li>
-                    <li class="options"><a href="#home">Order List</a></li>
-                    <li class="options"><a href="#home">Menu</a></li>
+                    <li class="options"><a href="/PORTS/adminHistoryPage.jsp">Sales</a></li>
+                    <li class="options"><a href="/PORTS/adminOrderList.jsp">Order List</a></li>
+                    <li class="options"><a href="/PORTS/admin.jsp">Menu</a></li>
                     <li class="options"><a href="#home">Analytics</a></li>
                 </ul>
                 <p class='logout'>Logout</p>

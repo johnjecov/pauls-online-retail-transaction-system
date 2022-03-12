@@ -40,32 +40,31 @@ public class confirmEditProductServlet extends HttpServlet {
             throws ServletException, IOException {
 
             ServletContext sc = request.getServletContext();
-           
             String editModalDisplay = "flex";
             sc.setAttribute("editModalDisplay", editModalDisplay);
             
-            String productId = request.getParameter("productId").trim();;
+            String productId = request.getParameter("productId").trim();
             sc.setAttribute("productId", productId);
             
-            String productType = request.getParameter("productType").trim();;
+            String productType = request.getParameter("productType").trim();
             sc.setAttribute("productType", productType);
 
-            String productUrl = request.getParameter("productImageUrl").trim();;
+            String productUrl = request.getParameter("productImageUrl").trim();
             sc.setAttribute("productUrl", productUrl);
 
-            String productName = request.getParameter("productName").trim();;
+            String productName = request.getParameter("productName").trim();
             sc.setAttribute("productName", productName);
           
-            String productDesc = request.getParameter("productDesc").trim();;
+            String productDesc = request.getParameter("productDesc").trim();
             sc.setAttribute("productDesc", productDesc);
         
-            String productPrice = request.getParameter("productPrice").trim();;
+            String productPrice = request.getParameter("productPrice").trim();
             sc.setAttribute("productPrice", productPrice);
               
-            String productStock = request.getParameter("productStock").trim();;
+            String productStock = request.getParameter("productStock").trim();
             sc.setAttribute("productStock", productStock);
                
-            String productAvailability = request.getParameter("productAvailability").trim();;
+            String productAvailability = request.getParameter("productAvailability").trim();
             sc.setAttribute("productAvailability", productAvailability);
 
             response.sendRedirect("editMenu.jsp");

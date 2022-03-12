@@ -174,7 +174,7 @@
 <!-- order section starts  -->
 <section class="order" id="order">
     <div class="heading">
-        <span>order now</span>
+        <span>Order Now</span>
         <h3>Freshly Made Pizza Home Delivery</h3>
     </div>
 
@@ -204,7 +204,7 @@
     <div class="box-container">
 
         <div class="box">
-            <h3>our menu</h3>
+            <h3>OUR MENU</h3>
             <a href="#"><i class="fas fa-arrow-right"></i> Chicken BBQ </a>
             <a href="#"><i class="fas fa-arrow-right"></i> Garlic Shrimp with Parsley </a>
             <a href="#"><i class="fas fa-arrow-right"></i> Creamy Spinach </a>
@@ -214,30 +214,30 @@
         </div>
 
         <div class="box">
-            <h3>quick links</h3>
-            <a href="#home"> <i class="fas fa-arrow-right"></i> home</a>
-            <a href="#about"> <i class="fas fa-arrow-right"></i> about</a>
-            <a href="#popular"> <i class="fas fa-arrow-right"></i> popular</a>
-            <a href="#menu"> <i class="fas fa-arrow-right"></i> menu</a>
+            <h3>QUICK LINKS</h3>
+            <a href="#home"> <i class="fas fa-arrow-right"></i> Home</a>
+            <a href="#about"> <i class="fas fa-arrow-right"></i> About</a>
+            <a href="#popular"> <i class="fas fa-arrow-right"></i> Popular</a>
+            <a href="menu.jsp"> <i class="fas fa-arrow-right"></i> Menu</a>
         </div>
 
         <div class="box">
-            <h3>extra links</h3>            
+            <h3>EXTRA LINKS</h3>            
                 <% if (navUser == "") { %>
                 <div class="dropdown">
-                    <a href="login.jsp"> <i class="fas fa-arrow-right"></i> my account</a>            
+                    <a href="login.jsp"> <i class="fas fa-arrow-right"></i> My Account</a>            
                 </div>
                 <% } %>
 
                 <% if (navUser != "") { %>
                 <div class="dropdown">
-                    <a href="address.jsp"> <i class="fas fa-arrow-right"></i> my account</a>
+                    <a href="address.jsp"> <i class="fas fa-arrow-right"></i> My Account</a>
                 </div>
             <% } %>
         </div>
 
         <div class="box">
-            <h3>opening hours</h3>
+            <h3>OPENING HOURS</h3>
             <p>Tuesday to Saturday: 1:00 P.M. to 8:00 P.M.</p>
             <p>Sunday and Monday: CLOSED</p>
         </div>
@@ -250,7 +250,7 @@
             <a href="https://www.instagram.com/paulspizzeria/" class="fab fa-instagram"></a>
         </div>
         
-        <div class="credit"> created <span>TechPare</span> | all rights reserved </div>
+        <div class="credit"> Created by <span>TechPare</span> | All Rights Reserved. </div>
     </div>
 
 </section>

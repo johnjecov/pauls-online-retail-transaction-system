@@ -37,22 +37,31 @@ change orders from "----------" to backend
                 <p class='helloAdmin'>Hello, admin</p>
             </div>
             <div class="adminContent">
-                <div class="arrangeOptions">
+                <form class="arrangeOptions" id = "adminSortForm" action="adminHistorySort" method = "POST">
                     <label for="arrange">Arrange by: </label>
-
-                    <select name="arrange" class="arrange">
-                        <option value="aOrderID">Order ID</option>
-                        <option value="aDate">Date</option>
-                        <option value="aProductID">Product ID</option>
-                        <option value="aProductName">Product Name</option>
-                        <option value="aQuantity">Quantity</option>
-                        <option value="aToppingsID">Toppings ID</option>
-                        <option value="aToppings">Toppings Name</option>
-                        <option value="aToppingsQuantity">Toppings Quantity</option>
-                        <option value="aPrice">Price</option>
+                    <select name="arrange" class="arrange" id="arrange" onchange="this.form.submit()">
+                        <option value="order_id">Order ID</option>
+                        <option value="order_delivery_date">Date</option>
+                        <option value="order_total">Price</option>
                     </select>
+                    <script>
+                            $("#arrange").on("change", function () {
+                                var val = $(this).val();
+                                // save to local
+                                if (window.localStorage) {
+                                    window.localStorage.setItem("#arrange-val", val);
+                                }
+                            });
 
-                </div>
+                            if (window.localStorage) {
+                                var item = window.localStorage.getItem("#arrange-val");
+                                if (item)
+                                    $("#arrange").val(item);
+                            }
+                        
+
+                    </script>
+                </form>
 
                 <div class='orderProperties'>
                     <div class="property">Order ID</div>
@@ -70,16 +79,19 @@ change orders from "----------" to backend
                     ServletContext sc = getServletContext();
                     PortsDatabase ports = (PortsDatabase) sc.getAttribute("dbConnection");
 
-                    ArrayList<Order> orderList = (ArrayList) ports.getOrderSales("asc");
+                    String selectedSort = "order_id";
+                    if (sc.getAttribute("selectedSortAttribute") != null) {
+                        selectedSort = (String) sc.getAttribute("selectedSortAttribute");
+                    }
+
+                    ArrayList<Order> orderList = (ArrayList) ports.getOrderSales(selectedSort);
                     Queue<String> productsList = new LinkedList();
                     Queue<String> toppingsList = new LinkedList();
                     ArrayList<String> orderReports = new ArrayList();
-                    String a = "<div>barks</div>";
 
                     String q = "<div class='orderMain' id='orderMain'>";
                     out.println(q);
 
-                    
                     for (Order x : orderList) {
                         ArrayList<OrderItem> orderItems = x.getItems();
 
@@ -137,19 +149,19 @@ change orders from "----------" to backend
                                 "+");
                         String orderReport = r + s + t + u + v;
                         orderReports.add(orderReport);
-                        
+
                     }
                     String w = "</div>";
                     out.println(w);
-                    
+
                     JSONArray data = new JSONArray(orderReports);
                 %>
-                
-                    <script>
+
+                <script>
                     var list_items = <%=data%>
-                    </script>
-                
-                
+                </script>
+
+
                 <script>
                     document.getElementById('orderRemoveID').addEventListener('click',
                             function () {

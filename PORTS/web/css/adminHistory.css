@@ -298,7 +298,7 @@ label {
 	outline: none;
 	cursor: pointer;
 
-	background-color: #44AAEE;
+	background-color: #574b3e;
 
 	margin: 5px;
 	transition: 0.4s;
@@ -310,11 +310,11 @@ label {
 }
 
 .pagenumbers button:hover {
-	background-color: #44EEAA;
+	background-color: #008C45;
 }
 
 .pagenumbers button.active {
-	background-color: #44EEAA;
+	background-color: #008C45;
 	box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.2);
 }
 

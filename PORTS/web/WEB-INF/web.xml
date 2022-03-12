@@ -42,6 +42,10 @@
         <servlet-name>removeAddressServlet</servlet-name>
         <servlet-class>ports.controllers.removeAddressServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>adminHistorySort</servlet-name>
+        <servlet-class>ports.controllers.adminHistorySort</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>loginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -154,7 +158,6 @@
         <servlet-name>removeAddressServlet</servlet-name>
         <url-pattern>/removeAddress</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>confirmEditProductServlet</servlet-name>
         <servlet-class>ports.controllers.confirmEditProductServlet</servlet-class>
@@ -163,7 +166,6 @@
         <servlet-name>confirmEditProductServlet</servlet-name>
         <url-pattern>/confirmEdit</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>editProductServlet</servlet-name>
         <servlet-class>ports.controllers.editProductServlet</servlet-class>
@@ -172,8 +174,10 @@
         <servlet-name>editProductServlet</servlet-name>
         <url-pattern>/editProduct</url-pattern>
     </servlet-mapping>
-    
-    
+    <servlet-mapping>
+        <servlet-name>adminHistorySort</servlet-name>
+        <url-pattern>/adminHistorySort</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

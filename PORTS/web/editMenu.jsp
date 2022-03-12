@@ -62,7 +62,7 @@
             }   
         %>
         <div id = "transactionModal" class = "modal"  style = <% out.println(String.format("\"display: %s;\"",editModalDisplay)); %> >
-            <form class ="mContent" action ="" method = "POST">
+            <form id = 'finalConfirmation' class ='mContent' action ='editProduct' method = 'POST'>
                 <h3>Edit Summary</h3>
                 <hr>
                 <p class = 'text'>Product Id:  <%= productId%> </p>
@@ -73,7 +73,8 @@
                 <p class = 'text'>Product Price: <%= productPrice%></p>
                 <p class = 'text'>Product Stock: <%= productStock%></p>
                 <p class = 'text'>Product Availability: <%= productAvailability%></p>
-                <button class = "summaryButtons" type="submit">Confirm Edit</button>
+                <input type ="text" value = "confirm" style ="display: none;">
+                <input type ="submit" value ="Confirm Edit" class = "summaryButtons">
                 <button class = "summaryButtons" value = "Cancel Edit" type = "button" onclick = "closeModal()">Cancel Edit</button>
             </form>
         </div>  
@@ -112,7 +113,7 @@
                                 <input type = "text" placeholder = "Product Desc" name = "productDesc" required>
                                 <input type = "number" min = "0" placeholder = "Product Price" name = "productPrice" required>
                                 <input type = "number" min = "0" placeholder = "Product Stock" name = "productStock" required>
-                                <input type = "text" placeholder = "Product Availability" name = "productAvailability" required>
+                                <input type = "text" placeholder = "Product Availability" name = "productAvailability" required readonly>
                                 <input style = 'cursor: pointer;' value = 'Save Changes' type = 'submit'>
                         </form>    
 
@@ -137,7 +138,7 @@
                                             + "<input type = 'text' placeholder = 'Product Desc' value = '%s' name = 'productDesc' required>"
                                             + "<input type = 'number' min = '0' placeholder = 'Product Price' value = '%s' name = 'productPrice' required>"
                                             + "<input type = 'number' min = '0' placeholder = 'Product Stock' value = '%s' name = 'productStock' required>"
-                                            + "<input type = 'text' placeholder = 'Product Availability' value = '%s' name = 'productAvailability' required>"
+                                            + "<input type = 'text' placeholder = 'Product Availability' value = '%s' name = 'productAvailability' required readonly>"
                                             + "<input style = 'cursor: pointer;' value = 'Save Changes' type = 'submit'>"
                                        + "</form>", x.getImage(),x.getId(),x.getImage(),x.getName(), x.getDesc(), x.getPrice(), x.getStock(), x.getAvailability()
                                      );           
@@ -157,7 +158,7 @@
                                             + "<input type = 'text' placeholder = 'Product Desc' value = '%s' name = 'productDesc' required>"
                                             + "<input type = 'number' min = '0' placeholder = 'Product Price' value = '%s' name = 'productPrice' required>"
                                             + "<input type = 'number' min = '0' placeholder = 'Product Stock' value = '%s' name = 'productStock' required>"
-                                            + "<input type = 'text' placeholder = 'Product Availability' value = '%s' name = 'productAvailability' required>"
+                                            + "<input type = 'text' placeholder = 'Product Availability' value = '%s' name = 'productAvailability' required readonly>"
                                             + "<input style = 'cursor: pointer;' value = 'Save Changes' type = 'submit'>"
                                        + "</form>",x.getImage(),x.getId(),x.getImage(),x.getName(), x.getDesc(), x.getPrice(), x.getStock(), x.getAvailability()
                                      );           

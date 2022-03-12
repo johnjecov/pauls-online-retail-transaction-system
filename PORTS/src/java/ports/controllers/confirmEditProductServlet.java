@@ -38,16 +38,7 @@ public class confirmEditProductServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        /*
-        <input type = 'text' value = 'add' style = 'display: none;' name = 'productId'>
-        <input type = 'text' value = 'pizza' style = 'display: none;' name = 'productType' id = 'editProductId'>
-        <input type = "text" placeholder = "Product Image Url" name = "productImageUrl" required>
-        <input type = "text" placeholder = "Product Name" name = "productName" required>
-        <input type = "text" placeholder = "Product Desc" name = "productDesc" required>
-        <input type = "number" min = "0" placeholder = "Product Price" name = "productPrice" required>
-        <input type = "number" min = "0" placeholder = "Product Stock" name = "productStock" required>
-        <input type = "text" placeholder = "Product Availability" name = "productAvailability" required>
-        */
+
             ServletContext sc = request.getServletContext();
            
             String editModalDisplay = "flex";
@@ -77,7 +68,7 @@ public class confirmEditProductServlet extends HttpServlet {
             String productAvailability = request.getParameter("productAvailability").trim();;
             sc.setAttribute("productAvailability", productAvailability);
 
-            response.sendRedirect("editMenuTest.jsp");
+            response.sendRedirect("editMenu.jsp");
 
     }
 

@@ -478,7 +478,10 @@ public class PortsDatabase {
         String query = "INSERT INTO products (product_name, product_stock, product_type,"
                 + " product_desc, product_image, product_availability, product_price) VALUES(?,?,?,?,?,?,?)";
      
-        
+        int stock = a.getStock();
+        String availability = "available";
+        if(stock == 0)
+            availability = "not available";
         try {
             PreparedStatement ps = portsConnection.prepareStatement(query);
             ps.setString(1, a.getName());
@@ -486,7 +489,7 @@ public class PortsDatabase {
             ps.setString(3, a.getType());
             ps.setString(4, a.getDesc());
             ps.setString(5, a.getImage());
-            ps.setString(6, a.getAvailability());
+            ps.setString(6, availability);
             ps.setDouble(7, a.getPrice());
             
             //update the database
@@ -577,7 +580,11 @@ public class PortsDatabase {
 
         String query = "INSERT INTO toppings (toppings_name, toppings_stock,"
                 + " toppings_desc, toppings_image, toppings_availability, toppings_price) VALUES(?,?,?,?,?,?)";
-     
+           
+        int stock = a.getStock();
+        String availability = "available";
+        if(stock == 0)
+            availability = "not available";
         
         try {
             PreparedStatement ps = portsConnection.prepareStatement(query);
@@ -585,7 +592,7 @@ public class PortsDatabase {
             ps.setInt(2, a.getStock());
             ps.setString(3, a.getDesc());
             ps.setString(4, a.getImage());
-            ps.setString(5, a.getAvailability());
+            ps.setString(5, availability);
             ps.setDouble(6, a.getPrice());
             
             //update the database
@@ -1272,6 +1279,60 @@ public class PortsDatabase {
                 
         }
         catch(SQLException sqle){
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        }
+    }
+     
+    public void updatePizza(Product p) {
+        String query1 = "UPDATE products SET "
+                           + "product_name = ?, product_stock = ?, product_type = ?, product_desc = ?, product_image = ?, product_availability = ?, product_price = ?"
+                           + "WHERE product_id = ?";
+        
+        int stock = p.getStock();
+        String availability = "available";
+        if(stock == 0)
+            availability = "not available";
+        try {
+             PreparedStatement ps = portsConnection.prepareStatement(query1);
+             ps.setString(1, p.getName());
+             ps.setInt(2, p.getStock());
+             ps.setString(3, p.getType());
+             ps.setString(4, p.getDesc());
+             ps.setString(5, p.getImage());
+             ps.setString(6, availability);
+             ps.setDouble(7, p.getPrice());
+             ps.setInt(8, p.getId());
+             
+             ps.executeUpdate();
+        }
+        catch (SQLException sqle){
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        }
+    }
+    
+    public void updateTopping(Topping t) {
+        String query1 = "UPDATE toppings SET "
+                           + "toppings_name = ?, toppings_stock = ?, toppings_desc = ?, toppings_image = ?, toppings_availability = ?, toppings_price = ?"
+                           + "WHERE toppings_id = ?";
+        
+        int stock = t.getStock();
+        String availability = "available";
+        if(stock == 0)
+            availability = "not available";
+        
+        try {
+             PreparedStatement ps = portsConnection.prepareStatement(query1);
+             ps.setString(1, t.getName());
+             ps.setInt(2, t.getStock());
+             ps.setString(3, t.getDesc());
+             ps.setString(4, t.getImage());
+             ps.setString(5, availability);
+             ps.setDouble(6, t.getPrice());
+             ps.setInt(7, t.getId());
+             
+             ps.executeUpdate();
+        }
+        catch (SQLException sqle){
             System.out.println("SQLException error occured - " + sqle.getMessage());
         }
     }

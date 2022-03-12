@@ -164,6 +164,15 @@
         <url-pattern>/confirmEdit</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+        <servlet-name>editProductServlet</servlet-name>
+        <servlet-class>ports.controllers.editProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>editProductServlet</servlet-name>
+        <url-pattern>/editProduct</url-pattern>
+    </servlet-mapping>
+    
     
     <session-config>
         <session-timeout>

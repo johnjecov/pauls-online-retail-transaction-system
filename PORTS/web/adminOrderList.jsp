@@ -67,7 +67,7 @@
                     
                     <%  
                         PortsDatabase ports = (PortsDatabase) getServletContext().getAttribute("dbConnection");
-                        ArrayList<Order> orderList = (ArrayList) ports.getOrderHistory("order_id");
+                        ArrayList<Order> orderList = (ArrayList) ports.getOrderSales("order_id");
                         ArrayList<String> orderStatus = ports.getOrderStats();
                         
                         if(orderList.size() == 0){
@@ -82,6 +82,8 @@
                             String status = orderStatus.get(x.getOrder_Status_Id() - 1);
                             String disableButton = "";
                             String disablePaymentButton = "";
+                            String paymentStyle = "";
+                            String updateStyle = "";
                             String paymentDetails = String.format("%s  PHP<br>%s", String.valueOf(x.getOrder_Total()),x.getPayment_Method());
                             String form1name = String.format("paymentF%d", x.getOrder_Id());
                             String form2name = String.format("updateF%d", x.getOrder_Id());
@@ -91,11 +93,13 @@
                              if(x.getOrder_Status_Id() >= 4)
                              {
                                  disableButton = "disabled";
+                                 updateStyle = "style = 'background-color: #008C45'";
                              }
                              
                             if(x.getPayment_Status().equals("paid"))
                              {
                                  disablePaymentButton = "disabled";
+                                 paymentStyle = "style = 'background-color: #008C45'";
                              }
                                 
                              
@@ -111,11 +115,11 @@
                                     + "<form id = '%s' action ='updatePayment' method = 'POST' style = 'display: none'>"
                                          + "<input type = 'text' name = 'adminUpdateOrderId' value = '%s'>"
                                     + "</form>"
-                                    + "<div class='col2'><button type = 'submit' form = '%s' %s>%s</button></div>"
+                                    + "<div class='col2'><button type = 'submit' %s form = '%s' %s>%s</button></div>"
                                         + "<form id = '%s' action ='updateOrderStatus' method = 'POST' style = 'display: none'>"
                                              + "<input type = 'text' name = 'adminUpdateOrderId' value = '%s'>"
                                         + "</form>"
-                                    + "<div class='col2'><button type = 'submit' form = '%s' %s>%s</button></div>"
+                                    + "<div class='col2'><button type = 'submit' %s form = '%s' %s>%s</button></div>"
                                         + "<form id = '%s' action ='deleteOrder' method = 'POST' style = 'display: none'>"
                                              + "<input type = 'text' name = 'adminUpdateOrderId' value = '%s'>"
                                         + "</form>"
@@ -123,8 +127,8 @@
                              + "</div>",
                                     order_id, x.getOrder_Delivery_Date(), x.getCustomerName(), paymentDetails,
                                     address.toString(), x.getOrderString(), x.getCustomerContactNumber(),
-                                    form1name, order_id, form1name,disablePaymentButton, x.getPayment_Status(),
-                                    form2name, order_id, form2name, disableButton, status,
+                                    form1name, order_id, paymentStyle, form1name,disablePaymentButton, x.getPayment_Status(),
+                                    form2name, order_id, updateStyle, form2name, disableButton, status,
                                     form3name, order_id,form3name);
                             out.println(s);
                             
@@ -132,14 +136,7 @@
 
                     %>
                 </div>
-                
-            <div class="pageSelector">
-                <ul class="pageList">
-                    <li class="pageNumber1"><a>1</a></li>
-                    <li class="pageNumber"><a>2</a></li>
-                    <li class="pageNumber"><a>3</a></li>
-                </ul>
-            </div>               
+                              
             </div>
 
                     

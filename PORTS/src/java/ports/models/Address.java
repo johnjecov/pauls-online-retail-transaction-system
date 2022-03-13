@@ -98,6 +98,7 @@ public class Address {
 
         String s = String.format("%s %s. %s, %s. %s. %s. %s.",
                 houseNo, street, province, city, postalCode, details, additionalDetails);
+        
        
         return s;
     }

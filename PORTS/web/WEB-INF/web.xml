@@ -178,6 +178,34 @@
         <servlet-name>adminHistorySort</servlet-name>
         <url-pattern>/adminHistorySort</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>deleteFServlet</servlet-name>
+        <servlet-class>ports.controllers.deleteFServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deleteFServlet</servlet-name>
+        <url-pattern>/deleteOrder</url-pattern>
+    </servlet-mapping>
+    
+    
+    <servlet>
+        <servlet-name>paymentFServlet</servlet-name>
+        <servlet-class>ports.controllers.paymentFServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>paymentFServlet</servlet-name>
+        <url-pattern>/updatePayment</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>updateFServlet</servlet-name>
+        <servlet-class>ports.controllers.updateFServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>updateFServlet</servlet-name>
+        <url-pattern>/updateOrderStatus</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

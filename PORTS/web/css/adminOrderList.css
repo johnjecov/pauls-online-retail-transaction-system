@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Open+Sans:wght@300&display=swap');
 *{
     font-family: 'Satisfy', cursive;
     color: #fff;
@@ -116,166 +116,202 @@ html,body {
     gap: 2rem;
     margin: 1rem;
     width: 100%;
+    overflow-y: scroll;
+}
+
+.pageContent::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
 }
 
 .adminContent {
+    background-color: #2e2e2e;
     width: auto;
     height: 850px;
     display: flex;
     flex-direction: column;
     gap: 1rem;
     padding: 1rem;
+    border-radius: 10px;
+    overflow-y: scroll;
+}
+
+.adminContent::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    scroll-behavior: smooth;
+}
+
+.adminContent::-webkit-scrollbar-track {
+    background: #302c2c;
+}
+
+.adminContent::-webkit-scrollbar-thumb {
+    background: #CD212A;
+    border-radius: 5rem;
+}
+
+.orderHeading {
     
-    border-radius: 10px;
-    font-family: "roboto";
-}
-
-.arrangeOptions {
-    width: 100%;
-    margin-top: -1%;
-    background-color: #2e2e2e;
-    border-radius: 5px;
-    padding: 1%;
-    align-items: center;
-}
-
-label {
-    background-color: #2e2e2e;
-    font-size: 1.5vw;
-    margin-left: 2%;
-}
-
-.arrange {
-    background-color: #000;
-    color: #fff;
-    font-size: 1.5vw;
-}
-
-.orderList {
+    margin-left: 1rem;
     display: flex;
-    width: 100%;
-    padding: 1%;
-    margin: 2% 0 0 0;
-    font-size: 1.4vw;
-    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    min-height: 4rem;
+    height: auto;
+    align-items: center; 
+    background-color: #2e2e2e;
+    box-shadow: inset 15px 15px 30px #212121,
+                inset -15px -15px 30px #3b3b3b;
+    width: 125rem;
+}
+.orderHeading div{
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    font-size: 1.5rem;
+    border: 1px solid white;
+ 
 }
 
-.property {
+.orderRow {
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; 
+    background-color: #2e2e2e;
+    box-shadow: inset 15px 15px 30px #212121,
+                inset -15px -15px 30px #3b3b3b;
+    width: 125rem;
+}
+.orderRow div{
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    font-size: 1.1rem;
     flex: 1;
-    justify-content: center;
-    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
-.orderBody {
+.orderRow div button{
+    font-family: 'Open Sans', sans-serif;
+    cursor: pointer;
+    width: 80%;
+    height: 3rem;
+    text-transform: uppercase;
+    background-color: #555555;
+    border-radius: 5px;
+}
+
+.orderRow div button:hover{
+   background-color: #008C45;
+}
+
+.col1 {
+    min-width: 7rem;
+    max-width: 7rem;
+}
+
+.col2 {
+    min-width: 13rem;
+    max-width: 13rem;
+}
+
+.col3 {
+    min-width: 20rem;
+    max-width: 20rem;
+}
+
+.colx {
+    min-width: 4rem;
+    max-width: 4rem;
+}
+
+.colx button{
+    background-color: red;
+    border: none;
+
+    width: 3rem !important;
+    height: 3rem !important;
+    border-radius: 50% !important;
+        
     background-color: #2e2e2e;
-    width: 99%;
-    font-size: 1.5vw;
-    border-radius: 10px;
-    padding: 1%;
+    box-shadow: inset 15px 15px 30px #212121,
+                inset -15px -15px 30px #3b3b3b;
+ 
 }
 
-.orders{
-    position: relative;
-    display: flex;
-    justify-content: space-around;
-}
-
-.orderProperty {
-    list-style-type: none;
-    font-size: 0.9vw;
-    display:inline-block; 
-    padding-top: 0.5%;
-    padding-bottom: 0.5%;
-    overflow: hidden;
-    white-space: nowrap; /* Don't forget this one */
-    text-overflow: ellipsis;
-
-}
-
-.orderRemove {
-    font-size: 2vw;
-    position: absolute;
-    right: 0.5%;
-    bottom: -20%;
-    cursor: pointer;
-    transform: rotate(45deg);
-}
-/*
-.pageSelector{
-    bottom: 3%;
-    position: fixed;
-    width: 100%;
-    overflow: hidden;
-    margin-left: 2.5%;
-}*/
-
-.pageList {
-    list-style-type: none;
-    width: 100%;
-    overflow: hidden;
-    font-size: 1vw;
-    margin-left: 2.5%;
-    bottom: 13.5%;
-    position: fixed;
-}
-
-.pageNumber,.pageNumber1 {
-    float: left;
-    background-color: #737373;
-    margin-right: 1%;
-    padding-top: .5%;
-    padding-bottom: .5%;
-    padding-left: 1%;
-    padding-right: 1%;
-    border-radius: 10px;
-}
-
-.pageNumber1 {
-    background-color: #008c45;
-}
-
-.cancelModal {
-    width: 100%;
+#transactionModalAdmin
+{
+    position: fixed; /* Stay in place */
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    position: absolute;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    display: none;
+    width: 100%;
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    -webkit-animation-name: fadeIn; /* Fade in the background */
+    -webkit-animation-duration: 0.4s;
+    animation-name: fadeIn;
+    animation-duration: 0.4s;
+    text-align: center;
+    justify-content: center !important;
+    align-items: center !important;
+    font-family: 'Open Sans', sans-serif;
+    z-index: 1;
 }
 
-.modalContent {
-    width: 500px;
-    height: 300px;
-    background-color: #f2f4ea;
+
+.mContent
+{     
+    box-sizing: border-box;
+    padding: 30px;
+    -webkit-animation-name: slideIn;
+    -webkit-animation-duration: 0.4s;
+    animation-name: slideIn;
+    animation-duration: 0.4s;
+    min-height: clamp(300px, 55vh, 300px);
+    min-width: clamp(350px, 100vw, 350px);
+    max-width: clamp(570px, 100vw, 570px);
+    background-color: #f3eee8;
+    border: 5px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 1rem;
+
+   
+}
+
+.mContent p, .mContent h3 {
+    color: black;
     text-align: center;
 }
 
-.modalText {
-    font-size: 200%;
-    color: #1e1f20;
+.mContent h3 {
+    font-size: 2rem !important;
 }
 
-.modalButtonYes {
-    color: #000;
-    background-color: #f2f4ea;
-    font-size: 200%;
-    padding-left: 5%;
-    padding-right: 5%;
-    margin-right: 15%;
-    border-radius: 5%;
-    cursor: pointer;
+.mContent p {
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    font-size: 2rem;
 }
 
-.modalButtonNo {
-    color: #000;
-    background-color: #ff5757;
-    font-size: 200%;
-    padding-left: 5%;
-    padding-right: 5%;
-    border-radius: 5%;
+.summaryButtons
+{
+    text-align: center;
+    background-color: black;
+    text-decoration: none;
+    border: none;
+    font-size: 20px;
     cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: 'Open Sans', sans-serif;
+
+}
+
+.summaryButtons:hover
+{
+    cursor: pointer;
+    transition: linear 0.1s;
+    background-color: #2e2e2e;
 }
 

@@ -42,7 +42,17 @@ public class CartItem {
    public int getCartId(){
        return cartId;
    }
-    
+   
+   public double getItemTotal() {
+       double total = quantity * product.getPrice();
+       
+       for(CartItemToppings x : toppings){
+           total += x.getQuantity() * (x.getTopping().getPrice());
+       }
+       
+       return total;
+   }
+   
    public String toString(){
        String s = "";
        

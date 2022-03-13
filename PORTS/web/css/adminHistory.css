@@ -20,6 +20,11 @@ and open the template in the editor.
 html,body {
     background-color: #1e1f20;
     height:100%; 
+    font-size: 14px;
+}
+
+.orderPropertyChildren:not(.unstyled) {
+     font-size: 14px;
 }
 
 .contentHolder {
@@ -248,7 +253,7 @@ label {
     background-color: #2e2e2e;
     margin-top: 1%;
     margin-left: 5%;
-    width: 99%;
+    width: 100%;
     font-size: 1.5vw;
     border-radius: 2.5%;
     padding: 1%;

@@ -866,6 +866,45 @@ public class PortsDatabase {
         }   
     }
     
+    public void deleteOrder(int order_id){
+        System.out.print("TEST delete order");
+        String query1 = "SELECT * FROM purchase where order_id = ?";
+        String query2 = "DELETE FROM purchase_toppings where purchase_id = ?";
+        String query3 = "DELETE FROM purchase where order_id = ?";
+        String query4 = "DELETE FROM orders where order_id = ?";
+        
+        try {
+            PreparedStatement ps = portsConnection.prepareStatement(query1);
+            ps.setInt(1, order_id);
+            
+            ResultSet results = ps.executeQuery();
+            while(results.next()){
+                //loop for deleting all the toppings for each cart item
+                int purchase_id = Integer.parseInt(results.getString("purchase_id"));
+                
+                ps = portsConnection.prepareStatement(query2);
+                ps.setInt(1, purchase_id);
+                ps.executeUpdate();
+                System.out.println("Toppings for purchase "+purchase_id+" deleted.");
+            }
+            
+            //delete the items of this order from the purchase 
+            ps = portsConnection.prepareStatement(query3);
+            ps.setInt(1, order_id);
+            ps.executeUpdate();
+            
+            //delete the actual order
+            ps = portsConnection.prepareStatement(query4);
+            ps.setInt(1, order_id);
+            ps.executeUpdate();
+            System.out.println("Deleted order number: "+ order_id);
+                
+        }
+        catch(SQLException sqle){
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        }       
+    }
+    
     public void updateOrderStatus(int order_id, int employee_id){
         String query1 = "SELECT * FROM orders where order_id = ?";
         String query2 = "UPDATE orders SET order_status_id = ?, employee_id = ? WHERE order_id = ?";

@@ -206,6 +206,15 @@
         <servlet-name>updateFServlet</servlet-name>
         <url-pattern>/updateOrderStatus</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>adminUpdateServlet</servlet-name>
+        <servlet-class>ports.controllers.adminUpdateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>adminUpdateServlet</servlet-name>
+        <url-pattern>/adminUpdate</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

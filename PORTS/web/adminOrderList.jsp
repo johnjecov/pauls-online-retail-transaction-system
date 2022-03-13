@@ -37,13 +37,14 @@
                 sc.removeAttribute("adminModalMessage");
             }
             
+   
             %>
             <div id = "transactionModalAdmin" class = "modal"  style = <% out.println(String.format("\"display: %s;\"",adminModalDisplay)); %> > 
-                <form id = 'finalConfirmation' class ='mContent' action ='editProduct' method = 'POST'>
+                <form id = 'finalConfirmation' class ='mContent' action ='adminUpdate' method = 'POST'>
                     <p><%= message %></p>    
                     <hr>
-                    <input type ="submit" value ="Confirm Edit" class = "summaryButtons">
-                    <button class = "summaryButtons" value = "Cancel Edit" type = "button" onclick = "closeModal()">Cancel Edit</button>
+                    <input type ="submit" value ="Confirm Update" class = "summaryButtons">
+                    <button class = "summaryButtons" value = "Cancel Update" type = "button" onclick = "closeModal()">Cancel Edit</button>
                 </form>
             </div>
             <div class="pageContent">
@@ -69,7 +70,12 @@
                         ArrayList<Order> orderList = (ArrayList) ports.getOrderHistory("order_id");
                         ArrayList<String> orderStatus = ports.getOrderStats();
                         
-                        int counter = 0;
+                        if(orderList.size() == 0){
+                            out.println(
+                                    "<div class = 'orderRow'>"
+                                        + "<div class = col3>No Active Orders</div>"
+                                  + "</div>");
+                        }
                         for (Order x : orderList) {
                             String address = x.getAddress().toString();
                             String order_id = String.valueOf(x.getOrder_Id());

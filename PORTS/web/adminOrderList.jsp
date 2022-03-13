@@ -1,5 +1,6 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <%@page import="java.util.*, ports.models.*"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,114 +11,145 @@
     <body scroll="no" style="overflow: hidden">
         <div class="contentHolder">
             <div class="sidebar">
-                <img class="logo" src="image/Paul's Pizzeria Logo.jpg" alt="Paul's Pizzeria Logo">
+                <img class="logo" src="image/Paul's Pizzeria Logo_1.jpg" alt="Paul's Pizzeria Logo">
                 <ul class='adminOptions'>
-                    <li class="options"><a href="#home">Sales</a></li>
-                    <li class="options"><a href="#home">Order List</a></li>
-                    <li class="options"><a href="#home">Menu</a></li>
-                    <li class="options"><a href="#home">Analytics</a></li>
+                    <li class="options"><a href="adminHistoryPage.jsp">Sales</a></li>
+                    <li class="options"><a href="adminOrderList.jsp">Order List</a></li>
+                    <li class="options"><a href="admin.jsp">Menu</a></li>
+                    <li class="options"><a href="admin.jsp">Analytics</a></li>
                 </ul>
                 <p class='logout'>Logout</p>
+            </div>
+            
+            <% 
+            ServletContext sc = getServletContext();
+            String adminModalDisplay = "none";
+            String message = "No message";
+            if(sc.getAttribute("adminModalDisplay") != null)
+            {
+                adminModalDisplay = (String) sc.getAttribute("adminModalDisplay");
+                sc.removeAttribute("adminModalDisplay");
+
+            }
+            if(sc.getAttribute("adminModalMessage") != null)
+            {
+                message = (String) sc.getAttribute("adminModalMessage");    
+                sc.removeAttribute("adminModalMessage");
+            }
+            
+   
+            %>
+            <div id = "transactionModalAdmin" class = "modal"  style = <% out.println(String.format("\"display: %s;\"",adminModalDisplay)); %> > 
+                <form id = 'finalConfirmation' class ='mContent' action ='adminUpdate' method = 'POST'>
+                    <p><%= message %></p>    
+                    <hr>
+                    <input type ="submit" value ="Confirm Update" class = "summaryButtons">
+                    <button class = "summaryButtons" value = "Cancel Update" type = "button" onclick = "closeModal()">Cancel Edit</button>
+                </form>
             </div>
             <div class="pageContent">
                 <div class="adminGreetings">
                     <p class='helloAdmin'>Hello, admin</p>
                 </div>
                 <div class="adminContent">
-                    <div class="arrangeOptions">
-                        <label for="arrange">Arrange by: </label>
-
-                        <select name="arrange" class="arrange">
-                            <option value="aProperty">Order ID</option>
-                            <option value="aProperty">Date</option>
-                            <option value="aProperty">Name</option>
-                            <option value="aProperty">Payment</option>
-                            <option value="aProperty">Address</option>
-                            <option value="aProperty">Order</option>
-                            <option value="aProperty">Contact</option>
-                            <option value="aProperty">Paid</option>
-                            <option value="aProperty">Status</option>
-                        </select>
-
+                    <div class='orderHeading'>
+                        <div class="col1">Order ID</div>
+                        <div class="col2">Date</div>
+                        <div class="col2">Name</div>
+                        <div class="col2">Payment Details</div>
+                        <div class="col2">Address</div>
+                        <div class="col3">Order</div>
+                        <div class="col2">Contact</div>
+                        <div class="col2">Payment Status</div>
+                        <div class="col2">Order Status</div>
+                        <div class="colx">X</div>
                     </div>
-                    <div class='orderList'>
-                        <div class="property">Order ID</div>
-                        <div class="property">Date</div>
-                        <div class="property">Name</div>
-                        <div class="property">Payment</div>
-                        <div class="property">Address</div>
-                        <div class="property">Order</div>
-                        <div class="property">Contact</div>
-                        <div class="property">Paid</div>
-                        <div class="property">Status</div>
-                    </div>
-
-                    <%
-                        ServletContext sc = getServletContext();
+                    
+                    <%  
                         PortsDatabase ports = (PortsDatabase) getServletContext().getAttribute("dbConnection");
                         ArrayList<Order> orderList = (ArrayList) ports.getOrderHistory("order_id");
-                        ArrayList orderStatus = ports.getOrderStats();
-                        for (Order x : orderList) {
-                            String s = String.format("<div class = 'orderBody'>\n"
-                                    + "<ul class = 'orders'>\n"
-                                    + "<li class = 'orderProperty'>%s</li>"
-                                    + "<li class = 'orderProperty'>%s</li>\n"
-                                    + "<li class = 'orderProperty'>%s</li>\n"
-                                    + "<li class = 'orderProperty'>%s</li>\n"
-                                    + "<li class = 'orderProperty'>%s</li>\n"
-                                    + "<li class = 'orderProperty'>%s</li>\n"
-                                    + "<li class = 'orderProperty'>%s</li>\n"
-                                    + "<li class = 'orderProperty'>%s</li>\n"
-                                    + "</ul>\n"
-                                    + "<p class = 'orderRemove' id = 'orderRemoveID'>%s</p>\n"
-                                    + "</div>",
-                                    String.valueOf(x.getOrder_Id()), x.getOrder_Delivery_Date(), String.valueOf(x.getCustomer_Id()), x.getPayment_Method(),
-                                    x.getAddress(), String.valueOf(x.getOrder_Id()), x.getPayment_Status(), orderStatus.get(x.getOrder_Status_Id() - 1), "+");
-                            out.println(s);
+                        ArrayList<String> orderStatus = ports.getOrderStats();
+                        
+                        if(orderList.size() == 0){
+                            out.println(
+                                    "<div class = 'orderRow'>"
+                                        + "<div class = col3>No Active Orders</div>"
+                                  + "</div>");
                         }
+                        for (Order x : orderList) {
+                            String address = x.getAddress().toString();
+                            String order_id = String.valueOf(x.getOrder_Id());
+                            String status = orderStatus.get(x.getOrder_Status_Id() - 1);
+                            String disableButton = "";
+                            String disablePaymentButton = "";
+                            String paymentStyle = "";
+                            String updateStyle = "";
+                            String paymentDetails = String.format("%s  PHP<br>%s", String.valueOf(x.getOrder_Total()),x.getPayment_Method());
+                            String form1name = String.format("paymentF%d", x.getOrder_Id());
+                            String form2name = String.format("updateF%d", x.getOrder_Id());
+                            String form3name = String.format("deleteF%d", x.getOrder_Id());
+                            System.out.print(form1name);
+                            System.out.println("Status id " + x.getOrder_Status_Id());
+                             if(x.getOrder_Status_Id() >= 4)
+                             {
+                                 disableButton = "disabled";
+                                 updateStyle = "style = 'background-color: #008C45'";
+                             }
+                             
+                            if(x.getPayment_Status().equals("paid"))
+                             {
+                                 disablePaymentButton = "disabled";
+                                 paymentStyle = "style = 'background-color: #008C45'";
+                             }
+                                
+                             
+                            String s = String.format(
+                                "<div class = 'orderRow'>"
+                                    + "<div class='col1'>%s</div>"
+                                    + "<div class='col2'>%s</div>"
+                                    + "<div class='col2'>%s</div>"
+                                    + "<div class='col2'>%s</div>"
+                                    + "<div class='col2'>%s</div>"
+                                    + "<div class='col3'>%s</div>"
+                                    + "<div class='col2'>%s</div>"
+                                    + "<form id = '%s' action ='updatePayment' method = 'POST' style = 'display: none'>"
+                                         + "<input type = 'text' name = 'adminUpdateOrderId' value = '%s'>"
+                                    + "</form>"
+                                    + "<div class='col2'><button type = 'submit' %s form = '%s' %s>%s</button></div>"
+                                        + "<form id = '%s' action ='updateOrderStatus' method = 'POST' style = 'display: none'>"
+                                             + "<input type = 'text' name = 'adminUpdateOrderId' value = '%s'>"
+                                        + "</form>"
+                                    + "<div class='col2'><button type = 'submit' %s form = '%s' %s>%s</button></div>"
+                                        + "<form id = '%s' action ='deleteOrder' method = 'POST' style = 'display: none'>"
+                                             + "<input type = 'text' name = 'adminUpdateOrderId' value = '%s'>"
+                                        + "</form>"
+                                    + "<div class='colx'><button type = 'submit' form = '%s'>X</button></div>"
+                             + "</div>",
+                                    order_id, x.getOrder_Delivery_Date(), x.getCustomerName(), paymentDetails,
+                                    address.toString(), x.getOrderString(), x.getCustomerContactNumber(),
+                                    form1name, order_id, paymentStyle, form1name,disablePaymentButton, x.getPayment_Status(),
+                                    form2name, order_id, updateStyle, form2name, disableButton, status,
+                                    form3name, order_id,form3name);
+                            out.println(s);
+                            
+                        }
+
                     %>
-
-                    <script>
-                        document.getElementById('orderRemoveID').addEventListener('click',
-                                function () {
-                                    document.querySelector('.cancelModal').style.display = 'flex';
-                                });
-
-                    </script>
-                    <div class="pageSelector">
-                        <ul class="pageList">
-                            <li class="pageNumber1"><a>1</a></li>
-                            <li class="pageNumber"><a>2</a></li>
-                            <li class="pageNumber"><a>3</a></li>
-                        </ul>
-                    </div>
                 </div>
+                              
             </div>
-        </div>
-        <div class="cancelModal">
-            <div class="modalContent">
-                <p class="modalText">
-                    Do you want to cancel<br>orderN
-                </p>
-                <div class="modalButtons">
-                    <button class="modalButtonYes" type="button">Yes</button>
-                    <button class="modalButtonNo" type="button">No</button>
-                    <script>
-                        document.querySelector('.modalButtonYes').addEventListener('click',
-                                function () {
-                                    document.querySelector('.cancelModal').style.display = 'none';
-                                    var myobj = document.getElementById("order1");
-                                    myobj.remove();
-                                });
 
-                        document.querySelector('.modalButtonNo').addEventListener('click',
-                                function () {
-                                    document.querySelector('.cancelModal').style.display = 'none';
-                                });
-
-                    </script>
-                </div>
-            </div>
+                    
+                    
         </div>
     </body>
+    
+    <script>
+        function closeModal()
+        {
+
+            var modal = document.getElementById("transactionModalAdmin");
+            modal.style.display = "none";
+        }
+    </script>
 </html>

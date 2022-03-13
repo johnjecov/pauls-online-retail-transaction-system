@@ -24,12 +24,12 @@ change orders from "----------" to backend
 
         <div class="contentHolder">
             <div class="sidebar">
-                <img class="logo" src="image/Paul's Pizzeria Logo.jpg" alt="Paul's Pizzeria Logo">
+                <img class="logo" src="image/Paul's Pizzeria Logo_1.jpg" alt="Paul's Pizzeria Logo">
                 <ul class='adminOptions'>
-                    <li class="options"><a href="#home">Sales</a></li>
-                    <li class="options"><a href="#home">Order List</a></li>
-                    <li class="options"><a href="#home">Menu</a></li>
-                    <li class="options"><a href="#home">Analytics</a></li>
+                    <li class="options"><a href="adminHistoryPage.jsp">Sales</a></li>
+                    <li class="options"><a href="adminOrderList.jsp">Order List</a></li>
+                    <li class="options"><a href="admin.jsp">Menu</a></li>
+                    <li class="options"><a href="admin.jsp">Analytics</a></li>
                 </ul>
                 <p class='logout'>Logout</p>
             </div>
@@ -38,15 +38,15 @@ change orders from "----------" to backend
                     <p class='helloAdmin'>Hello, admin</p>
                 </div>
                 <div class="adminContent">
-                     <form class="arrangeOptions" id = "adminSortForm" action="adminHistorySort" method = "POST">
-                    <label for="arrange">Arrange by: </label>
-                    <select name="arrange" class="arrange" id="arrange" onchange="this.form.submit()">
-                        <option value="order_id"></option>
-                        <option value="order_id">Order ID</option>
-                        <option value="order_delivery_date">Date</option>
-                        <option value="order_total">Price</option>
-                    </select>
-                </form>
+                    <form class="arrangeOptions" id = "adminSortForm" action="adminHistorySort" method = "POST">
+                        <label for="arrange">Arrange by: </label>
+                        <select name="arrange" class="arrange" id="arrange" onchange="this.form.submit()">
+                            <option value="order_id"></option>
+                            <option value="order_id">Order ID</option>
+                            <option value="order_delivery_date">Date</option>
+                            <option value="order_total">Price</option>
+                        </select>
+                    </form>
 
                     <div class='orderProperties'>
                         <div class="property">Order ID</div>
@@ -91,6 +91,14 @@ change orders from "----------" to backend
                             String u = "";
                             String v = "";
                             for (OrderItem y : orderItems) {
+                                if (y.getToppings().size() == 0) {
+                                    u += String.format(
+                                            "<div class = 'orderPropertyEmptyRow2'>"
+                                            + "<div class = 'orderPropertyChildren'>%s</div>\n"
+                                            + "</div>",
+                                            "No Toppings Added");
+                                }
+
                                 productsList.add(String.valueOf(y.getProduct().getId()));
                                 productsList.add(String.valueOf(y.getProduct().getName()));
                                 productsList.add(String.valueOf(y.getQuantity()));
@@ -104,6 +112,14 @@ change orders from "----------" to backend
                                         productsList.remove(),
                                         productsList.remove(),
                                         productsList.remove());
+
+                                if (y.getToppings().size() > 1) {
+                                    s += String.format(
+                                            "<div class = 'orderPropertyEmptyRow'>"
+                                            + "<div class = 'orderPropertyChildren'>%s</div>\n"
+                                            + "</div>",
+                                            "e");
+                                }
 
                                 ArrayList<OrderItemToppings> orderItemToppings = y.getToppings();
 
@@ -128,10 +144,8 @@ change orders from "----------" to backend
                                     + "<div class = 'orderPropertyColumnBig'>");
                             v = String.format(
                                     "</div>"
-                                    + "<div class = 'orderPropertyChildren'>%s</div>\n"
-                                    + "<p class = 'orderRemove' id = 'orderRemoveID'>%s</p>\n",
-                                    x.getOrder_Total(),
-                                    "+");
+                                    + "<div class = 'orderPropertyChildren'>%s</div>\n",
+                                    x.getOrder_Total());
                             String orderReport = r + s + t + u + v;
                             orderReports.add(orderReport);
 
@@ -143,51 +157,15 @@ change orders from "----------" to backend
                     %>
 
                     <script>
-                    var list_items = <%=data%>
-                    </script>
-
-
-                    <script>
-                        document.getElementById('orderRemoveID').addEventListener('click',
-                                function () {
-                                    document.querySelector('.cancelModal').style.display = 'flex';
-                                });
+                        var list_items = <%=data%>
                     </script>
 
                     <div class="pagenumbers" id="pagenumbers">
                     </div>
 
-                    <div class="PDFGenerator">
-                        <button class="generatePDF" type="button">
-                            Generate Summary Report PDF
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="cancelModal">
-            <div class="modalContent">
-                <p class="modalText">
-                    Do you want to cancel<br>orderN
-                </p>
-                <div class="modalButtons">
-                    <button class="modalButtonYes" type="button">Yes</button>
-                    <button class="modalButtonNo" type="button">No</button>
-                    <script>
-                        document.querySelector('.modalButtonYes').addEventListener('click',
-                                function () {
-                                    document.querySelector('.cancelModal').style.display = 'none';
-                                    var myobj = document.getElementById("order1");
-                                    myobj.remove();
-                                });
-
-                        document.querySelector('.modalButtonNo').addEventListener('click',
-                                function () {
-                                    document.querySelector('.cancelModal').style.display = 'none';
-                                });
-
-                    </script>
+                    <form action="generatePDF.jsp">
+                        <button class="generatePDF" type ="submit">Generate Summary Report PDF</button>
+                    </form>
                 </div>
             </div>
         </div>

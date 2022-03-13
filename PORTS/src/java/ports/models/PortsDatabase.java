@@ -554,7 +554,7 @@ public class PortsDatabase {
     
     public ArrayList getOrderStats(){
         System.out.print("TEST get order status");
-        String query1 = "SELECT * FROM order_status order by 'order_status_id' asc";
+        String query1 = "SELECT * FROM order_status";
      
         ArrayList<String> order_status = new ArrayList<>();
         try {
@@ -778,6 +778,133 @@ public class PortsDatabase {
     //for specific customer to get his or her latest order
     
     //update order status
+    
+    public void updateOrderReceived(Order o) {
+        //the customer has received the order
+        
+        //initialize list;
+        
+        ArrayList<OrderItem> items = o.getItems();
+        //update pizza stocks
+        for (OrderItem x : items)
+        {
+            updatePizzaStock(x);
+            //update topping stocks
+            ArrayList<OrderItemToppings> toppings = x.getToppings();
+            
+            for(OrderItemToppings y : toppings)
+            {
+                updateToppingStock(y);
+            }
+        }
+  
+        //update the order status
+        updateOrderStatus(o.getOrder_Id(), o.getEmployee_id());
+    }
+    
+    public void updatePizzaStock(OrderItem orderItem){
+        //select
+        String query1 = "SELECT * FROM products where product_id = ?";
+        String query2 = "UPDATE products SET product_stock = ?, product_availability = ? WHERE product_id = ?";
+        
+        int product_id = orderItem.getProduct().getId();
+        int stockUsed = orderItem.getQuantity();
+        String availability = "available";
+
+        try {
+            PreparedStatement ps = portsConnection.prepareStatement(query1);
+            ps.setInt(1, product_id);
+            ResultSet stockGetter = ps.executeQuery();
+            stockGetter.next();
+            
+            int newStock = Integer.parseInt(stockGetter.getString("product_stock")) - stockUsed;
+            if(newStock <= 0)
+            {
+                newStock = 0;
+                availability = "not available";
+            }
+            
+            ps = portsConnection.prepareStatement(query2);
+            ps.setInt(1, newStock);
+            ps.setString(2, availability);
+            ps.setInt(3, product_id);
+        }
+        catch(SQLException sqle){
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        }        
+    }
+    
+    public void updateToppingStock(OrderItemToppings orderItemToppings) {
+        //select
+        String query1 = "SELECT * FROM toppings where toppings_id = ?";
+        String query2 = "UPDATE toppings SET toppings_stock = ?, toppings_availability = ? WHERE product_id = ?";
+        
+        int topping_id = orderItemToppings.getTopping().getId();
+        int stockUsed = orderItemToppings.getQuantity();
+        String availability = "available";
+        //subtract
+        try {
+            PreparedStatement ps = portsConnection.prepareStatement(query1);
+            ps.setInt(1, topping_id);
+            ResultSet stockGetter = ps.executeQuery();
+            stockGetter.next();
+            
+            int newStock = Integer.parseInt(stockGetter.getString("product_stock")) - stockUsed;
+            if(newStock <= 0)
+            {
+                newStock = 0;
+                availability = "not available";
+            }
+            
+            ps = portsConnection.prepareStatement(query2);
+            ps.setInt(1, newStock);
+            ps.setString(2, availability);
+            ps.setInt(3, topping_id);
+        }
+        catch(SQLException sqle){
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        }   
+    }
+    
+    public void deleteOrder(int order_id){
+        System.out.print("TEST delete order");
+        String query1 = "SELECT * FROM purchase where order_id = ?";
+        String query2 = "DELETE FROM purchase_toppings where purchase_id = ?";
+        String query3 = "DELETE FROM purchase where order_id = ?";
+        String query4 = "DELETE FROM orders where order_id = ?";
+        
+        try {
+            PreparedStatement ps = portsConnection.prepareStatement(query1);
+            ps.setInt(1, order_id);
+            
+            ResultSet results = ps.executeQuery();
+            while(results.next()){
+                //loop for deleting all the toppings for each cart item
+                int purchase_id = Integer.parseInt(results.getString("purchase_id"));
+                
+                ps = portsConnection.prepareStatement(query2);
+                ps.setInt(1, purchase_id);
+                ps.executeUpdate();
+                System.out.println("Toppings for purchase "+purchase_id+" deleted.");
+            }
+            
+            //delete the items of this order from the purchase 
+            ps = portsConnection.prepareStatement(query3);
+            ps.setInt(1, order_id);
+            ps.executeUpdate();
+            
+            //delete the actual order
+            ps = portsConnection.prepareStatement(query4);
+            ps.setInt(1, order_id);
+            ps.executeUpdate();
+            System.out.println("Deleted order number: "+ order_id);
+                
+        }
+        catch(SQLException sqle){
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        }       
+    }
+    
     public void updateOrderStatus(int order_id, int employee_id){
         String query1 = "SELECT * FROM orders where order_id = ?";
         String query2 = "UPDATE orders SET order_status_id = ?, employee_id = ? WHERE order_id = ?";
@@ -1196,7 +1323,7 @@ public class PortsDatabase {
         String query1 = "INSERT INTO cart_purchase (cart_purchase_id, cart_id, product_id, product_quantity) VALUES(?,?,?,?)";
         String query2 = "INSERT INTO cart_purchase_toppings (cart_purchase_toppings_id, cart_purchase_id, toppings_id, toppings_quantity) VALUES(?,?,?,?)";
         String query3 = "SELECT cart_purchase_id FROM cart_purchase where cart_id = ?";
-        String query4 = "SELECT cart_purchase_toppings_id FROM cart_purchase_toppings where cart_purchase_id = ? ";
+        String query4 = "SELECT cart_purchase_toppings_id FROM cart_purchase_toppings";
         int cart_purchase_id = 1;
         try {
             
@@ -1232,7 +1359,6 @@ public class PortsDatabase {
                 System.out.println(t);
                 //get cartpurchasetoppingsid; 
                 int cart_purchase_toppings_id = 1;
-                ps3.setInt(1, cart_purchase_id);
                 ResultSet results2 = ps3.executeQuery();
                 
                 while(results2.next())

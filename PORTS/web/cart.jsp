@@ -44,7 +44,6 @@
             <th>Pizza</th>
             <th>Quantity</th>
             <th>Toppings</th>
-            <th>Toppings Quantity</th>
             <th>Total</th>
      	</tr>
         </thead>
@@ -69,12 +68,12 @@
                         <br>
                         <a href="">Remove</a>
                     </div>
-                </div>
+                </div>  
             </td>
             <td data-label="Quantity"><%= ((CartItem)(items.get(a))).getQuantity() %> </td>
-            <td data-label="Toppings"><%= ((CartItem)(items.get(a))).getToppings() %> </td>
-            <td data-label="Toppings Quantity">   </td>
-            <td data-label="Total Price"> <%= port.getCartData(c.getCustomer_Id()) %> </td>
+            <td data-label="Toppings"><%= ((CartItem)(items.get(a)))%> </td>
+       
+            <td data-label="Total Price"> </td>
         </tr>
         <% }
         %>
@@ -114,7 +113,7 @@
             </div>
             
             <div class="grandtotalbx">
-                <p class ="grandtotal">Grand total: P350.00</p>
+                <p class ="grandtotal"><%= c.getCart().getCart_Total() %></p>
             </div>
         </div>
         

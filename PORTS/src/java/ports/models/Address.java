@@ -95,7 +95,12 @@ public class Address {
     }
     
     public String toString() {
-        return "Address Name: "+addressName;
+
+        String s = String.format("%s %s. %s, %s. %s. %s. %s.",
+                houseNo, street, province, city, postalCode, details, additionalDetails);
+        
+       
+        return s;
     }
     
 }

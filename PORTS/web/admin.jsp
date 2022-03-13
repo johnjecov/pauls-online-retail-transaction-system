@@ -8,17 +8,17 @@
     <head>
         <link rel="stylesheet" href="css/admin.css?nocache={timestamp}" type="text/css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Edit Menu</title>
+        <title>Sales Page</title>
     </head>
     <body scroll="no" style="overflow: hidden">
         <div class="contentHolder">
             <div class="sidebar">
-                <img class="logo" src="image/Paul's Pizzeria Logo.jpg" alt="Paul's Pizzeria Logo">
+                <img class="logo" src="image/Paul's Pizzeria Logo_1.jpg" alt="Paul's Pizzeria Logo">
                 <ul class='adminOptions'>
-                    <li class="options"><a href="#home">Sales</a></li>
-                    <li class="options"><a href="#home">Order List</a></li>
-                    <li class="options"><a href="#home">Menu</a></li>
-                    <li class="options"><a href="#home">Analytics</a></li>
+                    <li class="options"><a href="adminHistoryPage.jsp">Sales</a></li>
+                    <li class="options"><a href="adminOrderList.jsp">Order List</a></li>
+                    <li class="options"><a href="admin.jsp">Menu</a></li>
+                    <li class="options"><a href="admin.jsp">Analytics</a></li>
                 </ul>
                 <p class='logout'>Logout</p>
             </div>

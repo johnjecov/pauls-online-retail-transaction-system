@@ -25,7 +25,7 @@
         }
     %>
  
-    <a href="/PORTS/index.jsp" class="logo"> <i class="fas fa-utensils"></i>Paul's Pizzeria  </a>
+    <a href="/PORTS/index.jsp" class="logo"> <img src="image/logo.png" alt="" ></i>Paul's Pizzeria  </a>
     
     <nav class="navbar0">
             <ul class="mainMenu">
@@ -149,6 +149,17 @@
         font-size: 25px;
         cursor: pointer;
     }
+    
+     .logo img
+        {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            margin-top: -10px;
+            margin-bottom: -15px;
+        }
+    
     
     @media(max-width: 750px){
         #openMenu {
@@ -342,7 +353,7 @@
         z-index: 1;
         
     }
-
+    
     /* Links inside the dropdown */
     .dropdown-content a {
         color: white;

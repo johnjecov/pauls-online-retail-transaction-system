@@ -42,5 +42,34 @@ public class OrderItem {
    public int getOrderId(){
        return order_id;
    }
+   
+   public String toString() {
+       
+       String s = "";
+       
+       if (quantity == 1)
+            s = String.format("%d order of %s,", quantity, product.getName());
+       else
+            s = String.format("%d orders of %s,", quantity, product.getName());
+       
+       if (toppings.isEmpty())
+           s += " with no add ons.\n";
+       for (int i = 0; i < toppings.size(); i++)
+       {
+           OrderItemToppings t = toppings.get(i);
+           if (i == 0)
+               s+= "with ";
+           
+           String adder = (t.getQuantity() > 1) ? "add ons" : "add on";
+           
+           if (i < toppings.size() - 1)
+            s += String.format("%d %s of %s , and ", t.getQuantity(),adder, t.getTopping().getName());
+           else
+            s += String.format("%d %s of %s.\n", t.getQuantity(),adder,t.getTopping().getName());   
+       }
+       
+       
+       return s;
+   }
     
 }

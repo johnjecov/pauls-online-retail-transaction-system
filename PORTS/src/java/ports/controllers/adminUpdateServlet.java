@@ -56,7 +56,7 @@ public class adminUpdateServlet extends HttpServlet {
         }
         
         if(type.equals("update_payment")){
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("mm-dd-yyyy");  
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("mm/dd/yyyy");  
             LocalDateTime now = LocalDateTime.now();  
             String paymentDate = dtf.format(now);
             ports.updateOrderPayment(order_id, employee_id, paymentDate);

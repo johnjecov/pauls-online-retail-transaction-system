@@ -67,7 +67,7 @@
                     
                     <%  
                         PortsDatabase ports = (PortsDatabase) getServletContext().getAttribute("dbConnection");
-                        ArrayList<Order> orderList = (ArrayList) ports.getOrderSales("order_id");
+                        ArrayList<Order> orderList = (ArrayList) ports.getOrderHistory("order_id");
                         ArrayList<String> orderStatus = ports.getOrderStats();
                         
                         if(orderList.size() == 0){

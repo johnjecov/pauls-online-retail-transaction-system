@@ -54,6 +54,27 @@ public class CartItem {
            if (i == 0)
                s+= "with ";
            
+           if (i < toppings.size() - 1)
+            s += String.format("%dx of %s, and ", t.getQuantity(), t.getTopping().getName());
+           else
+            s += String.format("%dx of %s.\n", t.getQuantity(),t.getTopping().getName());   
+       }
+       
+       return s;
+   }
+   
+    public String toString2(){
+       String s = "";
+       
+        if (toppings.isEmpty())
+           s += " with no add ons.\n";
+       for (int i = 0; i < toppings.size(); i++)
+       {
+           CartItemToppings t = toppings.get(i);
+           if (i == 0)
+               s+= "with ";
+           
+
            String adder = (t.getQuantity() > 1) ? "add ons" : "add on";
            
            if (i < toppings.size() - 1)

@@ -72,7 +72,6 @@
             </td>
             <td data-label="Quantity"><%= ((CartItem)(items.get(a))).getQuantity() %> </td>
             <td data-label="Toppings"><%= ((CartItem)(items.get(a)))%> </td>
-       
             <td data-label="Total Price"> </td>
         </tr>
         <% }

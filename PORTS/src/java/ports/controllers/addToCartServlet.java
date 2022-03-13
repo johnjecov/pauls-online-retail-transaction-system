@@ -32,51 +32,39 @@ public class addToCartServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException 
     {
-        String moz = (request.getParameter("moz"));
-        String ham = (request.getParameter("ham"));
-        String par = (request.getParameter("par"));
-        String spi = (request.getParameter("spi"));
-        String cre = (request.getParameter("cre"));
-    
+        String quantity = (request.getParameter("quan"));
         String pizza = request.getParameter("pizza");
-        
-        String idFromWeb="";
-        
-        String u = "";
-        String e = "";
-        String id="";
-        int quantity=1;
-        int insert=0;
+        String[] toppingsValues = request.getParameterValues("toppings");
+       
         ServletContext app = getServletContext();
-      
-        HttpSession session = null;
+    
+        HttpSession session =request.getSession();;
                     
-        
+                    Customer c = (Customer) session.getAttribute("customer");
+           
                     PortsDatabase port = (PortsDatabase)app.getAttribute("dbConnection");
-                    Product orderedPizza = null;
                     ArrayList<CartItemToppings>  orderedToppings = new ArrayList<>();
                     
-            
-                    for(int i=0; port.getProducts().size() > i; i++)
+                    ArrayList<Product> menu = port.getProducts();
+                    Product pizzai = menu.get(Integer.parseInt(pizza)-1);
+                    
+               
+                  
+                    for(int b=0; b < port.getToppings().size(); b++)
                     {
-                        if(pizza.equalsIgnoreCase(((Product)(port.getProducts().get(i))).getName()))
-                        {
-                           orderedPizza = ((Product)(port.getProducts().get(i)));
+                          System.out.print(Arrays.toString(toppingsValues));
                           
-                           if(!moz.equals("0"))
-                           {
-                               for(int a=0; port.getToppings().size() > a; a++)
-                                {
-                                    if("cheese".equals(((Topping)(port.getToppings().get(a))).getName()))
-                                        orderedToppings.add( new CartItemToppings(1,(Topping)(port.getToppings().get(a)),Integer.parseInt(moz)));
-                                }
-                           }
-                           break;
-                   
-                        }
+                          System.out.print((toppingsValues[b]));
+                        if( Integer.parseInt(toppingsValues[b]) > 0)
+                        {
+                            orderedToppings.add( new CartItemToppings(b+1,(Topping)(port.getToppings().get(b)),Integer.parseInt(toppingsValues[b]) ));
+                       }
                     }
-                   
-                    CartItem productOrder = new CartItem(2, 1, orderedPizza, orderedToppings, quantity);
+                    
+                    
+                    CartItem productOrder = new CartItem(c.getCart().getItems().size()+1, c.getCart().getCart_Id(), pizzai, orderedToppings, Integer.parseInt(quantity));
+                    System.out.print("hellooooo"+productOrder.getProduct());
+                
                     //Product testProduct = new Product(1, "Pepperoni", 15, "Pizza", "Delicious", "/test.jpg", "available", 149);
                     //Topping testTopping = new Topping(1, "Cheese", 40, "Cheesiest Cheese", "/testTopping.jpg", "available", 15);
                     //CartItemToppings(int cartItemToppingsId, Topping topping, int quantity)
@@ -87,9 +75,8 @@ public class addToCartServlet extends HttpServlet {
                     //Cart(int cart_id, int customer_id, double cart_total, ArrayList<CartItem> items);
                     
                     //addItemToCart(int cart_id, CartItem item)
-                   port.addItemToCart(1, productOrder);
-                   System.out.print(((Product)(port.getProducts().get(0))).getName());
-                   System.out.print(pizza+"<<<<<<<<<<<<<<<<<<<<<<<<<<");
+                    c.getCart().addToCart(port, productOrder);
+                   System.out.print("PLSSSSSSSSSSSS");
                     
     }
 

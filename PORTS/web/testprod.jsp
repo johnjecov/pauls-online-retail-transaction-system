@@ -52,7 +52,10 @@
             <h3 >₱<%= pizza.getPrice()%></h3>
             <p><%= pizza.getDesc()%></p>
         </div>
-        <div class = "indiv-toppings">
+       
+        <!-- Product Configuration -->
+        <form method="POST" action="addToCart">
+             <div class = "indiv-toppings">
             <h4>Quantity</h4>
                 <select class= "toppings" id="quantity" name="quan"> 
                     <option disabled selected>Quantity</option>
@@ -63,17 +66,19 @@
                     <option value = "5">5</option>
                 </select>
         </div>
-        <!-- Product Configuration -->
-        <form method="POST" action="addToCart">
         <div class="product-configuration">
             <!-- Cable Configuration -->
             <div class="cable-config">
                 <span>Add-Ons</span>
                 <br>
                 <div class = "separation">
+                    <% for(int z=0; z < toppings.size(); z++)
+                    {%>
+                    <input class="hiddenValues" name="<%=((Topping)(toppings.get(z))).getName() %>" value ="<%= ((Topping)(toppings.get(z))).getPrice() %>" style="display: none;">
                     <div class = "indiv-toppings">
-                        <h4>Mozzarella ₱50/50 g.</h4>
-                        <select class= "toppings" id ="toppings1" name="moz"> 
+                        <h4><%= ((Topping)(toppings.get(z))).getName()%><br><%= ((Topping)(toppings.get(z))).getPrice() %></h4>
+                        
+                        <select class= "toppings" id ="toppings<%=z+1%>" name="toppings"> 
                             <option disabled selected>Quantity</option>
                             <option value = "0" selected="selected">0</option>
                             <option value = "1">1</option>
@@ -83,72 +88,9 @@
                             <option value = "5">5</option>
                         </select>
                     </div>
-                                        
-                    <div class = "indiv-toppings">
-                        <h4>Addtl. Ham ₱80/50 g.</h4>
-                        <select class= "toppings" id ="toppings2" name="ham"> 
-                            <option disabled selected>Quantity</option>
-                            <option value = "0" selected="selected">0</option>
-                            <option value = "1">1</option>
-                            <option value = "2">2</option>
-                            <option value = "3">3</option>
-                            <option value = "4">4</option>
-                            <option value = "5">5</option>
-                        </select>
-                    </div>
-                    
-                    <div class = "indiv-toppings">
-                        <h4>Parmesan ₱50/50 g.</h4>
-                        <select class= "toppings" id ="toppings3" name="par"> 
-                            <option disabled selected>Quantity</option>
-                            <option value = "0" selected="selected">0</option>
-                            <option value = "1">1</option>
-                            <option value = "2">2</option>
-                            <option value = "3">3</option>
-                            <option value = "4">4</option>
-                            <option value = "5">5</option>
-                        </select>
-                    </div>
-                                     
-                    <div class = "indiv-toppings">
-                    <h4>Pepperoni ₱100/50 g.</h4>
-                        <select class= "toppings" id ="toppings4" name="pep"> 
-                            <option disabled selected>Quantity</option>
-                            <option value = "0" selected="selected">0</option>
-                            <option value = "1">1</option>
-                            <option value = "2">2</option>
-                            <option value = "3">3</option>
-                            <option value = "4">4</option>
-                            <option value = "5">5</option>
-                        </select>
-                    </div>
-                    
-                    <div class = "indiv-toppings">
-                        <h4>Spinach ₱30/10 pc.</h4>
-                        <select class= "toppings" id ="toppings5" name="spi"> 
-                            <option disabled selected>Quantity</option>
-                            <option value = "0" selected="selected">0</option>
-                            <option value = "1">1</option>
-                            <option value = "2">2</option>
-                            <option value = "3">3</option>
-                            <option value = "4">4</option>
-                            <option value = "5">5</option>
-                        </select>
-                    </div>
-                                                            
-                    <div class = "indiv-toppings">
-                        <h4>Cream Cheese ₱100/75 g.</h4>
-                        <select class= "toppings" id ="toppings6" name="cre"> 
-                            <option disabled selected>Quantity</option>
-                            <option value = "0" selected="selected">0</option>
-                            <option value = "1">1</option>
-                            <option value = "2">2</option>
-                            <option value = "3">3</option>
-                            <option value = "4">4</option>
-                            <option value = "5">5</option>
-                        </select>
-                    </div>
-                </div>                
+                        
+                    <% }%>
+                </div>
             </div>
         </div>
            
@@ -159,7 +101,7 @@
             
             <br>  
             
-            <button name ="pizza" value="<%= pizza.getName()%>" class="cart-btn" style="cursor: pointer;">ADD TO CART</button>
+            <button name ="pizza" value="<%= pizza.getId()%>" class="cart-btn" style="cursor: pointer;">ADD TO CART</button>
            <!-- <a href="#" class="cart-btn">Add to cart</a> -->
         </div>
         

@@ -1195,8 +1195,8 @@ public class PortsDatabase {
         
         String query1 = "INSERT INTO cart_purchase (cart_purchase_id, cart_id, product_id, product_quantity) VALUES(?,?,?,?)";
         String query2 = "INSERT INTO cart_purchase_toppings (cart_purchase_toppings_id, cart_purchase_id, toppings_id, toppings_quantity) VALUES(?,?,?,?)";
-        String query3 = "SELECT cart_purchase_id FROM cart_purchase where cart_id = ? order by 'cart_purchase_id' desc";
-        String query4 = "SELECT cart_purchase_toppings_id FROM cart_purchase_toppings where cart_purchase_id = ? order by 'cart_purchase_toppings_id' desc";
+        String query3 = "SELECT cart_purchase_id FROM cart_purchase where cart_id = ?";
+        String query4 = "SELECT cart_purchase_toppings_id FROM cart_purchase_toppings where cart_purchase_id = ? ";
         int cart_purchase_id = 1;
         try {
             
@@ -1205,7 +1205,7 @@ public class PortsDatabase {
             ps.setInt(1,cart_id);
             ResultSet results = ps.executeQuery();
             
-            if(results.next())
+            while(results.next())
             {
                 cart_purchase_id = Integer.parseInt(results.getString("cart_purchase_id")) + 1;
                 System.out.println("dito ba?");
@@ -1235,7 +1235,7 @@ public class PortsDatabase {
                 ps3.setInt(1, cart_purchase_id);
                 ResultSet results2 = ps3.executeQuery();
                 
-                if(results.next())
+                while(results2.next())
                     cart_purchase_toppings_id = Integer.parseInt(results2.getString("cart_purchase_toppings_id")) + 1;
             
                 //insert the cart_purchase_toppings record

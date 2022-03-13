@@ -42,16 +42,18 @@
         <thead>
      	<tr>
             <th>Pizza</th>
-            <th>Toppings</th>
-            <th>Price</th>
             <th>Quantity</th>
+            <th>Toppings</th>
+            <th>Toppings Quantity</th>
             <th>Total</th>
      	</tr>
         </thead>
         <tbody>
         <% 
             //Cart(int cart_id, int customer_id, double cart_total, ArrayList<CartItem> items)
-            Cart theCart = (Cart)(port.getCartData(1));
+            Customer c = (Customer) session.getAttribute("customer");
+            
+            Cart theCart = (Cart)(port.getCartData(c.getCustomer_Id()));
             ArrayList items = (theCart.getItems());
             for(int a=0; items.size() > a; a++)
             { 
@@ -69,11 +71,10 @@
                     </div>
                 </div>
             </td>
-            <td data-label="Toppings">Cheese</td>
-   
-            <td data-label="Price">P250.00</td>
-            <td data-label="Quantity"> 1 </td>
-            <td data-label="Price">P250.00</td>
+            <td data-label="Quantity"><%= ((CartItem)(items.get(a))).getQuantity() %> </td>
+            <td data-label="Toppings"><%= ((CartItem)(items.get(a))).getToppings() %> </td>
+            <td data-label="Toppings Quantity">   </td>
+            <td data-label="Total Price"> <%= port.getCartData(c.getCustomer_Id()) %> </td>
         </tr>
         <% }
         %>

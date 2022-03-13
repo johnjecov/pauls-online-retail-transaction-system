@@ -71,8 +71,8 @@
                 </div>  
             </td>
             <td data-label="Quantity"><%= ((CartItem)(items.get(a))).getQuantity() %> </td>
-            <td data-label="Toppings"><%= ((CartItem)(items.get(a)))%> </td>
-            <td data-label="Total Price"> </td>
+            <td class="toppingW" data-label="Toppings"><%= ((CartItem)(items.get(a)))%> </td>
+            <td data-label="Total Price"><%= ((CartItem)(items.get(a))).getItemTotal()  %> </td>
         </tr>
         <% }
         %>
@@ -138,6 +138,11 @@
     </script>
     
     <style>
+        .toppingW
+        {
+            min-width: 100px;
+            max-width: 300px;
+        }
         *
         {
             font-family: 'Poppins', sans-serif;

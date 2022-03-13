@@ -42,6 +42,7 @@ public class CartItem {
    public int getCartId(){
        return cartId;
    }
+
     
    public String toString(){
        String s = "";
@@ -74,15 +75,19 @@ public class CartItem {
            if (i == 0)
                s+= "with ";
            
+       }
+       return s;
+    }
 
-           String adder = (t.getQuantity() > 1) ? "add ons" : "add on";
-           
-           if (i < toppings.size() - 1)
-            s += String.format("%d %s of %s , and ", t.getQuantity(),adder, t.getTopping().getName());
-           else
-            s += String.format("%d %s of %s.\n", t.getQuantity(),adder,t.getTopping().getName());   
+   
+   public double getItemTotal() {
+       double total = quantity * product.getPrice();
+       
+       for(CartItemToppings x : toppings){
+           total += x.getQuantity() * (x.getTopping().getPrice());
        }
        
-       return s;
+       return total;
    }
+   
 }

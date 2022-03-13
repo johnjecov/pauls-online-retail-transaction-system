@@ -76,7 +76,8 @@ public class addToCartServlet extends HttpServlet {
                     
                     //addItemToCart(int cart_id, CartItem item)
                     c.getCart().addToCart(port, productOrder);
-                   System.out.print("PLSSSSSSSSSSSS");
+                response.sendRedirect("cart.jsp");
+                   
                     
     }
 

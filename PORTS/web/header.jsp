@@ -62,7 +62,7 @@
                 <a href="/PORTS/address.jsp">View Address</a>
                 <a href="/PORTS/changePassword.jsp">Change Password</a>
                 <a href="/PORTS/orderstatus.jsp">View Order Status</a>
-                <a href="#logout">Logout</a>
+                <a href="./logout">Logout</a>
             </div>
         </div>
         <% } %>

@@ -46,6 +46,10 @@
         <servlet-name>adminHistorySort</servlet-name>
         <servlet-class>ports.controllers.adminHistorySort</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>logoutServlet</servlet-name>
+        <servlet-class>ports.controllers.logoutServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>loginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -178,7 +182,6 @@
         <servlet-name>adminHistorySort</servlet-name>
         <url-pattern>/adminHistorySort</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>deleteFServlet</servlet-name>
         <servlet-class>ports.controllers.deleteFServlet</servlet-class>
@@ -187,8 +190,6 @@
         <servlet-name>deleteFServlet</servlet-name>
         <url-pattern>/deleteOrder</url-pattern>
     </servlet-mapping>
-    
-    
     <servlet>
         <servlet-name>paymentFServlet</servlet-name>
         <servlet-class>ports.controllers.paymentFServlet</servlet-class>
@@ -197,7 +198,6 @@
         <servlet-name>paymentFServlet</servlet-name>
         <url-pattern>/updatePayment</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>updateFServlet</servlet-name>
         <servlet-class>ports.controllers.updateFServlet</servlet-class>
@@ -206,7 +206,6 @@
         <servlet-name>updateFServlet</servlet-name>
         <url-pattern>/updateOrderStatus</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>adminUpdateServlet</servlet-name>
         <servlet-class>ports.controllers.adminUpdateServlet</servlet-class>
@@ -214,6 +213,10 @@
     <servlet-mapping>
         <servlet-name>adminUpdateServlet</servlet-name>
         <url-pattern>/adminUpdate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>logoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

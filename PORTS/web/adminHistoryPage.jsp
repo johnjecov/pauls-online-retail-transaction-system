@@ -20,7 +20,7 @@ change orders from "----------" to backend
         <title>Order History</title>
     </head>
     <body scroll="no" style="overflow: hidden">
-
+        <%@include file="adminLogout.jsp"%>
 
         <div class="contentHolder">
             <div class="sidebar">
@@ -31,7 +31,7 @@ change orders from "----------" to backend
                     <li class="options"><a href="admin.jsp">Menu</a></li>
                     <li class="options"><a href="admin.jsp">Analytics</a></li>
                 </ul>
-                <p class='logout'>Logout</p>
+                <a class = "logout" href="./logout">Logout</a>
             </div>
             <div class="pageContent">
                 <div class="adminGreetings">

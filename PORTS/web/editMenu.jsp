@@ -11,6 +11,7 @@
         <title>Edit Menu</title>
     </head>
     <body scroll="no" style="overflow: hidden">
+        <%@include file="adminLogout.jsp"%>
         <%
             ServletContext sc = getServletContext();
             String editModalDisplay = "none";
@@ -88,7 +89,7 @@
                     <li class="options"><a href="admin.jsp">Menu</a></li>
                     <li class="options"><a href="admin.jsp">Analytics</a></li>
                 </ul>
-                <p class='logout'>Logout</p>
+                <a class = "logout" href="./logout">Logout</a>
             </div>
             <div class = "pageContent">
                  <div class="adminGreetings">

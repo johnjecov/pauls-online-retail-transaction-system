@@ -13,7 +13,7 @@
                         <img src="image/nomark.png" alt="mark3" class="statusimg">
                         Order Delivered<br>Order delivered. Enjoy!</div>
 
-
+copy the div above instead of <p>
 --after java snip
 <%= output %>
 --%>
@@ -45,45 +45,55 @@
                 <p class="headertext">Order Status</p>
             </div>
 
-            
+
             <div class="statuscontent">
                 <%
-                ServletContext sc = getServletContext();
-                PortsDatabase ports = (PortsDatabase) sc.getAttribute("dbConnection");
-                ArrayList<Order> orderList = (ArrayList) ports.getOrderHistory("order_id");
-                ArrayList orderStatus = ports.getOrderStats();
-                Order test = orderList.get(0);
-                
-                            String s = String.format("<div class = 'statusitem'>\n"
-                                    + "<div class='item'>Customer Name:<br>%s</div>\n"
-                                    + "<div class='item'>Total:<br>%s</div>\n"
-                                    + "<div class='item'>Address:<br>%s</div>\n"
-                                    + "<div class='item'>Payment Type:<br>%s</div>\n"
-                                    + "</div>",
-                                    String.valueOf(test.getCustomer_Id()), String.valueOf(test.getOrder_Id()), 
-                                    test.getAddress(), test.getPayment_Method());
-                            out.println(s);
-            %>
+                    ServletContext sc = getServletContext();
+                    PortsDatabase ports = (PortsDatabase) sc.getAttribute("dbConnection");
+                    ArrayList<Order> orderList = (ArrayList) ports.getOrderHistory("order_id");
+                    ArrayList orderStatus = ports.getOrderStats();
+                    Order test = orderList.get(0);
+
+                    String s = String.format("<div class = 'statusitem'>\n"
+                            + "<div class='item'>Customer Name:<br>%s</div>\n"
+                            + "<div class='item'>Total:<br>%s</div>\n"
+                            + "<div class='item'>Address:<br>%s</div>\n"
+                            + "<div class='item'>Payment Type:<br>%s</div>\n"
+                            + "</div>",
+                            String.valueOf(test.getCustomer_Id()), String.valueOf(test.getOrder_Id()),
+                            test.getAddress(), test.getPayment_Method());
+                    out.println(s);
+                %>
 
                 <div class="statusitem2">
                     <%
-                    ArrayList<String> status = ports.getOrderStats();
-                    String output = status.get(test.getOrder_Status_Id());
-                    
-                    if(test.getOrder_Status_Id() == 1){
-                    //output = "No active orders";
-                    String d = String.format("");
-                    } else if(test.getOrder_Status_Id() == 2){
-                    //output = "No active orders";
-                    } else if(test.getOrder_Status_Id() == 3){
-                    //output = "No active orders";
-                    } else if(test.getOrder_Status_Id() == 4){
-                    //output = "No active orders";
-                    } else if(test.getOrder_Status_Id() == 5){
-                    //output = "No active orders";
-                    }
+                        ArrayList<String> status = ports.getOrderStats();
+                        String output = status.get(test.getOrder_Status_Id());
+
+                        if (test.getOrder_Status_Id() == 1) {
+                            //output = "No active orders";
+                            String d = String.format("<img src='image/checkmark.png' alt='mark1' class='statusimg'>\n"
+                    + "<p class='orderstatusP'>Order is still being processed.<br>Please be patient.</p>\n");
+                    out.println(d);
+                        } else if (test.getOrder_Status_Id() == 2) {
+                             String d = String.format("<img src='image/checkmark.png' alt='mark1' class='statusimg'>\n"
+                    + "<p class='orderstatusP'>Order has been recieved.<br>Please wait as we prepare your order.</p>\n");
+                             out.println(d);
+                        } else if (test.getOrder_Status_Id() == 3) {
+                             String d = String.format("<img src='image/checkmark.png' alt='mark1' class='statusimg'>\n"
+                    + "<p class='orderstatusP'>Order is now being delivered.<br>Good pizza will be at your doorstep!</p>\n");
+                             out.println(d);
+                        } else if (test.getOrder_Status_Id() == 4) {
+                             String d = String.format("<img src='image/checkmark.png' alt='mark1' class='statusimg'>\n"
+                    + "<p class='orderstatusP'>Order Completed.<br>Thank you for choosing Paul's Pizzeria!</p>\n");
+                             out.println(d);
+                        } else if (test.getOrder_Status_Id() == 5) {
+                            String d = String.format("<img src='image/checkmark.png' alt='mark1' class='statusimg'>\n"
+                    + "<p class='orderstatusP'>No order at the moment.<br>Fill that cart with some pizza!</p>\n");
+                            out.println(d);
+                        }
                     %>
-                    
+
                 </div>
             </div>
 

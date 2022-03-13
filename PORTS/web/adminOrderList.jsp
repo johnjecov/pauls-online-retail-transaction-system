@@ -10,7 +10,7 @@
     <body scroll="no" style="overflow: hidden">
         <div class="contentHolder">
             <div class="sidebar">
-                <img class="logo" src="image/Paul's Pizzeria Logo.jpg" alt="Paul's Pizzeria Logo">
+                <img class="logo" src="image/Paul's Pizzeria Logo_1.jpg" alt="Paul's Pizzeria Logo">
                 <ul class='adminOptions'>
                     <li class="options"><a href="adminHistoryPage.jsp">Sales</a></li>
                     <li class="options"><a href="adminOrderList.jsp">Order List</a></li>

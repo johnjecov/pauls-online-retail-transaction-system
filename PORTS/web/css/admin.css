@@ -4,6 +4,7 @@ GAWAN NG MAX WIDTH MGA PICTURES
 
 @import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Open+Sans:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
 *{
     font-family: 'Satisfy', cursive;
     color: #fff;
@@ -64,7 +65,7 @@ html,body {
     padding: 1rem;
     color: white;
     text-decoration: none;
-    background-color: #2e2e2e
+    background-color: #2e2e2e;
 }
 
 .options a:hover {
@@ -103,17 +104,16 @@ html,body {
     width: 20%;
 }
 
-
-
 .helloAdmin {
     font-size: 2rem;
     text-align: center;
-    background-color: #2e2e2e;
+    background-color: #CD212A;
     min-width: 15rem;
+    color: white;
     padding: 1rem;
     border-radius: 10px;
-    box-shadow: inset 15px 15px 30px #212121,
-                inset -15px -15px 30px #3b3b3b;
+    /*box-shadow: inset 15px 15px 30px #212121,
+                inset -15px -15px 30px #3b3b3b;*/
 }
 
 .pageContent {
@@ -137,25 +137,27 @@ html,body {
     flex-direction: row;
     gap: 1rem;
     min-height: 2.5rem;
+    
 }
 
 .pizzaOrTopping li, button{
     text-align: center;
     font-size: 2rem;
     height: 100%;
-    background-color: black;
+    background: #CD212A;
+    color: white;
     border-radius: 10px;
     min-width: 150px;
-    background: #2e2e2e;
-    box-shadow: inset 15px 15px 30px #212121,
-                inset -15px -15px 30px #3b3b3b;
+    /*box-shadow: inset 15px 15px 30px #212121,
+                inset -15px -15px 30px #3b3b3b;*/
 }
-
 
 .pizzaOrTopping li:hover {
-    background: #5c5c5c;
+    background: white;
+    color: #CD212A;
     cursor: pointer;
 }
+
 .adminContent {
     background-color: #2e2e2e;
     width: auto;
@@ -165,7 +167,7 @@ html,body {
     gap: 1rem;
     padding: 1rem;
     border-radius: 10px;
-    font-family: "roboto";
+    font-family: 'Poppins', sans-serif;
 }
 
 .pizzaOrToppingContent {

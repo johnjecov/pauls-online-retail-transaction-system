@@ -25,14 +25,14 @@
             </div>
             <div class = "pageContent">
                  <div class="adminGreetings">
-                    <p class='helloAdmin'>Hello, admin</p>
+                    <p class='helloAdmin'>Hello, admin!</p>
                 </div>          
                 <div class="adminContent">
                     <ul class = "pizzaOrTopping">
-                        <li style = "background: black;" id = 'togglePizza' onclick= togglePizzaOrTopping("formPizza")>
+                        <li id = 'togglePizza' onclick= togglePizzaOrTopping("formPizza")>
                             Pizzas
                         </li>
-                        <li style = "background: #2e2e2e;"id = 'toggleTopping' onclick= togglePizzaOrTopping("formTopping")>
+                        <li id = 'toggleTopping' onclick= togglePizzaOrTopping("formTopping")>
                             Toppings
                         </li>
                     </ul>

@@ -554,7 +554,7 @@ public class PortsDatabase {
     
     public ArrayList getOrderStats(){
         System.out.print("TEST get order status");
-        String query1 = "SELECT * FROM order_status order by 'order_status_id' asc";
+        String query1 = "SELECT * FROM order_status";
      
         ArrayList<String> order_status = new ArrayList<>();
         try {
@@ -778,6 +778,94 @@ public class PortsDatabase {
     //for specific customer to get his or her latest order
     
     //update order status
+    
+    public void updateOrderReceived(Order o) {
+        //the customer has received the order
+        
+        //initialize list;
+        
+        ArrayList<OrderItem> items = o.getItems();
+        //update pizza stocks
+        for (OrderItem x : items)
+        {
+            updatePizzaStock(x);
+            //update topping stocks
+            ArrayList<OrderItemToppings> toppings = x.getToppings();
+            
+            for(OrderItemToppings y : toppings)
+            {
+                updateToppingStock(y);
+            }
+        }
+  
+        //update the order status
+        updateOrderStatus(o.getOrder_Id(), o.getEmployee_id());
+    }
+    
+    public void updatePizzaStock(OrderItem orderItem){
+        //select
+        String query1 = "SELECT * FROM products where product_id = ?";
+        String query2 = "UPDATE products SET product_stock = ?, product_availability = ? WHERE product_id = ?";
+        
+        int product_id = orderItem.getProduct().getId();
+        int stockUsed = orderItem.getQuantity();
+        String availability = "available";
+
+        try {
+            PreparedStatement ps = portsConnection.prepareStatement(query1);
+            ps.setInt(1, product_id);
+            ResultSet stockGetter = ps.executeQuery();
+            stockGetter.next();
+            
+            int newStock = Integer.parseInt(stockGetter.getString("product_stock")) - stockUsed;
+            if(newStock <= 0)
+            {
+                newStock = 0;
+                availability = "not available";
+            }
+            
+            ps = portsConnection.prepareStatement(query2);
+            ps.setInt(1, newStock);
+            ps.setString(2, availability);
+            ps.setInt(3, product_id);
+        }
+        catch(SQLException sqle){
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        }        
+    }
+    
+    public void updateToppingStock(OrderItemToppings orderItemToppings) {
+        //select
+        String query1 = "SELECT * FROM toppings where toppings_id = ?";
+        String query2 = "UPDATE toppings SET toppings_stock = ?, toppings_availability = ? WHERE product_id = ?";
+        
+        int topping_id = orderItemToppings.getTopping().getId();
+        int stockUsed = orderItemToppings.getQuantity();
+        String availability = "available";
+        //subtract
+        try {
+            PreparedStatement ps = portsConnection.prepareStatement(query1);
+            ps.setInt(1, topping_id);
+            ResultSet stockGetter = ps.executeQuery();
+            stockGetter.next();
+            
+            int newStock = Integer.parseInt(stockGetter.getString("product_stock")) - stockUsed;
+            if(newStock <= 0)
+            {
+                newStock = 0;
+                availability = "not available";
+            }
+            
+            ps = portsConnection.prepareStatement(query2);
+            ps.setInt(1, newStock);
+            ps.setString(2, availability);
+            ps.setInt(3, topping_id);
+        }
+        catch(SQLException sqle){
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        }   
+    }
+    
     public void updateOrderStatus(int order_id, int employee_id){
         String query1 = "SELECT * FROM orders where order_id = ?";
         String query2 = "UPDATE orders SET order_status_id = ?, employee_id = ? WHERE order_id = ?";

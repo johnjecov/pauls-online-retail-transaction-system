@@ -121,4 +121,17 @@ public class Order {
             return false;
     }
     
+    public String getOrderString () {
+        String s = "";
+        
+        for (int i = 0; i < items.size(); i++)
+        {
+            OrderItem o = items.get(i);
+            s += o.toString()+"\n";
+            
+        }
+        
+        return s;    
+    }
+    
 }

@@ -96,7 +96,7 @@ public class Address {
     
     public String toString() {
 
-        String s = String.format("%s %s. %s, %s.\n%s\n%s\nSpecial Instructions: %s",
+        String s = String.format("%s %s. %s, %s. %s. %s. %s.",
                 houseNo, street, province, city, postalCode, details, additionalDetails);
        
         return s;

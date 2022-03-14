@@ -4,6 +4,8 @@
     Author     : Paul Ace Canoza
 --%>
 
+<%@page import="java.time.LocalDateTime"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -11,9 +13,7 @@
     <%@  page import = "java.util.*" %>  
     <%@  page import = "javax.servlet.*" %>  
   
-     <%  ServletContext app = getServletContext();
-         PortsDatabase port = (PortsDatabase)app.getAttribute("dbConnection");
-             %>
+     
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,7 +35,16 @@
         <!-- header section starts -->
         <%@include file="header_external.jsp"%>
         <!-- header section ends -->
-        
+        <%ServletContext app = getServletContext();
+         PortsDatabase port = (PortsDatabase)app.getAttribute("dbConnection");
+         ArrayList<Address> add = new ArrayList<Address>();
+          
+         Customer c = (Customer) session.getAttribute("customer");
+          Cart theCart = (Cart)(port.getCartData(c.getCustomer_Id()));
+          
+          ArrayList items = (theCart.getItems());
+          add = port.getCustomerAddresses(c.getCustomer_Id()); 
+     //   if(items.size()!=0) { %>
         <h1 style="text-align:center">Order Summary</h1>
         
         <table class="table">
@@ -49,11 +58,10 @@
         </thead>
         <tbody>
         <% 
-            //Cart(int cart_id, int customer_id, double cart_total, ArrayList<CartItem> items)
-            Customer c = (Customer) session.getAttribute("customer");
+           
+         if(add.size()==0)
+            response.sendRedirect("address.jsp");
             
-            Cart theCart = (Cart)(port.getCartData(c.getCustomer_Id()));
-            ArrayList items = (theCart.getItems());
             for(int a=0; items.size() > a; a++)
             { 
         %>
@@ -66,7 +74,9 @@
                             out.print(pizzaName);
                         %>
                         <br>
-                        <a href="">Remove</a>
+                        <form  method="POST" action="removeItemFromCart" autocomplete="off">
+                        <button name ="remove" value="<%= ((CartItem)(items.get(a))).getCartItemId() %>" class="" style="cursor: pointer;">Remove</button>
+                       </form>
                     </div>
                 </div>  
             </td>
@@ -81,27 +91,39 @@
         </tbody>
         </table>
         </div>
-        
+        <form method="POST" action="checkout" autocomplete="off">
         <div class="delivery-time">
         <div>
             <h4>Delivery Time: </h4>
-            <input type="date"> 
+            <%  String pattern = "yyyy-MM-dd";
+      
+        DateTimeFormatter formatDate = DateTimeFormatter.ofPattern(pattern);
+        LocalDateTime min = LocalDateTime.now().minusDays(1);
+        LocalDateTime max = LocalDateTime.now().plusDays(30);
+        String minF = formatDate.format(min);
+        String maxF = formatDate.format(max);%>
+            <input type="date" name="deliveryDate" required="required" min="<%=minF%>" max="<%=maxF%>"> 
         </div>
             <div>
                 <h4>Delivery Address:</h4>
-                <select class= "Address">
-                    <option disabled selected>Choose your address</option>
-                    <option value = "0">0</option>
-                    <option value = "1">1</option>
+                <select class= "Address" name="address" required>
+                    <option value="" disabled selected>Choose your address</option>
+                    <%
+                    
+                     
+                        for(int x=0; add.size() > x; x++) {%>
+                    <option value = "<%=((Address)add.get(x)).getAddressId()  %>"><%=((Address)add.get(x)).getAddressName()%></option>
+                    <%}%>
+                 
                 </select>
                 </div>
             <br>
             <div>       
                 <h4>Payment Method</h4>
-                <input type="radio" id="payment1" name="payment" value="">
+                <input type="radio" id="payment1" name="payment" value=""  required="required">
                 <label for="payment1"> Cash On Delivery </label>
                 <br>
-                <input type="radio" id="payment2" name="payment" value="">
+                <input type="radio" id="payment2" name="payment" value=""  required="required">
                 <label for="payment2">GCash</label>
                 <br>
                 
@@ -112,13 +134,26 @@
             </div>
             
             <div class="grandtotalbx">
-                <p class ="grandtotal"><%= c.getCart().getCart_Total() %></p>
+                <p class ="grandtotal"><%= port.getCartData(c.getCustomer_Id()).getCart_Total()%></p>
             </div>
         </div>
         
         <div class="checkout">
-            <a href="#" class="btn">PROCEED TO CHECKOUT</a>
+            <%if(items.size()!=0) {  //CORRECT CODE IS NOT (FOR DEMO PURPOSED CHANGE EXCLUDE NOT(!) = FOR ORDER STATUS
+                if((c.getOrder().getOrder_Status_Id() < 5)) {%>  
+            <input class="btn" type = "submit" value = "Place Order"> 
+            <% } else {%>
+            <input class="btn" type = "submit" value = "Place Order" disabled="disabled">
+            <%} %>
+             <%} else { %>
+             <input class="btn" type = "submit" value = "Place Order" disabled="disabled">
+                 <%} %>
         </div>
+            </form>
+        
+        <%// } else {%>
+        <h2 style="color: white;">You have no items in your Cart</h2>
+        <% //} %>
     </body>
     
     <script>

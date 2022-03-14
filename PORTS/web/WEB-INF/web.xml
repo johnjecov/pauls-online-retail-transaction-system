@@ -50,6 +50,14 @@
         <servlet-name>logoutServlet</servlet-name>
         <servlet-class>ports.controllers.logoutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>checkoutServlet</servlet-name>
+        <servlet-class>ports.controllers.checkoutServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>removeItemFromCartServlet</servlet-name>
+        <servlet-class>ports.controllers.removeItemFromCartServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>loginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -208,7 +216,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>adminUpdateServlet</servlet-name>
-        <servlet-class>ports.controllers.adminUpdateServlet</servlet-class>
+        <servlet-class>ports.controllers.adminUpxdateServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>adminUpdateServlet</servlet-name>
@@ -217,6 +225,14 @@
     <servlet-mapping>
         <servlet-name>logoutServlet</servlet-name>
         <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>checkoutServlet</servlet-name>
+        <url-pattern>/checkout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>removeItemFromCartServlet</servlet-name>
+        <url-pattern>/removeItemFromCart</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

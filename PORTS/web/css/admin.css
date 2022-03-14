@@ -10,15 +10,18 @@ GAWAN NG MAX WIDTH MGA PICTURES
     color: #fff;
     margin: 0;
     padding: 0;
+    text-transform: capitalize;
 }
 
 html {
     font-size: 14px;
 }
+
 html,body { 
     height:100%; 
     background-color: #1e1f20;
 }
+
 .contentHolder {
     height: 100%;
     display: flex;
@@ -137,15 +140,12 @@ html,body {
     flex-direction: row;
     gap: 1rem;
     min-height: 2.5rem;
-    
 }
 
 .pizzaOrTopping li, button{
     text-align: center;
     font-size: 2rem;
     height: 100%;
-    background: #CD212A;
-    color: white;
     border-radius: 10px;
     min-width: 150px;
     /*box-shadow: inset 15px 15px 30px #212121,
@@ -154,7 +154,7 @@ html,body {
 
 .pizzaOrTopping li:hover {
     background: white;
-    color: #CD212A;
+    color: white;
     cursor: pointer;
 }
 
@@ -167,7 +167,6 @@ html,body {
     gap: 1rem;
     padding: 1rem;
     border-radius: 10px;
-    font-family: 'Poppins', sans-serif;
 }
 
 .pizzaOrToppingContent {
@@ -179,6 +178,7 @@ html,body {
     overflow-x: scroll;
     gap: 2.5rem;
     align-items: center;
+    font-family: 'Poppins', sans-serif;
 }
 
 .pizzaOrToppingContent::-webkit-scrollbar {
@@ -197,7 +197,6 @@ html,body {
 }
 
 .pizzaOrToppingForm {
-    color: black;
     display: flex;
     flex-direction: column;
     min-width: 25rem;
@@ -221,13 +220,14 @@ html,body {
     height: 300px;
     width: auto;
 }
+
 input, input[type = "button"] {
     padding: 0.5rem;
     background: none;
     font-size: 1rem;
     width: auto;
     border-radius: 10px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
     text-align: center;
     border: none;
 }

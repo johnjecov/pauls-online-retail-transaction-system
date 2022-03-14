@@ -26,8 +26,6 @@ html,body {
     width: 15%;
     border-top-right-radius:5%;
     border-bottom-right-radius:5%;
- 
-    
 }
 
 .logo {
@@ -102,17 +100,15 @@ html,body {
     width: 20%;
 }
 
-
-
 .helloAdmin {
     font-size: 2rem;
     text-align: center;
-    background-color: #2e2e2e;
+    background-color: #CD212A;
     min-width: 15rem;
     padding: 1rem;
     border-radius: 10px;
-    box-shadow: inset 15px 15px 30px #212121,
-                inset -15px -15px 30px #3b3b3b;
+    /*box-shadow: inset 15px 15px 30px #212121,
+                inset -15px -15px 30px #3b3b3b;*/
 }
 
 .pageContent {

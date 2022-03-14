@@ -7,6 +7,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +23,7 @@ import java.util.logging.Logger;
 import javax.servlet.ServletContext;
 import ports.models.*;
 
-public class addToCartServlet extends HttpServlet {
+public class checkoutServlet extends HttpServlet {
 
     Connection conn;
 
@@ -32,51 +36,37 @@ public class addToCartServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException 
     {
-        String quantity = (request.getParameter("quan"));
-        String pizza = request.getParameter("pizza");
-        String[] toppingsValues = request.getParameterValues("toppings");
+        String payment = (request.getParameter("payment"));
+        String delivery = (request.getParameter("deliveryDate"));
+        String address = (request.getParameter("address"));
+        
+        String pattern = "MM/dd/yyyy";
+        String pattern2 = "yyyy-MM-dd"; 
+        DateTimeFormatter formatDate = DateTimeFormatter.ofPattern(pattern);
+        LocalDateTime now = LocalDateTime.now();
+        String checkoutDate = formatDate.format(now);
        
+        Date date=null;
+        try {
+            date = new SimpleDateFormat(pattern2).parse(delivery);
+           
+        } catch (ParseException ex) {
+            Logger.getLogger(checkoutServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String deliveryDate = new SimpleDateFormat(pattern).format(date);
+        
         ServletContext app = getServletContext();
     
         HttpSession session =request.getSession();;
                     
                     Customer c = (Customer) session.getAttribute("customer");
-           
-                    PortsDatabase port = (PortsDatabase)app.getAttribute("dbConnection");
-                    ArrayList<CartItemToppings>  orderedToppings = new ArrayList<>();
-                    
-                    ArrayList<Product> menu = port.getProducts();
-                    Product pizzai = menu.get(Integer.parseInt(pizza)-1);
-                    
-               
                   
-                    for(int b=0; b < port.getToppings().size(); b++)
-                    {
-                          System.out.print(Arrays.toString(toppingsValues));
-                          
-                          System.out.print((toppingsValues[b]));
-                        if( Integer.parseInt(toppingsValues[b]) > 0)
-                        {
-                            orderedToppings.add( new CartItemToppings(b+1,(Topping)(port.getToppings().get(b)),Integer.parseInt(toppingsValues[b]) ));
-                       }
-                    }
+                    PortsDatabase port = (PortsDatabase)app.getAttribute("dbConnection");
                     
-                    
-                    CartItem productOrder = new CartItem(c.getCart().getItems().size()+1, c.getCart().getCart_Id(), pizzai, orderedToppings, Integer.parseInt(quantity));
-                    System.out.print("hellooooo"+productOrder.getProduct());
-                
-                    //Product testProduct = new Product(1, "Pepperoni", 15, "Pizza", "Delicious", "/test.jpg", "available", 149);
-                    //Topping testTopping = new Topping(1, "Cheese", 40, "Cheesiest Cheese", "/testTopping.jpg", "available", 15);
-                    //CartItemToppings(int cartItemToppingsId, Topping topping, int quantity)
-                   
-                    //CartItem(int cartItemId, int cartId, Product pizza, ArrayList<CartItemToppings> toppings, int quantity)
-                    
-                    //CartItem ci = new CartItem(1,1, testProduct,noToppings,2);
-                    //Cart(int cart_id, int customer_id, double cart_total, ArrayList<CartItem> items);
-                    
-                    //addItemToCart(int cart_id, CartItem item)
-                    c.getCart().addToCart(port, productOrder);
-                    response.sendRedirect("cart.jsp");
+                   port.checkOutCart(c.getCart(), checkoutDate, deliveryDate, Integer.parseInt(address));
+                   //checkOutCart(Cart orderCart, String checkoutDate, String deliveryDate, int address_id)
+                   port.clearCartForCheckout(c.getCart().getCart_Id());
+                 response.sendRedirect("index.jsp");
                    
                     
     }

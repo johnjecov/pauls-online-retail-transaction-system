@@ -75,7 +75,7 @@
                         %>
                         <br>
                         <form  method="POST" action="removeItemFromCart" autocomplete="off">
-                        <button name ="remove" value="<%= ((CartItem)(items.get(a))).getCartItemId() %>" class="" style="cursor: pointer;">Remove</button>
+                        <button style = "background: transparent; color: #CD212A; cursor: pointer;"name ="remove" value="<%= ((CartItem)(items.get(a))).getCartItemId() %>" class="" style="cursor: pointer;">Remove</button>
                        </form>
                     </div>
                 </div>  
@@ -152,7 +152,7 @@
             </form>
         
         <% } else {%>
-        <h2 style="color: white;">You have no items in your Cart</h2>
+        <h2 style="position: fixed; top:50%; width: 100%; text-align: center; font-size: 50px; color: white;">You have No Items in your Cart</h2>
         <% } %>
     </body>
     

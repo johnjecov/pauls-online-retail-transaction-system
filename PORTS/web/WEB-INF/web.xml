@@ -234,6 +234,16 @@
         <servlet-name>removeItemFromCartServlet</servlet-name>
         <url-pattern>/removeItemFromCart</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>orderReceivedServlet</servlet-name>
+        <servlet-class>ports.controllers.orderReceivedServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>orderReceivedServlet</servlet-name>
+        <url-pattern>/orderReceived</url-pattern>
+    </servlet-mapping>
+    
     <session-config>
         <session-timeout>
             900

@@ -1735,7 +1735,7 @@ textarea#feedbacktext {
     padding: 15px;
 }
 
-.closeModal {
+.yesModal, .noModal {
     font-size: 1.5vw;
     background-color: #008C45;
     color: white;
@@ -1743,7 +1743,7 @@ textarea#feedbacktext {
     padding: 1%;
 }
 
-.closeModal:hover {
+.yesModal:hover, .noModal:hover {
     background-color: #CD212A;
     color: black;
 }

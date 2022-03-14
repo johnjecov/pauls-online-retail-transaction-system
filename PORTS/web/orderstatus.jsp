@@ -79,6 +79,7 @@
                     ArrayList orderStatus = ports.getOrderStats();
                     Order test = orderList.get(0);
                     Customer c = (Customer) session.getAttribute("customer");
+                    
 
                     String s = String.format("<div class = 'statusitem'>\n"
                             + "<div class='item'>Customer Name:<br>%s %s</div>\n"
@@ -101,7 +102,9 @@
                             ArrayList<String> status = ports.getOrderStats();
                             String output = status.get(test.getOrder_Status_Id());
                             boolean feedback = false;
-
+                            boolean orderEmpty = c.getOrder().isEmpty();
+                            boolean order5 = c.getOrder().getOrder_Status_Id() == 5;
+                            
                             if (c.getOrder().getOrder_Status_Id() == 1) {
                                 //output = "No active orders";
                                 String d = String.format("<img src='image/checkmark.png' alt='mark1' class='statusimg'>\n"
@@ -116,12 +119,12 @@
                                 String d = String.format("<img src='image/checkmark.png' alt='mark3' class='statusimg'>\n"
                                         + "Order is now being delivered.<br>Good pizza will be at your doorstep!\n");
                                 out.println(d);
+                                feedback = true;
                             } else if (c.getOrder().getOrder_Status_Id() == 4) {
                                 String d = String.format("<img src='image/checkmark.png' alt='mark4' class='statusimg'>\n"
                                         + "Order Completed.<br>Thank you for choosing Paul's Pizzeria!\n");
                                 out.println(d);
-                                feedback = true;
-                            } else if (c.getOrder().getOrder_Status_Id() == 5) {
+                            } else if (c.getOrder().isEmpty() || c.getOrder().getOrder_Status_Id() == 5) {
                                 String d = String.format("<img src='image/checkmark.png' alt='mark5' class='statusimg'>\n"
                                         + "No order at the moment.<br>Fill that cart with some pizza!\n");
                                 out.println(d);
@@ -132,33 +135,45 @@
                 </div>
             </div>
                     <%
-                        if (c.getOrder().getOrder_Status_Id() == 5) {
+                        if (c.getOrder().getOrder_Status_Id() == 4) {
                             String f = String.format("<div class='statuscontent2'>\n"
                                     + "<div class='statusitem3'>\n"
-                                    + "<p>Have you received your order? Press the button below!</p>\n"
+                                    + "<p>Have you received your order? Press the button below to give a feedback!</p>\n"
                                     + "<a href='feedback.jsp' class='feedbackbutton'>Order Received</a>\n"
                                     + "</div>\n"
                                     + "</div>\n"
                             );
                             out.println(f);
                         }
+                        
+                        
                     %>
             <div class="bg-modal">
-                <div class="modal-contents">
-                    <p class="modal-text">Order has been delivered.<br>Check the button below to verify and give feedback!</p>
-                    <a class="closeModal">Close</a>
-                </div>
+                <form class="modal-contents" action = "orderReceived" method = "POST">
+                    <p class="modal-text">Has the order arrived?<br>Check the button below to verify and give feedback!</p>
+                    <button type="submit" class="yesModal">Yes</button>
+                    <button type="button" class="noModal">No</button>
+                </form>
             </div>
             <script>
                 var jsfeedback = <%=feedback%>
+                var isEmpty = <%=orderEmpty%>
+                var is5 = <%=order5%>
                 console.log(jsfeedback);
+                console.log(isEmpty);
+                console.log(is5);
+                
+                if (isEmpty || is5){
+                    document.querySelector('.statusitem').style.display = "none";
+                }
+                
                 if (jsfeedback) {
                     document.querySelector('.statuscontent2').style.display = "flex";
                     document.querySelector('.bg-modal').style.display = "flex";
 
                 }
 
-                document.querySelector('.closeModal').addEventListener("click", function () {
+                document.querySelector('.yesModal' && '.noModal').addEventListener("click", function () {
                     document.querySelector('.bg-modal').style.display = "none";
                 });
             </script>

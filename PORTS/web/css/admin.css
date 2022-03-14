@@ -6,7 +6,7 @@ GAWAN NG MAX WIDTH MGA PICTURES
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Open+Sans:wght@300&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
 *{
-    font-family: 'Satisfy', cursive;
+    font-family: 'Poppins', sans-serif;
     color: #fff;
     margin: 0;
     padding: 0;
@@ -51,21 +51,21 @@ html,body {
     padding: 0;
     overflow: hidden;
     background-color: #2e2e2e;
-    font-size: 1.5vw;
+    font-size: 1.2vw;
 }
 
 .options {
     float: bottom;
     background-color: #2e2e2e;
-    text-align: left;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-bottom: 15px;
+    
 }
 
 .options a {
     margin-bottom: 4%;
+    margin-left: 20%;
     display: block;
-    padding: 1rem;
+    padding: 4%;
     color: white;
     text-decoration: none;
     background-color: #2e2e2e;
@@ -74,7 +74,8 @@ html,body {
 .options a:hover {
     background-color: #fff;
     color: #000;
-    border-radius: 10px;
+    border-radius: 5%;
+    margin-right: 20%;
 }
 
 .logout {
@@ -94,7 +95,7 @@ html,body {
     display: block;
     color: white;
     text-decoration: none;
-    background-color: #2e2e2e
+    background-color: #2e2e2e;
 }
 
 .logout:hover {
@@ -144,7 +145,7 @@ html,body {
 
 .pizzaOrTopping li, button{
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.5rem;
     height: 100%;
     border-radius: 10px;
     min-width: 150px;
@@ -153,7 +154,7 @@ html,body {
 }
 
 .pizzaOrTopping li:hover {
-    background: white;
+    background: #cd212a;
     color: white;
     cursor: pointer;
 }
@@ -247,9 +248,13 @@ input[type = "button"]:hover {
 .editProductsButton {
     max-width: 5rem;
     max-height:3rem;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    background: #CD212A;
+    color: white;
 }
 
 .editProductsButton:hover {
+    background: white;
+    color: #CD212A;
     cursor: pointer;
 }

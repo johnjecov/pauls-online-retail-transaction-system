@@ -89,18 +89,18 @@
                     <li class="options"><a href="admin.jsp">Menu</a></li>
                     <li class="options"><a href="admin.jsp">Analytics</a></li>
                 </ul>
-                <a class = "logout" href="./logout">Logout</a>
+                <a style="text-decoration:none;" class = "logout" href="./logout">Logout</a>
             </div>
             <div class = "pageContent">
                  <div class="adminGreetings">
-                    <p class='helloAdmin'>Hello, admin</p>
+                    <p style="font-family: 'Satisfy', cursive;" class='helloAdmin'>Hello, admin</p>
                 </div>          
                 <div class="adminContent">
                     <ul class = "pizzaOrTopping">
-                        <li style = "background: black;" id = 'togglePizza' onclick= togglePizzaOrTopping("formPizza")>
+                        <li id = 'togglePizza' onclick= togglePizzaOrTopping("formPizza")>
                             Pizzas
                         </li>
-                        <li style = "background: #2e2e2e;"id = 'toggleTopping' onclick= togglePizzaOrTopping("formTopping")>
+                        <li id = 'toggleTopping' onclick= togglePizzaOrTopping("formTopping")>
                             Toppings
                         </li>
                     </ul>
@@ -187,7 +187,7 @@
                 var hideColor = document.getElementById('toggleTopping');
                 var editProductId = document.getElementById('editProductId');
                 editProductId.value = 'pizza';
-                productColor.style.background = 'black';
+                productColor.style.background = '#cd212a';
                 hideColor.style.background = '#2e2e2e';
                 for (var i=0;i<productClass.length;i++){
                   productClass[i].style.display = 'flex';
@@ -204,7 +204,7 @@
                 var productColor = document.getElementById('toggleTopping');
                 var editProductId = document.getElementById('editProductId');
                 editProductId.value = 'topping';
-                productColor.style.background = 'black';
+                productColor.style.background = '#cd212a';
                 hideColor.style.background = '#2e2e2e';              
             
             

@@ -19,7 +19,7 @@
                     <li class="options"><a href="admin.jsp">Menu</a></li>
                     <li class="options"><a href="admin.jsp">Analytics</a></li>
                 </ul>
-                <a class = "logout" href="./logout">Logout</a>
+                <a style="text-decoration:none;" class = "logout" href="./logout">Logout</a>
             </div>
             
             <% 
@@ -50,7 +50,7 @@
             </div>
             <div class="pageContent">
                 <div class="adminGreetings">
-                    <p class='helloAdmin'>Hello, admin</p>
+                    <p style="font-family: 'Satisfy', cursive;" class='helloAdmin'>Hello, admin!</p>
                 </div>
                 <div class="adminContent">
                     <div class='orderHeading'>

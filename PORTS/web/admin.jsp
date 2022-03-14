@@ -21,11 +21,11 @@
                     <li class="options"><a href="admin.jsp">Menu</a></li>
                     <li class="options"><a href="admin.jsp">Analytics</a></li>                    
                 </ul>
-                <a class = "logout" href="./logout">Logout</a>
+                <a style="text-decoration:none;" class = "logout" href="./logout">Logout</a>
             </div>
             <div class = "pageContent">
                  <div class="adminGreetings">
-                    <p class='helloAdmin'>Hello, admin!</p>
+                    <p style="font-family: 'Satisfy', cursive;" class='helloAdmin'>Hello, admin!</p>
                 </div>          
                 <div class="adminContent">
                     <ul class = "pizzaOrTopping">
@@ -102,7 +102,7 @@
                 var productColor = document.getElementById('togglePizza');
                 var hideColor = document.getElementById('toggleTopping');
                 
-                productColor.style.background = 'black';
+                productColor.style.background = '#cd212a';
                 hideColor.style.background = '#2e2e2e';
                 for (var i=0;i<productClass.length;i++){
                   productClass[i].style.display = 'flex';
@@ -118,7 +118,7 @@
                 var hideColor = document.getElementById('togglePizza');
                 var productColor = document.getElementById('toggleTopping');
                 
-                productColor.style.background = 'black';
+                productColor.style.background = '#cd212a';
                 hideColor.style.background = '#2e2e2e';              
             
             

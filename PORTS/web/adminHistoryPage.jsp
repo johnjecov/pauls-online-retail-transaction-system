@@ -26,30 +26,30 @@ change orders from "----------" to backend
             <div class="sidebar">
                 <img class="logo" src="image/Paul's Pizzeria Logo_1.jpg" alt="Paul's Pizzeria Logo">
                 <ul class='adminOptions'>
-                    <li class="options"><a href="adminHistoryPage.jsp">Sales</a></li>
+                    <li class="options" ><a href="adminHistoryPage.jsp">Sales</a></li>
                     <li class="options"><a href="adminOrderList.jsp">Order List</a></li>
                     <li class="options"><a href="admin.jsp">Menu</a></li>
                     <li class="options"><a href="admin.jsp">Analytics</a></li>
                 </ul>
-                <a class = "logout" href="./logout">Logout</a>
+                <a style="text-decoration:none;" class = "logout" href="./logout">Logout</a>
             </div>
             <div class="pageContent">
                 <div class="adminGreetings">
-                    <p class='helloAdmin'>Hello, admin</p>
+                    <p  style="font-family: 'Satisfy', cursive;" class='helloAdmin'>Hello, admin!</p>
                 </div>
                 <div class="adminContent">
                     <form class="arrangeOptions" id = "adminSortForm" action="adminHistorySort" method = "POST">
-                        <label for="arrange">Arrange by: </label>
+                        <label for="arrange">Arranged by: </label>
                         <select name="arrange" class="arrange" id="arrange" onchange="this.form.submit()">
-                            <option value="order_id"></option>
-                            <option value="order_id">Order ID</option>
-                            <option value="order_delivery_date">Date</option>
-                            <option value="order_total">Price</option>
+                            <option style="background: white; color: red;" value="order_id"></option>
+                            <option style="background: white; color: red;"value="order_id">Order ID</option>
+                            <option style="background: white; color: red;" value="order_delivery_date" >Date</option>
+                            <option style="background: white; color: red;" value="order_total">Price</option>
                         </select>
                     </form>
 
                     <div class='orderProperties'>
-                        <div class="property">Order ID</div>
+                        <div  class="property">Order ID</div>
                         <div class="property">Date</div>
                         <div class="property">Product ID</div>
                         <div class="property">Product Name</div>

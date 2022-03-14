@@ -12,10 +12,11 @@ and open the template in the editor.
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
 
 *{
-    font-family: 'Satisfy', cursive;
+    font-family: 'Poppins', sans-serif;
     color: #fff;
     margin: 0;
     padding: 0;
+    text-transform: capitalize;
 }
 
 html,body {
@@ -57,12 +58,14 @@ html,body {
     padding: 0;
     overflow: hidden;
     background-color: #2e2e2e;
-    font-size: 1.5vw;
+    font-size: 1.2vw;
+    
 }
 
 .options {
     float: bottom;
-    background-color: #2e2e2e
+    background-color: #2e2e2e;
+    padding-bottom: 15px;
 }
 
 .options a {
@@ -109,17 +112,20 @@ html,body {
 }
 
 .adminGreetings {
-    width: 30%;
+    width: 20%;
 }
 
 .helloAdmin {
-    font-size: 3vw;
+    font-size: 2rem;
     text-align: center;
-    background-color: #2e2e2e;
-    padding: 1vw;
+    background-color: #CD212A;
+    padding: 1rem;
+    min-width: 15rem;
     border-radius: 10px;
-    box-shadow: inset 15px 15px 30px #212121,
-        inset -15px -15px 30px #3b3b3b;
+    background: #cd212a;
+    color: white;
+    /*box-shadow: inset 15px 15px 30px #212121,
+        inset -15px -15px 30px #3b3b3b; */
 }
 
 .pageContent {
@@ -138,9 +144,8 @@ html,body {
     flex-direction: column;
     gap: 1vw;
     padding: 1vw;
-    
+    font-family: 'Poppins', sans-serif;
     border-radius: 5px;
-    font-family: "roboto";
 }
 
 .arrangeOptions {
@@ -154,24 +159,25 @@ html,body {
 
 label {
     background-color: #2e2e2e;
-    font-size: 1.5vw;
+    font-size: 1.25vw;
     margin-left: 2%;
 }
 
 .arrange {
-    background-color: #000;
-    color: #fff;
+    background-color: white;
+    color: red;
     font-size: 1.5vw;
 }
-
 
 .orderProperties {
     display: flex;
     width: 100%;
     padding: 1%;
     margin: -1% 0 -2% 0;
-    font-size: 1.5vw;
+    font-size: 1.25rem;
     align-items: center;
+    font-family: 'Poppins', sans-serif;
+
 }
 
 .property {
@@ -315,12 +321,12 @@ label {
 
     background-color: #555555;
 
-    margin: 1.2vw 2vw 8vw 5px;
+    margin: 1vw 2vw 10vw 5px;
     padding: 1vw;
     transition: 0.4s;
 
     color: #FFF;
-    font-size: 1.2vw;
+    font-size: 1vw;
     vertical-align: center;
     text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);

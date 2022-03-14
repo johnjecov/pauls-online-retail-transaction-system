@@ -44,7 +44,7 @@
           
           ArrayList items = (theCart.getItems());
           add = port.getCustomerAddresses(c.getCustomer_Id()); 
-     //   if(items.size()!=0) { %>
+        if(items.size()!=0) { %>
         <h1 style="text-align:center">Order Summary</h1>
         
         <table class="table">
@@ -151,9 +151,9 @@
         </div>
             </form>
         
-        <%// } else {%>
+        <% } else {%>
         <h2 style="color: white;">You have no items in your Cart</h2>
-        <% //} %>
+        <% } %>
     </body>
     
     <script>

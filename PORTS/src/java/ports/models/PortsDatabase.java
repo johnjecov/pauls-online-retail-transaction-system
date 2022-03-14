@@ -1078,6 +1078,7 @@ public class PortsDatabase {
             ps.setInt(1, cart_id);
      
             ps.executeUpdate();
+            setCartTotal(cart_id, 0);
             System.out.println("Cleared the Cart of: "+ cart_id);
                 
         }

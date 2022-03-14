@@ -3,7 +3,7 @@
     Created on : 05 17, 21, 1:36:23 AM
     Author     : manuellouisecruz
 --%>
-
+<%@page import="java.util.*, ports.models.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -42,6 +42,7 @@
     <body>
     <!-- header section starts -->
     <%@include file="header_external.jsp"%>
+    <%@include file="customerLogout.jsp"%>
      <%  
             String user = "";
             Customer c=null;

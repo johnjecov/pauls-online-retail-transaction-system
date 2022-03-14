@@ -3,7 +3,7 @@
     Created on : 02 24, 22, 5:06:31 PM
     Author     : Paul Ace Canoza
 --%>
-
+<%@page import="java.util.*, ports.models.*"%>
 <%@page import="java.time.LocalDateTime"%>
 <%@page import="java.time.format.DateTimeFormatter"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -12,7 +12,16 @@
     <%@  page import = "ports.models.*" %> 
     <%@  page import = "java.util.*" %>  
     <%@  page import = "javax.servlet.*" %>  
-  
+    <%
+        response.setHeader("Pragma","no-cache");
+        response.setHeader("Cache-Control","no-store");
+        response.setHeader("Expires","-1");
+                    
+        if(session.getAttribute("customer") == null)
+        {
+            response.sendRedirect("index.jsp");
+        }
+    %>
      
     <head>
         <meta charset="UTF-8">
@@ -33,17 +42,28 @@
     <body>
         <div class="container">
         <!-- header section starts -->
+        
         <%@include file="header_external.jsp"%>
         <!-- header section ends -->
-        <%ServletContext app = getServletContext();
+        <%       
+        ServletContext app = getServletContext();
          PortsDatabase port = (PortsDatabase)app.getAttribute("dbConnection");
          ArrayList<Address> add = new ArrayList<Address>();
           
-         Customer c = (Customer) session.getAttribute("customer");
-          Cart theCart = (Cart)(port.getCartData(c.getCustomer_Id()));
+         Customer c = null;
+         Cart theCart = null;
           
-          ArrayList items = (theCart.getItems());
-          add = port.getCustomerAddresses(c.getCustomer_Id()); 
+         ArrayList items = null;
+          
+          if(session.getAttribute("customer")!= null)
+            {
+                c = (Customer) session.getAttribute("customer");
+                theCart = (Cart)(port.getCartData(c.getCustomer_Id()));
+                add = port.getCustomerAddresses(c.getCustomer_Id());
+                items = (theCart.getItems());
+                
+            }
+          
         if(items.size()!=0) { %>
         <h1 style="text-align:center">Order Summary</h1>
         
@@ -53,7 +73,7 @@
             <th>Pizza</th>
             <th>Quantity</th>
             <th>Toppings</th>
-            <th>Total</th>
+            <th>Subtotal</th>
      	</tr>
         </thead>
         <tbody>
@@ -82,7 +102,7 @@
             </td>
             <td data-label="Quantity"><%= ((CartItem)(items.get(a))).getQuantity() %> </td>
             <td class="toppingW" data-label="Toppings"><%= ((CartItem)(items.get(a)))%> </td>
-            <td data-label="Total Price"><%= ((CartItem)(items.get(a))).getItemTotal()  %> </td>
+            <td data-label="Total Price">₱<%= ((CartItem)(items.get(a))).getItemTotal()  %> </td>
         </tr>
         <% }
         %>
@@ -134,7 +154,7 @@
             </div>
             
             <div class="grandtotalbx">
-                <p class ="grandtotal"><%= port.getCartData(c.getCustomer_Id()).getCart_Total()%></p>
+                <p class ="grandtotal">Total: ₱<%= port.getCartData(c.getCustomer_Id()).getCart_Total()%></p>
             </div>
         </div>
         

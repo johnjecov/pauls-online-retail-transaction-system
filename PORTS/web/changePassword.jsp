@@ -3,7 +3,7 @@
     Created on : 02 10, 22, 6:11:38 PM
     Author     : Lucas
 --%>
-
+<%@page import="java.util.*, ports.models.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -23,6 +23,7 @@
     <body>
     <!-- header section starts -->
     <%@include file="header_external.jsp"%>
+    <%@include file="customerLogout.jsp"%>
      <!-- header section ends -->
      
     <!-- Login/Register section starts  -->

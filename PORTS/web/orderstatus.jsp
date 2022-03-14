@@ -42,7 +42,7 @@
                 }
             %>
 --%>
-
+<%@page import="java.util.*, ports.models.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -62,8 +62,10 @@
     </head>
 
     <body>
+        
         <!-- header section starts -->
         <%@include file="header_external.jsp"%>
+        <%@include file="customerLogout.jsp"%>
         <!-- header section ends --> 
         <section class="status">
             <div class="statusheader">
@@ -79,16 +81,17 @@
                     ArrayList orderStatus = ports.getOrderStats();
                     Order test = orderList.get(0);
                     Customer c = (Customer) session.getAttribute("customer");
+                    int orderid = c.getOrder().getOrder_Id();
                     
 
                     String s = String.format("<div class = 'statusitem'>\n"
                             + "<div class='item'>Customer Name:<br>%s %s</div>\n"
-                            + "<div class='item'>Total:<br>%s</div>\n"
+                            + "<div class='item'>Total:₱<br>%s</div>\n"
                             + "<div class='item'>Address:<br>%s</div>\n"
                             + "<div class='item'>Payment Type:<br>%s</div>\n"
                             + "<div class='item'>Purchases:<br>%s</div>\n"
                             + "</div>",
-                            c.getName(), c.getSurname(), c.getOrder().getOrder_Total(),
+                            c.getName(), c.getSurname(), ports.getOrderData(c.getCustomer_Id()).getOrder_Total(),
                             c.getOrder().getAddress(), c.getOrder().getPayment_Method(),
                             c.getOrder().getOrderString());
                     //String.valueOf(test.getCustomer_Id()), String.valueOf(test.getOrder_Id()),

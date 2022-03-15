@@ -160,7 +160,7 @@
         
         <div class="checkout">
             <%if(items.size()!=0) {  //CORRECT CODE IS NOT (FOR DEMO PURPOSED CHANGE EXCLUDE NOT(!) = FOR ORDER STATUS
-                if((c.getOrder().getOrder_Status_Id() < 5)) {%>  
+                if((c.getOrder(port).getOrder_Status_Id() < 5)) {%>  
             <input class="btn" type = "submit" value = "Place Order"> 
             <% } else {%>
             <input class="btn" type = "submit" value = "Place Order" disabled="disabled">

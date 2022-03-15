@@ -44,7 +44,7 @@ public class orderReceivedServlet extends HttpServlet {
         ServletContext sc = request.getServletContext();
         PortsDatabase ports = (PortsDatabase) sc.getAttribute("dbConnection");        
         Customer c = (Customer) session.getAttribute("customer"); 
-        int order_id = c.getOrder().getOrder_Id();
+        int order_id = c.getOrder(ports).getOrder_Id();
         int employee_id = 1;
 
         ports.updateOrderStatus(order_id, employee_id);

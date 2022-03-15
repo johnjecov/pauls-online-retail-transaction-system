@@ -81,7 +81,8 @@
                     ArrayList orderStatus = ports.getOrderStats();
                     Order test = orderList.get(0);
                     Customer c = (Customer) session.getAttribute("customer");
-                    int orderid = c.getOrder().getOrder_Id();
+                    Order customerOrder = c.getOrder(ports);
+                    int orderid = customerOrder.getOrder_Id();
                     
 
                     String s = String.format("<div class = 'statusitem'>\n"
@@ -92,8 +93,8 @@
                             + "<div class='item'>Purchases:<br>%s</div>\n"
                             + "</div>",
                             c.getName(), c.getSurname(), ports.getOrderData(c.getCustomer_Id()).getOrder_Total(),
-                            c.getOrder().getAddress(), c.getOrder().getPayment_Method(),
-                            c.getOrder().getOrderString());
+                            customerOrder.getAddress(), customerOrder.getPayment_Method(),
+                            customerOrder.getOrderString());
                     //String.valueOf(test.getCustomer_Id()), String.valueOf(test.getOrder_Id()),
                     //test.getAddress(), test.getPayment_Method());
                     out.println(s);
@@ -105,29 +106,29 @@
                             ArrayList<String> status = ports.getOrderStats();
                             String output = status.get(test.getOrder_Status_Id());
                             boolean feedback = false;
-                            boolean orderEmpty = c.getOrder().isEmpty();
-                            boolean order5 = c.getOrder().getOrder_Status_Id() == 5;
+                            boolean orderEmpty = customerOrder.isEmpty();
+                            boolean order5 = customerOrder.getOrder_Status_Id() == 5;
                             
-                            if (c.getOrder().getOrder_Status_Id() == 1) {
+                            if (customerOrder.getOrder_Status_Id() == 1) {
                                 //output = "No active orders";
                                 String d = String.format("<img src='image/checkmark.png' alt='mark1' class='statusimg'>\n"
                                         + "Order is still being processed.<br>Please be patient.\n");
                                 out.println(d);
 
-                            } else if (c.getOrder().getOrder_Status_Id() == 2) {
+                            } else if (customerOrder.getOrder_Status_Id() == 2) {
                                 String d = String.format("<img src='image/checkmark.png' alt='mark2' class='statusimg'>\n"
                                         + "Order has been recieved.<br>Please wait as we prepare your order.\n");
                                 out.println(d);
-                            } else if (c.getOrder().getOrder_Status_Id() == 3) {
+                            } else if (customerOrder.getOrder_Status_Id() == 3) {
                                 String d = String.format("<img src='image/checkmark.png' alt='mark3' class='statusimg'>\n"
                                         + "Order is now being delivered.<br>Good pizza will be at your doorstep!\n");
                                 out.println(d);
                                 feedback = true;
-                            } else if (c.getOrder().getOrder_Status_Id() == 4) {
+                            } else if (customerOrder.getOrder_Status_Id() == 4) {
                                 String d = String.format("<img src='image/checkmark.png' alt='mark4' class='statusimg'>\n"
                                         + "Order Completed.<br>Thank you for choosing Paul's Pizzeria!\n");
                                 out.println(d);
-                            } else if (c.getOrder().isEmpty() || c.getOrder().getOrder_Status_Id() == 5) {
+                            } else if (customerOrder.isEmpty() || customerOrder.getOrder_Status_Id() == 5) {
                                 String d = String.format("<img src='image/checkmark.png' alt='mark5' class='statusimg'>\n"
                                         + "No order at the moment.<br>Fill that cart with some pizza!\n");
                                 out.println(d);
@@ -138,7 +139,7 @@
                 </div>
             </div>
                     <%
-                        if (c.getOrder().getOrder_Status_Id() == 4) {
+                        if (customerOrder.getOrder_Status_Id() == 4) {
                             String f = String.format("<div class='statuscontent2'>\n"
                                     + "<div class='statusitem3'>\n"
                                     + "<p>Have you received your order? Press the button below to give a feedback!</p>\n"

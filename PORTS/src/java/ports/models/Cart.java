@@ -66,6 +66,7 @@ public class Cart {
             CartItem item = items.get(i);
             if (item.getCartId() == cart_purchase_id){
                 items.remove(i);
+                System.out.println("naremove");
                 break;
             }
         }

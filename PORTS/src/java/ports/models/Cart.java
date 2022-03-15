@@ -64,6 +64,7 @@ public class Cart {
     public void removeFromCart(PortsDatabase ports, int cart_purchase_id){
         for(int i = 0; i < items.size(); i++){
             CartItem item = items.get(i);
+            System.out.println("inputID: "+cart_purchase_id+" :itemid: "+item.getCartId());
             if (item.getCartId() == cart_purchase_id){
                 items.remove(i);
                 System.out.println("naremove");

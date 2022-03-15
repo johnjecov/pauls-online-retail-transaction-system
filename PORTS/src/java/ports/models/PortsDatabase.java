@@ -1323,14 +1323,14 @@ public class PortsDatabase {
         
         String query1 = "INSERT INTO cart_purchase (cart_purchase_id, cart_id, product_id, product_quantity) VALUES(?,?,?,?)";
         String query2 = "INSERT INTO cart_purchase_toppings (cart_purchase_toppings_id, cart_purchase_id, toppings_id, toppings_quantity) VALUES(?,?,?,?)";
-        String query3 = "SELECT cart_purchase_id FROM cart_purchase where cart_id = ?";
+        String query3 = "SELECT cart_purchase_id FROM cart_purchase";
         String query4 = "SELECT cart_purchase_toppings_id FROM cart_purchase_toppings";
         int cart_purchase_id = 1;
         try {
             
             //compute the purchase id
             PreparedStatement ps = portsConnection.prepareStatement(query3);
-            ps.setInt(1,cart_id);
+            //ps.setInt(1,cart_id);
             ResultSet results = ps.executeQuery();
             
             while(results.next())
@@ -1349,7 +1349,7 @@ public class PortsDatabase {
             
             //update the database
             ps.executeUpdate();
-            item.setId(cart_purchase_id);
+            //item.setId(cart_purchase_id);
          
             //add the toppings for that specific item if there are any
             ArrayList toppings = item.getToppings();
@@ -1375,7 +1375,9 @@ public class PortsDatabase {
                 t.setId(cart_purchase_toppings_id);
             }
             
-
+          
+            item.setId(cart_purchase_id);
+            System.out.println("Eto yung id nung na add "+item.getCartId());
             System.out.println("added this record on cart purchase table and for the toppings");
             System.out.println("Cart of: "+ cart_id);
                 

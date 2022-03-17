@@ -216,7 +216,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>adminUpdateServlet</servlet-name>
-        <servlet-class>ports.controllers.adminUpxdateServlet</servlet-class>
+        <servlet-class>ports.controllers.adminUpdateServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>adminUpdateServlet</servlet-name>

@@ -1087,7 +1087,7 @@ public class PortsDatabase {
         }       
     }
     
-    public void checkOutCart(Cart orderCart, String checkoutDate, String deliveryDate, int address_id) {
+    public void checkOutCart(Cart orderCart, String checkoutDate, String deliveryDate, String paymentOption, int address_id) {
         System.out.println("TEST CHECKOUT OF CART");
         int order_id = -999; //to be changed later
         int cart_id = orderCart.getCart_Id();
@@ -1106,8 +1106,8 @@ public class PortsDatabase {
             psQuery1.setDouble(4, order_total);
             psQuery1.setString(5,  checkoutDate);
             psQuery1.setString(6, deliveryDate);
-            psQuery1.setString(7, "GCASH");
-            psQuery1.setString(8, "TESTDATE");
+            psQuery1.setString(7, paymentOption);
+            psQuery1.setString(8, "NO INFO");
             psQuery1.setString(9, "not paid");
             psQuery1.setInt(10, address_id);
             
@@ -1115,27 +1115,30 @@ public class PortsDatabase {
             System.out.println("Order Created");
             
             //get the latest id of orders
-            String query2 = "SELECT order_id FROM orders order by order_id desc";
+            String query2 = "SELECT order_id FROM orders where customer_id = ?";
             PreparedStatement psQuery2 = portsConnection.prepareStatement(query2);
+            psQuery2.setInt(1, orderCart.getCustomer_Id());
             ResultSet forOrderId = psQuery2.executeQuery();
+            order_id = 1;
             
-            forOrderId.next();
-            order_id = Integer.parseInt(forOrderId.getString("order_id"));
+            while(forOrderId.next()){
+                order_id = Integer.parseInt(forOrderId.getString("order_id"));
+            }
+    
             System.out.println("Andito before sa products part");
              //insert the purchases into the purchase table
             for (int i = 0; i < items.size(); i++) {
-                
                 CartItem item = items.get(i);
                 //gets the latest purchase id before inserting
                 int purchase_id = 1;
-                String query3 = "SELECT purchase_id FROM purchase order by purchase_id desc";
+                String query3 = "SELECT purchase_id FROM purchase";
                 PreparedStatement psQuery3 = portsConnection.prepareStatement(query3);
                 
                 ResultSet forPurchaseId = psQuery3.executeQuery();
                 
-                if(forPurchaseId.next())
-                    purchase_id = Integer.parseInt(forPurchaseId.getString("purchase_id")) + 1;
-                
+                while(forPurchaseId.next())
+                     purchase_id = Integer.parseInt(forPurchaseId.getString("purchase_id")) + 1;
+
                 //insert the actual record
                 String query4 = "INSERT INTO purchase (purchase_id, order_id, product_id, product_quantity) VALUES(?,?,?,?)";
                 PreparedStatement psQuery4 = portsConnection.prepareStatement(query4);
@@ -1151,12 +1154,12 @@ public class PortsDatabase {
                 for(int j = 0; j < toppings.size(); j++) {
                     
                     int purchase_toppings_id = 1;
-                    String query5 = "SELECT purchase_toppings_id FROM purchase_toppings order by purchase_toppings_id desc";
+                    String query5 = "SELECT purchase_toppings_id FROM purchase_toppings";
                     PreparedStatement psQuery5 = portsConnection.prepareStatement(query5);
 
                     ResultSet forPurchaseToppingsId = psQuery5.executeQuery();
 
-                    if(forPurchaseToppingsId.next())
+                    while(forPurchaseToppingsId.next())
                         purchase_toppings_id = Integer.parseInt(forPurchaseId.getString("purchase_toppings_id")) + 1;
 
                     //insert the actual purchase toppings record

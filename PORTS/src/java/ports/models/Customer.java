@@ -57,6 +57,11 @@ public class Customer {
     public Cart getCart() {
         return cart;
     }
+    
+    public Cart getCart(PortsDatabase ports) {
+        cart = ports.getCartData(customer_id);
+        return cart;
+    }
     public Order getOrder(PortsDatabase ports) {
         order = ports.getOrderData(customer_id);
         return order;

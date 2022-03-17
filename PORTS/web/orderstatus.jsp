@@ -140,28 +140,27 @@
                                 String d = String.format("<img src='image/checkmark.png' alt='mark4' class='statusimg'>\n"
                                         + "Order is now being delivered.<br>Thank you for choosing Paul's Pizzeria!\n");
                                 out.println(d);
+                                feedback = true;
                             }
                         %>
                     </div>
                 </div>
             </div>
                     <%
-                        if ( orderEmpty && customerOrder.getOrder_Status_Id() == 4) {
+                        if ( orderEmpty || customerOrder.getOrder_Status_Id() == 4) {
                             String f = String.format("<div class='statuscontent2'>\n"
                                     + "<div class='statusitem3'>\n"
                                     + "<p>Have you received your order? Press the button below to give a feedback!</p>\n"
-                                    + "<a href='feedback.jsp' class='feedbackbutton'>Order Received</a>\n"
+                                    + "<a onclick = 'orderReceived()' class='feedbackbutton'>Order Received</a>\n"
                                     + "</div>\n"
                                     + "</div>\n"
                             );
                             out.println(f);
-                        }
-                        
-                        
+                        }  
                     %>
             <div class="bg-modal">
                 <form class="modal-contents" action = "orderReceived" method = "POST">
-                    <p class="modal-text">Has the order arrived?<br>Check the button below to verify and give feedback!</p>
+                    <p class="modal-text">Has the order arrived?<br>Click yes to confirm and finish your order, and no if the order hasn't arrived!</p>
                     <button type="submit" class="yesModal">Yes</button>
                     <button type="button" class="noModal">No</button>
                 </form>
@@ -183,10 +182,15 @@
                     document.querySelector('.bg-modal').style.display = "flex";
 
                 }
-
+                
                 document.querySelector('.yesModal' && '.noModal').addEventListener("click", function () {
                     document.querySelector('.bg-modal').style.display = "none";
                 });
+                
+                function orderReceived() {
+                    document.querySelector('.statuscontent2').style.display = "flex";
+                    document.querySelector('.bg-modal').style.display = "flex";
+                }
             </script>
         </section>
 </html>

@@ -771,7 +771,7 @@ input[type="number"]::-webkit-inner-spin-button {
     text-align: center;
 }
 
-.feedbackbutton:link, .feedbackbutton:visited {
+.feedbackbutton, .feedbackbutton:visited {
     margin: 1rem;
     background-color: whitesmoke;/*#574b3e*/
     color: #574b3e;
@@ -783,6 +783,7 @@ input[type="number"]::-webkit-inner-spin-button {
 .feedbackbutton:hover, .feedbackbutton:active{
     background-color: #008C45;/*#27ae60*/
     color: white;
+    cursor: pointer;
 }
 /*Order Status CSS End*/
 
@@ -1717,33 +1718,37 @@ textarea#feedbacktext {
 }
 
 .modal-contents {
-    max-width: 30%;
-    min-width: 100px;
-    max-height: 40%;
+    max-width: 40%;
+    min-width: 150px;
+    max-height: 50%;
     min-height: 100px;
     background-color: white;
     text-align: center;
     padding: 10px;
-    position: relative;
+    position: flex;
     border-radius: 4px;
-    display: block;
-    
+    display: block;  
 }
 
 .modal-text {
-    font-size: 1.5vw;
+    font-size: 3rem;
     padding: 15px;
 }
 
 .yesModal, .noModal {
     font-size: 1.5vw;
-    background-color: #008C45;
+    background-color: #302c2c;
     color: white;
     cursor: pointer;
-    padding: 1%;
+    margin: 1rem;
+    padding: 0.8rem;
+}
+
+.modal-contents button {
+    min-width: 7.5rem !important;
 }
 
 .yesModal:hover, .noModal:hover {
-    background-color: #CD212A;
-    color: black;
+    background-color: #008C45;
+    color: white;
 }

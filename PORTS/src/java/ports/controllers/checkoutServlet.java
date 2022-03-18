@@ -63,7 +63,7 @@ public class checkoutServlet extends HttpServlet {
                   
                     PortsDatabase port = (PortsDatabase)app.getAttribute("dbConnection");
                     
-                   port.checkOutCart(c.getCart(), checkoutDate, deliveryDate, Integer.parseInt(address));
+                   port.checkOutCart(c.getCart(), checkoutDate, deliveryDate, "test", Integer.parseInt(address));
                    //checkOutCart(Cart orderCart, String checkoutDate, String deliveryDate, int address_id)
                    port.clearCartForCheckout(c.getCart().getCart_Id());
                  response.sendRedirect("index.jsp");

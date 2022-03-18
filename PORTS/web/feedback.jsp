@@ -77,15 +77,15 @@
             <form class="feedbackcontent" id = "feedbackForm" action="">
                 <div class="feedbackcontent" id="feedbackDiv">
                     <div class="feedbackitem">
-                        <input type="radio" id="radio1">
+                        <input type="radio" id="radio1" name="ratingF" value="1" required>
                         <label class="rating__star far fa-star" value="one" title="1 Star" for='radio1'></label>
-                        <input type="radio" id="radio2">
+                        <input type="radio" id="radio2" name="ratingF" value="2">
                         <label class="rating__star far fa-star" value="two" title="2 Stars" for='radio2'></label>
-                        <input type="radio" id="radio3">
+                        <input type="radio" id="radio3" name="ratingF" value="3">
                         <label class="rating__star far fa-star" value="three" title="3 Stars" for='radio3'></label>
-                        <input type="radio" id="radio4">
+                        <input type="radio" id="radio4" name="ratingF" value="4">
                         <label class="rating__star far fa-star" value="four" title="4 Stars" for='radio4'></label>
-                        <input type="radio" id="radio5">
+                        <input type="radio" id="radio5" name="ratingF" value="5">
                         <label class="rating__star far fa-star" value="five" title="5 Stars" for='radio5'></label>
                     </div>
                     <script>
@@ -114,7 +114,7 @@
                     </script>
                 </div>
                 <div class="feedbackcontent" id="feedbackDiv">
-                    <textarea id="feedbacktext" name="feedbacktext" placeholder="We welcome any additional comments and suggestions:"></textarea>
+                    <textarea id="feedbacktext" name="commentF" placeholder="We welcome any additional comments and suggestions:"></textarea>
                 </div>
 
                 <div class="feedbackcontent" id="feedbackDiv">

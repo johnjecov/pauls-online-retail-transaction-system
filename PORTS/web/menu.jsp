@@ -38,23 +38,50 @@
  
             for (Product x : menu) 
             {
-                String box = String.format(
-                       "<form class = 'box' id = 'menuBox' action = 'SpecificProduct' method = 'POST'>"
-                           + "<input type = 'text' value = '%d' name = 'specificProduct'style = 'display: none;'>"
-                           + "<div class = 'image'>"
-                               + "<img src = '%s' alt = 'no image'>"
-                           + "</div>"
-                           + "<div class = 'content'>"
-                               + "<div class = 'tags'>"
-                                   + "<a> <i class = 'fas fa-tag' ></i>₱%s</a>"
+                String box = "";
+                
+                if(x.getStock() != 0)
+                {
+                    box = String.format(
+                           "<form class = 'box' id = 'menuBox' action = 'SpecificProduct' method = 'POST'>"
+                               + "<input type = 'text' value = '%d' name = 'specificProduct'style = 'display: none;'>"
+                               + "<div class = 'image'>"
+                                   + "<img src = '%s' alt = 'no image'>"
                                + "</div>"
-                               + "<h3>%s</h3>"
-                               + "<p>%s</p>"
-                               + "<input type = 'submit' class = 'btn' value = 'Add to Cart'>"
-                           + "</div>"
-                       + "</form>", 
-                       x.getId(),x.getImage(), x.getPrice(), x.getName(), x.getDesc()
-                       );           
+                               + "<div class = 'content'>"
+                                   + "<div class = 'tags'>"
+                                       + "<a> <i class = 'fas fa-tag' ></i>₱%s</a>"
+                                   + "</div>"
+                                   + "<h3>%s</h3>"
+                                   + "<p>%s</p>"
+                                   + "<input type = 'submit' class = 'btn' value = 'Add to Cart'>"
+                               + "</div>"
+                           + "</form>", 
+                           x.getId(),x.getImage(), x.getPrice(), x.getName(), x.getDesc()
+                           );    
+                }
+                else 
+                {
+                    box = String.format(
+                           "<form class = 'box' id = 'menuBox' action = 'SpecificProduct' method = 'POST'>"
+                               + "<input type = 'text' value = '%d' name = 'specificProduct'style = 'display: none;'>"
+                               + "<div class = 'image'>"
+                                   + "<img src = '%s' alt = 'no image'>"
+                               + "</div>"
+                               + "<div class = 'content'>"
+                                   + "<div class = 'tags'>"
+                                       + "<a> <i class = 'fas fa-tag' ></i>₱%s</a>"
+                                   + "</div>"
+                                   + "<h3>%s</h3>"
+                                   + "<p>%s</p>"
+                                   + "<input type = 'submit' class = 'btn' value = 'Not Available' disabled>"
+                               + "</div>"
+                           + "</form>", 
+                           x.getId(),x.getImage(), x.getPrice(), x.getName(), x.getDesc()
+                           );    
+                }
+                
+                
                   out.println(box);
             }
         %>

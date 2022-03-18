@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import ports.models.Customer;
 import ports.models.Employee;
+import ports.models.Order;
 import ports.models.PortsDatabase;
 
 /**
@@ -44,10 +45,12 @@ public class orderReceivedServlet extends HttpServlet {
         ServletContext sc = request.getServletContext();
         PortsDatabase ports = (PortsDatabase) sc.getAttribute("dbConnection");        
         Customer c = (Customer) session.getAttribute("customer"); 
-        int order_id = c.getOrder(ports).getOrder_Id();
+        Order o = c.getOrder(ports);
+        int order_id = o.getOrder_Id();
         int employee_id = 1;
 
         ports.updateOrderStatus(order_id, employee_id);
+        ports.updateOrderReceived(o);
  
         response.sendRedirect("feedback.jsp"); 
     }

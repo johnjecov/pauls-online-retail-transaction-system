@@ -228,8 +228,6 @@ public class PortsDatabase {
         
         
         //password = security.encrypt(password);
-        
-        
         String checkEmployee = "SELECT * FROM employee where employee_username = ? AND employee_password = ?";
         String checkCustomer = "SELECT * FROM customer where customer_username = ? AND customer_password = ?";
         
@@ -779,6 +777,23 @@ public class PortsDatabase {
     
     //update order status
     
+    public ResultSet getOrderFeedback(int order_id) {
+        
+        String query1 = "SELECT * FROM feedback where order_id = ?";
+        ResultSet rs = null;
+        try {
+            PreparedStatement ps = portsConnection.prepareStatement(query1);
+            ps.setInt(1, order_id);
+ 
+            rs = ps.executeQuery();    
+        }
+        catch(SQLException sqle){
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        }  
+        
+        return rs;
+    }
+    
     public void giveFeedback(int order_id, int rating, String comment) {
 
         String query1 = "INSERT INTO feedback (order_id, rating, comment) VALUES (?,?,?)";
@@ -937,16 +952,21 @@ public class PortsDatabase {
             int order_status = 1;
             order_status = Integer.parseInt(results.getString("order_status_id"));
             
-            if(order_status < 5)
+            if(order_status < 5){
                 order_status += 1;
+                ps.setInt(1, order_status);
+                ps.setInt(2, employee_id);
+                ps.setInt(3, order_id);
+                this.OrderHistory = getOrderHistory(defaultOrder);
+                this.OrderSales = getOrderSales(defaultOrder);
+                
+            }
+               
             
-            ps.setInt(1, order_status);
-            ps.setInt(2, employee_id);
-            ps.setInt(3, order_id);
+           
             
             ps.executeUpdate();
-            this.OrderHistory = getOrderHistory(defaultOrder);
-            this.OrderSales = getOrderSales(defaultOrder);
+
         }
         catch(SQLException sqle){
             System.out.println("SQLException error occured - " + sqle.getMessage());

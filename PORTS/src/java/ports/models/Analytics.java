@@ -67,6 +67,9 @@ public class Analytics {
         }
         Collections.sort(productsSales, new popularProducts());
         //then sort descending
+        
+        for(ProductSales x : productsSales)
+            System.out.printf("Pizza: %s, SalesCount: %d", x.getProduct().getName(), x.getQuantity());
         return productsSales;       
     }
     

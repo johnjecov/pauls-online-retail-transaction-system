@@ -82,38 +82,54 @@
     </div>
 
     <div class="box-container">
-        <div class="box">
-            <div class="image">
-                <img src="image/pepperoni-removebg-preview.png" alt="">
-            </div>
-            <div class="content">
-                <h3>Pepperoni</h3>
-                <div class="price">P208.00</div>
-                <a href="menu.jsp" class="btn">View More</a>
-            </div>
-        </div>
-
-        <div class="box">
-            <div class="image">
-                <img src="image/pepperoni-removebg-preview.png" alt="">
-            </div>
-            <div class="content">
-                <h3>Chicken BBQ </h3>
-                <div class="price">P315.00</div>
-                <a href="menu.jsp" class="btn">View More</a>
-            </div>
-        </div>
-        
-        <div class="box">
-            <div class="image">
-                <img src="image/pepperoni-removebg-preview.png" alt="">
-            </div>
-            <div class="content">
-                <h3>Creamy Spinach</h3>
-                <div class="price">P290.00</div>
-                <a href="menu.jsp" class="btn">View More</a>
-            </div>
-        </div>
+          <% 
+              
+            ServletContext sc = getServletContext();
+            Analytics analytics = (Analytics) getServletContext().getAttribute("analytics");
+            ArrayList<ProductSales> menu = analytics.getProductSales();
+            
+            for (int i = 0; i < 3; i++) 
+            {
+                String box = "";
+                Product x = menu.get(i).getProduct();   
+                
+                if(x.getStock() != 0)
+                {
+                    box = String.format(
+                           "<form class='box' action = 'SpecificProduct' method = 'POST'>"
+                                   + "<input type = 'text' value = '%d' name = 'specificProduct' style = 'display: none;'>"
+                                   + " <div class='image'>"
+                                   + "<img src='%s' alt='no image'>"
+                                   + "</div>"
+                                   + "<div class='content'>"
+                                   + "<h3>%s</h3>"
+                                   + "<input type ='submit' class='btn' value = 'View More'>"
+                                   + "</div>"
+                                   + "</form>", 
+                           x.getId(),x.getImage(), x.getName(), x.getPrice()
+                           );    
+                }
+                else 
+                {
+                        box = String.format(
+                           "<form class='box' action = 'SpecificProduct' method = 'POST'>"
+                                   + "<input type = 'text' value = '%d' name = 'specificProduct' style = 'display: none;'>"
+                                   + " <div class='image'>"
+                                   + "<img src='%s' alt='no image'>"
+                                   + "</div>"
+                                   + "<div class='content'>"
+                                   + "<h3>%s</h3>"
+                                   + "<input type ='submit' class='btn' value = 'Not Available' disabled>"
+                                   + "</div>"
+                                   + "</form>", 
+                           x.getId(),x.getImage(), x.getName(), x.getPrice()
+                           );      
+                }      
+                  out.println(box);
+            }
+                
+        %>
+           
     </div>
 </section>
 <!-- popular section ends -->

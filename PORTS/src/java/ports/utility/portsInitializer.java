@@ -34,7 +34,8 @@ public class portsInitializer implements ServletContextListener
             //passes the model on the ports object so connection is not always created.
             PortsDatabase ports = new PortsDatabase(conn);
             sc.setAttribute("dbConnection", ports);
-            
+            Analytics analytics = new Analytics(ports);
+            sc.setAttribute("analytics", analytics);
             //Gets the Products, Toppings, Order Status Objects into an arraylist of this objects.
             ArrayList<Product> products = ports.getProducts();
             ArrayList<Topping> toppings = ports.getToppings();

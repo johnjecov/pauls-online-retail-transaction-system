@@ -244,6 +244,15 @@
         <url-pattern>/orderReceived</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+        <servlet-name>giveFeedbackServlet</servlet-name>
+        <servlet-class>ports.controllers.giveFeedbackServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>giveFeedbackServlet</servlet-name>
+        <url-pattern>/giveFeedback</url-pattern>
+    </servlet-mapping>
+    
     <session-config>
         <session-timeout>
             900

@@ -779,6 +779,23 @@ public class PortsDatabase {
     
     //update order status
     
+    public void giveFeedback(int order_id, int rating, String comment) {
+
+        String query1 = "INSERT INTO feedback (order_id, rating, comment) VALUES (?,?,?)";
+
+        try {
+            PreparedStatement ps = portsConnection.prepareStatement(query1);
+            ps.setInt(1, order_id);
+            ps.setInt(2, order_id);
+            ps.setString(3, comment);
+            
+            ps.executeUpdate();    
+        }
+        catch(SQLException sqle){
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        }         
+    }
+    
     public void updateOrderReceived(Order o) {
         //the customer has received the order
         

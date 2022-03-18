@@ -822,16 +822,20 @@ input[type="number"]::-webkit-inner-spin-button {
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: 3rem 3rem 0 3rem;
     background-color: #f3E8EE;
-    align-items: center;
-    text-align: center;
+    
     font-size: 2.5rem;
     color: #574b3e;
 }
 
 #feedbackForm {
-    padding: 5rem;
+    padding: 3rem 0 3rem 0;
+}
+
+#feedbackDiv {
+    padding: 3rem 3rem 0 3rem;
+    align-items: center;
+    text-align: center;
 }
 
 .feedbackitem0 {
@@ -841,8 +845,14 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .feedbackitem {
     display: flex;
-    width: 100%;
-    padding: 1vw;
+    width: 60vw;
+    padding-bottom: 3rem;
+    justify-content: space-between;
+}
+
+.rating__star {
+    cursor: pointer;
+    color: #dabd18b2;
 }
 
 .labels{
@@ -1752,3 +1762,5 @@ textarea#feedbacktext {
     background-color: #008C45;
     color: white;
 }
+
+

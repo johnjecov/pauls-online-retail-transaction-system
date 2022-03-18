@@ -45,6 +45,16 @@ public class Analytics {
         return orderFeedbacks;
     }
     
+    public boolean noFeedback(){
+        
+        for(OrderFeedback o: orderFeedbacks)
+        {
+            if (o.hasFeedBack())
+                return false;
+        }
+        return true;
+    }
+    
     public ArrayList<ProductSales> getProductSales(){
         ArrayList<Product> products = ports.getProducts();
         productsSales = new ArrayList<>();
@@ -93,7 +103,7 @@ public class Analytics {
                 ArrayList<OrderItemToppings> orderItemToppings = item.getToppings();
                 
                 for(int k = 0; k < orderItemToppings.size(); k++) {
-                    OrderItemToppings orderItemTopping = orderItemToppings.get(i);
+                    OrderItemToppings orderItemTopping = orderItemToppings.get(k);
                     int topping_id = orderItemTopping.getTopping().getId();
                     toppingsSales.get(topping_id-1).updateQuantity(orderItemTopping.getQuantity());
                 }
@@ -102,7 +112,9 @@ public class Analytics {
         }
         
         Collections.sort(toppingsSales, new popularToppings());
-        //then sort ascending
+        for(ToppingSales x : toppingsSales)
+            System.out.printf("Topping: %s, SalesCount: %d", x.getTopping().getName(), x.getQuantity());
+        //then sort descending
         return toppingsSales;      
     }
     

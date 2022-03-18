@@ -30,10 +30,27 @@
                     <form class="arrangeOptions" id = "adminSortForm" action="adminHistorySort" method = "POST">
                         <label for="arrange">Arrange by: </label>
                         <select name="arrange" class="arrange" id="arrange" onchange="this.form.submit()">
-                            <option value="order_id"></option>
-                            <option value="order_id">Order ID</option>
+                        <%
+                            ServletContext sc = getServletContext();
+                            String selectedSort = "order_id";
+                            String selectedSortLabel = "";
+                            if (sc.getAttribute("selectedSortAttribute") != null) {
+                                selectedSort = (String) sc.getAttribute("selectedSortAttribute");
+                                if(selectedSort.equals("order_id")){
+                                    selectedSortLabel = "Order ID";
+                                } else if (selectedSort.equals("order_delivery_date")){
+                                    selectedSortLabel = "Date";
+                                } else if (selectedSort.equals("order_total")){
+                                    selectedSortLabel = "Price";
+                                } else {}
+                                sc.removeAttribute("selectedSortAttribute");
+                            }
+                        %>
+                            <option value=<%=selectedSort%>><%=selectedSortLabel%></option>
+                            <option value="order_id" >Order ID</option>
                             <option value="order_delivery_date">Date</option>
                             <option value="order_total">Price</option>
+
                         </select>
                     </form>
 
@@ -50,10 +67,8 @@
                     </div>
 
                     <%
-                        ServletContext sc = getServletContext();
                         PortsDatabase ports = (PortsDatabase) sc.getAttribute("dbConnection");
 
-                        String selectedSort = "order_id";
                         if (sc.getAttribute("selectedSortAttribute") != null) {
                             selectedSort = (String) sc.getAttribute("selectedSortAttribute");
                         }

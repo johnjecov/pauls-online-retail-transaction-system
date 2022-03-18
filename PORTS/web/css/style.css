@@ -823,7 +823,7 @@ input[type="number"]::-webkit-inner-spin-button {
     flex-direction: column;
     width: 100%;
     background-color: #f3E8EE;
-    
+
     font-size: 2.5rem;
     color: #574b3e;
 }
@@ -850,9 +850,14 @@ input[type="number"]::-webkit-inner-spin-button {
     justify-content: space-between;
 }
 
+#radio1, #radio2, #radio3, #radio4, #radio5 {
+    display: none;
+}
+
 .rating__star {
     cursor: pointer;
     color: #dabd18b2;
+
 }
 
 .labels{

@@ -24,7 +24,25 @@
     }
  
 %> --%>
+<%
 
+    //clears cache so that if session is already destroyed then user won't be able to go 
+    //back to the success page
+    response.setHeader("Cache-control", "no-cache, no-store, must-revalidate");
+    response.setHeader("Pragma", "no-cache");
+    response.setDateHeader("Expire", 0);
+    PortsDatabase ports = (PortsDatabase) session.getAttribute("dbConnection");
+    if (session.getAttribute("customer") != null) {
+        Customer c = (Customer) session.getAttribute("customer");
+        Order o = c.getOrder(ports);
+        if (o.isEmpty() || o.getOrder_Status_Id() < 5) {
+            response.sendRedirect("orderstatus.jsp");
+        }
+    } else if (session.getAttribute("employee") != null) {
+        response.sendRedirect("adminOrderList.jsp");
+    }
+
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -56,15 +74,20 @@
                 <p>Thank you for taking your time to answer our short customer survey. Kindly rate our services from 1 to 5 with 5 being the best rating for our overall service.</p>
             </div>
 
-            <div class="feedbackcontent" id = "feedbackForm" action="">
+            <form class="feedbackcontent" id = "feedbackForm" action="">
                 <div class="feedbackcontent" id="feedbackDiv">
-                    <form class="feedbackitem">
-                        <i class="rating__star far fa-star" title="1 Star"></i>
-                        <i class="rating__star far fa-star" title="2 Stars"></i>
-                        <i class="rating__star far fa-star" title="3 Stars"></i>
-                        <i class="rating__star far fa-star" title="4 Stars"></i>
-                        <i class="rating__star far fa-star" title="5 Stars"></i>
-                    </form>
+                    <div class="feedbackitem">
+                        <input type="radio" id="radio1">
+                        <label class="rating__star far fa-star" value="one" title="1 Star" for='radio1'></label>
+                        <input type="radio" id="radio2">
+                        <label class="rating__star far fa-star" value="two" title="2 Stars" for='radio2'></label>
+                        <input type="radio" id="radio3">
+                        <label class="rating__star far fa-star" value="three" title="3 Stars" for='radio3'></label>
+                        <input type="radio" id="radio4">
+                        <label class="rating__star far fa-star" value="four" title="4 Stars" for='radio4'></label>
+                        <input type="radio" id="radio5">
+                        <label class="rating__star far fa-star" value="five" title="5 Stars" for='radio5'></label>
+                    </div>
                     <script>
                         const ratingStars = [...document.getElementsByClassName("rating__star")];
 
@@ -90,15 +113,14 @@
                         executeRating(ratingStars);
                     </script>
                 </div>
-            </div>
-            <div class="feedbackcontent" id="feedbackDiv">
-                <textarea id="feedbacktext" name="feedbacktext" placeholder="We welcome any additional comments and suggestions:"></textarea>
-            </div>
+                <div class="feedbackcontent" id="feedbackDiv">
+                    <textarea id="feedbacktext" name="feedbacktext" placeholder="We welcome any additional comments and suggestions:"></textarea>
+                </div>
 
-            <div class="feedbackcontent" id="feedbackDiv">
-                <input type="submit" value="Submit" class="feedbacksubmit">
-            </div>
-            </>
+                <div class="feedbackcontent" id="feedbackDiv">
+                    <input type="submit" value="Submit" class="feedbacksubmit">
+                </div>
+            </form>
         </section>
     </body>
 </html>

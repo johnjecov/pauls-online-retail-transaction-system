@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import ports.models.*;
 
-
 /**
  *
  * @author John Jeco Villanueva
@@ -33,9 +32,9 @@ public class adminHistorySort extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ServletContext sc = request.getServletContext();
-            String selectedSort = request.getParameter("arrange");
-            sc.setAttribute("selectedSortAttribute", selectedSort);
-            response.sendRedirect("adminHistoryPage.jsp");
+        String selectedSort = request.getParameter("arrange");
+        sc.setAttribute("selectedSortAttribute", selectedSort);
+        response.sendRedirect("adminHistoryPage.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -1,14 +1,3 @@
-<%-- 
-    Document   : adminHistoryPage
-    Created on : 02 14, 22, 1:01:41 AM
-    Author     : chuah_000
-
-change li class pageNumber2 because it is a placeholder
-change orders from "----------" to backend
---%>
-
-<%-- scroll="no" style="overflow: hidden" --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.*, ports.models.*, org.json.*;"%>
 <!DOCTYPE html>
@@ -20,36 +9,36 @@ change orders from "----------" to backend
         <title>Order History</title>
     </head>
     <body scroll="no" style="overflow: hidden">
-        <%@include file="adminLogout.jsp"%>
+
 
         <div class="contentHolder">
             <div class="sidebar">
                 <img class="logo" src="image/Paul's Pizzeria Logo_1.jpg" alt="Paul's Pizzeria Logo">
                 <ul class='adminOptions'>
-                    <li class="options" ><a href="adminHistoryPage.jsp">Sales</a></li>
-                    <li class="options"><a href="adminOrderList.jsp">Order List</a></li>
-                    <li class="options"><a href="admin.jsp">Menu</a></li>
-                    <li class="options"><a href="admin.jsp">Analytics</a></li>
+                    <li class="options"><a href="#home">Sales</a></li>
+                    <li class="options"><a href="#home">Order List</a></li>
+                    <li class="options"><a href="#home">Menu</a></li>
+                    <li class="options"><a href="#home">Analytics</a></li>
                 </ul>
-                <a style="text-decoration:none;" class = "logout" href="./logout">Logout</a>
+                <p class='logout'>Logout</p>
             </div>
             <div class="pageContent">
                 <div class="adminGreetings">
-                    <p  style="font-family: 'Satisfy', cursive;" class='helloAdmin'>Hello, admin!</p>
+                    <p class='helloAdmin'>Hello, admin</p>
                 </div>
                 <div class="adminContent">
                     <form class="arrangeOptions" id = "adminSortForm" action="adminHistorySort" method = "POST">
-                        <label for="arrange">Arranged by: </label>
+                        <label for="arrange">Arrange by: </label>
                         <select name="arrange" class="arrange" id="arrange" onchange="this.form.submit()">
-                            <option style="background: white; color: red;" value="order_id"></option>
-                            <option style="background: white; color: red;"value="order_id">Order ID</option>
-                            <option style="background: white; color: red;" value="order_delivery_date" >Date</option>
-                            <option style="background: white; color: red;" value="order_total">Price</option>
+                            <option value="order_id"></option>
+                            <option value="order_id">Order ID</option>
+                            <option value="order_delivery_date">Date</option>
+                            <option value="order_total">Price</option>
                         </select>
                     </form>
 
                     <div class='orderProperties'>
-                        <div  class="property">Order ID</div>
+                        <div class="property">Order ID</div>
                         <div class="property">Date</div>
                         <div class="property">Product ID</div>
                         <div class="property">Product Name</div>
@@ -163,8 +152,8 @@ change orders from "----------" to backend
                     <div class="pagenumbers" id="pagenumbers">
                     </div>
 
-                    <form action="generatePDF.jsp">
-                        <button class="generatePDF" type ="submit">Generate Summary Report PDF</button>
+                    <form action="generatePDF" method="POST">
+                        <button class="generatePDF" name="downloadPDF" type ="submit">Generate Summary Report PDF</button>
                     </form>
                 </div>
             </div>

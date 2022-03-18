@@ -2,7 +2,7 @@ const list_element = document.getElementById('orderMain');
 const pagination_element = document.getElementById('pagenumbers');
 
 let current_page = 1;
-let rows = 5;
+let rows = 10;
 
 function DisplayList (items, wrapper, rows_per_page, page) {
 	wrapper.innerHTML = "";

@@ -164,7 +164,9 @@
                         var list_items = <%=data%>
                     </script>
 
-                    <div class="pagenumbers" id="pagenumbers">
+                    <div class="scrollnumbers">
+                        <div class="pagenumbers" id="pagenumbers">
+                        </div>
                     </div>
 
                     <form action="generatePDF" method="POST">

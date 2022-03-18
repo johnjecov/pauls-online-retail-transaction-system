@@ -3,6 +3,27 @@
     Created on : 02 17, 22, 7:05:49 PM
     Author     : John Jeco Villanueva
 --%>
+<%
+ 
+    //clears cache so that if session is already destroyed then user won't be able to go 
+    //back to the success page
+    response.setHeader("Cache-control", "no-cache, no-store, must-revalidate");
+    response.setHeader("Pragma", "no-cache");
+    response.setDateHeader("Expire", 0);
+    PortsDatabase ports = (PortsDatabase) session.getAttribute("dbConnection");
+    if (session.getAttribute("customer") != null)
+    {
+         Customer c = (Customer) session.getAttribute("customer");
+         Order o = c.getOrder(ports);
+         if(o.isEmpty() || o.getOrder_Status_Id() < 5)
+            response.sendRedirect("orderstatus.jsp");
+    }
+    else if (session.getAttribute("employee") != null)
+    {
+        response.sendRedirect("adminOrderList.jsp");
+    }
+ 
+%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

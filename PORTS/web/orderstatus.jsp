@@ -49,7 +49,7 @@
                          + "<div class='item'>Payment Type:<br>%s</div>\n"
                          + "<div class='item'>Purchases:<br>%s</div>\n"
                          + "</div>",
-                         c.getName(), c.getSurname(), ports.getOrderData(c.getCustomer_Id()).getOrder_Total(),
+                         c.getName(), c.getSurname(), customerOrder.getOrder_Total(),
                          customerOrder.getAddress(), customerOrder.getPayment_Method(),
                          customerOrder.getOrderString());
                         out.println(s);

@@ -43,7 +43,7 @@ public class removeItemFromCartServlet extends HttpServlet {
               Customer c = (Customer) session.getAttribute("customer");
              int CII = Integer.parseInt(cartItemId);
              PortsDatabase port = (PortsDatabase)app.getAttribute("dbConnection");
-             c.getCart().removeFromCart(port, CII);
+             c.getCart(port).removeFromCart(port, CII);
              response.sendRedirect("cart.jsp");
     }
 

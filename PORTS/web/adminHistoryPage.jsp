@@ -24,7 +24,7 @@
             </div>
             <div class="pageContent">
                 <div class="adminGreetings">
-                    <p class='helloAdmin'>Hello, admin</p>
+                    <p class='helloAdmin'>Hello, Admin!</p>
                 </div>
                 <div class="adminContent">
                     <form class="arrangeOptions" id = "adminSortForm" action="adminHistorySort" method = "POST">

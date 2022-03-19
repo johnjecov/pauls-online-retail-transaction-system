@@ -399,7 +399,7 @@ public class PortsDatabase {
          
     public ArrayList getCustomerAddresses(int customerID){
         System.out.print("TEST get ADDRESSES");
-        String query1 = "SELECT * FROM address WHERE customer_id = ? order by 'address_id' asc";
+        String query1 = "SELECT * FROM address WHERE customer_id = ? order by 'address_id'";
      
         ArrayList<Address> addresses = new ArrayList<>();
         try {
@@ -434,7 +434,7 @@ public class PortsDatabase {
     
         public ArrayList retrieveAllAddresses(){
         System.out.print("TEST get ADDRESSES");
-        String query1 = "SELECT * FROM address order by 'address_id' asc";
+        String query1 = "SELECT * FROM address order by 'address_id'";
      
         ArrayList<Address> addresses = new ArrayList<>();
         try {
@@ -659,7 +659,7 @@ public class PortsDatabase {
         ArrayList<Order> orders = new ArrayList<>();
         
         try {
-            String query = "SELECT order_id FROM orders WHERE order_status_id = 5 and payment_status = 'paid' order by "+orderBy+" asc";
+            String query = "SELECT order_id FROM orders WHERE order_status_id = 5 and payment_status = 'paid' order by "+orderBy+" ASC";
             PreparedStatement ps = portsConnection.prepareStatement(query);
             ResultSet results = ps.executeQuery();
             
@@ -681,7 +681,7 @@ public class PortsDatabase {
         ArrayList<Order> orders = new ArrayList<>();
         
         try {
-            String query = "SELECT order_id FROM orders WHERE order_status_id < 5 or payment_status = 'not paid'  order by "+orderBy+" asc";
+            String query = "SELECT order_id FROM orders WHERE order_status_id < 5 or payment_status = 'not paid'  order by "+orderBy+" ASC";
             PreparedStatement ps = portsConnection.prepareStatement(query);
             ResultSet results = ps.executeQuery();
             

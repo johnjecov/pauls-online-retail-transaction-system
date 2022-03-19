@@ -147,7 +147,7 @@
                 </div>
             </div>
                     <%
-                        if ( orderEmpty || customerOrder.getOrder_Status_Id() == 4) {
+                        if ( !orderEmpty && customerOrder.getOrder_Status_Id() == 4) {
                             String f = String.format("<div class='statuscontent2'>\n"
                                     + "<div class='statusitem3'>\n"
                                     + "<p>Have you received your order? Press the button below to give a feedback!</p>\n"

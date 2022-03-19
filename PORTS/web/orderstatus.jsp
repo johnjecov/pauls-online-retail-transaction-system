@@ -1,47 +1,3 @@
-<%-- 
-    Document   : orderstatus
-    Created on : 02 17, 22, 4:42:08 PM
-    Author     : John Jeco Villanueva
-
---Change Status Images
---Resize Modal
---make image more responsive
-
-//.item2 added padding of 5%
-
-//legacy code
-<div class="item2">
-                        <img src="image/checkmark.png" alt="mark1" class="statusimg">
-                        Pending<br>Your order is being processed.</div>
-                    <div class="item2">
-                        <img src="image/xmark.png" alt="mark2" class="statusimg">
-                        Order Received<br>Your order is received and is now being prepared.</div>
-                    <div class="item2">
-                        <img src="image/nomark.png" alt="mark3" class="statusimg">
-                        Order Delivered<br>Order delivered. Enjoy!</div>
-
-<%= output %>
-
-<div class="statuscontent2">
-                <div class="statusitem3">
-                    <p>Did you enjoy our services? Leave a feedback below!</p>
-                    <a href="feedback.jsp" class="feedbackbutton">Feedback</a>
-                </div>
-            </div>
-
- <%
-                if (test.getOrder_Status_Id() == 4) {
-                    String f = String.format("<div class='statuscontent2'>\n"
-                            + "<div class='statusitem3'>\n"
-                            + "<p>Did you enjoy our services? Leave a feedback below!</p>\n"
-                            + "<a href='feedback.jsp' class='feedbackbutton'>Feedback</a>\n"
-                            + "</div>\n"
-                            + "</div>\n"
-                    );
-                    out.println(f);
-                }
-            %>
---%>
 <%@page import="java.util.*, ports.models.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -77,7 +33,6 @@
                 <%
                     ServletContext sc = getServletContext();
                     PortsDatabase ports = (PortsDatabase) sc.getAttribute("dbConnection");
-                    ArrayList<Order> orderList = (ArrayList) ports.getOrderHistory("order_id");
                     ArrayList orderStatus = ports.getOrderStats();
                     Customer c = (Customer) session.getAttribute("customer");
                     Order customerOrder = c.getOrder(ports);
@@ -97,8 +52,6 @@
                          c.getName(), c.getSurname(), ports.getOrderData(c.getCustomer_Id()).getOrder_Total(),
                          customerOrder.getAddress(), customerOrder.getPayment_Method(),
                          customerOrder.getOrderString());
-                        //String.valueOf(test.getCustomer_Id()), String.valueOf(test.getOrder_Id()),
-                        //test.getAddress(), test.getPayment_Method());
                         out.println(s);
                         orderid = customerOrder.getOrder_Id();
                     }

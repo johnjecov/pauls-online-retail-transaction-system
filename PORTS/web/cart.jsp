@@ -58,10 +58,9 @@
           if(session.getAttribute("customer")!= null)
             {
                 c = (Customer) session.getAttribute("customer");
-                theCart = (Cart)(port.getCartData(c.getCustomer_Id()));
+                theCart = c.getCart(port);
                 add = port.getCustomerAddresses(c.getCustomer_Id());
                 items = (theCart.getItems());
-                
             }
           
         if(items.size()!=0) { %>
@@ -129,9 +128,7 @@
                 <select class= "Address" name="address" required>
                     <option value="" disabled selected>Choose your address</option>
                     <%
-                    
-                     
-                        for(int x=0; add.size() > x; x++) {%>
+                     for(int x=0; add.size() > x; x++) {%>
                     <option value = "<%=((Address)add.get(x)).getAddressId()  %>"><%=((Address)add.get(x)).getAddressName()%></option>
                     <%}%>
                  
@@ -140,10 +137,10 @@
             <br>
             <div>       
                 <h4>Payment Method</h4>
-                <input type="radio" id="payment1" name="payment" value=""  required="required">
-                <label for="payment1"> Cash On Delivery </label>
+                <input type="radio" id="payment1" name="payment" value="Cash On Delivery"  required="required">
+                <label for="payment1">Cash On Delivery</label>
                 <br>
-                <input type="radio" id="payment2" name="payment" value=""  required="required">
+                <input type="radio" id="payment2" name="payment" value="GCash"  required="required">
                 <label for="payment2">GCash</label>
                 <br>
                 
@@ -154,7 +151,7 @@
             </div>
             
             <div class="grandtotalbx">
-                <p class ="grandtotal">Total: ₱<%= port.getCartData(c.getCustomer_Id()).getCart_Total()%></p>
+                <p class ="grandtotal">Total: ₱<%= c.getCart(port).getCart_Total()%></p>
             </div>
         </div>
         

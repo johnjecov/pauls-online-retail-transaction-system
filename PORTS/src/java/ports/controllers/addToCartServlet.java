@@ -62,7 +62,7 @@ public class addToCartServlet extends HttpServlet {
                     }
                     
                     
-                    CartItem productOrder = new CartItem(c.getCart().getItems().size()+1, c.getCart().getCart_Id(), pizzai, orderedToppings, Integer.parseInt(quantity));
+                    CartItem productOrder = new CartItem(c.getCart(port).getItems().size()+1, c.getCart(port).getCart_Id(), pizzai, orderedToppings, Integer.parseInt(quantity));
                     System.out.print("hellooooo"+productOrder.getProduct());
                 
                     //Product testProduct = new Product(1, "Pepperoni", 15, "Pizza", "Delicious", "/test.jpg", "available", 149);
@@ -75,7 +75,7 @@ public class addToCartServlet extends HttpServlet {
                     //Cart(int cart_id, int customer_id, double cart_total, ArrayList<CartItem> items);
                     
                     //addItemToCart(int cart_id, CartItem item)
-                    c.getCart().addToCart(port, productOrder);
+                    c.getCart(port).addToCart(port, productOrder);
                     response.sendRedirect("cart.jsp");
                    
                     

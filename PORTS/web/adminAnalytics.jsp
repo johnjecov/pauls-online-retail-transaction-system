@@ -8,6 +8,9 @@
     <head>
         <link rel="stylesheet" href="css/adminAnalytics.css?nocache={timestamp}" type="text/css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
         <title>Analytics Page</title>
     </head>
     <body scroll="no" style="overflow: hidden">
@@ -49,48 +52,20 @@
                     if(topT.getQuantity() != 0)
                         topTopping = topT.getTopping().getName();
                 %>
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>     
+             
                 
-        <script type="text/javascript">
-    google.charts.load("current", {packages:["corechart"]});
-    google.charts.setOnLoadCallback(drawChart);
-    function drawChart() {
-      var data = google.visualization.arrayToDataTable([
-        ["Element", "Total Sales ", { role: "style" } ],
-        ["Peperroni", 100, "#b87333"],
-        ["Chicken BBQ", 200, "silver"],
-        ["Cheese with Basil", 300, "gold"],
-        ["Hawaiian", 350, "color: #e5e4e2"],
-        ["Creamy Spinach", 400, "pink"],
-        ["Garlic Shrimp \n with Parsley", 500, "orange"]
-      ]);
-
-      var view = new google.visualization.DataView(data);
-      view.setColumns([0, 1,
-                       { calc: "stringify",
-                         sourceColumn: 1,
-                         type: "string",
-                         role: "annotation" },
-                       2]);
-
-      var options = {
-        title: "Number of Sales Per Pizza" ,
-        width: 1000,
-        height: 600,
-        bar: {groupWidth: "95%"},
-        legend: { position: "none" },
-      };
-      var chart = new google.visualization.BarChart(document.getElementById("barchart_values"));
-      chart.draw(view, options);
-  }
-  </script>
                 
                 
                 <div class="adminContent">
+               
                     
-                    <div class = "chartContainer">
-                        <div id="barchart_values" class="chart-chart" style="width: 980px; height: 600px; text-align: center;"></div>
-                    </div>
+                        <table class="columns">
+                        <tr>
+                          <td><div id="barchart_valuesPizzas" ></div></td>
+                          <td><div id="barchart_valuesToppings" ></div></td>
+                        </tr>
+                      </table>
+                  
                     
                     <div class = "analyticsContainer">
                         <div class = "overviewContainer">
@@ -142,6 +117,76 @@
                                 </div>
                             </div>
                             
+                     
+                
+                
+                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>     
+                <script type="text/javascript">
+                    
+                    google.charts.load("current", {packages:["corechart"]});
+                    google.charts.setOnLoadCallback(drawChartPizza);
+                    google.charts.setOnLoadCallback(drawChartTopping);
+
+
+
+
+                    function drawChartPizza() {
+                      var data = google.visualization.arrayToDataTable([
+                        ["Element", "Total Sales ", { role: "style" } ],
+                                
+                    <%  for(int a=0; productSales.size() > a; a++) {  %>
+                        ["<%= (productSales.get(a).getProduct().getName()) %>", <%= (productSales.get(a).getQuantity()) %>, "#b87333"],
+                         <% } %>
+                                        
+                      ]);
+
+                      var view = new google.visualization.DataView(data);
+                      view.setColumns([0, 1,
+                                       { calc: "stringify",
+                                         sourceColumn: 1,
+                                         type: "string",
+                                         role: "annotation" },
+                                       2]);
+
+                      var options = {
+                        title: "Number of Sales Per Pizza" ,
+                        width: 700,
+                        height: 300,
+                       is3D: true,
+                       backgroundColor: '#E4E4E4',
+
+                       bar: {groupWidth: "85%"},
+                       legend: { position: "none" }
+                      };
+                      var chart = new google.visualization.ColumnChart(document.getElementById("barchart_valuesPizzas"));
+                      chart.draw(view, options);
+                  }
+                  
+                  function drawChartTopping() {
+                                
+                  
+                      var data = new google.visualization.DataTable();
+                       data.addColumn('string', 'Topping');
+                        data.addColumn('number', 'Slices');
+                        data.addRows([
+                              <%  for(int a=0; productSales.size() > a; a++) {  %>
+                            ["<%= (toppingSales.get(a).getTopping().getName()) %>", <%= (toppingSales.get(a).getQuantity()) %>],
+                         <% } %>
+                        ]);
+                 
+                      var options = {
+                        title: "Toppings Sales" ,
+                        width: 500,
+                        height: 300,
+                       backgroundColor: '#E4E4E4',
+
+                       
+                      };
+                      var chart = new google.visualization.PieChart(document.getElementById("barchart_valuesToppings"));
+                      chart.draw(data, options);
+                  }
+          </script>
+                
                             <%
                                 String box = "";
                                 if(analytics.noFeedback())
@@ -207,4 +252,15 @@
             </div>
         </div>
     </body>
+    <style>
+        #analyticsO{
+            width: 150px;
+            color: black;
+        }
+        
+         #analyticsO option{
+           color: black;
+        }
+        
+    </style>
 </html>

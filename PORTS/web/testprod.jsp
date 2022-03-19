@@ -115,9 +115,11 @@
 
                              $("#quantity").each(function(){
                                  total += parseInt($(this).val())*price;
+                              
                              });
                              $("#toppings1").each(function(){
                                  total += parseInt($(this).val())*50;
+                                  
                              });
                              $("#toppings2").each(function(){
                                  total += parseInt($(this).val())*80;

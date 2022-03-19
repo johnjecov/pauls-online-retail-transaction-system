@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
 
 *{
-    font-family: Helvetica;
+    font-family: 'Poppins', sans-serif;
     color: #fff;
     margin: 0;
     padding: 0;
@@ -10,6 +11,7 @@
 html,body {
     background-color: #1e1f20;
     height:100%; 
+    font-size: 14px;
 }
 
 .contentHolder {
@@ -41,12 +43,13 @@ html,body {
     padding: 0;
     overflow: hidden;
     background-color: #2e2e2e;
-    font-size: 1.5vw;
+    font-size: 1.2vw;
 }
 
 .options {
     float: bottom;
-    background-color: #2e2e2e
+    background-color: #2e2e2e;
+    padding-bottom: 15px;
 }
 
 .options a {
@@ -56,7 +59,7 @@ html,body {
     color: white;
     padding: 4%;
     text-decoration: none;
-    background-color: #2e2e2e
+    background-color: #2e2e2e;
 }
 
 .options a:hover {
@@ -83,7 +86,7 @@ html,body {
     display: block;
     color: white;
     text-decoration: none;
-    background-color: #2e2e2e
+    background-color: #2e2e2e;
 }
 
 .logout:hover {
@@ -93,26 +96,29 @@ html,body {
 }
 
 .adminGreetings {
-    width: 30%;
+    width: 20%;
 }
 
 .helloAdmin {
-    font-size: 3vw;
+    font-family: 'Satisfy', cursive;
+    font-size: 2rem;
     text-align: center;
-    background-color: #2e2e2e;
-    padding: 1vw;
+    background-color: #CD212A;
+    min-width: 15rem;
+    padding: 1rem;
     border-radius: 10px;
-    box-shadow: inset 15px 15px 30px #212121,
-        inset -15px -15px 30px #3b3b3b;
+    /*box-shadow: inset 15px 15px 30px #212121,
+        inset -15px -15px 30px #3b3b3b;*/
 }
 
 .pageContent {
     display: flex;
     flex-direction: column;
     padding: 1.5rem;
-    gap: 1rem;
+    gap: 2rem;
     margin: 1rem;
     width: 100%;
+    overflow-y: scroll;
 }
 
 .adminContent {
@@ -120,15 +126,13 @@ html,body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 1vw;
+    gap: 1rem;
     padding: 1vw;
-    
-    border-radius: 5px;
-    font-family: "roboto";
+    border-radius: 10px;
 }
 
 .arrangeOptions {
-    width: 100%;
+    width: 98%;
     margin-top: -1%;
     background-color: #2e2e2e;
     border-radius: 5px;
@@ -138,23 +142,22 @@ html,body {
 
 label {
     background-color: #2e2e2e;
-    font-size: 1.5vw;
+    font-size: 1.3vw;
     margin-left: 2%;
 }
 
 .arrange {
-    background-color: #000;
+    background-color: #2e2e2e;
     color: #fff;
-    font-size: 1.5vw;
+    font-size: 1.3vw;
 }
-
 
 .orderProperties {
     display: flex;
     width: 100%;
     padding: 1%;
     margin: -1% 0 -2% 0;
-    font-size: 1.5vw;
+    font-size: 1.3vw;
     align-items: center;
 }
 
@@ -192,7 +195,7 @@ label {
     padding: 1%;
     background-color: #2e2e2e;
     border-radius: 5px;
-    font-size: 1.5vw;
+    font-size: 1.1vw;
     box-shadow: inset 8px 8px 16px #252525,
                 inset -8px -8px 16px #373737;
 }
@@ -217,7 +220,7 @@ label {
 .orderPropertyEmptyRow2 {
     display: flex;
     flex: 1;
-    font-size: 0.8vw;
+    font-size: 1.1vw;
     text-align: center;
     align-items: center;
 }
@@ -251,23 +254,18 @@ label {
     width: 5%;
     height: 120%;
     flex-shrink: 0;
-
     appearance: none;
     border: none;
     outline: none;
     cursor: pointer;
-
     background-color: #555555;
-
     margin: 5px;
     padding: 5px;
     transition: 0.4s;
-
     color: #FFF;
     font-size: 1vw;
     text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
-    
     border-radius: 10px;
 }
 
@@ -289,24 +287,19 @@ label {
 .generatePDF {
     width: 25%;
     height: 25%;
-
     appearance: none;
     border: none;
     outline: none;
     cursor: pointer;
-
     background-color: #555555;
-
-    margin: 1.2vw 2vw 8vw 5px;
+    margin: 1.2vw 2vw 9vw 5px;
     padding: 1vw;
     transition: 0.4s;
-
     color: #FFF;
-    font-size: 1.2vw;
+    font-size: 1vw;
     vertical-align: center;
     text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
-    
     border-radius: 5px;
 }
 

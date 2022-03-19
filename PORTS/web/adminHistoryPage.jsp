@@ -15,16 +15,16 @@
             <div class="sidebar">
                 <img class="logo" src="image/Paul's Pizzeria Logo_1.jpg" alt="Paul's Pizzeria Logo">
                 <ul class='adminOptions'>
-                    <li class="options"><a href="#home">Sales</a></li>
-                    <li class="options"><a href="#home">Order List</a></li>
-                    <li class="options"><a href="#home">Menu</a></li>
-                    <li class="options"><a href="#home">Analytics</a></li>
+                    <li class="options"><a href="adminHistoryPage.jsp">Sales</a></li>
+                    <li class="options"><a href="adminOrderList.jsp">Order List</a></li>
+                    <li class="options"><a href="admin.jsp">Menu</a></li>
+                    <li class="options"><a href="admin.jsp">Analytics</a></li>
                 </ul>
-                <p class='logout'>Logout</p>
+                <a style="text-decoration:none;" class = "logout" href="./logout">Logout</a>
             </div>
             <div class="pageContent">
                 <div class="adminGreetings">
-                    <p class='helloAdmin'>Hello, admin</p>
+                    <p class='helloAdmin'>Hello, Admin!</p>
                 </div>
                 <div class="adminContent">
                     <form class="arrangeOptions" id = "adminSortForm" action="adminHistorySort" method = "POST">

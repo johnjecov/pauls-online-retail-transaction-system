@@ -56,13 +56,13 @@
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
       var data = google.visualization.arrayToDataTable([
-        ["Element", "Density", { role: "style" } ],
-        ["Peperroni", 8.94, "#b87333"],
-        ["Chicken BBQ", 10.49, "silver"],
-        ["Cheese with Basil", 19.30, "gold"],
-        ["Hawaiian", 21.45, "color: #e5e4e2"],
-        ["Creamy Spinach", 36.45, "pink"],
-        ["Garlic Shrimp with Parsley", 31.45, "orange"]
+        ["Element", "Total Sales ", { role: "style" } ],
+        ["Peperroni", 100, "#b87333"],
+        ["Chicken BBQ", 200, "silver"],
+        ["Cheese with Basil", 300, "gold"],
+        ["Hawaiian", 350, "color: #e5e4e2"],
+        ["Creamy Spinach", 400, "pink"],
+        ["Garlic Shrimp \n with Parsley", 500, "orange"]
       ]);
 
       var view = new google.visualization.DataView(data);
@@ -74,9 +74,9 @@
                        2]);
 
       var options = {
-        title: "Number of Sales Per Pizza",
-        width: 1200,
-        height: 900,
+        title: "Number of Sales Per Pizza" ,
+        width: 1000,
+        height: 600,
         bar: {groupWidth: "95%"},
         legend: { position: "none" },
       };
@@ -89,7 +89,7 @@
                 <div class="adminContent">
                     
                     <div class = "chartContainer">
-                        <div id="barchart_values" class="chart-chart" style="width: 600px; height: 400px;"></div>
+                        <div id="barchart_values" class="chart-chart" style="width: 980px; height: 600px; text-align: center;"></div>
                     </div>
                     
                     <div class = "analyticsContainer">
@@ -203,43 +203,8 @@
                             
                         </div>
                     </div>
-                              
-
-
                 </div>
             </div>
         </div>
     </body>
-<script type="text/javascript">
-    google.charts.load("current", {packages:["corechart"]});
-    google.charts.setOnLoadCallback(drawChart);
-    function drawChart() {
-      var data = google.visualization.arrayToDataTable([
-        ["Element", "Density", { role: "style" } ],
-        ["Copper", 8.94, "#b87333"],
-        ["Silver", 10.49, "silver"],
-        ["Gold", 19.30, "gold"],
-        ["Platinum", 21.45, "color: #e5e4e2"]
-      ]);
-
-      var view = new google.visualization.DataView(data);
-      view.setColumns([0, 1,
-                       { calc: "stringify",
-                         sourceColumn: 1,
-                         type: "string",
-                         role: "annotation" },
-                       2]);
-
-      var options = {
-        title: "Density of Precious Metals, in g/cm^3",
-        width: 600,
-        height: 400,
-        bar: {groupWidth: "95%"},
-        legend: { position: "none" },
-      };
-      var chart = new google.visualization.BarChart(document.getElementById("barchart_values"));
-      chart.draw(view, options);
-  }
-  </script>
-
 </html>

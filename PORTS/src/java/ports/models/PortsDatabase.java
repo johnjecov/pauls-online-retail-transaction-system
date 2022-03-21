@@ -55,8 +55,7 @@ public class PortsDatabase {
         
         Cart checkoutCart = getCartData(1);
         System.out.println(checkoutCart.getCart_Total());
-        
-        System.out.println(test);
+
         
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         

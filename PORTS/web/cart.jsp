@@ -171,6 +171,7 @@
         <% } else {%>
         <h2 style="position: fixed; top:50%; width: 100%; text-align: center; font-size: 50px; color: white;">You have No Items in your Cart</h2>
         <% } %>
+          <%@include file="footer_external.jsp"%>
     </body>
     
     <script>
@@ -297,11 +298,7 @@
             color: white;
         }
 
-        .box
-        {
-            width: 20px;
-        }
-        
+     
         .last-row
         {
             background: none;

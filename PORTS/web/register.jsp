@@ -59,8 +59,16 @@
                     <input type="text" name="givenNameR" placeholder="Given name" id="givenNameR" class="givenLastField" required>
                     <input type="text" name="lastNameR" placeholder="Last name" id="lastNameR" class="givenLastField" required>
                 </div>
-                <input type="password" name="pwordR" placeholder="Password" id="" class="inputsR" required>
-                <input type="password" name="cpwordR" placeholder="Confirm password" id="" class="inputsR" required>
+                <div class="passwordDiv">
+                <input type="password" name="pwordR" placeholder="Password" id="pwordRd" class="inputsR" required>
+                <i class="far fa-eye" id="togglePassword" style="margin-left: -30px; margin-top: 15px;cursor: pointer;"></i>
+                </div>
+                
+                <div class="passwordDiv">
+                <input type="password" name="cpwordR" placeholder="Confirm password" id="cpwordRd" class="inputsR" required>
+                <i class="far fa-eye" id="toggleCPassword" style="margin-left: -30px; margin-top: 15px;cursor: pointer;"></i>
+                </div>
+                
                 <input type="email" name="emailR" placeholder="Email" id="" class="inputsR" required>
                 <input type="number" name="contactR" placeholder="Contact Number" id="" class="inputsR" required>
       
@@ -87,6 +95,43 @@
     <!-- header section ends -->
    <script src="js/script.js"></script>
    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+     <%@include file="footer_external.jsp"%>
    </body>
- 
+    <style>
+       .passwordDiv
+       {
+           display: flex;
+           margin-left: -12px;
+       }
+   </style>
+ <script> 
+                const togglePassword = document.querySelector('#togglePassword');
+                const toggleCPassword = document.querySelector('#toggleCPassword');
+                
+                const password = document.querySelector('#pwordRd');
+                const cpassword = document.querySelector('#cpwordRd');
+
+                togglePassword.addEventListener('click', function (e) {
+                  // toggle the type attribute
+                  const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+                  password.setAttribute('type', type);
+                             
+                  // toggle the eye slash icon
+                  this.classList.toggle('fa-eye-slash');
+              });
+              
+                toggleCPassword.addEventListener('click', function (e) {
+                  // toggle the type attribute
+               
+                  const typeC = cpassword.getAttribute('type') === 'password' ? 'text' : 'password';
+                  cpassword.setAttribute('type', typeC);
+                 
+                  // toggle the eye slash icon
+                  this.classList.toggle('fa-eye-slash');
+              });
+
+                
+                
+                </script>
+            
 </html>

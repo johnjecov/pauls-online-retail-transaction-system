@@ -57,7 +57,11 @@
             <form id = "loginForm" action="login" method = "POST">
                 <h3 class = "formTitle">login</h3>
                 <input type="text" name="loginUname" placeholder="Enter your username" id="loginUname" class="inputs" required>
+                <div class="passwordDiv">
                 <input type="password" name="loginPass" placeholder="Enter your password" id="loginPass" class="inputs" required>
+                <i class="far fa-eye" id="togglePassword" style="margin-left: -30px; margin-top: 20px;cursor: pointer;"></i>
+                </div>
+                
                 <% 
                     String errorMessage = "";
                     ServletContext sc = getServletContext();
@@ -67,12 +71,26 @@
                         sc.removeAttribute("ErrorMessageL");
                     }
                 %>
-                <p style = "color: #302c2c;font-size: 1.3rem"><%= errorMessage %></p>
+                <p style = "color: red;font-size: 1.3rem"><%= errorMessage %></p>
                 <input type="submit" value="Login Now" class="inputs LRButton" id = "loginButton">
                 <p>don't have an account? <a href="register.jsp" id = "goReg">create one</a></p>
             </form>
             
-         
+                <script> 
+                const togglePassword = document.querySelector('#togglePassword');
+                const password = document.querySelector('#loginPass');
+
+                togglePassword.addEventListener('click', function (e) {
+                  // toggle the type attribute
+                  const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+                  password.setAttribute('type', type);
+                  // toggle the eye slash icon
+                  this.classList.toggle('fa-eye-slash');
+              });
+
+                
+                
+                </script>
             
             
 
@@ -83,6 +101,13 @@
     <!-- header section ends -->
    <script src="js/script.js"></script>
    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+     <%@include file="footer_external.jsp"%>
    </body>
- 
+   <style>
+       .passwordDiv
+       {
+           display: flex;
+           margin-left: -12px;
+       }
+   </style>
 </html>

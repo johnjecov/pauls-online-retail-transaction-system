@@ -57,7 +57,7 @@
             }
         %>
      <!-- header section ends -->
-        <section>
+        <section id="sec">
             <div class = "container">
                 <div class = "user Aaddress">
                     
@@ -75,29 +75,65 @@
                             <h2>You Do not Have Any Addresses</h2>
                             <h2>Click on the <b>ADD NEW ADDRESS</b> to add</h2>
                             <% } else%>
-                            <%  { %> 
+                            <%  { %> <div class="theBoxA">
                             <% for (int i=0; i < add.size(); i++) { %>
                                 <div class="viewAddressBx">
                                     <div class="edit">
                                         <h3><%= ((Address)add.get(i)).getAddressName() %></h3>
                                         <div class="box"></div>
-                                       
                                     </div>
-                                    <p> <% 
-        
-                                       out.print(((Address)add.get(i)).getHouseNo()+ " " +
-                                                   ((Address)add.get(i)).getStreet()+ " " +
-                                                   ((Address)add.get(i)).getCity()+ " " +
-                                                   ((Address)add.get(i)).getProvince()+ " " +
-                                                   ((Address)add.get(i)).getPostalCode()+ " " +
-                                                   ((Address)add.get(i)).getDetails()+ " " +
-                                                  "(" + ((Address)add.get(i)).getAdditionalDetails()+ ") " 
-                                                    ); %>
-                                   </p>
+                                        <table>
+                                            <colgroup>
+                                                <col span="1" style="width: 30%;">
+                                                <col span="1" style="width: 20%;">
+                                                <col span="1" style="width: 45%;">
+                                             </colgroup>
+    
+                                              <tr>
+                                                <th >House Number</th>
+                                                <td></td>
+                                                <td><%= ((Address)add.get(i)).getHouseNo() %></td>
+                                       
+                                              </tr>
+                                              <tr>
+                                                <th>Street</th>
+                                                <td></td>
+                                                <td><%= ((Address)add.get(i)).getStreet() %></td>
+                                             </tr>
+                                              <tr>
+                                                <th>City</th>
+                                                <td></td>
+                                                <td><%= ((Address)add.get(i)).getCity() %></td>
+                                             </tr>
+                                              <tr>
+                                                <th>Province</th>
+                                                <td></td>
+                                                <td><%= ((Address)add.get(i)).getProvince() %></td>
+                                             </tr>
+                                              <tr>
+                                                <th>Postal Code</th>
+                                                <td></td>
+                                                <td><%= ((Address)add.get(i)).getPostalCode() %></td>
+                                             </tr>
+                                              <tr>
+                                                <th>Address Details</th>
+                                                <td></td>
+                                                <td><%= ((Address)add.get(i)).getDetails() %></td>
+                                             </tr>
+                                              <tr>
+                                                  <th>Additional Details</th>
+                                                  <td></td>
+                                                <td><%= ((Address)add.get(i)).getAdditionalDetails() %></td>
+                                             </tr>
+                                        </table>
+                                   
                                     <button name ="remove" value="<%= ((Address)add.get(i)).getAddressId() %>" class="removebtn" style="cursor: pointer;">Remove</button>
-           
-                               </div>
-                            <br> <% } %>
+                                     
+                                </div> 
+                                   <% if(i+1%2==0){  %>
+                                   <div class="breakF"></div>
+                                   <% } %>
+                            <br> <% } %></div>
                             <% } %>
                             
                     </form>  
@@ -113,17 +149,20 @@
                             <input id ="user" type = "text" placeholder = "Address Name" name="addressName" required="required">
                            
                       
-                         
-                            <input id ="user" type = "text" placeholder = "House No." name="houseNo" required="required">
+                            <div class="radiocon">
+                                <input id ="user" type = "text" placeholder = "House No." name="houseNo" required="required">
+                                 <div class="boxX"></div>
                             <input id ="user" type = "text" placeholder = "Street" name="street" required="required">
+                            
+                            </div>
                             
                             <div class ="radiocon">
                                  <input id ="user" type = "text" placeholder = "Postal Code" name="postalCode" required="required">
-                                    <div class="box"></div>
-                            <input id ="user" type = "text" placeholder = "Province" name="province" required="required">
-                                    <div class="box"></div>
+                                    <div class="boxX"></div>
                             <input id ="user" type = "text" placeholder = "City" name="city" required="required">
-                                    <div class="box"></div>
+                                    <div class="boxX"></div>
+                            <input id ="user" type = "text" placeholder = "Province" name="province" required="required">
+                                    
                         </div>
                            
                             <input id ="user" type = "text" placeholder = "Additional Address Details" name="additionalAddress" required="required" >
@@ -163,9 +202,31 @@
               );
             });
             </script>
+             <%@include file="footer_external.jsp"%>
     </body>
     
     <style>
+        
+        tr, th, td {
+        padding-bottom: 8px;
+      }
+        .boxX
+        {
+            width: 20px;
+        }
+        .breakF
+        {
+            flex-basis: 100%;
+            height: 0;
+          
+        }
+        
+        .theBoxA
+        {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
         
         .removebtn
         {
@@ -188,6 +249,9 @@
             background-color: whitesmoke;
             border-radius: 15px;
             padding: 20px;
+            width: 400px;
+            margin-top: 30px;
+           
         }
  
         .edit
@@ -195,10 +259,7 @@
             display: flex;
         }
         
-        .box
-        {
-            width: 30px;
-        }
+     
         
         input:required:focus
         {
@@ -213,7 +274,7 @@
             font-family: 'Poppins', sans-serif;
         }
         
-        section
+        #sec
         {
             position: relative;
             min-height: 100vh;
@@ -225,12 +286,12 @@
             transition: 0.5s;
         }
 
-        section.active
+        #sec.active
         {
             background: #1e1f20;
         }
         
-        section .container
+        #sec .container
         {
             position: relative;
             width: 1000px;
@@ -241,7 +302,7 @@
             margin-top: 70px;
         }
         
-        section .container .user
+        #sec .container .user
         {
             position: absolute;
             top: 0;
@@ -251,7 +312,7 @@
             display: flex;
         }
                 
-        section .container .user .formBx
+        #sec .container .user .formBx
         {
             position: relative;
             width: 100%;
@@ -265,12 +326,12 @@
             font-size: 12px;
         }
         
-        section .container .user .formBx h3
+        #sec .container .user .formBx h3
         {
             font-size: 22px;
         }
         
-        section .container .user .formBx h2
+        #sec .container .user .formBx h2
         {
             font-size: 25px;
             font-weight: 500;
@@ -282,7 +343,7 @@
             color: white;
         }
         
-        section .container .user .formBx input
+        #sec .container .user .formBx input
         {
             width: 100%;
             padding: 10px;
@@ -297,7 +358,7 @@
             font-weight: 300;
         }
         
-        section .container .user .formBx input[type="submit"]
+        #sec .container .user .formBx input[type="submit"]
         {
             max-width: 100px;
             background: #CD212A;
@@ -309,12 +370,12 @@
             transition: 0.5s;
         }
 
-        section .container .user.Vaddress .formBx input[type="submit"]
+        #sec .container .user.Vaddress .formBx input[type="submit"]
         {
             background: #CD212A;
         }
         
-        section .container .user .formBx .signup
+        #sec .container .user .formBx .signup
         {
             position: relative;
             margin-top: 20px;
@@ -325,7 +386,7 @@
             font-weight: 300;
         }
         
-        section .container .user .formBx .signup a
+        #sec .container .user .formBx .signup a
         {
             font-size: 15px;
             font-weight: 600;
@@ -333,78 +394,78 @@
             color: #CD212A;
         }
         
-        section .container .user .formBx .Vaddress
+        #sec .container .user .formBx .Vaddress
         {
             display: none;
         }
         
-        section .container .Vaddress
+        #sec .container .Vaddress
         {
             pointer-events: none;
         }
         
-        section .container.active .Vaddress
+        #sec .container.active .Vaddress
         {
             pointer-events: initial;
         }
         
-        section .container .Vaddress .formBx
+        #sec .container .Vaddress .formBx
         {
             top: 100%;
         }
         
-        section .container.active .Vaddress .formBx
+        #sec .container.active .Vaddress .formBx
         {
             top: 0;
         }
         
-        section .container .Vaddress .imgBx
+        #sec .container .Vaddress .imgBx
         {
             top: -100%;
             transition: 0.5s;
         }
         
-        section .container.active .Vaddress .imgBx
+        #sec .container.active .Vaddress .imgBx
         {
             top: 0;
         }
 
-        section .container .Aaddress .formBx
+        #sec .container .Aaddress .formBx
         {
             top: 0;
         }
         
-        section .container.active .Aaddress .formBx
+        #sec .container.active .Aaddress .formBx
         {
             top: 100%;
         }
         
-        section .container .Aaddress .imgBx
+        #sec .container .Aaddress .imgBx
         {
             top: 0;
             transition: 0.5s;
         }
         
-        section .container.active .Aaddress .imgBx
+        #sec .container.active .Aaddress .imgBx
         {
             top: 100%;
         }
         
         @media (max-width: 991px)
         {
-            section .container
+            #sec .container
             {
                 max-width: 400px;
             }
-            section .container .imgBx
+            #sec .container .imgBx
             {
                 display: none;
             }
-            section .container .user .formBx
+            #sec .container .user .formBx
             {
                 width: 100%;
             }
-            section .container.active .Aaddress .formBx
+            #sec .container.active .Aaddress .formBx
             {
                 top: -100%  ;
             }
@@ -485,12 +546,6 @@
             display: flex;
         }
         
-        @media (max-width: 500px)
-        {
-            .radiocon
-            {
-                flex-direction: column;
-            }
-        }
+       
         </style> 
 </html>

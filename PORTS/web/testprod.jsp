@@ -20,7 +20,7 @@
     <!-- header section starts -->
     <%@include file="header_external.jsp"%>
     <!-- header section ends -->
-    
+    <body>
     <main class="container">
     <% 
        ServletContext sc = getServletContext();
@@ -150,8 +150,10 @@
                
            </script>
     </div>
+                             
     </main>
-    
+                               <%@include file="footer_external.jsp"%>
+    </body>
      <style>
         
         h4

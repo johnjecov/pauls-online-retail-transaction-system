@@ -92,6 +92,7 @@
 
 <!-- Menu section ends -->
    <script src="js/script.js"></script>
+     <%@include file="footer_external.jsp"%>
     </body>
  
 </html>

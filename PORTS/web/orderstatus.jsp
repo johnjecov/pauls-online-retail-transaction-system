@@ -146,4 +146,6 @@
                 }
             </script>
         </section>
+                  <%@include file="footer_external.jsp"%>
+    </body>
 </html>

@@ -36,8 +36,6 @@
                     ArrayList orderStatus = ports.getOrderStats();
                     Customer c = (Customer) session.getAttribute("customer");
                     Order customerOrder = c.getOrder(ports);
-                    ArrayList<Address> add = new ArrayList<Address>();
-                    add = ports.getCustomerAddresses(c.getCustomer_Id());
                     boolean orderEmpty = customerOrder.isEmpty();
                     
                     int orderid = -999;
@@ -52,7 +50,7 @@
                          + "<div class='item'>Purchases:<br>%s</div>\n"
                          + "</div>",
                          c.getName(), c.getSurname(), customerOrder.getOrder_Total(),
-                         ((Address)add.get(0)).toString(), customerOrder.getPayment_Method(),
+                         customerOrder.getAddress(), customerOrder.getPayment_Method(),
                          customerOrder.getOrderString());
                         out.println(s);
                         orderid = customerOrder.getOrder_Id();

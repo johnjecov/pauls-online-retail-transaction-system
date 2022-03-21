@@ -56,8 +56,6 @@ public class PortsDatabase {
         Cart checkoutCart = getCartData(1);
         System.out.println(checkoutCart.getCart_Total());
         
-        
-        Order test = getOrderData(1);
         System.out.println(test);
         
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -679,7 +677,7 @@ public class PortsDatabase {
     //the orders that are not yet done
     public ArrayList retrieveOrderHistory(String orderBy) {
         ArrayList<Order> orders = new ArrayList<>();
-        
+        orderBy = "order_status_id";
         try {
             String query = "SELECT order_id FROM orders WHERE order_status_id < 5 or payment_status = 'not paid'  order by "+orderBy+" ASC";
             PreparedStatement ps = portsConnection.prepareStatement(query);
@@ -1012,7 +1010,7 @@ public class PortsDatabase {
         String query3 = "SELECT * FROM purchase_toppings where purchase_id = ?";
         String query4 = "SELECT * FROM customer where customer_id = ?";
         Order o = new Order();
-
+        addresses = retrieveAllAddresses();
         try {
             PreparedStatement ps = portsConnection.prepareStatement(query1);
             

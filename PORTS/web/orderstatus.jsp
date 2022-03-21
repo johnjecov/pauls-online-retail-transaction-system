@@ -36,6 +36,8 @@
                     ArrayList orderStatus = ports.getOrderStats();
                     Customer c = (Customer) session.getAttribute("customer");
                     Order customerOrder = c.getOrder(ports);
+                    ArrayList<Address> add = new ArrayList<Address>();
+                    add = ports.getCustomerAddresses(c.getCustomer_Id());
                     boolean orderEmpty = customerOrder.isEmpty();
                     
                     int orderid = -999;
@@ -44,13 +46,13 @@
                     if (!orderEmpty) {
                         String s = String.format("<div class = 'statusitem'>\n"
                          + "<div class='item'>Customer Name:<br>%s %s</div>\n"
-                         + "<div class='item'>Total:₱<br>%s</div>\n"
+                         + "<div class='item'>Total:<br>₱ %s</div>\n"
                          + "<div class='item'>Address:<br>%s</div>\n"
                          + "<div class='item'>Payment Type:<br>%s</div>\n"
                          + "<div class='item'>Purchases:<br>%s</div>\n"
                          + "</div>",
                          c.getName(), c.getSurname(), customerOrder.getOrder_Total(),
-                         customerOrder.getAddress(), customerOrder.getPayment_Method(),
+                         ((Address)add.get(0)).toString(), customerOrder.getPayment_Method(),
                          customerOrder.getOrderString());
                         out.println(s);
                         orderid = customerOrder.getOrder_Id();

@@ -1358,6 +1358,26 @@ public class PortsDatabase {
         }
     }
     
+    
+   public void mergeCartItem(int cart_item_id, int quantity) {
+        System.out.print("TEST ADD Item to cart");
+        
+        String query1 = "UPDATE cart_purchase SET product_quantity = ? where cart_purchase_id = ?";
+
+        try {
+            
+            //prepare the merge
+            PreparedStatement ps = portsConnection.prepareStatement(query1);
+            ps.setInt(1, quantity);
+            ps.setInt(2, cart_item_id);
+            ps.executeUpdate();
+     
+        }
+        catch(SQLException sqle){
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        }
+    }
+    
     public void addItemToCart(int cart_id, CartItem item) {
         System.out.print("TEST ADD Item to cart");
         

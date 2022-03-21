@@ -10,6 +10,10 @@ public class CartItem {
     private ArrayList<CartItemToppings> toppings;
     private int quantity;
     
+    public CartItem() {
+        quantity = 0;
+    }
+    
     public CartItem(int cartItemId, int cartId, Product pizza, ArrayList<CartItemToppings> toppings, int quantity){
         this.cartItemId = cartItemId;
         this.cartId = cartId;
@@ -21,6 +25,10 @@ public class CartItem {
    //setter
    public void setId(int id) {
        cartItemId = id;
+   }
+   
+   public void setQuantity(int quantity){
+       this.quantity += quantity;
    }
     
     //getters
@@ -84,7 +92,7 @@ public class CartItem {
        double total = quantity * product.getPrice();
        
        for(CartItemToppings x : toppings){
-           total += x.getQuantity() * (x.getTopping().getPrice());
+           total += (x.getQuantity() * (x.getTopping().getPrice())) * quantity;
        }
        
        return total;

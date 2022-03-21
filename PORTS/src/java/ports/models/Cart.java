@@ -42,7 +42,7 @@ public class Cart {
             for (int j = 0; j < toppings.size(); j++){
                 CartItemToppings itemToppings = toppings.get(j);
                 Topping t = itemToppings.getTopping();
-                cart_total += (t.getPrice() * itemToppings.getQuantity());
+                cart_total += (t.getPrice() * itemToppings.getQuantity()) * item.getQuantity();
             }
         }
         }
@@ -53,12 +53,40 @@ public class Cart {
     }
     
     public void addToCart(PortsDatabase ports, CartItem item) {
+        //check if the item already exists, if yes then just add to quantity / mergy
+        boolean itemExists = false;
+        CartItem toMerge = new CartItem();
         
-        //add item to cart and update database
-        items.add(item);
-        ports.addItemToCart(cart_id, item);
-        computeTotal();
-        ports.setCartTotal(cart_id, cart_total);
+        for(CartItem x: items){
+            String itemA = item.getProduct().getName()+item.toString();
+            String itemB = x.getProduct().getName()+x.toString();
+            System.out.println("Old Pizz "+ itemA);
+            System.out.println("New Pizza "+ itemB);
+            if((itemA).equals(itemB)){
+                 itemExists = true;
+                 toMerge = x;
+                 break;        
+            }
+        }
+        
+        if(itemExists) {
+            //toMerge is already the x above
+            System.out.println("SAME???");
+            toMerge.setQuantity(item.getQuantity());
+            System.out.println("new quantity: "+toMerge.getQuantity());
+            ports.mergeCartItem(toMerge.getCartItemId(), toMerge.getQuantity());
+            computeTotal();
+            ports.setCartTotal(cart_id, cart_total);
+        }
+        else {
+            //add item to cart and update database
+            System.out.println("NEW ITEM");
+            items.add(item);
+            ports.addItemToCart(cart_id, item);
+            computeTotal();
+            ports.setCartTotal(cart_id, cart_total);
+        }
+        
     }
     
     public void removeFromCart(PortsDatabase ports, int cart_purchase_id){

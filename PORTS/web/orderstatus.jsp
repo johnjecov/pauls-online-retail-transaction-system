@@ -44,7 +44,7 @@
                     if (!orderEmpty) {
                         String s = String.format("<div class = 'statusitem'>\n"
                          + "<div class='item'>Customer Name:<br>%s %s</div>\n"
-                         + "<div class='item'>Total:₱<br>%s</div>\n"
+                         + "<div class='item'>Total:<br>₱ %s</div>\n"
                          + "<div class='item'>Address:<br>%s</div>\n"
                          + "<div class='item'>Payment Type:<br>%s</div>\n"
                          + "<div class='item'>Purchases:<br>%s</div>\n"

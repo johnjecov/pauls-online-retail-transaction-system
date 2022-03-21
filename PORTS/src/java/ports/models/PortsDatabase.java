@@ -26,6 +26,7 @@ public class PortsDatabase {
         order_status = getOrderStats();
         addresses = retrieveAllAddresses();
         //Code sample for testing cart
+        /*
         int testCartId = 1;
         CartItem testItem1;
         CartItem testItem2;
@@ -38,11 +39,11 @@ public class PortsDatabase {
         withToppings.add(new CartItemToppings(-1, testTopping, 2));
         //clearCartForCheckout(1);
         //System.out.println(getCartData(1));
-        /*
+        
         testItem1 = new CartItem(-1, 1, testProduct, noToppings, 1);
         System.out.println("Umabot dito");
         addItemToCart(1, testItem1);
-        */
+      
         
         //removeFromCart(1, 1);
         //Cart checkoutCart = getCartData(1);
@@ -55,16 +56,17 @@ public class PortsDatabase {
         
         Cart checkoutCart = getCartData(1);
         System.out.println(checkoutCart.getCart_Total());
-
+        */
         
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        //System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         
         //updateOrderStatus(2);
         //updateOrderPayment(2, "soon");
       
         
-        OrderSales = retrieveOrderSales("order_id");
+        //OrderSales = retrieveOrderSales("order_id");
         
+        /*
         System.out.println("~~~~~~~~~~Orders that are done~~~~~~~~~");
         for(Order x : OrderSales){
             System.out.println(x);
@@ -75,6 +77,7 @@ public class PortsDatabase {
         for(Order x : OrderHistory){
             System.out.println(x);
         }
+        */
         //checkoutCart.clearCart(this);
         //checkoutCart.checkOut(this, "testDate", "deliveryDate");
         //System.out.println(checkoutCart.getCart_Total());
@@ -431,7 +434,7 @@ public class PortsDatabase {
     
         public ArrayList retrieveAllAddresses(){
         System.out.print("TEST get ADDRESSES");
-        String query1 = "SELECT * FROM address order by 'address_id'";
+        String query1 = "SELECT * FROM address order by address_id ASC";
      
         ArrayList<Address> addresses = new ArrayList<>();
         try {
@@ -1004,7 +1007,7 @@ public class PortsDatabase {
     
     public Order getOrderData(int customer_id){
         
-        String query1 = "SELECT * FROM orders where customer_id = ? order by order_id desc";
+        String query1 = "SELECT * FROM orders where customer_id = ? order by order_id DESC";
         String query2 = "SELECT * FROM purchase where order_id = ?";
         String query3 = "SELECT * FROM purchase_toppings where purchase_id = ?";
         String query4 = "SELECT * FROM customer where customer_id = ?";
@@ -1194,7 +1197,7 @@ public class PortsDatabase {
                     ResultSet forPurchaseToppingsId = psQuery5.executeQuery();
 
                     while(forPurchaseToppingsId.next())
-                        purchase_toppings_id = Integer.parseInt(forPurchaseId.getString("purchase_toppings_id")) + 1;
+                        purchase_toppings_id = Integer.parseInt(forPurchaseToppingsId.getString("purchase_toppings_id")) + 1;
 
                     //insert the actual purchase toppings record
                     CartItemToppings t = toppings.get(j);
@@ -1349,6 +1352,26 @@ public class PortsDatabase {
             ps.executeUpdate();
             System.out.println("Change Total of Cart of: "+ cart_id+" into "+cart_total);
                 
+        }
+        catch(SQLException sqle){
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        }
+    }
+    
+    
+   public void mergeCartItem(int cart_item_id, int quantity) {
+        System.out.print("TEST ADD Item to cart");
+        
+        String query1 = "UPDATE cart_purchase SET product_quantity = ? where cart_purchase_id = ?";
+
+        try {
+            
+            //prepare the merge
+            PreparedStatement ps = portsConnection.prepareStatement(query1);
+            ps.setInt(1, quantity);
+            ps.setInt(2, cart_item_id);
+            ps.executeUpdate();
+     
         }
         catch(SQLException sqle){
             System.out.println("SQLException error occured - " + sqle.getMessage());

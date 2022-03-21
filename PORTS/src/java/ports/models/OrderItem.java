@@ -58,7 +58,7 @@ public class OrderItem {
        {
            OrderItemToppings t = toppings.get(i);
            if (i == 0)
-               s+= "with ";
+               s+= " with ";
            
            String adder = (t.getQuantity() > 1) ? "add ons" : "add on";
            

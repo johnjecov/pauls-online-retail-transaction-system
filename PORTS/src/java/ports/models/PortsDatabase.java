@@ -148,7 +148,7 @@ public class PortsDatabase {
     
     public Customer addCustomer(String username, String password, String name, String surname, String email, String contact_number) {
         int customer_id = 1;
-        String getCustomerId = "SELECT * FROM customer order by customer_id desc";
+        String getCustomerId = "SELECT * FROM customer";
         String insertCustomer =  "INSERT INTO customer VALUES(?,?,?,?,?,?,?)";
         
         Customer c = new Customer();
@@ -157,7 +157,7 @@ public class PortsDatabase {
             
             ResultSet results = ps.executeQuery();
             
-            if(results.next())
+            while(results.next())
                 customer_id = Integer.parseInt(results.getString("customer_id")) + 1;
             
             ps = portsConnection.prepareStatement(insertCustomer);
@@ -1149,7 +1149,7 @@ public class PortsDatabase {
             System.out.println("Order Created");
             
             //get the latest id of orders
-            String query2 = "SELECT order_id FROM orders where customer_id = ?";
+            String query2 = "SELECT order_id FROM orders where customer_id = ? order by order_id ASC";
             PreparedStatement psQuery2 = portsConnection.prepareStatement(query2);
             psQuery2.setInt(1, orderCart.getCustomer_Id());
             ResultSet forOrderId = psQuery2.executeQuery();
@@ -1197,7 +1197,7 @@ public class PortsDatabase {
                         purchase_toppings_id = Integer.parseInt(forPurchaseId.getString("purchase_toppings_id")) + 1;
 
                     //insert the actual purchase toppings record
-                    CartItemToppings t = toppings.get(i);
+                    CartItemToppings t = toppings.get(j);
                     String query6 = "INSERT INTO purchase_toppings (purchase_toppings_id, purchase_id, toppings_id, toppings_quantity) VALUES(?,?,?,?)";
                     PreparedStatement psQuery6 = portsConnection.prepareStatement(query6);
                     psQuery6.setInt(1, purchase_toppings_id);

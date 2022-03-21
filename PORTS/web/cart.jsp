@@ -169,7 +169,9 @@
             </form>
         
         <% } else {%>
-        <h2 style="position: fixed; top:50%; width: 100%; text-align: center; font-size: 50px; color: white;">You have No Items in your Cart</h2>
+        <div class="noOrders">
+        <h2 style="position: relative; top:50%; width: 100%; text-align: center; font-size: 50px; color: white;">You have No Items in your Cart</h2>
+        </div>
         <% } %>
           <%@include file="footer_external.jsp"%>
     </body>
@@ -191,6 +193,12 @@
     </script>
     
     <style>
+        
+        .noOrders
+        {
+            width: 100%;
+            height: 680px;
+        }
         .toppingW
         {
             min-width: 100px;

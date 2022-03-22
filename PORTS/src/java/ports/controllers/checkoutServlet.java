@@ -66,7 +66,7 @@ public class checkoutServlet extends HttpServlet {
                    port.checkOutCart(c.getCart(port), checkoutDate, deliveryDate, payment, Integer.parseInt(address));
                    //checkOutCart(Cart orderCart, String checkoutDate, String deliveryDate, String paymen,t int address_id)
                    port.clearCartForCheckout(c.getCart(port).getCart_Id());
-                 response.sendRedirect("index.jsp");
+                 response.sendRedirect("orderstatus.jsp");
                    
                     
     }

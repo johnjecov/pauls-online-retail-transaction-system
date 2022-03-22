@@ -15,6 +15,7 @@
          PortsDatabase port = (PortsDatabase)app.getAttribute("dbConnection");
              %>
     <head>
+        <link rel="icon" type="image/png" href="image/logo.png">
         <title>View Addresses</title>
         <link rel="shortcut icon" type="image/png" href="images/logotrans.png">
         <meta charset = "utf-8">

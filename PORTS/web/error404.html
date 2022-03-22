@@ -3,6 +3,7 @@
     <head>
         <link rel="stylesheet" href="css/error404css.css?" type="text/css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="icon" type="image/png" href="image/logo.png">
         <title>Uh-oh...</title>
     </head>
     <body>

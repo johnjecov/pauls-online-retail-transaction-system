@@ -24,6 +24,7 @@
     %>
      
     <head>
+        <link rel="icon" type="image/png" href="image/logo.png">
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -157,15 +158,22 @@
         </div>
         
         <div class="checkout">
-            <%if(items.size()!=0) {  //CORRECT CODE IS NOT (FOR DEMO PURPOSED CHANGE EXCLUDE NOT(!) = FOR ORDER STATUS
-                if(!(c.getOrder(port).getOrder_Status_Id() < 5)) {%>  
+            <%
+                Order orderCustomer = c.getOrder(port);
+                  
+                if(items.size()!=0) {
+                    if(orderCustomer.isEmpty()) {//CORRECT CODE IS NOT (FOR DEMO PURPOSED CHANGE EXCLUDE NOT(!) = FOR ORDER STATUS
+                if(!(orderCustomer.getOrder_Status_Id() < 5) || !orderCustomer.existingOrder()) {%>  
             <input class="btn" type = "submit" value = "Place Order"> 
             <% } else {%>
             <input class="btn" type = "submit" value = "Place Order" disabled="disabled">
-            <%} %>
-             <%} else { %>
+            <% }   %>
+             <%  } else { %>
              <input class="btn" type = "submit" value = "Place Order" disabled="disabled">
-                 <%} %>
+             <%}  } else { %>
+                 <input class="btn" type = "submit" value = "Place Order" disabled="disabled">
+            <% }   %>
+            
         </div>
             </form>
         </div>

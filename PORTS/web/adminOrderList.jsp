@@ -9,7 +9,7 @@
         <title>Order List</title>
     </head>
     <body scroll="no" style="overflow: hidden">
-        <%@include file="adminLogout.jsp"%>
+       
         <div class="contentHolder">
             <div class="sidebar">
                 <img class="logo" src="image/Paul's Pizzeria Logo_1.jpg" alt="Paul's Pizzeria Logo">
@@ -54,7 +54,7 @@
                 </div>
                 <div class="adminContent">
                     <div class='orderHeading'>
-                        <div class="col1">Order ID</div>
+                        <div class="col1">ID</div>
                         <div class="col2">Date</div>
                         <div class="col2">Name</div>
                         <div class="col2">Payment Details</div>

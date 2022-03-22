@@ -55,7 +55,7 @@
         <div class="content">
 
             <form id = "loginForm" action="login" method = "POST">
-                <h3 class = "formTitle">login</h3>
+                <h3 class = "formTitle">Login</h3>
                 <input type="text" name="loginUname" placeholder="Enter your username" id="loginUname" class="inputs" required>
                 <div class="passwordDiv">
                 <input type="password" name="loginPass" placeholder="Enter your password" id="loginPass" class="inputs" required>

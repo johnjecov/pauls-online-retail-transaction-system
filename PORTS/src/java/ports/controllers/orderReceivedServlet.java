@@ -44,14 +44,15 @@ public class orderReceivedServlet extends HttpServlet {
         HttpSession session = request.getSession();
         ServletContext sc = request.getServletContext();
         PortsDatabase ports = (PortsDatabase) sc.getAttribute("dbConnection");        
-        Customer c = (Customer) session.getAttribute("customer"); 
+        Customer c = (Customer) session.getAttribute("customer");
+        System.out.println("This customer has received his/her order: "+c.getName());
+           
         Order o = c.getOrder(ports);
-        int order_id = o.getOrder_Id();
-        int employee_id = 1;
 
-        ports.updateOrderStatus(order_id, employee_id);
         ports.updateOrderReceived(o);
- 
+        o = c.getOrder(ports);
+        
+        session.setAttribute("customerOrderFeedback", o);
         response.sendRedirect("feedback.jsp"); 
     }
 

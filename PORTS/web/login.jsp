@@ -73,7 +73,7 @@
                 %>
                 <p style = "color: red;font-size: 1.3rem"><%= errorMessage %></p>
                 <input type="submit" value="Login Now" class="inputs LRButton" id = "loginButton">
-                <p>don't have an account? <a href="register.jsp" id = "goReg">create one</a></p>
+                <p>Don't have an account? <a href="register.jsp" id = "goReg">create one</a></p>
             </form>
             
                 <script> 

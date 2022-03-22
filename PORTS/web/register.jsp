@@ -53,7 +53,7 @@
     
         <div class="content">            
             <form id = "regForm" action="register" method = "POST">
-                <h3 class = "formTitle">register</h3>
+                <h3 class = "formTitle">Register</h3>
                 <input type="text" name="unameR" placeholder="Username" id="" class="inputsR" required>
                 <div id ="givenLast">
                     <input type="text" name="givenNameR" placeholder="Given name" id="givenNameR" class="givenLastField" required>
@@ -83,7 +83,7 @@
                         sc.removeAttribute("ErrorMessageR");
                     }
                 %>
-                <p style = "color: #302c2c;font-size: 1.3rem"><%= errorMessageR %></p>
+                <p id = "regformMessage" style = "color: #302c2c;font-size: 1.3rem"><%= errorMessageR %></p>
                 <input type="submit" value="Register Now" class="inputsR LRButton" id = "regButton">
                 <p>Already have an account? <a href="login.jsp" id = "goLogin">Login</a></p>
             </form>

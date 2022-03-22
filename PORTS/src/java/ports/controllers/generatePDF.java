@@ -43,12 +43,10 @@ public class generatePDF extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         System.out.println("PDF IS STARTING");
         ServletContext sc = request.getServletContext();
-        String selectedSort = request.getParameter("arrange");
-        //sc.setAttribute("selectedSortAttribute", selectedSort);
-        //response.sendRedirect("adminHistoryPage.jsp");
+        //String selectedSort = request.getParameter("arrange");
 
         PortsDatabase ports = (PortsDatabase) sc.getAttribute("dbConnection");
 
@@ -87,184 +85,144 @@ public class generatePDF extends HttpServlet {
 //            }
 //            rs.first();
 //            rs.previous();
-
             //THIS IS TO DETERMINE WHAT IS THE CURRENT TIME AND DATE TO BE PLACED IN FOOTER
-            DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern(" MM/dd/yyyy | HH:mm");
-            String dateTime = dtf2.format(now);
+            //DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern(" MM/dd/yyyy | HH:mm");
+            //String dateTime = dtf2.format(now);
 
             //for (int x = 1; x <= totalPages; x++) { //pages
-                paragraph.add(getServletContext().getInitParameter("header"));
-                paragraph.add(Chunk.NEWLINE);
-                PdfPTable table = new PdfPTable(9);
-                float[] columnWidths = {0.5f, 1.25f, 0.5f, 1.5f, 0.5f, 0.5f, 1.5f, 0.5f, 1f};
-                table.setWidths(columnWidths);
-                table.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
-                table.getDefaultCell().setVerticalAlignment(Element.ALIGN_MIDDLE);
+            paragraph.add(getServletContext().getInitParameter("header"));
+            paragraph.add(Chunk.NEWLINE);
+            PdfPTable table = new PdfPTable(9);
+            float[] columnWidths = {1f, 1.25f, 1f, 1.5f, 1f, 1f, 1.5f, 1f, 1f};
+            table.setWidths(columnWidths);
+            table.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.getDefaultCell().setVerticalAlignment(Element.ALIGN_MIDDLE);
 
-                table.addCell("Order ID");
-                table.addCell("Date");
-                table.addCell("Product ID");
-                table.addCell("Product Name");
-                table.addCell("Quantity");
-                table.addCell("Toppings ID");
-                table.addCell("Toppings");
-                table.addCell("Toppings Quantity");
-                table.addCell("Total Price");
+            table.addCell("Order ID");
+            table.addCell("Date");
+            table.addCell("Product ID");
+            table.addCell("Product Name");
+            table.addCell("Quantity");
+            table.addCell("Toppings ID");
+            table.addCell("Toppings");
+            table.addCell("Toppings Quantity");
+            table.addCell("Total Price");
+
+            //int yy = 0;
+            //for (int y = 1; y <= rowPerPage && rs.next(); y++) {//table rows
+            //yy = y;
+            
+            ArrayList<Order> orderList = (ArrayList) ports.getOrderSales("order_ID");
+            for (Order i : orderList) {
+                ArrayList<OrderItem> orderItems = i.getItems();
+
+                List orderID = new List();
+                List deliveryDate = new List();
+                List productID = new List();
+                List productName = new List();
+                List productQuantity = new List();
+                List toppingsID = new List();
+                List toppingsName = new List();
+                List toppingsQuantity = new List();
+                List orderTotal = new List();
+
+                orderID.add(new ListItem(String.valueOf(i.getOrder_Id())));
+                deliveryDate.add(new ListItem(i.getOrder_Delivery_Date()));
+
+                for (OrderItem j : orderItems) {
+                    ArrayList<OrderItemToppings> orderItemToppings = j.getToppings();
+
+                    productID.add(new ListItem(String.valueOf(j.getProduct().getId())));
+                    productName.add(new ListItem(String.valueOf(j.getProduct().getName())));
+                    productQuantity.add(new ListItem(String.valueOf(j.getQuantity())));
+
+                    if (j.getToppings().size() == 0) {
+                        toppingsName.add(new ListItem("No Toppings"));
+                    }
+                    for (OrderItemToppings k : orderItemToppings) {
+                        System.out.println("TOPPINGS");
+                        toppingsID.add(new ListItem(String.valueOf(k.getTopping().getId())));
+                        toppingsName.add(new ListItem(String.valueOf(k.getTopping().getName())));
+                        toppingsQuantity.add(new ListItem(String.valueOf(k.getQuantity())));
+                    }
+                }
+                orderTotal.add(new ListItem(String.valueOf(i.getOrder_Total())));
                 
-                ArrayList<Order> orderList = (ArrayList) ports.getOrderSales(selectedSort);
-                Queue<String> orderID2 = new LinkedList<String>();
-                    for (Order i : orderList) {
-                        ArrayList<OrderItem> orderItems = i.getItems();
-                        orderID2.add(String.valueOf(i.getOrder_Id()));
-                    }
-//                    Phrase oID2Phrase = new Phrase();
-//                        oID2Phrase.add(orderID2);
-//                        PdfPCell oID2PhraseCell = new PdfPCell();
-//                        oID2PhraseCell.addElement(oID2Phrase);
-//                        PdfPTable phraseTable = new PdfPTable(2);
-//                        phraseTable.addCell("Please work:");
-//                        phraseTable.addCell(oID2PhraseCell);
-                        
-                        //PdfPCell cellone = new PdfPCell();
-                        //cellone.addElement(orderID2);
-                        //String str = orderID2.remove();
-                table.addCell("hi");
-                table.addCell("Date");
-                table.addCell("Product ID");
-                table.addCell("Product Name");
-                table.addCell("Quantity");
-                table.addCell("Toppings ID");
-                table.addCell("Toppings");
-                table.addCell("Toppings Quantity");
-                table.addCell("Total Price");
+                Phrase oIDPhrase = new Phrase();
+                oIDPhrase.add(orderID);
+                PdfPCell oIDPhraseCell = new PdfPCell();
+                oIDPhraseCell.addElement(oIDPhrase);
+                table.addCell(oIDPhraseCell);
 
-                //int yy = 0;
+                Phrase dDatePhrase = new Phrase();
+                dDatePhrase.add(deliveryDate);
+                PdfPCell dDatePhraseCell = new PdfPCell();
+                dDatePhraseCell.addElement(dDatePhrase);
+                table.addCell(dDatePhraseCell);
 
-                //for (int y = 1; y <= rowPerPage && rs.next(); y++) {//table rows
-                    //yy = y;
+                Phrase pIDPhrase = new Phrase();
+                pIDPhrase.add(productID);
+                PdfPCell pIDPhraseCell = new PdfPCell();
+                pIDPhraseCell.addElement(pIDPhrase);
+                table.addCell(pIDPhraseCell);
 
-                    //ArrayList<Order> orderList = (ArrayList) ports.getOrderSales(selectedSort);
-                    for (Order i : orderList) {
-                        ArrayList<OrderItem> orderItems = i.getItems();
+                Phrase pNamePhrase = new Phrase();
+                pNamePhrase.add(productName);
+                PdfPCell pNamePhraseCell = new PdfPCell();
+                pNamePhraseCell.addElement(pNamePhrase);
+                table.addCell(pNamePhraseCell);
 
-                        List orderID = new List();
-                        List deliveryDate = new List();
-                        List productID = new List();
-                        List productName = new List();
-                        List productQuantity = new List();
-                        List toppingsID = new List();
-                        List toppingsName = new List();
-                        List toppingsQuantity = new List();
-                        List orderTotal = new List();
+                Phrase pQuantityPhrase = new Phrase();
+                pQuantityPhrase.add(productQuantity);
+                PdfPCell pQuantityPhraseCell = new PdfPCell();
+                pQuantityPhraseCell.addElement(pQuantityPhrase);
+                table.addCell(pQuantityPhraseCell);
 
-                        orderID.add(String.valueOf(i.getOrder_Id()));
-                        deliveryDate.add(i.getOrder_Delivery_Date());
+                Phrase tIDPhrase = new Phrase();
+                tIDPhrase.add(toppingsID);
+                PdfPCell tIDPhraseCell = new PdfPCell();
+                tIDPhraseCell.addElement(tIDPhrase);
+                table.addCell(tIDPhraseCell);
 
-                        for (OrderItem j : orderItems) {
-                            ArrayList<OrderItemToppings> orderItemToppings = j.getToppings();
+                Phrase tNamePhrase = new Phrase();
+                tNamePhrase.add(toppingsName);
+                PdfPCell tNamePhraseCell = new PdfPCell();
+                tNamePhraseCell.addElement(tNamePhrase);
+                table.addCell(tNamePhraseCell);
 
-                            productID.add(String.valueOf(j.getProduct().getId()));
-                            productName.add(String.valueOf(j.getProduct().getName()));
-                            productQuantity.add(String.valueOf(j.getQuantity()));
+                Phrase tQuantityPhrase = new Phrase();
+                tQuantityPhrase.add(toppingsQuantity);
+                PdfPCell tQuantityPhraseCell = new PdfPCell();
+                tQuantityPhraseCell.addElement(tQuantityPhrase);
+                table.addCell(tQuantityPhraseCell);
 
-                            for (OrderItemToppings k : orderItemToppings) {
-                                toppingsID.add(String.valueOf(k.getTopping().getId()));
-                                if(String.valueOf(k.getTopping().getName()).equals("")){
-                                    toppingsName.add("No Toppings");
-                                } else {
-                                    toppingsName.add(String.valueOf(k.getTopping().getName()));
-                                }
-                                toppingsQuantity.add(String.valueOf(k.getQuantity()));
-                            }
-                        }
-                        orderTotal.add(String.valueOf(i.getOrder_Total()));
-                        
-                        PdfPCell oIDCell = new PdfPCell();
-                        oIDCell.addElement(orderID);
-                        table.addCell(oIDCell);
-
-                        Phrase dDatePhrase = new Phrase();
-                        dDatePhrase.add(deliveryDate);
-                        PdfPCell dDatePhraseCell = new PdfPCell();
-                        dDatePhraseCell.addElement(dDatePhrase);
-                        table.addCell(dDatePhraseCell);
-
-                        Phrase pIDPhrase = new Phrase();
-                        pIDPhrase.add(productID);
-                        PdfPCell pIDPhraseCell = new PdfPCell();
-                        pIDPhraseCell.addElement(pIDPhrase);
-                        table.addCell(pIDPhraseCell);
-
-                        Phrase pNamePhrase = new Phrase();
-                        pNamePhrase.add(productName);
-                        PdfPCell pNamePhraseCell = new PdfPCell();
-                        pNamePhraseCell.addElement(pNamePhrase);
-                        table.addCell(pNamePhraseCell);
-
-                        Phrase pQuantityPhrase = new Phrase();
-                        pQuantityPhrase.add(productQuantity);
-                        PdfPCell pQuantityPhraseCell = new PdfPCell();
-                        pQuantityPhraseCell.addElement(pQuantityPhrase);
-                        table.addCell(pQuantityPhraseCell);
-
-                        Phrase tIDPhrase = new Phrase();
-                        tIDPhrase.add(toppingsID);
-                        PdfPCell tIDPhraseCell = new PdfPCell();
-                        tIDPhraseCell.addElement(tIDPhrase);
-                        table.addCell(tIDPhraseCell);
-
-                        Phrase tNamePhrase = new Phrase();
-                        tNamePhrase.add(toppingsName);
-                        PdfPCell tNamePhraseCell = new PdfPCell();
-                        tNamePhraseCell.addElement(tNamePhrase);
-                        table.addCell(tNamePhraseCell);
-
-                        Phrase tQuantityPhrase = new Phrase();
-                        tQuantityPhrase.add(toppingsQuantity);
-                        PdfPCell tQuantityPhraseCell = new PdfPCell();
-                        tQuantityPhraseCell.addElement(tQuantityPhrase);
-                        table.addCell(tQuantityPhraseCell);
-
-                        Phrase oTotalPhrase = new Phrase();
-                        oTotalPhrase.add(orderTotal);
-                        PdfPCell oTotalPhraseCell = new PdfPCell();
-                        oTotalPhraseCell.addElement(oTotalPhrase);
-                        table.addCell(oTotalPhraseCell);
-                    }
-                //}
-                paragraph.add(table);
-                //provides new lines to the docs if the table does not touch the bottom of the document
-                //while (yy != 24) {
-                //    yy++;
-                //    paragraph.add(Chunk.NEWLINE);
-                //}
-                //paragraph.add(getServletContext().getInitParameter("footer").toString());
-                //paragraph.add(" | ");
-                //paragraph.add(" Report by: " + "ADMIN" + " | ");
-                //paragraph.add(dateTime);
-                //paragraph.add(" | Page " + x + " of " + totalPages);
-                //paragraph.add(Chunk.NEWLINE);
+                Phrase oTotalPhrase = new Phrase();
+                oTotalPhrase.add(orderTotal);
+                PdfPCell oTotalPhraseCell = new PdfPCell();
+                oTotalPhraseCell.addElement(oTotalPhrase);
+                table.addCell(oTotalPhraseCell);
+            }
+            //}
+            paragraph.add(table);
+            //provides new lines to the docs if the table does not touch the bottom of the document
+            //while (yy != 24) {
+            //    yy++;
+            //    paragraph.add(Chunk.NEWLINE);
+            //}
+            //paragraph.add(getServletContext().getInitParameter("footer").toString());
+            //paragraph.add(" | ");
+            //paragraph.add(" Report by: " + "ADMIN" + " | ");
+            //paragraph.add(dateTime);
+            //paragraph.add(" | Page " + x + " of " + totalPages);
+            //paragraph.add(Chunk.NEWLINE);
             //}
             document.add(paragraph);
             document.close();
-            
+
             baos.writeTo(out);
-//            
-//            OutputStream fos = new FileOutputStream("files/");
-//            baos.writeTo(fos);
-//            fos.flush();
-//            fos.close();
-            
-//            DataOutputStream dataOutput = new DataOutputStream(response.getOutputStream());
-//            byte[] bytes = baos.toByteArray();
-//            response.setContentLength(bytes.length);
-//            for(int i=0; i<bytes.length; i++){
-//                dataOutput.writeByte(bytes[i]);
-//                
-//                dataOutput.flush();
-//                dataOutput.close();
-//                return;
-//            }
+            out.flush();
+            out.close();
+
             System.out.println("PDF IS DONE AND PRINTED");
         } catch (Exception e) {
             e.printStackTrace();

@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="css/editMenu.css?nocache={timestamp}" type="text/css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Edit Menu</title>
+        <link rel="icon" type="image/png" href="image/logo.png">
     </head>
     <body scroll="no" style="overflow: hidden">
         <%@include file="adminLogout.jsp"%>

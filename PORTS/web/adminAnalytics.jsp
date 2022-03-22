@@ -10,7 +10,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+        <link rel="icon" type="image/png" href="image/logo.png">
         <title>Analytics Page</title>
     </head>
     <body scroll="no" style="overflow: hidden">

@@ -44,8 +44,7 @@ public class generatePDF extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        
-            System.out.println("PDF IS STARTING");
+        System.out.println("PDF IS STARTING");
         ServletContext sc = request.getServletContext();
         String selectedSort = request.getParameter("arrange");
         //sc.setAttribute("selectedSortAttribute", selectedSort);
@@ -155,48 +154,57 @@ public class generatePDF extends HttpServlet {
 
                         Phrase oIDPhrase = new Phrase();
                         oIDPhrase.add(orderID);
-                        PdfPCell oIDCell = new PdfPCell();
-                        table.addCell(oIDCell);
+                        PdfPCell oIDPhraseCell = new PdfPCell();
+                        oIDPhraseCell.addElement(oIDPhrase);
+                        table.addCell(oIDPhraseCell);
 
                         Phrase dDatePhrase = new Phrase();
                         dDatePhrase.add(deliveryDate);
-                        PdfPCell dDateCell = new PdfPCell();
-                        table.addCell(dDateCell);
+                        PdfPCell dDatePhraseCell = new PdfPCell();
+                        dDatePhraseCell.addElement(dDatePhrase);
+                        table.addCell(dDatePhraseCell);
 
                         Phrase pIDPhrase = new Phrase();
                         pIDPhrase.add(productID);
-                        PdfPCell pIDCell = new PdfPCell();
-                        table.addCell(pIDCell);
+                        PdfPCell pIDPhraseCell = new PdfPCell();
+                        pIDPhraseCell.addElement(pIDPhrase);
+                        table.addCell(pIDPhraseCell);
 
                         Phrase pNamePhrase = new Phrase();
                         pNamePhrase.add(productName);
-                        PdfPCell pNameCell = new PdfPCell();
-                        table.addCell(pNameCell);
+                        PdfPCell pNamePhraseCell = new PdfPCell();
+                        pNamePhraseCell.addElement(pNamePhrase);
+                        table.addCell(pNamePhraseCell);
 
                         Phrase pQuantityPhrase = new Phrase();
                         pQuantityPhrase.add(productQuantity);
-                        PdfPCell pQuantityCell = new PdfPCell();
-                        table.addCell(pQuantityCell);
+                        PdfPCell pQuantityPhraseCell = new PdfPCell();
+                        pQuantityPhraseCell.addElement(pQuantityPhrase);
+                        table.addCell(pQuantityPhraseCell);
 
                         Phrase tIDPhrase = new Phrase();
                         tIDPhrase.add(toppingsID);
-                        PdfPCell tIDCell = new PdfPCell();
-                        table.addCell(tIDCell);
+                        PdfPCell tIDPhraseCell = new PdfPCell();
+                        tIDPhraseCell.addElement(tIDPhrase);
+                        table.addCell(tIDPhraseCell);
 
                         Phrase tNamePhrase = new Phrase();
                         tNamePhrase.add(toppingsName);
-                        PdfPCell tNameCell = new PdfPCell();
-                        table.addCell(tNameCell);
+                        PdfPCell tNamePhraseCell = new PdfPCell();
+                        tNamePhraseCell.addElement(tNamePhrase);
+                        table.addCell(tNamePhraseCell);
 
                         Phrase tQuantityPhrase = new Phrase();
                         tQuantityPhrase.add(toppingsQuantity);
-                        PdfPCell tQuantityCell = new PdfPCell();
-                        table.addCell(tQuantityCell);
+                        PdfPCell tQuantityPhraseCell = new PdfPCell();
+                        tQuantityPhraseCell.addElement(tQuantityPhrase);
+                        table.addCell(tQuantityPhraseCell);
 
                         Phrase oTotalPhrase = new Phrase();
                         oTotalPhrase.add(orderTotal);
-                        PdfPCell oTotalCell = new PdfPCell();
-                        table.addCell(oTotalCell);
+                        PdfPCell oTotalPhraseCell = new PdfPCell();
+                        oTotalPhraseCell.addElement(oTotalPhrase);
+                        table.addCell(oTotalPhraseCell);
                     }
                 //}
                 paragraph.add(table);
@@ -216,8 +224,6 @@ public class generatePDF extends HttpServlet {
             document.close();
             
             baos.writeTo(out);
-            out.flush();
-            out.close();
 //            
 //            OutputStream fos = new FileOutputStream("files/");
 //            baos.writeTo(fos);
@@ -226,7 +232,6 @@ public class generatePDF extends HttpServlet {
             
 //            DataOutputStream dataOutput = new DataOutputStream(response.getOutputStream());
 //            byte[] bytes = baos.toByteArray();
-//            response.setContentType("application/pdf");
 //            response.setContentLength(bytes.length);
 //            for(int i=0; i<bytes.length; i++){
 //                dataOutput.writeByte(bytes[i]);

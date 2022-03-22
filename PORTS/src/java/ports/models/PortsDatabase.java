@@ -25,68 +25,6 @@ public class PortsDatabase {
         toppings = retrieveToppings();
         order_status = getOrderStats();
         addresses = retrieveAllAddresses();
-        //Code sample for testing cart
-        /*
-        int testCartId = 1;
-        CartItem testItem1;
-        CartItem testItem2;
-        Product testProduct = new Product(1, "Pepperoni", 15, "Pizza", "Delicious", "/test.jpg", "available", 149);
-        Topping testTopping = new Topping(1, "Cheese", 40, "Cheesiest Cheese", "/testTopping.jpg", "available", 15);
-        ArrayList<CartItemToppings> noToppings = new ArrayList<>();
-        
-        
-        ArrayList<CartItemToppings> withToppings = new ArrayList<>();
-        withToppings.add(new CartItemToppings(-1, testTopping, 2));
-        //clearCartForCheckout(1);
-        //System.out.println(getCartData(1));
-        
-        testItem1 = new CartItem(-1, 1, testProduct, noToppings, 1);
-        System.out.println("Umabot dito");
-        addItemToCart(1, testItem1);
-      
-        
-        //removeFromCart(1, 1);
-        //Cart checkoutCart = getCartData(1);
-        //testItem2 = new CartItem(-1, 1, testProduct, withToppings, 1);
-        //checkoutCart.addToCart(this, testItem2);
-        //addItemToCart(1, testItem2);
-        
-        //test getting the actual cart on startup
-        //test checkout
-        
-        Cart checkoutCart = getCartData(1);
-        System.out.println(checkoutCart.getCart_Total());
-        */
-        
-        //System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        
-        //updateOrderStatus(2);
-        //updateOrderPayment(2, "soon");
-      
-        
-        //OrderSales = retrieveOrderSales("order_id");
-        
-        /*
-        System.out.println("~~~~~~~~~~Orders that are done~~~~~~~~~");
-        for(Order x : OrderSales){
-            System.out.println(x);
-        }
-        
-        System.out.println("~~~~~~~~~~Orders that are not yet done~~~~~~~~~");
-        OrderHistory = retrieveOrderHistory("order_id");
-        for(Order x : OrderHistory){
-            System.out.println(x);
-        }
-        */
-        //checkoutCart.clearCart(this);
-        //checkoutCart.checkOut(this, "testDate", "deliveryDate");
-        //System.out.println(checkoutCart.getCart_Total());
-        //checkoutCart.clearCart(this);
-        
-        //setCartTotal(checkoutCart.getCart_Id(), checkoutCart.computeTotal());
-        //System.out.println(checkoutCart);
-        
-        //checkOutCart(checkoutCart, "TestCheckoutDate", "TestDeliveryDate");
     }
     
     //register 
@@ -153,7 +91,7 @@ public class PortsDatabase {
         int customer_id = 1;
         String getCustomerId = "SELECT * FROM customer";
         String insertCustomer =  "INSERT INTO customer VALUES(?,?,?,?,?,?,?)";
-        
+        password = security.encrypt(password);
         Customer c = new Customer();
         try {
             PreparedStatement ps = portsConnection.prepareStatement(getCustomerId);
@@ -191,7 +129,7 @@ public class PortsDatabase {
         
         String checkEmployee = "SELECT * FROM employee where employee_username = ? AND employee_password = ?";
         String checkCustomer = "SELECT * FROM customer where customer_username = ? AND customer_password = ?";
-        //password = security.encrypt(password);
+        password = security.encrypt(password);
         try {
             PreparedStatement ps = portsConnection.prepareStatement(checkEmployee);
             ps.setString(1, username);
@@ -227,7 +165,7 @@ public class PortsDatabase {
         String loginResult = "";
         
         
-        //password = security.encrypt(password);
+        password = security.encrypt(password);
         String checkEmployee = "SELECT * FROM employee where employee_username = ? AND employee_password = ?";
         String checkCustomer = "SELECT * FROM customer where customer_username = ? AND customer_password = ?";
         

@@ -20,6 +20,8 @@ import javax.servlet.http.HttpSession;
 import ports.models.*;
 import nl.captcha.Captcha;
 import nl.captcha.Captcha.Builder;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class registerServlet extends HttpServlet {
 
@@ -38,14 +40,37 @@ public class registerServlet extends HttpServlet {
         String contactR = request.getParameter("contactR").trim();
         String captchaR = request.getParameter("captchaR").trim();
                            
-        System.out.printf("Username: %s\nPassword: %s", unameR, pwordR);
+        //System.out.printf("Username: %s\nPassword: %s", unameR, pwordR);
         
         String loginResult = ports.login(unameR, pwordR);
         HttpSession session = request.getSession();
         
         //check if user exists
         boolean exists = ports.checkCustomer(unameR);
-        if(exists){
+        
+   
+        String usernameRegex = "^[a-zA-Z0-9._-]{5,15}$"; 
+        //Username must be 5-15 characters long, start or end with a letter or number, and can only contain special characters such as . _ and -.
+        String passwordRegex = "^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9@#$%^&-+=()]{6,}";
+        
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+                            "[a-zA-Z0-9_+&*-]+)*@" +
+                            "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                            "A-Z]{2,7}$";
+        if(!Pattern.matches(usernameRegex, unameR)){
+            System.out.println(Pattern.matches(usernameRegex, unameR));
+            sc.setAttribute("ErrorMessageR", "Username must be 5-15 characters long. Can only contain letters, numbers, and special characters dot(.), underscore(_), and dash(-)");
+            response.sendRedirect("register.jsp");
+        }
+        else if(!Pattern.matches(passwordRegex, pwordR)){
+            sc.setAttribute("ErrorMessageR", "Password must be atleast 6 characters long, contain atleast 1 letter, 1 number, and can contain special characters @#$%^&-+=()");
+            response.sendRedirect("register.jsp");
+        }
+        else if (!Pattern.matches(emailRegex, emailR)){
+            sc.setAttribute("ErrorMessageR", "Invalid format for email, please check again thank you.");
+            response.sendRedirect("register.jsp");
+        }
+        else if(exists){
             sc.setAttribute("ErrorMessageR", "Username already exists. Try again!");
             response.sendRedirect("register.jsp");
         }

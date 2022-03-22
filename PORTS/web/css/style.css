@@ -574,6 +574,11 @@ section {
     min-width: 40rem;
 }
 
+#regformMessage{
+    text-align: justify;
+    min-width: 40rem;
+    max-width: 40rem;
+}
 .inputs:hover {
     font-size: 1.6rem;
 }
@@ -642,7 +647,7 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .LRForm .image {
-    min-height: 70vh;
+    min-height: 80vh;
     background-color: #1e1f20;
     -webkit-box-flex: 1;
     -ms-flex: 1 1 40rem;
@@ -656,7 +661,7 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .LRForm .content {
-    min-height: 70vh;
+    min-height: 80vh;
     background-color: #f3eee8; /*#f3eee8*/
     -webkit-box-flex: 1;
     -ms-flex: 1 1 40rem;
@@ -1695,7 +1700,11 @@ textarea#feedbacktext {
     .inputsR {
         min-width: 30rem;
     }
-
+    
+    #regformMessage{
+    min-width: 30rem;
+    max-width: 30rem;
+    }
     #givenLast {
         flex-direction: column;
         align-items: center;

@@ -71,7 +71,7 @@ public class Cart {
         
         if(itemExists) {
             //toMerge is already the x above
-            System.out.println("SAME???");
+            System.out.println("Merge Items");
             toMerge.setQuantity(item.getQuantity());
             System.out.println("new quantity: "+toMerge.getQuantity());
             ports.mergeCartItem(toMerge.getCartItemId(), toMerge.getQuantity());
@@ -95,7 +95,6 @@ public class Cart {
             System.out.println("inputID: "+cart_purchase_id+" :itemid: "+item.getCartId() +"itemP: "+item.getProduct().getName());
             if (item.getCartItemId() == cart_purchase_id){
                 items.remove(i);
-                System.out.println("naremove");
                 break;
             }
         }

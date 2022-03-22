@@ -17,7 +17,6 @@ public class PortsDatabase {
     ArrayList<Order> OrderSales;
     ArrayList<Order> OrderHistory;
 
-    String defaultOrder = "asc";
     public PortsDatabase(Connection con){
         setConnection(con);
         System.out.println("database connection created");
@@ -25,68 +24,6 @@ public class PortsDatabase {
         toppings = retrieveToppings();
         order_status = getOrderStats();
         addresses = retrieveAllAddresses();
-        //Code sample for testing cart
-        /*
-        int testCartId = 1;
-        CartItem testItem1;
-        CartItem testItem2;
-        Product testProduct = new Product(1, "Pepperoni", 15, "Pizza", "Delicious", "/test.jpg", "available", 149);
-        Topping testTopping = new Topping(1, "Cheese", 40, "Cheesiest Cheese", "/testTopping.jpg", "available", 15);
-        ArrayList<CartItemToppings> noToppings = new ArrayList<>();
-        
-        
-        ArrayList<CartItemToppings> withToppings = new ArrayList<>();
-        withToppings.add(new CartItemToppings(-1, testTopping, 2));
-        //clearCartForCheckout(1);
-        //System.out.println(getCartData(1));
-        
-        testItem1 = new CartItem(-1, 1, testProduct, noToppings, 1);
-        System.out.println("Umabot dito");
-        addItemToCart(1, testItem1);
-      
-        
-        //removeFromCart(1, 1);
-        //Cart checkoutCart = getCartData(1);
-        //testItem2 = new CartItem(-1, 1, testProduct, withToppings, 1);
-        //checkoutCart.addToCart(this, testItem2);
-        //addItemToCart(1, testItem2);
-        
-        //test getting the actual cart on startup
-        //test checkout
-        
-        Cart checkoutCart = getCartData(1);
-        System.out.println(checkoutCart.getCart_Total());
-        */
-        
-        //System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        
-        //updateOrderStatus(2);
-        //updateOrderPayment(2, "soon");
-      
-        
-        //OrderSales = retrieveOrderSales("order_id");
-        
-        /*
-        System.out.println("~~~~~~~~~~Orders that are done~~~~~~~~~");
-        for(Order x : OrderSales){
-            System.out.println(x);
-        }
-        
-        System.out.println("~~~~~~~~~~Orders that are not yet done~~~~~~~~~");
-        OrderHistory = retrieveOrderHistory("order_id");
-        for(Order x : OrderHistory){
-            System.out.println(x);
-        }
-        */
-        //checkoutCart.clearCart(this);
-        //checkoutCart.checkOut(this, "testDate", "deliveryDate");
-        //System.out.println(checkoutCart.getCart_Total());
-        //checkoutCart.clearCart(this);
-        
-        //setCartTotal(checkoutCart.getCart_Id(), checkoutCart.computeTotal());
-        //System.out.println(checkoutCart);
-        
-        //checkOutCart(checkoutCart, "TestCheckoutDate", "TestDeliveryDate");
     }
     
     //register 
@@ -153,7 +90,7 @@ public class PortsDatabase {
         int customer_id = 1;
         String getCustomerId = "SELECT * FROM customer";
         String insertCustomer =  "INSERT INTO customer VALUES(?,?,?,?,?,?,?)";
-        
+        password = security.encrypt(password);
         Customer c = new Customer();
         try {
             PreparedStatement ps = portsConnection.prepareStatement(getCustomerId);
@@ -191,7 +128,7 @@ public class PortsDatabase {
         
         String checkEmployee = "SELECT * FROM employee where employee_username = ? AND employee_password = ?";
         String checkCustomer = "SELECT * FROM customer where customer_username = ? AND customer_password = ?";
-        //password = security.encrypt(password);
+        password = security.encrypt(password);
         try {
             PreparedStatement ps = portsConnection.prepareStatement(checkEmployee);
             ps.setString(1, username);
@@ -227,7 +164,7 @@ public class PortsDatabase {
         String loginResult = "";
         
         
-        //password = security.encrypt(password);
+        password = security.encrypt(password);
         String checkEmployee = "SELECT * FROM employee where employee_username = ? AND employee_password = ?";
         String checkCustomer = "SELECT * FROM customer where customer_username = ? AND customer_password = ?";
         
@@ -820,12 +757,14 @@ public class PortsDatabase {
         //update pizza stocks
         for (OrderItem x : items)
         {
+            System.out.println("Pizza Updated");
             updatePizzaStock(x);
             //update topping stocks
             ArrayList<OrderItemToppings> toppings = x.getToppings();
             
             for(OrderItemToppings y : toppings)
             {
+                System.out.println("Topping Updated");
                 updateToppingStock(y);
             }
         }
@@ -838,7 +777,7 @@ public class PortsDatabase {
         //select
         String query1 = "SELECT * FROM products where product_id = ?";
         String query2 = "UPDATE products SET product_stock = ?, product_availability = ? WHERE product_id = ?";
-        
+    
         int product_id = orderItem.getProduct().getId();
         int stockUsed = orderItem.getQuantity();
         String availability = "available";
@@ -848,8 +787,9 @@ public class PortsDatabase {
             ps.setInt(1, product_id);
             ResultSet stockGetter = ps.executeQuery();
             stockGetter.next();
-            
+
             int newStock = Integer.parseInt(stockGetter.getString("product_stock")) - stockUsed;
+    
             if(newStock <= 0)
             {
                 newStock = 0;
@@ -860,6 +800,8 @@ public class PortsDatabase {
             ps.setInt(1, newStock);
             ps.setString(2, availability);
             ps.setInt(3, product_id);
+            
+            ps.executeUpdate();
         }
         catch(SQLException sqle){
             System.out.println("SQLException error occured - " + sqle.getMessage());
@@ -869,7 +811,7 @@ public class PortsDatabase {
     public void updateToppingStock(OrderItemToppings orderItemToppings) {
         //select
         String query1 = "SELECT * FROM toppings where toppings_id = ?";
-        String query2 = "UPDATE toppings SET toppings_stock = ?, toppings_availability = ? WHERE product_id = ?";
+        String query2 = "UPDATE toppings SET toppings_stock = ?, toppings_availability = ? WHERE toppings_id = ?";
         
         int topping_id = orderItemToppings.getTopping().getId();
         int stockUsed = orderItemToppings.getQuantity();
@@ -881,7 +823,7 @@ public class PortsDatabase {
             ResultSet stockGetter = ps.executeQuery();
             stockGetter.next();
             
-            int newStock = Integer.parseInt(stockGetter.getString("product_stock")) - stockUsed;
+            int newStock = Integer.parseInt(stockGetter.getString("toppings_stock")) - stockUsed;
             if(newStock <= 0)
             {
                 newStock = 0;
@@ -892,6 +834,7 @@ public class PortsDatabase {
             ps.setInt(1, newStock);
             ps.setString(2, availability);
             ps.setInt(3, topping_id);
+            ps.executeUpdate();
         }
         catch(SQLException sqle){
             System.out.println("SQLException error occured - " + sqle.getMessage());
@@ -957,14 +900,10 @@ public class PortsDatabase {
                 ps.setInt(1, order_status);
                 ps.setInt(2, employee_id);
                 ps.setInt(3, order_id);
-                this.OrderHistory = getOrderHistory(defaultOrder);
-                this.OrderSales = getOrderSales(defaultOrder);
-                
+                this.OrderHistory = getOrderHistory("order_id");
+                this.OrderSales = getOrderSales("order_id"); 
             }
                
-            
-           
-            
             ps.executeUpdate();
 
         }
@@ -996,8 +935,8 @@ public class PortsDatabase {
             ps.setInt(3, employee_id);
             ps.setInt(4, order_id);
             ps.executeUpdate();
-            this.OrderHistory = getOrderHistory(defaultOrder);
-            this.OrderSales = getOrderSales(defaultOrder);
+            this.OrderHistory = getOrderHistory("order_id");
+            this.OrderSales = getOrderSales("order_id");
         }
         catch(SQLException sqle){
             System.out.println("SQLException error occured - " + sqle.getMessage());

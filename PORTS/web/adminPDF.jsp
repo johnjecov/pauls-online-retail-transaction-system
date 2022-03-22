@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="ports.models.*;"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,7 +24,7 @@
                 <p class='helloAdmin'>Hello, admin</p>
             </div>
             
-                <embed class="pdfItem" src="files/test.pdf" type="application/pdf"/>
+                <embed class="pdfItem" src="files/one.pdf" type="application/pdf"/>
             
             </div>
         </div>

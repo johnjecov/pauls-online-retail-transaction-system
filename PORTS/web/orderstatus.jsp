@@ -103,7 +103,7 @@
                         if ( !orderEmpty && customerOrder.getOrder_Status_Id() == 4) {
                             String f = String.format("<div class='statuscontent2'>\n"
                                     + "<div class='statusitem3'>\n"
-                                    + "<p>Have you received your order? Press the button below to give a feedback!</p>\n"
+                                    + "<p>Have you received your order? Press the button below to confirm if you have received your order.</p>\n"
                                     + "<a onclick = 'orderReceived()' class='feedbackbutton'>Order Received</a>\n"
                                     + "</div>\n"
                                     + "</div>\n"

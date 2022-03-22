@@ -169,7 +169,8 @@
                         </div>
                     </div>
 
-                    <form action="generatePDF" method="POST">
+                    <form action="generatePDF" target="_" method="POST">
+                        <!--<input class="generatePDF" type="submit">-->
                         <button class="generatePDF" name="downloadPDF" type ="submit">Generate Summary Report PDF</button>
                     </form>
                 </div>

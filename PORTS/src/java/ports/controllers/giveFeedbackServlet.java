@@ -35,12 +35,13 @@ public class giveFeedbackServlet extends HttpServlet {
             HttpSession session = request.getSession();
             ServletContext sc = request.getServletContext();
             PortsDatabase ports = (PortsDatabase) sc.getAttribute("dbConnection");
-            Customer c = (Customer) session.getAttribute("customer");
-            Order o = c.getOrder(ports);
+            
+            Order o = (Order) session.getAttribute("customerOrderFeedback");
+    
             int order_id = o.getOrder_Id();
             
             ports.giveFeedback(order_id, rating, comment);
-
+            session.removeAttribute("customerOrderFeedback");
             response.sendRedirect("orderstatus.jsp");  
     }
     

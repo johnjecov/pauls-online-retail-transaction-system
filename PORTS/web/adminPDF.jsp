@@ -25,7 +25,7 @@
                 <p class='helloAdmin'>Hello, admin</p>
             </div>
             
-                <embed class="pdfItem" src="files/one.pdf" type="application/pdf"/>
+                <embed class="pdfItem" src="generatePDF" type="application/pdf"/>
             
             </div>
         </div>

@@ -170,8 +170,7 @@
                         </div>
                     </div>
 
-                    <form action="generatePDF" target="_" method="POST">
-                        <!--<input class="generatePDF" type="submit">-->
+                    <form action="adminPDF.jsp" method="POST">
                         <button class="generatePDF" name="downloadPDF" type ="submit">Generate Summary Report PDF</button>
                     </form>
                 </div>

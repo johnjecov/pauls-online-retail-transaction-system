@@ -12,33 +12,112 @@ and open the template in the editor.
 *{
     background-color: #18181D;
     font-family: 'Cookie', cursive;
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    
 }
 
-.error404{
-   top:50%;
-   left:50%;
-   margin-left: 50%;
+html,body {
+    height:100%; 
+}
+
+.contents404 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+    gap: 10px;
+}
+
+.contentsDenied {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 25px;
+    gap: 10px;
 }
 
 .pizza404 {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+    max-width: 400px;
+    min-width: 150px;
+    max-height: 400px;
+    min-height: 150px; 
 }
 
-.headtext404 {
-    font-size: 50px;
-    color: #B3A47A;
-    text-align: center;
+.timerExpired{
+    max-width: 400px;
+    min-width: 150px;
+    max-height: 400px;
+    min-height: 150px; 
+    background: transparent;
 }
 
-.cheese404 {
-    max-width: 7%;
-    max-height: 7%;
+.accessError { 
+    max-width: 400px;
+    min-width: 150px;
+    max-height: 400px;
+    min-height: 150px; 
+    background: transparent;
+    animation: stop 2s;
+
+    animation-iteration-count: infinite;
+    
 }
 
-.shrimp404 {
-    max-width: 7%;
-    max-height: 7%;
+.timerExpired{
+    /* Start the shake animation and make the animation last for 0.5 seconds */
+    animation: shake 0.5s;
+
+    /* When the animation is finished, start again */
+    animation-iteration-count: infinite;
 }
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+@keyframes stop {
+    
+    0% {
+        transform: rotateY(0deg);
+    }
+    50% {
+        transform: rotateY(180deg);
+    }
+    100% {
+        transform: rotateY(0deg);
+    }
+    }
+
+    .headtext404 {
+        color: #B3A47A;
+        text-align: center;
+        font-size: 3rem;
+
+    }
+
+    .cheese404 {
+        max-width: 7%;
+        max-height: 7%;
+    }
+
+    .shrimp404 {
+        max-width: 7%;
+        max-height: 7%;
+    }
+

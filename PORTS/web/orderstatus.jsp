@@ -18,7 +18,7 @@
     </head>
 
     <body>
-        
+
         <!-- header section starts -->
         <%@include file="header_external.jsp"%>
         <%@include file="customerLogout.jsp"%>
@@ -30,51 +30,49 @@
 
 
             <div class="statuscontent">
-                <%
-                    ServletContext sc = getServletContext();
+                <%                    ServletContext sc = getServletContext();
                     PortsDatabase ports = (PortsDatabase) sc.getAttribute("dbConnection");
                     ArrayList orderStatus = ports.getOrderStats();
                     Customer c = (Customer) session.getAttribute("customer");
                     Order customerOrder = c.getOrder(ports);
                     boolean orderEmpty = customerOrder.isEmpty();
-                    
+
                     int orderid = -999;
-                            
-                    
+
                     if (!orderEmpty) {
                         String s = String.format("<div class = 'statusitem'>\n"
-                         + "<div class='item'>Customer Name:<br>%s %s</div>\n"
-                         + "<div class='item'>Total:<br>₱ %s</div>\n"
-                         + "<div class='item'>Address:<br>%s</div>\n"
-                         + "<div class='item'>Payment Type:<br>%s</div>\n"
-                         + "<div class='item'>Purchases:<br>%s</div>\n"
-                         + "</div>",
-                         c.getName(), c.getSurname(), customerOrder.getOrder_Total(),
-                         customerOrder.getAddress(), customerOrder.getPayment_Method(),
-                         customerOrder.getOrderString());
+                                + "<div class='item'>Customer Name:<br>%s %s</div>\n"
+                                + "<div class='item'>Order ID:<br>%s</div>\n"
+                                + "<div class='item'>Total:<br>₱ %s</div>\n"
+                                + "<div class='item'>Address:<br>%s</div>\n"
+                                + "<div class='item'>Payment Type:<br>%s</div>\n"
+                                + "<div class='item'>Purchases:<br>%s</div>\n"
+                                + "</div>",
+                                c.getName(),c.getSurname(), customerOrder.getOrder_Id(), 
+                                customerOrder.getOrder_Total(), customerOrder.getAddress(), 
+                                customerOrder.getPayment_Method(),customerOrder.getOrderString());
                         out.println(s);
                         orderid = customerOrder.getOrder_Id();
                     }
-                 
+
                 %>
 
                 <div class="statusitem2">
                     <div class='item2'>
-                        <%
-                            ArrayList<String> status = ports.getOrderStats();
+                        <%                            ArrayList<String> status = ports.getOrderStats();
                             boolean feedback = false;
-                            
+
                             boolean order5 = false;
-                            
-                            if(!orderEmpty)
+
+                            if (!orderEmpty) {
                                 order5 = customerOrder.getOrder_Status_Id() == 5;
-                            
+                            }
+
                             if (orderEmpty || customerOrder.getOrder_Status_Id() == 5) {
                                 String d = String.format("<img src='image/checkmark.png' alt='mark5' class='statusimg'>\n"
                                         + "No order at the moment.<br>Fill that cart with some pizza!\n");
                                 out.println(d);
-                            }
-                            else if (customerOrder.getOrder_Status_Id() == 1) {
+                            } else if (customerOrder.getOrder_Status_Id() == 1) {
                                 //output = "No active orders";
                                 String d = String.format("<img src='image/checkmark.png' alt='mark1' class='statusimg'>\n"
                                         + "Order is still being processed.<br>Please be patient.\n");
@@ -99,18 +97,18 @@
                     </div>
                 </div>
             </div>
-                    <%
-                        if ( !orderEmpty && customerOrder.getOrder_Status_Id() == 4) {
-                            String f = String.format("<div class='statuscontent2'>\n"
-                                    + "<div class='statusitem3'>\n"
-                                    + "<p>Have you received your order? Press the button below to confirm if you have received your order.</p>\n"
-                                    + "<a onclick = 'orderReceived()' class='feedbackbutton'>Order Received</a>\n"
-                                    + "</div>\n"
-                                    + "</div>\n"
-                            );
-                            out.println(f);
-                        }  
-                    %>
+            <%
+                if (!orderEmpty && customerOrder.getOrder_Status_Id() == 4) {
+                    String f = String.format("<div class='statuscontent2'>\n"
+                            + "<div class='statusitem3'>\n"
+                            + "<p>Have you received your order? Press the button below to confirm if you have received your order.</p>\n"
+                            + "<a onclick = 'orderReceived()' class='feedbackbutton'>Order Received</a>\n"
+                            + "</div>\n"
+                            + "</div>\n"
+                    );
+                    out.println(f);
+                }
+            %>
             <div class="bg-modal">
                 <form class="modal-contents" action = "orderReceived" method = "POST">
                     <p class="modal-text">Has the order arrived?<br>Click yes to confirm and finish your order, and no if the order hasn't arrived!</p>
@@ -125,27 +123,27 @@
                 console.log(jsfeedback);
                 console.log(isEmpty);
                 console.log(is5);
-                
-                if (isEmpty || is5){
+
+                if (isEmpty || is5) {
                     document.querySelector('.statusitem').style.display = "none";
                 }
-                
+
                 if (jsfeedback) {
                     document.querySelector('.statuscontent2').style.display = "flex";
                     document.querySelector('.bg-modal').style.display = "flex";
 
                 }
-                
+
                 document.querySelector('.yesModal' && '.noModal').addEventListener("click", function () {
                     document.querySelector('.bg-modal').style.display = "none";
                 });
-                
+
                 function orderReceived() {
                     document.querySelector('.statuscontent2').style.display = "flex";
                     document.querySelector('.bg-modal').style.display = "flex";
                 }
             </script>
         </section>
-                  <%@include file="footer_external.jsp"%>
+        <%@include file="footer_external.jsp"%>
     </body>
 </html>

@@ -269,6 +269,22 @@
     </session-config>
     <error-page>
         <error-code>404</error-code>
-        <location>/error404.html</location>
+        <location>/error404.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>408</error-code>
+        <location>/sessionExpired.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>408</error-code>
+        <location>/sessionExpired.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>401</error-code>
+        <location>/accessDenied.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>403</error-code>
+        <location>/accessDenied.jsp</location>
     </error-page>
 </web-app>

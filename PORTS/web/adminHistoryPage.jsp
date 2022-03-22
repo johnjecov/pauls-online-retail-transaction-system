@@ -6,7 +6,6 @@
         <link rel="stylesheet" href="css/adminHistory.css?nocache={timestamp}" type="text/css">
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="icon" type="image/png" href="image/logo.png">
         <title>Order History</title>
     </head>
     <body scroll="no" style="overflow: hidden">

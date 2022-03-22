@@ -110,13 +110,40 @@ public class generatePDF extends HttpServlet {
                 table.addCell("Toppings");
                 table.addCell("Toppings Quantity");
                 table.addCell("Total Price");
+                
+                ArrayList<Order> orderList = (ArrayList) ports.getOrderSales(selectedSort);
+                Queue<String> orderID2 = new LinkedList<String>();
+                    for (Order i : orderList) {
+                        ArrayList<OrderItem> orderItems = i.getItems();
+                        orderID2.add(String.valueOf(i.getOrder_Id()));
+                    }
+//                    Phrase oID2Phrase = new Phrase();
+//                        oID2Phrase.add(orderID2);
+//                        PdfPCell oID2PhraseCell = new PdfPCell();
+//                        oID2PhraseCell.addElement(oID2Phrase);
+//                        PdfPTable phraseTable = new PdfPTable(2);
+//                        phraseTable.addCell("Please work:");
+//                        phraseTable.addCell(oID2PhraseCell);
+                        
+                        //PdfPCell cellone = new PdfPCell();
+                        //cellone.addElement(orderID2);
+                        //String str = orderID2.remove();
+                table.addCell("hi");
+                table.addCell("Date");
+                table.addCell("Product ID");
+                table.addCell("Product Name");
+                table.addCell("Quantity");
+                table.addCell("Toppings ID");
+                table.addCell("Toppings");
+                table.addCell("Toppings Quantity");
+                table.addCell("Total Price");
 
                 //int yy = 0;
 
                 //for (int y = 1; y <= rowPerPage && rs.next(); y++) {//table rows
                     //yy = y;
 
-                    ArrayList<Order> orderList = (ArrayList) ports.getOrderSales(selectedSort);
+                    //ArrayList<Order> orderList = (ArrayList) ports.getOrderSales(selectedSort);
                     for (Order i : orderList) {
                         ArrayList<OrderItem> orderItems = i.getItems();
 
@@ -151,12 +178,10 @@ public class generatePDF extends HttpServlet {
                             }
                         }
                         orderTotal.add(String.valueOf(i.getOrder_Total()));
-
-                        Phrase oIDPhrase = new Phrase();
-                        oIDPhrase.add(orderID);
-                        PdfPCell oIDPhraseCell = new PdfPCell();
-                        oIDPhraseCell.addElement(oIDPhrase);
-                        table.addCell(oIDPhraseCell);
+                        
+                        PdfPCell oIDCell = new PdfPCell();
+                        oIDCell.addElement(orderID);
+                        table.addCell(oIDCell);
 
                         Phrase dDatePhrase = new Phrase();
                         dDatePhrase.add(deliveryDate);

@@ -18,7 +18,7 @@
                     <li class="options"><a href="adminHistoryPage.jsp">Sales</a></li>
                     <li class="options"><a href="adminOrderList.jsp">Order List</a></li>
                     <li class="options"><a href="admin.jsp">Menu</a></li>
-                    <li class="options"><a href="admin.jsp">Analytics</a></li>
+                    <li class="options"><a href="adminAnalytics.jsp">Analytics</a></li>
                 </ul>
                 <a style="text-decoration:none;" class = "logout" href="./logout">Logout</a>
             </div>

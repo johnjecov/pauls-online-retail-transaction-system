@@ -1030,7 +1030,6 @@ public class PortsDatabase {
                     orderResults.getString("order_delivery_date"), orderResults.getString("payment_method"), orderResults.getString("payment_date"), orderResults.getString("payment_status"),
                     items, orderAddress, customer_name, contact_number);
   
-            
             System.out.println("Order of: "+ customer_id);
                 
         }

@@ -76,7 +76,7 @@
                     {%>
                     <input class="hiddenValues" name="<%=((Topping)(toppings.get(z))).getName() %>" value ="<%= ((Topping)(toppings.get(z))).getPrice() %>" style="display: none;">
                     <div class = "indiv-toppings">
-                        <h4><%= ((Topping)(toppings.get(z))).getName()%><br><%= ((Topping)(toppings.get(z))).getPrice() %></h4>
+                        <h4><%= ((Topping)(toppings.get(z))).getName()%><br>₱<%= ((Topping)(toppings.get(z))).getPrice() %><br> <%=((Topping)(toppings.get(z))).getDesc() %></h4>
                         
                         <select class= "toppings" id ="toppings<%=z+1%>" name="toppings"> 
                             <option disabled selected>Quantity</option>
@@ -109,32 +109,33 @@
            <script>
                      $(document).ready(function(){
                          $("#quantity, #toppings1, #toppings2, #toppings3, #toppings4, #toppings5, #toppings6").change(function(event){
-                             var total=0;
+                            
                              <%double priceDouble = pizza.getPrice();%>
                              var price = <%=priceDouble%>;
+                             var quantity=0;
+                             var total= quantity * price;
 
                              $("#quantity").each(function(){
                                  total += parseInt($(this).val())*price;
-                              
+                                 quantity += parseInt($(this).val());
                              });
                              $("#toppings1").each(function(){
-                                 total += parseInt($(this).val())*50;
-                                  
+                                 total += parseInt($(this).val())*50*quantity;
                              });
                              $("#toppings2").each(function(){
-                                 total += parseInt($(this).val())*80;
+                                 total += parseInt($(this).val())*50*quantity;
                              });
                              $("#toppings3").each(function(){
-                                 total += parseInt($(this).val())*50;
+                                 total += parseInt($(this).val())*80*quantity;
                              });
                              $("#toppings4").each(function(){
-                                 total += parseInt($(this).val())*100;
+                                 total += parseInt($(this).val())*100*quantity;
                              });
                              $("#toppings5").each(function(){
-                                 total += parseInt($(this).val())*30;
+                                 total += parseInt($(this).val())*100*quantity;
                              });
                              $("#toppings6").each(function(){
-                                 total += parseInt($(this).val())*100;
+                                 total += parseInt($(this).val())*30*quantity;
                              });
                              if(total===0){
                                  $('#result').text('');

@@ -160,20 +160,21 @@
         <div class="checkout">
             <%
                 Order orderCustomer = c.getOrder(port);
-                  
-                if(items.size()!=0) {
-                    if(orderCustomer.isEmpty()) {//CORRECT CODE IS NOT (FOR DEMO PURPOSED CHANGE EXCLUDE NOT(!) = FOR ORDER STATUS
-                if(!(orderCustomer.getOrder_Status_Id() < 5) || !orderCustomer.existingOrder()) {%>  
-            <input class="btn" type = "submit" value = "Place Order"> 
-            <% } else {%>
-            <input class="btn" type = "submit" value = "Place Order" disabled="disabled">
-            <% }   %>
-             <%  } else { %>
-             <input class="btn" type = "submit" value = "Place Order" disabled="disabled">
-             <%}  } else { %>
-                 <input class="btn" type = "submit" value = "Place Order" disabled="disabled">
-            <% }   %>
-            
+                System.out.println("At Cart: "+orderCustomer.getOrder_Id());
+                if(items.size() != 0) {
+                    if(!orderCustomer.existingOrder() || !(orderCustomer.getOrder_Status_Id() < 5)) { %>
+                        <input class="btn" type = "submit" value = "Place Order"> 
+                    <%
+                    }
+                    else { %>
+                        <input class="btn" type = "submit" value = "Place Order" disabled="disabled">
+                    <%        
+                    }
+                }
+                else { %>
+                    <input class="btn" type = "submit" value = "Place Order" disabled="disabled">
+                <%}
+            %>
         </div>
             </form>
         </div>

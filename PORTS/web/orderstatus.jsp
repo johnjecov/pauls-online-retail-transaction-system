@@ -81,7 +81,7 @@
 
                             } else if (customerOrder.getOrder_Status_Id() == 2) {
                                 String d = String.format("<img src='image/checkmark.png' alt='mark2' class='statusimg'>\n"
-                                        + "Order has been recieved.<br>Please wait as the delivery date comes.\n");
+                                        + "Order has been received.<br>Please wait as the delivery date comes.\n");
                                 out.println(d);
                             } else if (customerOrder.getOrder_Status_Id() == 3) {
                                 String d = String.format("<img src='image/checkmark.png' alt='mark3' class='statusimg'>\n"

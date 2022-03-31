@@ -21,6 +21,7 @@ public class Order {
     private boolean exists = false;
     public Order() {
         System.out.println("Order Placeholder");
+        exists = false;
         items = new ArrayList<>();
     }
     public Order(int order_id, int customer_id, int employee_id, int order_status_id, double order_total, String order_made_date, String order_delivery_date,

@@ -19,6 +19,9 @@ public class Address {
     private String additionalDetails;
     private ArrayList<String> addressInfo;
     
+    public Address (){
+        System.out.println("address placeholder");
+    }
     public Address(String addressId, String customerId, String addressName, String details, String additionalDetails, String houseNo, String street, String city,String province, String postalCode){
        this.addressId = addressId;
        this.customerId = customerId;

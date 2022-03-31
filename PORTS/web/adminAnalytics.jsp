@@ -14,7 +14,7 @@
         <title>Analytics Page</title>
     </head>
     <body scroll="no" style="overflow: hidden">
-        <%//@include file="adminLogout.jsp"%>
+         <%@include file="adminLogout.jsp"%>
  
         <div class="contentHolder">
             <div class="sidebar">

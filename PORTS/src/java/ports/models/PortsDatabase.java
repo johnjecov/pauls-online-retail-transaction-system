@@ -693,12 +693,23 @@ public class PortsDatabase {
             ResultSet customerResult = ps2.executeQuery();
             customerResult.next();
             
+            Address orderAddress = new Address();
+            int addressId = Integer.parseInt(orderResults.getString("address_id"));
+            
+            for (int i = 0; i < addresses.size(); i++){
+                Address j = addresses.get(i);
+                if(Integer.parseInt(j.getAddressId()) == addressId){
+                    orderAddress = j;
+                    break;
+                }
+            }
+            
             String customer_name = customerResult.getString("customer_name") + " " + customerResult.getString("customer_surname");
             String contact_number = customerResult.getString("customer_contact_number");
             o = new Order(order_id, Integer.parseInt(orderResults.getString("customer_id")), Integer.parseInt(orderResults.getString("employee_id")), 
                     Integer.parseInt(orderResults.getString("order_status_id")), Double.parseDouble(orderResults.getString("order_total")), orderResults.getString("order_made_date"),
                     orderResults.getString("order_delivery_date"), orderResults.getString("payment_method"), orderResults.getString("payment_date"), orderResults.getString("payment_status"),
-                    items, addresses.get(Integer.parseInt(orderResults.getString("address_id")) - 1), customer_name, contact_number);
+                    items, orderAddress, customer_name, contact_number);
   
             System.out.println("Order of: "+ order_id);
                 

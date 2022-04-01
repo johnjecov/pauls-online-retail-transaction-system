@@ -1,20 +1,3 @@
-/*
-//GETTING THE LOGO
-            String imgSrc = "/image/Paul's Pizzeria Logo_1.jpg";
-            String absoluteDiskPath = getServletContext().getRealPath(imgSrc);
-            Image img;
-            try {
-                img = Image.getInstance(absoluteDiskPath);
-                img.scaleToFit(250, 200);
-                Phrase logo = new Phrase();
-                logo.add(img);
-            } catch (BadElementException ex) {
-                Logger.getLogger(generatePDF.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(generatePDF.class.getName()).log(Level.SEVERE, null, ex);
-            }
-*/
-
 package ports.controllers;
 
 import com.itextpdf.text.BaseColor;
@@ -264,18 +247,6 @@ public class generatePDF extends HttpServlet {
 
             paragraph.add(table);
 
-            //provides new lines to the docs if the table does not touch the bottom of the document
-            //while (yy != 24) {
-            //    yy++;
-            //    paragraph.add(Chunk.NEWLINE);
-            //}
-            //paragraph.add(getServletContext().getInitParameter("footer").toString());
-            //paragraph.add(" | ");
-            //paragraph.add(" Report by: " + "ADMIN" + " | ");
-            //paragraph.add(dateTime);
-            //paragraph.add(" | Page " + x + " of " + totalPages);
-            //paragraph.add(Chunk.NEWLINE);
-            //}
             document.add(paragraph);
             document.close();
 
@@ -319,7 +290,7 @@ public class generatePDF extends HttpServlet {
             } catch (DocumentException e) {
                 e.printStackTrace();
             }
-
+            
             Phrase header = new Phrase(String.format("PORTS Order Sales History"));
             Phrase footer = new Phrase(String.format("Page %d |%s", writer.getPageNumber(), dateTime));
 

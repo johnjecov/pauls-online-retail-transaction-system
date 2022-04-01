@@ -16,7 +16,11 @@
 </head>
 
 <header class="header">
-    <%  
+    <%    
+        response.setHeader("Cache-control", "no-cache, no-store, must-revalidate");
+        response.setHeader("Pragma", "no-cache");
+        response.setDateHeader("Expire", 0);
+
         String navUser = "";
             
         if(session.getAttribute("customer")!= null)

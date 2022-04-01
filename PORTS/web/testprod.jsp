@@ -19,7 +19,6 @@
     
     <!-- header section starts -->
     <%@include file="header_external.jsp"%>
-    <%@include file="customerLogout.jsp"%>
     <!-- header section ends -->
     <body>
     <main class="container">

@@ -11,18 +11,7 @@
 <html>
     <%@  page import = "ports.models.*" %> 
     <%@  page import = "java.util.*" %>  
-    <%@  page import = "javax.servlet.*" %>  
-    <%
-        response.setHeader("Pragma","no-cache");
-        response.setHeader("Cache-Control","no-store");
-        response.setHeader("Expires","-1");
-                    
-        if(session.getAttribute("customer") == null)
-        {
-            response.sendRedirect("index.jsp");
-        }
-    %>
-     
+    <%@  page import = "javax.servlet.*" %>       
     <head>
         <link rel="icon" type="image/png" href="image/logo.png">
         <meta charset="UTF-8">
@@ -45,9 +34,11 @@
         <!-- header section starts -->
         
         <%@include file="header_external.jsp"%>
+        <%@include file="customerLogout.jsp"%>
+
         <!-- header section ends -->
         <%       
-        ServletContext app = getServletContext();
+         ServletContext app = getServletContext();
          PortsDatabase port = (PortsDatabase)app.getAttribute("dbConnection");
          ArrayList<Address> add = new ArrayList<Address>();
           
@@ -55,14 +46,14 @@
          Cart theCart = null;
           
          ArrayList items = null;
-          
-          if(session.getAttribute("customer")!= null)
-            {
-                c = (Customer) session.getAttribute("customer");
-                theCart = c.getCart(port);
-                add = port.getCustomerAddresses(c.getCustomer_Id());
-                items = (theCart.getItems());
-            }
+        
+        if (session.getAttribute("customer") != null)
+        {
+            c = (Customer) session.getAttribute("customer");
+            theCart = c.getCart(port);
+            add = port.getCustomerAddresses(c.getCustomer_Id());
+            items = (theCart.getItems());   
+        }     
           
         if(items.size()!=0) { %>
         <div class="cartOrders">`
@@ -79,10 +70,6 @@
         </thead>
         <tbody>
         <% 
-           
-         if(add.size()==0)
-            response.sendRedirect("address.jsp");
-            
             for(int a=0; items.size() > a; a++)
             { 
         %>
@@ -128,7 +115,16 @@
             <div>
                 <h4>Delivery Address:</h4>
                 <select class= "Address" name="address" required>
-                    <option value="" disabled selected>Choose your address</option>
+                    <option value="" disabled selected>
+                        <%if(add.size() == 0)
+                        {
+                            out.print("No Address Yet");
+                        }
+                        else
+                        {
+                             out.print("Choose your Address");
+                        }
+                        %></option>
                     <%
                      for(int x=0; add.size() > x; x++) {%>
                     <option value = "<%=((Address)add.get(x)).getAddressId()  %>"><%=((Address)add.get(x)).getAddressName()%></option>
@@ -167,12 +163,12 @@
                     <%
                     }
                     else { %>
-                        <input class="btn" type = "submit" value = "Place Order" disabled="disabled">
+                        <input class="btn" type = "submit" value = "Order in Process" disabled="disabled">
                     <%        
                     }
                 }
                 else { %>
-                    <input class="btn" type = "submit" value = "Place Order" disabled="disabled">
+                    <input class="btn" type = "submit" value = "Order in Process" disabled="disabled">
                 <%}
             %>
         </div>

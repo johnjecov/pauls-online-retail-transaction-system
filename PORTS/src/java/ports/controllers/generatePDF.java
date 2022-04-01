@@ -1,3 +1,20 @@
+/*
+//GETTING THE LOGO
+            String imgSrc = "/image/Paul's Pizzeria Logo_1.jpg";
+            String absoluteDiskPath = getServletContext().getRealPath(imgSrc);
+            Image img;
+            try {
+                img = Image.getInstance(absoluteDiskPath);
+                img.scaleToFit(250, 200);
+                Phrase logo = new Phrase();
+                logo.add(img);
+            } catch (BadElementException ex) {
+                Logger.getLogger(generatePDF.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(generatePDF.class.getName()).log(Level.SEVERE, null, ex);
+            }
+*/
+
 package ports.controllers;
 
 import com.itextpdf.text.BaseColor;
@@ -79,20 +96,20 @@ public class generatePDF extends HttpServlet {
             document.open();
             Paragraph paragraph = new Paragraph();
             paragraph.setAlignment(com.itextpdf.text.Element.ALIGN_CENTER);
-            
+
             //GETTING THE TOTAL NUMBER OF PAGES
             int maxRows = 0;
-            
+
             ArrayList<Order> orderList = (ArrayList) ports.getOrderSales("order_ID");
             for (Order i : orderList) {
                 ArrayList<OrderItem> orderItems = i.getItems();
-		for (OrderItem j : orderItems) {
+                for (OrderItem j : orderItems) {
                     if (i.getItems().size() > j.getToppings().size()) {
                         maxRows = i.getItems().size();
                     } else {
                         maxRows = j.getToppings().size();
                     }
-		}
+                }
             }
 //            //HOW MANY ROWS PER TABLE PER PAGE
 //            int rowPerPage = 22;
@@ -106,14 +123,13 @@ public class generatePDF extends HttpServlet {
             PdfPTable table = new PdfPTable(9);
             float[] columnWidths = {1f, 1.25f, 1f, 1.5f, 1f, 1f, 1.5f, 1f, 1f};
             table.setWidths(columnWidths);
-            table.setTotalWidth(document.right()-document.left());
+            table.setTotalWidth(document.right() - document.left());
             table.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
             table.getDefaultCell().setVerticalAlignment(Element.ALIGN_MIDDLE);
 
             //int yy = 0;
             //for (int y = 1; y <= rowPerPage && rs.next(); y++) {//table rows
             //yy = y;
-            
             for (Order i : orderList) {
                 ArrayList<OrderItem> orderItems = i.getItems();
 
@@ -139,7 +155,7 @@ public class generatePDF extends HttpServlet {
                 ListItem orderIDItem = new ListItem(String.valueOf(i.getOrder_Id()));
                 orderIDItem.setAlignment(Element.ALIGN_CENTER);
                 orderID.add(orderIDItem);
-                
+
                 ListItem deliveryDateItem = new ListItem(i.getOrder_Delivery_Date());
                 deliveryDateItem.setAlignment(Element.ALIGN_CENTER);
                 deliveryDate.add(deliveryDateItem);
@@ -150,11 +166,11 @@ public class generatePDF extends HttpServlet {
                     ListItem productIDItem = new ListItem(String.valueOf(j.getProduct().getId()));
                     productIDItem.setAlignment(Element.ALIGN_CENTER);
                     productID.add(productIDItem);
-                    
+
                     ListItem productNameItem = new ListItem(String.valueOf(j.getProduct().getName()));
                     productNameItem.setAlignment(Element.ALIGN_CENTER);
                     productName.add(productNameItem);
-                    
+
                     ListItem productQuantityItem = new ListItem(String.valueOf(j.getQuantity()));
                     productQuantityItem.setAlignment(Element.ALIGN_CENTER);
                     productQuantity.add(productQuantityItem);
@@ -168,11 +184,11 @@ public class generatePDF extends HttpServlet {
                         ListItem toppingsIDItem = new ListItem(String.valueOf(k.getTopping().getId()));
                         toppingsIDItem.setAlignment(Element.ALIGN_CENTER);
                         toppingsID.add(toppingsIDItem);
-                        
+
                         ListItem toppingsNameItem = new ListItem(String.valueOf(k.getTopping().getName()));
                         toppingsNameItem.setAlignment(Element.ALIGN_CENTER);
                         toppingsName.add(toppingsNameItem);
-                        
+
                         ListItem toppingsQuantityItem = new ListItem(String.valueOf(k.getQuantity()));
                         toppingsQuantityItem.setAlignment(Element.ALIGN_CENTER);
                         toppingsQuantity.add(toppingsQuantityItem);
@@ -181,7 +197,7 @@ public class generatePDF extends HttpServlet {
                 ListItem orderTotalItem = new ListItem(String.valueOf(i.getOrder_Total()));
                 orderTotalItem.setAlignment(Element.ALIGN_CENTER);
                 orderTotal.add(orderTotalItem);
-                
+
                 Phrase oIDPhrase = new Phrase();
                 oIDPhrase.add(orderID);
                 PdfPCell oIDPhraseCell = new PdfPCell();
@@ -245,9 +261,9 @@ public class generatePDF extends HttpServlet {
                 oTotalPhraseCell.setPaddingBottom(10f);
                 table.addCell(oTotalPhraseCell);
             }
-            
+
             paragraph.add(table);
-            
+
             //provides new lines to the docs if the table does not touch the bottom of the document
             //while (yy != 24) {
             //    yy++;
@@ -260,59 +276,58 @@ public class generatePDF extends HttpServlet {
             //paragraph.add(" | Page " + x + " of " + totalPages);
             //paragraph.add(Chunk.NEWLINE);
             //}
-            
             document.add(paragraph);
             document.close();
-            
+
             baos.writeTo(out);
             out.flush();
             out.close();
-            
 
             System.out.println("PDF IS DONE AND PRINTED");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
-    class MyPageEventListener extends PdfPageEventHelper{
-        public void onEndPage(PdfWriter writer, Document document){
+
+    class MyPageEventListener extends PdfPageEventHelper {
+
+        public void onEndPage(PdfWriter writer, Document document) {
             DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern(" MM/dd/yyyy | HH:mm");
             LocalDateTime now = LocalDateTime.now();
             String dateTime = dtf2.format(now);
-            
+
             PdfContentByte cb = writer.getDirectContent();
             PdfPTable table = new PdfPTable(9);
             try {
-            float[] columnWidths = {1f, 1.25f, 1f, 1.5f, 1f, 1f, 1.5f, 1f, 1f};
-            table.setWidths(columnWidths);
-            table.setTotalWidth(document.right()-document.left()-148);
-            table.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
-            table.getDefaultCell().setVerticalAlignment(Element.ALIGN_MIDDLE);
-            table.getDefaultCell().setPaddingTop(5f);
-            table.getDefaultCell().setPaddingBottom(5f);
-            
-            table.addCell("Order ID");
-            table.addCell("Date");
-            table.addCell("Product ID");
-            table.addCell("Product Name");
-            table.addCell("Quantity");
-            table.addCell("Toppings ID");
-            table.addCell("Toppings");
-            table.addCell("Toppings Quantity");
-            table.addCell("Total Price");
+                float[] columnWidths = {1f, 1.25f, 1f, 1.5f, 1f, 1f, 1.5f, 1f, 1f};
+                table.setWidths(columnWidths);
+                table.setTotalWidth(document.right() - document.left() - 148);
+                table.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
+                table.getDefaultCell().setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.getDefaultCell().setPaddingTop(5f);
+                table.getDefaultCell().setPaddingBottom(5f);
+
+                table.addCell("Order ID");
+                table.addCell("Date");
+                table.addCell("Product ID");
+                table.addCell("Product Name");
+                table.addCell("Quantity");
+                table.addCell("Toppings ID");
+                table.addCell("Toppings");
+                table.addCell("Toppings Quantity");
+                table.addCell("Total Price");
             } catch (DocumentException e) {
                 e.printStackTrace();
             }
-            
+
             Phrase header = new Phrase(String.format("PORTS Order Sales History"));
             Phrase footer = new Phrase(String.format("Page %d |%s", writer.getPageNumber(), dateTime));
-            
-            table.writeSelectedRows(0, -1, document.left()+74, document.top()-14, cb);
-            ColumnText.showTextAligned(cb, Element.ALIGN_CENTER, header, (document.right()-document.left())/2+document.leftMargin(), document.top(),0);
-            ColumnText.showTextAligned(cb, Element.ALIGN_LEFT, footer, document.left()+document.leftMargin()+50, document.bottom(),0);
+
+            table.writeSelectedRows(0, -1, document.left() + 74, document.top() - 14, cb);
+            ColumnText.showTextAligned(cb, Element.ALIGN_CENTER, header, (document.right() - document.left()) / 2 + document.leftMargin(), document.top(), 0);
+            ColumnText.showTextAligned(cb, Element.ALIGN_LEFT, footer, document.left() + document.leftMargin() + 50, document.bottom(), 0);
         }
-    }    
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

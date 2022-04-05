@@ -4,7 +4,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="css/adminHistory.css?nocache={timestamp}" type="text/css">
-
+        <link rel="icon" type="image/png" href="image/logo.png">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Order History</title>
     </head>

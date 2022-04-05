@@ -5,7 +5,8 @@
     <head>
         <link rel="stylesheet" href="css/adminPDF.css?nocache={timestamp}" type="text/css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>PDF Page</title>
+        <link rel="icon" type="image/png" href="image/logo.png">
+        <title>Generate PDF</title>
     </head>
     <body>
          <%@include file="adminLogout.jsp"%>

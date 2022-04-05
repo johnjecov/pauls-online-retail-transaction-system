@@ -371,5 +371,12 @@
 
     /* Change the background color of the dropdown button when the dropdown content is shown */
     .dropdown:hover .dropbtn {background-color: #CD212A;}
+    
+    @media (max-width: 740px){
+        .dropbtn{
+            margin-left: 7px; 
+            padding: 7px;
+        }
+    }
 
 </style>

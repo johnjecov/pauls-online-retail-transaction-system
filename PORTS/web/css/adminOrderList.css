@@ -127,7 +127,7 @@ html,body {
 
 .adminContent {
     background-color: #2e2e2e;
-    width: auto;
+    width: 100%;
     height: 850px;
     display: flex;
     flex-direction: column;
@@ -135,6 +135,7 @@ html,body {
     padding: 1rem;
     border-radius: 10px;
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .adminContent::-webkit-scrollbar {
@@ -163,12 +164,13 @@ html,body {
     background-color: #2e2e2e;
     box-shadow: inset 15px 15px 30px #212121,
                 inset -15px -15px 30px #3b3b3b;
-    width: 112rem;
+    width: 100%;
 }
 .orderHeading div{
+    flex: 1;
     font-family: 'Poppins', sans-serif;
     text-align: center;
-    font-size: 1.3rem;
+    font-size: 1.2vw;
    
  
 }
@@ -181,12 +183,12 @@ html,body {
     background-color: #2e2e2e;
     box-shadow: inset 15px 15px 30px #212121,
                 inset -15px -15px 30px #3b3b3b;
-    width: 112rem;
+    width: 100%;
 }
 .orderRow div{
     font-family: 'Poppins', sans-serif;
     text-align: center;
-    font-size: 1rem;
+    font-size: 1vw;
     flex: 1;
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -208,26 +210,23 @@ html,body {
 }
 
 .col1 {
-    min-width: 3rem;
-    max-width: 3rem;
+    flex: 1;
 }
 
 .col2 {
-    min-width: 10.5rem;
-    max-width: 10.5rem;
+    flex: 1;
 }
 
 .col3 {
-    min-width: 20rem;
-    max-width: 20rem;
+    flex: 1;
 }
 
 .colx {
-    min-width: 4rem;
-    max-width: 4rem;
+    flex: 1;
 }
 
 .colx button{
+    flex: 1;
     background-color: red;
     border: none;
 
@@ -239,6 +238,10 @@ html,body {
     box-shadow: inset 15px 15px 30px #212121,
                 inset -15px -15px 30px #3b3b3b;
  
+}
+
+.statusButtons {
+    font-size: 0.7vw;
 }
 
 #transactionModalAdmin
@@ -276,8 +279,6 @@ html,body {
     flex-direction: column;
     justify-content: space-around;
     gap: 1rem;
-
-   
 }
 
 .mContent p, .mContent h3 {
@@ -286,13 +287,13 @@ html,body {
 }
 
 .mContent h3 {
-    font-size: 2rem !important;
+    font-size: 2vw !important;
 }
 
 .mContent p {
     font-family: 'Poppins', sans-serif;
     text-align: center;
-    font-size: 2rem;
+    font-size: 2vw;
 }
 
 .summaryButtons

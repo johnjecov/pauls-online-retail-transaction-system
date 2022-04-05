@@ -776,7 +776,7 @@ public class PortsDatabase {
             for(OrderItemToppings y : toppings)
             {
                 System.out.println("Topping Updated");
-                updateToppingStock(y);
+                updateToppingStock(y, x);
             }
         }
   
@@ -819,13 +819,13 @@ public class PortsDatabase {
         }        
     }
     
-    public void updateToppingStock(OrderItemToppings orderItemToppings) {
+    public void updateToppingStock(OrderItemToppings orderItemToppings, OrderItem toppingOfItem) {
         //select
         String query1 = "SELECT * FROM toppings where toppings_id = ?";
         String query2 = "UPDATE toppings SET toppings_stock = ?, toppings_availability = ? WHERE toppings_id = ?";
         
         int topping_id = orderItemToppings.getTopping().getId();
-        int stockUsed = orderItemToppings.getQuantity();
+        int stockUsed = orderItemToppings.getQuantity() * toppingOfItem.getQuantity() ;
         String availability = "available";
         //subtract
         try {
@@ -834,7 +834,7 @@ public class PortsDatabase {
             ResultSet stockGetter = ps.executeQuery();
             stockGetter.next();
             
-            int newStock = Integer.parseInt(stockGetter.getString("toppings_stock")) - stockUsed;
+            int newStock = Integer.parseInt(stockGetter.getString("toppings_stock")) - (stockUsed);
             if(newStock <= 0)
             {
                 newStock = 0;

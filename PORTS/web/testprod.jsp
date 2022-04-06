@@ -78,6 +78,48 @@
                     <div class = "indiv-toppings">
                         <h4><%= ((Topping)(toppings.get(z))).getName()%><br>₱<%= ((Topping)(toppings.get(z))).getPrice() %><br> <%=((Topping)(toppings.get(z))).getDesc() %></h4>
                         
+                         
+                        <% if(((Topping)(toppings.get(z))).getStock() == 0) { %>
+                        <select class= "toppings" id ="toppings<%=z+1%>" name="toppings"> 
+                            <option disabled selected>Quantity</option>
+                            <option value = "0" selected="selected">0</option>
+                        </select>
+                            <% }else if(((Topping)(toppings.get(z))).getStock() == 1) { %>
+                            
+                        <select class= "toppings" id ="toppings<%=z+1%>" name="toppings"> 
+                            <option disabled selected>Quantity</option>
+                            <option value = "0" selected="selected">0</option>
+                            <option value = "1">1</option>
+                        </select>
+                            <% }else if(((Topping)(toppings.get(z))).getStock() == 2) { %>
+                            
+                        <select class= "toppings" id ="toppings<%=z+1%>" name="toppings"> 
+                            <option disabled selected>Quantity</option>
+                            <option value = "0" selected="selected">0</option>
+                            <option value = "1">1</option>
+                            <option value = "2">2</option>
+                        </select>
+                            <% }else if(((Topping)(toppings.get(z))).getStock() == 3) { %>
+                            
+                        <select class= "toppings" id ="toppings<%=z+1%>" name="toppings"> 
+                            <option disabled selected>Quantity</option>
+                            <option value = "0" selected="selected">0</option>
+                            <option value = "1">1</option>
+                            <option value = "2">2</option>
+                            <option value = "3">3</option>
+                        </select>
+                            <% }else if(((Topping)(toppings.get(z))).getStock() == 4) { %>
+                            
+                        <select class= "toppings" id ="toppings<%=z+1%>" name="toppings"> 
+                            <option disabled selected>Quantity</option>
+                            <option value = "0" selected="selected">0</option>
+                            <option value = "1">1</option>
+                            <option value = "2">2</option>
+                            <option value = "3">3</option>
+                            <option value = "4">4</option>
+                        </select>
+                            <% }else if(((Topping)(toppings.get(z))).getStock() >= 5) { %>
+
                         <select class= "toppings" id ="toppings<%=z+1%>" name="toppings"> 
                             <option disabled selected>Quantity</option>
                             <option value = "0" selected="selected">0</option>
@@ -87,6 +129,7 @@
                             <option value = "4">4</option>
                             <option value = "5">5</option>
                         </select>
+                            <% } %>
                     </div>
                         
                     <% }%>

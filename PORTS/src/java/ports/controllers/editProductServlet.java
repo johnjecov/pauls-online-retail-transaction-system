@@ -49,7 +49,15 @@ public class editProductServlet extends HttpServlet {
 
         String productUrl = (String) sc.getAttribute("productUrl");
         sc.removeAttribute("productUrl");
-
+        
+        String format = "https://drive.google.com/uc?export=view&id=";
+        
+        if(productUrl.contains("drive.google")){
+            String splitter[] = productUrl.split("/");
+            String forId = splitter[5];
+            productUrl = format + forId;
+        }
+        
         String productName = (String) sc.getAttribute("productName");
         sc.removeAttribute("productName");
 

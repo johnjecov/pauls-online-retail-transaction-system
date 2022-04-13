@@ -30,8 +30,8 @@ public class PortsDatabase {
     
     public boolean changeCustomerPassword(int customer_id, String oldPassword, String newPassword) {
         boolean changed = false;
-          //newPassword = security.encrypt(password);
-          //oldPassword = security.encrypt(password);
+          newPassword = security.encrypt(password);
+          oldPassword = security.encrypt(password);
         String checkOldPassword = "SELECT * FROM customer where customer_id = ? and customer_password = ?";
         String updateNewPassword = "UPDATE customer SET customer_password = ? where customer_id = ?";
  

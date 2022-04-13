@@ -749,7 +749,7 @@ public class PortsDatabase {
         try {
             PreparedStatement ps = portsConnection.prepareStatement(query1);
             ps.setInt(1, order_id);
-            ps.setInt(2, order_id);
+            ps.setInt(2, rating);
             ps.setString(3, comment);
             
             ps.executeUpdate();    

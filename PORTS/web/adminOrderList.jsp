@@ -118,6 +118,7 @@
                                     + "<div class='col2'>%s</div>"
                                     + "<form id = '%s' action ='updatePayment' method = 'POST' style = 'display: none'>"
                                          + "<input type = 'text' name = 'adminUpdateOrderId' value = '%s'>"
+                                         + "<input type = 'hidden' name = 'adminUpdateCustomerId' value = '%s'>"
                                     + "</form>"
                                     + "<div class='col2'><button class='statusButtons' type = 'submit' %s form = '%s' %s>%s</button></div>"
                                         + "<form id = '%s' action ='updateOrderStatus' method = 'POST' style = 'display: none'>"
@@ -127,14 +128,15 @@
                                     + "<div class='col2'><button class='statusButtons' type = 'submit' %s form = '%s' %s>%s</button></div>"
                                         + "<form id = '%s' action ='deleteOrder' method = 'POST' style = 'display: none'>"
                                              + "<input type = 'text' name = 'adminUpdateOrderId' value = '%s'>"
+                                             + "<input type = 'hidden' name = 'adminUpdateCustomerId' value = '%s'>"
                                         + "</form>"
                                     + "<div class='colx'><button type = 'submit' form = '%s'>X</button></div>"
                              + "</div>",
                                     order_id, x.getOrder_Delivery_Date(), x.getCustomerName(), paymentDetails,
                                     address.toString(), x.getOrderString(), x.getCustomerContactNumber(),
-                                    form1name, order_id, paymentStyle, form1name,disablePaymentButton, x.getPayment_Status(),
+                                    form1name, order_id, customer_id, paymentStyle, form1name,disablePaymentButton, x.getPayment_Status(),
                                     form2name, order_id, customer_id, updateStyle, form2name, disableButton, status,
-                                    form3name, order_id,form3name);
+                                    form3name, order_id, customer_id, form3name);
                             out.println(s);
                             
                         }

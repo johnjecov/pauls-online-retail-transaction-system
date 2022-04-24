@@ -82,7 +82,7 @@
                         for (Order x : orderList) {
                             String address = x.getAddress().toString();
                             String order_id = String.valueOf(x.getOrder_Id());
-                            int customer_id = x.getCustomer_Id();
+                            String customer_id = String.valueOf(x.getCustomer_Id());
                             String status = orderStatus.get(x.getOrder_Status_Id() - 1);
                             String disableButton = "";
                             String disablePaymentButton = "";

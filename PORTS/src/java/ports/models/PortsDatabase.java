@@ -763,7 +763,7 @@ public class PortsDatabase {
         //the customer has received the order
         
         //initialize list;
-        
+        System.out.println("~~~~~~~~~~~~~~Order Received: Updating: \n"+o);
         ArrayList<OrderItem> items = o.getItems();
         //update pizza stocks
         for (OrderItem x : items)

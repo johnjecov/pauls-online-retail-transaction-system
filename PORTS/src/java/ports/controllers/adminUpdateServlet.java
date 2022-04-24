@@ -50,7 +50,7 @@ public class adminUpdateServlet extends HttpServlet {
         int employee_id = 1;
         int customer_id = (int) sc.getAttribute("adminUpdateCustomerId");
         Order o = (Order) ports.getOrderData(customer_id);
-   
+        int order_status = o.getOrder_Status_Id();
         if (session.getAttribute("employee") != null){
             Employee e = (Employee) session.getAttribute("employee");
             employee_id = e.getEmployee_Id();
@@ -63,7 +63,7 @@ public class adminUpdateServlet extends HttpServlet {
             ports.updateOrderPayment(order_id, employee_id, paymentDate);
         }
         else if (type.equals("update_order")){
-            if (order_id == 4) {
+            if (order_status == 4) {
                 System.out.println("Order received\n"+o);
                 ports.updateOrderReceived(o);
             }

@@ -219,6 +219,7 @@ html,body {
 
 .col3 {
     flex: 1;
+    min-width: 30rem;
 }
 
 .colx {

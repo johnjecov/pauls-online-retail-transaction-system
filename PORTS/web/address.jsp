@@ -117,14 +117,14 @@
                                                 <td><%= ((Address)add.get(i)).getPostalCode() %></td>
                                              </tr>
                                               <tr>
-                                                <th>Address Details</th>
-                                                <td></td>
-                                                <td><%= ((Address)add.get(i)).getDetails() %></td>
-                                             </tr>
-                                              <tr>
-                                                  <th>Additional Details</th>
+                                                  <th> Address Details</th>
                                                   <td></td>
                                                 <td><%= ((Address)add.get(i)).getAdditionalDetails() %></td>
+                                             </tr>
+                                             <tr>
+                                                <th>Additional Details</th>
+                                                <td></td>
+                                                <td><%= ((Address)add.get(i)).getDetails() %></td>
                                              </tr>
                                         </table>
                                    

@@ -76,7 +76,7 @@
         <tr>
             <td data-label="Pizza">
                 <div class="cart-info">
-                    <img src="image/food-3.png">
+                    <img src="<% out.print(((CartItem)(items.get(a))).getProduct().getImage());%>">
                     <div class="pizza-name">
                         <% String pizzaName = ((CartItem)(items.get(a))).getProduct().getName();
                             out.print(pizzaName);
@@ -106,7 +106,7 @@
             <%  String pattern = "yyyy-MM-dd";
       
         DateTimeFormatter formatDate = DateTimeFormatter.ofPattern(pattern);
-        LocalDateTime min = LocalDateTime.now().minusDays(1);
+        LocalDateTime min = LocalDateTime.now().minusDays(0);
         LocalDateTime max = LocalDateTime.now().plusDays(30);
         String minF = formatDate.format(min);
         String maxF = formatDate.format(max);%>

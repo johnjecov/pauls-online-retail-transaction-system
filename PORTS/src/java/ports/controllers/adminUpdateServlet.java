@@ -79,6 +79,7 @@ public class adminUpdateServlet extends HttpServlet {
         sc.removeAttribute("adminUpdateType");
         sc.removeAttribute("adminModalMessage");
         sc.removeAttribute("adminUpdateOrderId");
+        sc.removeAttribute("adminUpdateCustomerId");
 
         response.sendRedirect("adminOrderList.jsp"); 
     }

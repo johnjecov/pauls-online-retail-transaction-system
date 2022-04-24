@@ -43,6 +43,7 @@ public class updateFServlet extends HttpServlet {
         PortsDatabase ports = (PortsDatabase) sc.getAttribute("dbConnection");        
         String type = "update_order";
         int order_id = Integer.parseInt(request.getParameter("adminUpdateOrderId").trim());
+        int customer_id = Integer.parseInt(request.getParameter("adminUpdateCustomerId").trim());
         String message = "Are you sure that you want to update the order status of order number "+order_id+"?";
         //set attributes and redirect
         System.out.println("Mag uupdate ng Order Status si "+order_id);
@@ -50,6 +51,7 @@ public class updateFServlet extends HttpServlet {
         sc.setAttribute("adminUpdateType", type);
         sc.setAttribute("adminModalMessage", message);
         sc.setAttribute("adminUpdateOrderId", order_id);
+        sc.setAttribute("adminUpdateCustomerId", customer_id);
 
         response.sendRedirect("adminOrderList.jsp");
     }

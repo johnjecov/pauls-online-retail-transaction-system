@@ -906,7 +906,7 @@ public class PortsDatabase {
             int order_status = 1;
             order_status = Integer.parseInt(results.getString("order_status_id"));
             
-            if(order_status < 5){
+            if(order_status <= 5){
                 order_status += 1;
                 ps.setInt(1, order_status);
                 ps.setInt(2, employee_id);

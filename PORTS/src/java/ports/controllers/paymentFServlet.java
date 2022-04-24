@@ -43,14 +43,15 @@ public class paymentFServlet extends HttpServlet {
         String type = "update_payment";
 
         int order_id = Integer.parseInt(request.getParameter("adminUpdateOrderId").trim());
-         String message = "Are you sure that you want to update the payment status to paid of order number "+order_id+"?";       
+        int customer_id = Integer.parseInt(request.getParameter("adminUpdateCustomerId").trim());
+        String message = "Are you sure that you want to update the payment status to paid of order number "+order_id+"?";       
         //set attributes and redirect
         System.out.println("Mag uupdate ng payment ng Order si "+order_id);
         sc.setAttribute("adminModalDisplay", "flex");
         sc.setAttribute("adminUpdateType", type);
         sc.setAttribute("adminModalMessage", message);
         sc.setAttribute("adminUpdateOrderId", order_id);
-
+        sc.setAttribute("adminUpdateCustomerId", customer_id);
         response.sendRedirect("adminOrderList.jsp");
     }
 

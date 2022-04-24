@@ -99,7 +99,10 @@
                                  disableButton = "disabled";
                                  updateStyle = "style = 'background-color: #008C45'";
                              }
-                             
+                             if(x.getOrder_Status_Id() >= 4)
+                             {
+                                 updateStyle = "";
+                             }
                             if(x.getPayment_Status().equals("paid"))
                              {
                                  disablePaymentButton = "disabled";

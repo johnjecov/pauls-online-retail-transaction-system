@@ -42,6 +42,7 @@ public class deleteFServlet extends HttpServlet {
         PortsDatabase ports = (PortsDatabase) sc.getAttribute("dbConnection");        
         String type = "update_delete";
         int order_id = Integer.parseInt(request.getParameter("adminUpdateOrderId").trim());
+        int customer_id = Integer.parseInt(request.getParameter("adminUpdateCustomerId").trim());
         String message = "Are you sure that you want to delete order number "+order_id+"?";
 
         
@@ -51,7 +52,7 @@ public class deleteFServlet extends HttpServlet {
         sc.setAttribute("adminUpdateType", type);
         sc.setAttribute("adminModalMessage", message);
         sc.setAttribute("adminUpdateOrderId", order_id);
-
+        sc.setAttribute("adminUpdateCustomerId", customer_id);
         response.sendRedirect("adminOrderList.jsp");
     }
 

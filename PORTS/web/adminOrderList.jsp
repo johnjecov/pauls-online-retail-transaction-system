@@ -82,6 +82,7 @@
                         for (Order x : orderList) {
                             String address = x.getAddress().toString();
                             String order_id = String.valueOf(x.getOrder_Id());
+                            int customer_id = x.getCustomer_Id();
                             String status = orderStatus.get(x.getOrder_Status_Id() - 1);
                             String disableButton = "";
                             String disablePaymentButton = "";
@@ -121,6 +122,7 @@
                                     + "<div class='col2'><button class='statusButtons' type = 'submit' %s form = '%s' %s>%s</button></div>"
                                         + "<form id = '%s' action ='updateOrderStatus' method = 'POST' style = 'display: none'>"
                                              + "<input type = 'text' name = 'adminUpdateOrderId' value = '%s'>"
+                                             + "<input type = 'hidden' name = 'adminUpdateCustomerId' value = '%s'>"
                                         + "</form>"
                                     + "<div class='col2'><button class='statusButtons' type = 'submit' %s form = '%s' %s>%s</button></div>"
                                         + "<form id = '%s' action ='deleteOrder' method = 'POST' style = 'display: none'>"
@@ -131,7 +133,7 @@
                                     order_id, x.getOrder_Delivery_Date(), x.getCustomerName(), paymentDetails,
                                     address.toString(), x.getOrderString(), x.getCustomerContactNumber(),
                                     form1name, order_id, paymentStyle, form1name,disablePaymentButton, x.getPayment_Status(),
-                                    form2name, order_id, updateStyle, form2name, disableButton, status,
+                                    form2name, order_id, customer_id, updateStyle, form2name, disableButton, status,
                                     form3name, order_id,form3name);
                             out.println(s);
                             

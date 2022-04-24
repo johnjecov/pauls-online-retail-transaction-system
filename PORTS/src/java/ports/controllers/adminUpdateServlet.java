@@ -48,8 +48,8 @@ public class adminUpdateServlet extends HttpServlet {
         String type = (String) sc.getAttribute("adminUpdateType");
         int order_id = (int) sc.getAttribute("adminUpdateOrderId"); 
         int employee_id = 1;
-        Customer c = (Customer) session.getAttribute("customer");
-        Order o = c.getOrder(ports);
+        int customer_id = (int) sc.getAttribute("adminUpdateCustomerId");
+        Order o = (Order) ports.getOrderData(customer_id);
    
         if (session.getAttribute("employee") != null){
             Employee e = (Employee) session.getAttribute("employee");

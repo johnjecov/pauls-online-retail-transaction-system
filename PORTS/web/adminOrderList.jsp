@@ -101,7 +101,7 @@
                              }
                              if(x.getOrder_Status_Id() >= 4)
                              {
-                                 updateStyle = "";
+                                 updateStyle = "style = 'background-color: #008C45'";
                              }
                             if(x.getPayment_Status().equals("paid"))
                              {

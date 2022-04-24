@@ -64,6 +64,7 @@ public class adminUpdateServlet extends HttpServlet {
         }
         else if (type.equals("update_order")){
             if (order_id == 4) {
+                System.out.println("Order received\n"+o);
                 ports.updateOrderReceived(o);
             }
             else {

@@ -93,7 +93,7 @@
                             String form3name = String.format("deleteF%d", x.getOrder_Id());
                             System.out.print(form1name);
                             System.out.println("Status id " + x.getOrder_Status_Id());
-                             if(x.getOrder_Status_Id() >= 4)
+                             if(x.getOrder_Status_Id() >= 5)
                              {
                                  disableButton = "disabled";
                                  updateStyle = "style = 'background-color: #008C45'";

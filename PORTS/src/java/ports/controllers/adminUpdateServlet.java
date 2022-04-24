@@ -48,7 +48,8 @@ public class adminUpdateServlet extends HttpServlet {
         String type = (String) sc.getAttribute("adminUpdateType");
         int order_id = (int) sc.getAttribute("adminUpdateOrderId"); 
         int employee_id = 1;
-
+        Customer c = (Customer) session.getAttribute("customer");
+        Order o = c.getOrder(ports);
    
         if (session.getAttribute("employee") != null){
             Employee e = (Employee) session.getAttribute("employee");
@@ -62,7 +63,13 @@ public class adminUpdateServlet extends HttpServlet {
             ports.updateOrderPayment(order_id, employee_id, paymentDate);
         }
         else if (type.equals("update_order")){
-            ports.updateOrderStatus(order_id, employee_id);
+            if (order_id == 4) {
+                ports.updateOrderReceived(o);
+            }
+            else {
+                ports.updateOrderStatus(order_id, employee_id);
+            }
+            
         }
         else if (type.equals("update_delete")){
             ports.deleteOrder(order_id);

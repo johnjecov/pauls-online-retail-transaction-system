@@ -7,6 +7,10 @@ import java.util.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import ports.utility.*;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class PortsDatabase {
     static Connection portsConnection;  
@@ -15,6 +19,7 @@ public class PortsDatabase {
     ArrayList<String> order_status;
     ArrayList<Address> addresses;
     ArrayList<Order> OrderSales;
+    ArrayList<Order> OrderSalesRanged;
     ArrayList<Order> OrderHistory;
 
     public PortsDatabase(Connection con){
@@ -613,6 +618,32 @@ public class PortsDatabase {
         return orders;   
     }
     
+    public ArrayList retrieveOrderSalesRanged(String start, String end, String orderBy) {
+        ArrayList<Order> orders = new ArrayList<>();
+        LocalDate startD = LocalDate.parse(start);
+        LocalDate endD = LocalDate.parse(end);
+        try {
+            String query = "SELECT order_id FROM orders WHERE order_status_id = 5 and payment_status = 'paid' order by "+orderBy+" ASC";
+            PreparedStatement ps = portsConnection.prepareStatement(query);
+            ResultSet results = ps.executeQuery();
+            
+            while(results.next()){
+                int order_id = Integer.parseInt(results.getString("order_id"));
+                Order o = getOrder(order_id);
+                
+                LocalDate testD = LocalDate.parse(o.getOrder_Delivery_Date());
+                
+                if(!(testD.isBefore(startD.minusDays(1))) && testD.isBefore(endD.plusDays(1)))
+                    orders.add(o);
+            }
+        }
+        catch(SQLException sqle){
+            System.out.println("SQLException error occured - " + sqle.getMessage());
+        }
+        
+        return orders;   
+    }
+    
     //the orders that are not yet done
     public ArrayList retrieveOrderHistory(String orderBy) {
         ArrayList<Order> orders = new ArrayList<>();
@@ -634,6 +665,7 @@ public class PortsDatabase {
         
         return orders;   
     }
+    
     
     public Order getOrder(int order_id) {
       
@@ -1508,6 +1540,11 @@ public class PortsDatabase {
     public ArrayList getOrderSales(String orderBy){
         OrderSales = retrieveOrderSales(orderBy);
         return OrderSales;
+    }
+    
+    public ArrayList getOrderSalesRanged(String start, String end, String orderBy){
+        OrderSalesRanged = retrieveOrderSalesRanged(start, end, orderBy);
+        return OrderSalesRanged;
     }
      
     public ArrayList getOrderHistory(String orderBy){

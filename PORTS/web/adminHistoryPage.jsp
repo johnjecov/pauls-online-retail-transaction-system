@@ -1,3 +1,7 @@
+<%@page import="java.text.DateFormat"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.time.LocalDateTime"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.*, ports.models.*, org.json.*;"%>
 <!DOCTYPE html>
@@ -171,20 +175,43 @@
                         <div class="pagenumbers" id="pagenumbers">
                         </div>
                     </div>
-
-                    <input class="dateranges" type="text" name="daterange" value="01/01/2018 - 01/15/2018" />
-
-                    <script>
-                        $(function () {
-                            $('input[name="daterange"]').daterangepicker({
-                                opens: 'left'
-                            }, function (start, end, label) {
-                                console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-                            });
-                        });
-                    </script>
-
+          
+                    
+                    <%
+                        ArrayList<Order> orderRange = (ArrayList) ports.getOrderSales(selectedSort);
+                        String pattern = "MM/dd/yyyy";
+                        String pattern2 = "yyyy-MM-dd"; 
+                        DateTimeFormatter formatDate = DateTimeFormatter.ofPattern(pattern);
+                        LocalDateTime min = LocalDateTime.now().minusDays(0);
+                        String startDate = formatDate.format(min);
+                        String endDate = startDate;
+                        
+                        if (!orderRange.isEmpty()) {
+                            startDate = orderRange.get(0).getOrder_Made_Date().trim();
+                            endDate = orderRange.get(orderRange.size()-1).getOrder_Delivery_Date().trim();
+                        }
+                        String defaultRange = String.format("%s - %s", startDate, endDate);
+                        System.out.println(defaultRange);
+                        /*
+                        DateFormat formatDate = new SimpleDateFormat(pattern);
+                        Date min = formatDate.parse(startDate);
+                        Date max = formatDate.parse(endDate);
+                        formatDate = new SimpleDateFormat(pattern2);
+                        String minDate = formatDate.format(min);
+                        String maxDate = formatDate.format(max);
+                        */
+                    %>
                     <form action="adminPDF.jsp" method="POST">
+                        <input class="dateranges" type="text" name="daterange" value="<%= defaultRange%>"/>
+                        <script>
+                            $(function () {
+                                $('input[name="daterange"]').daterangepicker({
+                                    opens: 'left'
+                                }, function (start, end, label) {
+                                    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+                                });
+                            });             
+                        </script>
                         <button class="generatePDF" name="downloadPDF" type ="submit">Generate Summary Report PDF</button>
                     </form>
                 </div>

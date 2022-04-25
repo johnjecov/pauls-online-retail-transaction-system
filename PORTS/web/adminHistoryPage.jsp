@@ -1,3 +1,4 @@
+<%@page import="java.time.LocalDate"%>
 <%@page import="java.text.DateFormat"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.time.LocalDateTime"%>
@@ -185,28 +186,26 @@
                         LocalDateTime min = LocalDateTime.now().minusDays(0);
                         String startDate = formatDate.format(min);
                         String endDate = startDate;
-                        
+                        String maxDate = formatDate.format(min);
                         if (!orderRange.isEmpty()) {
                             startDate = orderRange.get(0).getOrder_Made_Date().trim();
                             endDate = orderRange.get(orderRange.size()-1).getOrder_Delivery_Date().trim();
                         }
                         String defaultRange = String.format("%s - %s", startDate, endDate);
                         System.out.println(defaultRange);
-                        /*
-                        DateFormat formatDate = new SimpleDateFormat(pattern);
-                        Date min = formatDate.parse(startDate);
-                        Date max = formatDate.parse(endDate);
-                        formatDate = new SimpleDateFormat(pattern2);
-                        String minDate = formatDate.format(min);
-                        String maxDate = formatDate.format(max);
-                        */
+                        
+                        //DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                        //LocalDate startD = LocalDate.parse(startDate, df);
+                       
                     %>
                     <form action="pdfRedirect" method="POST">
-                        <input class="dateranges" type="text" name="daterange" value="<%= defaultRange%>"/>
+                        <input class="dateranges" type="text" name="daterange" min = "04-15-2022" value="<%= defaultRange%>"/>
                         <script>
                             $(function () {
                                 $('input[name="daterange"]').daterangepicker({
-                                    opens: 'left'
+                                    opens: 'center',
+                                    minDate: '<%= startDate%>',
+                                    maxDate: '<%= maxDate%>',
                                 }, function (start, end, label) {
                                     console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
                                 });

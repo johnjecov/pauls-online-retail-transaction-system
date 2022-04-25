@@ -201,6 +201,7 @@
                     <form action="pdfRedirect" method="POST">
                         <input class="dateranges" type="text" name="daterange" min = "04-15-2022" value="<%= defaultRange%>"/>
                         <script>
+                            
                             $(function () {
                                 $('input[name="daterange"]').daterangepicker({
                                     opens: 'center',

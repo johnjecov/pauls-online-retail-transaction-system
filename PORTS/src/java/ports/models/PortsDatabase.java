@@ -620,8 +620,9 @@ public class PortsDatabase {
     
     public ArrayList retrieveOrderSalesRanged(String start, String end, String orderBy) {
         ArrayList<Order> orders = new ArrayList<>();
-        LocalDate startD = LocalDate.parse(start);
-        LocalDate endD = LocalDate.parse(end);
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        LocalDate startD = LocalDate.parse(start, df);
+        LocalDate endD = LocalDate.parse(end,  df);
         try {
             String query = "SELECT order_id FROM orders WHERE order_status_id = 5 and payment_status = 'paid' order by "+orderBy+" ASC";
             PreparedStatement ps = portsConnection.prepareStatement(query);
@@ -631,7 +632,7 @@ public class PortsDatabase {
                 int order_id = Integer.parseInt(results.getString("order_id"));
                 Order o = getOrder(order_id);
                 
-                LocalDate testD = LocalDate.parse(o.getOrder_Delivery_Date());
+                LocalDate testD = LocalDate.parse(o.getOrder_Delivery_Date(), df);
                 
                 if(!(testD.isBefore(startD.minusDays(1))) && testD.isBefore(endD.plusDays(1)))
                     orders.add(o);

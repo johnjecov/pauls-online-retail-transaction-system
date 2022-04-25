@@ -201,7 +201,7 @@
                         String maxDate = formatDate.format(max);
                         */
                     %>
-                    <form action="adminPDF.jsp" method="POST">
+                    <form action="pdfRedirect" method="POST">
                         <input class="dateranges" type="text" name="daterange" value="<%= defaultRange%>"/>
                         <script>
                             $(function () {

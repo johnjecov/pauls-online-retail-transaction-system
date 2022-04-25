@@ -48,7 +48,8 @@ public class generatePDF extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+      
+        
         System.out.println("PDF IS STARTING");
         ServletContext sc = request.getServletContext();
         //String selectedSort = request.getParameter("arrange");
@@ -82,9 +83,15 @@ public class generatePDF extends HttpServlet {
 
             //GETTING THE TOTAL NUMBER OF PAGES
             int maxRows = 0;
-
-            ArrayList<Order> orderList = (ArrayList) ports.getOrderSales("order_ID");
+           
+            String range = (String) sc.getAttribute("daterange");
+            System.out.println("Range of Report: "+range);
+            String rangeArray[] = range.split("-");
+            rangeArray[0] = rangeArray[0].trim();
+            rangeArray[1] = rangeArray[1].trim();
+            ArrayList<Order> orderList = (ArrayList) ports.getOrderSalesRanged(rangeArray[0], rangeArray[1], "order_id");
             for (Order i : orderList) {
+               
                 ArrayList<OrderItem> orderItems = i.getItems();
                 for (OrderItem j : orderItems) {
                     if (i.getItems().size() > j.getToppings().size()) {

@@ -1,15 +1,23 @@
+<%@page import="java.time.LocalDate"%>
+<%@page import="java.text.DateFormat"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.time.LocalDateTime"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.*, ports.models.*, org.json.*;"%>
 <!DOCTYPE html>
 <html>
     <head>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
         <link rel="stylesheet" href="css/adminHistory.css?nocache={timestamp}" type="text/css">
         <link rel="icon" type="image/png" href="image/logo.png">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Order History</title>
     </head>
     <body scroll="no" style="overflow: hidden">
-         <%@include file="adminLogout.jsp"%>
+        <%@include file="adminLogout.jsp"%>
 
         <div class="contentHolder">
             <div class="sidebar">
@@ -30,22 +38,22 @@
                     <form class="arrangeOptions" id = "adminSortForm" action="adminHistorySort" method = "POST">
                         <label for="arrange">Arrange by: </label>
                         <select name="arrange" class="arrange" id="arrange" onchange="this.form.submit()">
-                        <%
-                            ServletContext sc = getServletContext();
-                            String selectedSort = "order_id";
-                            String selectedSortLabel = "";
-                            if (sc.getAttribute("selectedSortAttribute") != null) {
-                                selectedSort = (String) sc.getAttribute("selectedSortAttribute");
-                                if(selectedSort.equals("order_id")){
-                                    selectedSortLabel = "Order ID";
-                                } else if (selectedSort.equals("order_delivery_date")){
-                                    selectedSortLabel = "Date";
-                                } else if (selectedSort.equals("order_total")){
-                                    selectedSortLabel = "Price";
-                                } else {}
-                                sc.removeAttribute("selectedSortAttribute");
-                            }
-                        %>
+                            <%                            ServletContext sc = getServletContext();
+                                String selectedSort = "order_id";
+                                String selectedSortLabel = "";
+                                if (sc.getAttribute("selectedSortAttribute") != null) {
+                                    selectedSort = (String) sc.getAttribute("selectedSortAttribute");
+                                    if (selectedSort.equals("order_id")) {
+                                        selectedSortLabel = "Order ID";
+                                    } else if (selectedSort.equals("order_delivery_date")) {
+                                        selectedSortLabel = "Date";
+                                    } else if (selectedSort.equals("order_total")) {
+                                        selectedSortLabel = "Price";
+                                    } else {
+                                    }
+                                    sc.removeAttribute("selectedSortAttribute");
+                                }
+                            %>
                             <option value=<%=selectedSort%>><%=selectedSortLabel%></option>
                             <option value="order_id" >Order ID</option>
                             <option value="order_delivery_date">Date</option>
@@ -168,8 +176,42 @@
                         <div class="pagenumbers" id="pagenumbers">
                         </div>
                     </div>
-
-                    <form action="adminPDF.jsp" method="POST">
+          
+                    
+                    <%
+                        ArrayList<Order> orderRange = (ArrayList) ports.getOrderSales(selectedSort);
+                        String pattern = "MM/dd/yyyy";
+                        String pattern2 = "yyyy-MM-dd"; 
+                        DateTimeFormatter formatDate = DateTimeFormatter.ofPattern(pattern);
+                        LocalDateTime min = LocalDateTime.now().minusDays(0);
+                        String startDate = formatDate.format(min);
+                        String endDate = startDate;
+                        String maxDate = formatDate.format(min);
+                        if (!orderRange.isEmpty()) {
+                            startDate = orderRange.get(0).getOrder_Made_Date().trim();
+                            endDate = orderRange.get(orderRange.size()-1).getOrder_Delivery_Date().trim();
+                        }
+                        String defaultRange = String.format("%s - %s", startDate, endDate);
+                        System.out.println(defaultRange);
+                        
+                        //DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                        //LocalDate startD = LocalDate.parse(startDate, df);
+                       
+                    %>
+                    <form action="pdfRedirect" method="POST">
+                        <input class="dateranges" type="text" name="daterange" min = "04-15-2022" value="<%= defaultRange%>"/>
+                        <script>
+                            
+                            $(function () {
+                                $('input[name="daterange"]').daterangepicker({
+                                    opens: 'center',
+                                    minDate: '<%= startDate%>',
+                                    maxDate: '<%= maxDate%>',
+                                }, function (start, end, label) {
+                                    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+                                });
+                            });             
+                        </script>
                         <button class="generatePDF" name="downloadPDF" type ="submit">Generate Summary Report PDF</button>
                     </form>
                 </div>

@@ -262,6 +262,15 @@
         <url-pattern>/generatePDF</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+        <servlet-name>pdfRedirect</servlet-name>
+        <servlet-class>ports.controllers.pdfRedirect</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>pdfRedirect</servlet-name>
+        <url-pattern>/pdfRedirect</url-pattern>
+    </servlet-mapping>
+    
     <session-config>
         <session-timeout>
             900

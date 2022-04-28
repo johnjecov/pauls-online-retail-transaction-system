@@ -13,6 +13,7 @@ import com.itextpdf.text.Image;
 import com.itextpdf.text.List;
 import com.itextpdf.text.ListItem;
 import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
@@ -51,7 +52,6 @@ public class generatePDF extends HttpServlet {
 
         System.out.println("PDF IS STARTING");
         ServletContext sc = request.getServletContext();
-        //String selectedSort = request.getParameter("arrange");
 
         PortsDatabase ports = (PortsDatabase) sc.getAttribute("dbConnection");
 
@@ -82,9 +82,17 @@ public class generatePDF extends HttpServlet {
 
             //GETTING THE TOTAL NUMBER OF PAGES
             int maxRows = 0;
+            //TOTAL SUM PRICE OF ALL ORDERS IN THE REPORT
+            double totalReport = 0;
 
-            ArrayList<Order> orderList = (ArrayList) ports.getOrderSales("order_ID");
+            String range = (String) sc.getAttribute("daterange");
+            System.out.println("Range of Report: " + range);
+            String rangeArray[] = range.split("-");
+            rangeArray[0] = rangeArray[0].trim();
+            rangeArray[1] = rangeArray[1].trim();
+            ArrayList<Order> orderList = (ArrayList) ports.getOrderSalesRanged(rangeArray[0], rangeArray[1], "order_id");
             for (Order i : orderList) {
+
                 ArrayList<OrderItem> orderItems = i.getItems();
                 for (OrderItem j : orderItems) {
                     if (i.getItems().size() > j.getToppings().size()) {
@@ -93,14 +101,9 @@ public class generatePDF extends HttpServlet {
                         maxRows = j.getToppings().size();
                     }
                 }
+                totalReport += i.getOrder_Total();
             }
-//            //HOW MANY ROWS PER TABLE PER PAGE
-//            int rowPerPage = 22;
-//            int totalPages = (int) Math.ceil(rows / rowPerPage);
-//            if (rows % rowPerPage != 0) {
-//                totalPages++;
-//            }
-
+            
             paragraph.add(Chunk.NEWLINE);
             paragraph.add(Chunk.NEWLINE);
             PdfPTable table = new PdfPTable(9);
@@ -109,10 +112,7 @@ public class generatePDF extends HttpServlet {
             table.setTotalWidth(document.right() - document.left());
             table.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
             table.getDefaultCell().setVerticalAlignment(Element.ALIGN_MIDDLE);
-
-            //int yy = 0;
-            //for (int y = 1; y <= rowPerPage && rs.next(); y++) {//table rows
-            //yy = y;
+            
             for (Order i : orderList) {
                 ArrayList<OrderItem> orderItems = i.getItems();
 
@@ -244,6 +244,45 @@ public class generatePDF extends HttpServlet {
                 oTotalPhraseCell.setPaddingBottom(10f);
                 table.addCell(oTotalPhraseCell);
             }
+            List totalReportLabel = new List();
+            totalReportLabel.setListSymbol(" ");
+            List totalReportValue = new List();
+            totalReportValue.setListSymbol(" ");
+
+            ListItem totalReportLabelItem = new ListItem("Total:");
+            totalReportLabelItem.setAlignment(Element.ALIGN_CENTER);
+            totalReportLabel.add(totalReportLabelItem);
+
+            ListItem totalReportValueItem = new ListItem(String.valueOf(totalReport));
+            totalReportValueItem.setAlignment(Element.ALIGN_CENTER);
+            totalReportValue.add(totalReportValueItem);
+
+            PdfPCell cellOne = new PdfPCell();
+            cellOne.setBorder(Rectangle.LEFT | Rectangle.BOTTOM);
+            table.addCell(cellOne);
+            PdfPCell cellTwo = new PdfPCell();
+            cellTwo.setBorder(Rectangle.BOTTOM);
+            table.addCell(cellTwo);
+            table.addCell(cellTwo);
+            table.addCell(cellTwo);
+            table.addCell(cellTwo);
+            table.addCell(cellTwo);
+            table.addCell(cellTwo);
+
+            Phrase totalReportLabelPhrase = new Phrase();
+            totalReportLabelPhrase.add(totalReportLabel);
+            PdfPCell totalReportLabelPhraseCell = new PdfPCell();
+            totalReportLabelPhraseCell.addElement(totalReportLabelPhrase);
+            totalReportLabelPhraseCell.setPaddingBottom(10f);
+            totalReportLabelPhraseCell.setBorder(Rectangle.RIGHT | Rectangle.BOTTOM);
+            table.addCell(totalReportLabelPhraseCell);
+
+            Phrase totalReportPhrase = new Phrase();
+            totalReportPhrase.add(totalReportValue);
+            PdfPCell totalReportPhraseCell = new PdfPCell();
+            totalReportPhraseCell.addElement(totalReportPhrase);
+            totalReportPhraseCell.setPaddingBottom(10f);
+            table.addCell(totalReportPhraseCell);
 
             paragraph.add(table);
 
@@ -290,7 +329,7 @@ public class generatePDF extends HttpServlet {
             } catch (DocumentException e) {
                 e.printStackTrace();
             }
-            
+
             Phrase header = new Phrase(String.format("PORTS Order Sales History"));
             Phrase footer = new Phrase(String.format("Page %d |%s", writer.getPageNumber(), dateTime));
 

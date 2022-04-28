@@ -38,6 +38,77 @@
 
     <!-- custom css file link  -->
     <link rel="stylesheet" href="css/style.css">
+    <script>
+var subjectObject = {
+ "Metro Manila": {
+      
+    "Caloocan": [1400, 1401, 1402, 1403, 1404, 1405, 1406, 1407, 1408, 1409,
+1410, 1411, 1412, 1413, 1420, 1421, 1422, 1423, 1424, 1425, 
+1426, 1427, 1428],
+
+    "Makati": [1200,1201,1202,1203,1204,1205,1206,1207,1208,1209,1210,
+1211,1212,1213,1214,1215,1216,1217,1218,1219,1220,1221,
+1222,1223,1224,1225,1226,1227,1228,1229,1230,1231,1232,
+1233,1234,1235],
+
+    "Malabon": [1409,1470,1471,1472,1473,1474,1475,1476,1477,1478,1479,1480],
+    
+    "Mandaluyong": [1550,1551,1552,1553,1554,1555,1556],
+    
+    "Manila": [1000,1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,
+1011,1012,1013,1014,1015,1016,1017,1018],
+
+    "Marikina": [1800,1801,1802,1803,1804,1805,1806,1807,1808,1809,1810,1811,1820],
+
+    "Muntinlupa": [1770,1771,1772,1773,1774,1775,1776,1777,1780,1781,1799],
+    
+    "Navotas": [1409,1411,1412,1413,1485,1489,1490],
+    
+    "Parañaque": [1700,1701,1702,1703,1704,1705,1706,1707,1708,1709,1710,1711,1712,1713,1714,1714,1715,1716,1718,1719,1720],
+    
+    "Pasay": [1300,1301,1302,1303,1304,1305,1306,1307,1308,1309],
+    
+    "Pasig": [1600,1601,1602,1603,1604,1605,1606,1607,1608,1609,1610,1611,1612],
+    
+    "Pateros": [1620, 1621],
+    
+    "Quezon": [1100,1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111,1112,
+1113,1114,1115,1116,1117,1118,1119,1120,1121,1122,1123,1124,1125,1126,1127,1128,1131],
+
+    "San Juan": [0400,0401,0410,420,1500,1502,1503,1504],
+    
+    "Taguig": [1630,1631,1632,1633,1634,1636,1637,1638],
+    
+    "Valenzuela": [0550,560,1440,1441,1442,1443,1444,1445,1446,1447,1448,1496]
+}
+}
+window.onload = function() {
+  var subjectSel = document.getElementById("province");
+  var topicSel = document.getElementById("city");
+  var chapterSel = document.getElementById("postalCode");
+  for (var x in subjectObject) {
+    subjectSel.options[subjectSel.options.length] = new Option(x, x);
+  }
+  subjectSel.onchange = function() {
+    //empty Chapters- and Topics- dropdowns
+    chapterSel.length = 1;
+    topicSel.length = 1;
+    //display correct values
+    for (var y in subjectObject[this.value]) {
+      topicSel.options[topicSel.options.length] = new Option(y, y);
+    }
+  }
+  topicSel.onchange = function() {
+    //empty Chapters dropdown
+    chapterSel.length = 1;
+    //display correct values
+    var z = subjectObject[subjectSel.value][this.value];
+    for (var i = 0; i < z.length; i++) {
+      chapterSel.options[chapterSel.options.length] = new Option(z[i], z[i]);
+    }
+  }
+}
+</script>
     </head>
     
     <body>
@@ -158,11 +229,18 @@
                             </div>
                             
                             <div class ="radiocon">
-                                 <input id ="user" type = "text" placeholder = "Postal Code" name="postalCode" required="required">
+                                <select name="province" id="province" class="boxD" required="required" >
+                                    <option value="" selected="selected">Province</option>
+                                  </select>
+                                
                                     <div class="boxX"></div>
-                            <input id ="user" type = "text" placeholder = "City" name="city" required="required">
+                                <select name="city" id="city" class="boxD" required="required">
+                                    <option value="" selected="selected" >City</option>
+                                  </select>
                                     <div class="boxX"></div>
-                            <input id ="user" type = "text" placeholder = "Province" name="province" required="required">
+                                <select name="postalCode" id="postalCode" class="boxD" required="required" >
+                                    <option value="" selected="selected">Postal Code</option>
+                                  </select>
                                     
                         </div>
                            
@@ -178,7 +256,7 @@
                     
             </div>
         </section>
-        
+
         <script>
             function toggleForm()
             {
@@ -203,7 +281,7 @@
               );
             });
             </script>
-             <%@include file="footer_external.jsp"%>
+
     </body>
     
     <style>
@@ -220,6 +298,21 @@
             flex-basis: 100%;
             height: 0;
           
+        }
+        
+        .boxD
+        {
+            width: 100%;
+            padding: 10px;
+            background: #f5f5f5;
+            color: #333;
+            border: none;
+            outline: none;
+            box-shadow: none;
+            font-size: 14px;
+            margin: 8px 0;
+            letter-spacing: 1px;
+            font-weight: 300;
         }
         
         .theBoxA
